@@ -404,10 +404,16 @@
 
       fetch(scriptURL, { method: 'POST', body: new FormData(form) })
         .then(response => {
-          alert('Consultation booked successfully!');
-          form.reset();
-          overlay.classList.remove('active');
-          formPopup.classList.remove('active');
+          // Show a nice success message instead of alert
+          form.innerHTML = '<div style="padding: 20px 0; color: #1DA851; font-size: 18px; font-weight: bold;">Thank you! Your consultation request has been received.<br>We will contact you soon.</div>';
+          setTimeout(() => {
+            overlay.classList.remove('active');
+            formPopup.classList.remove('active');
+            // Restore form after closing
+            setTimeout(() => {
+              form.innerHTML = `<input type=\"text\" name=\"name\" placeholder=\"Your Name\" required>\n<input type=\"tel\" name=\"phone\" placeholder=\"Your Phone\" required>\n<input type=\"email\" name=\"email\" placeholder=\"Your Email\" required>\n<button type=\"submit\">Submit</button>`;
+            }, 400);
+          }, 2200);
         })
         .catch(error => {
           alert('There was an error. Please try again.');
