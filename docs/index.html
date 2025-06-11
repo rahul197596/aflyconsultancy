@@ -644,6 +644,106 @@
       .ai-chatbox { max-width: 98vw; }
       .ai-messages { height: 120px; }
     }
+
+    /* --- Customised Floating Chatbox for Personal Details & Document Upload --- */
+    #customChatBtn {
+      position: fixed;
+      bottom: 110px;
+      right: 30px;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(90deg,#002c77 60%,#d7262b 100%);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,44,119,0.18);
+      cursor: pointer;
+      z-index: 10001;
+      transition: background 0.2s, transform 0.2s;
+    }
+    #customChatBtn:hover {
+      transform: scale(1.1);
+    }
+    #customChatBox {
+      position: fixed;
+      bottom: 180px;
+      right: 30px;
+      width: 340px;
+      max-width: 95vw;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 36px rgba(0,44,119,0.15), 0 2px 12px rgba(215,38,43,0.09);
+      padding: 0;
+      display: none;
+      flex-direction: column;
+      z-index: 10002;
+      overflow: hidden;
+    }
+    #customChatBox .chat-header {
+      background: linear-gradient(90deg,#002c77 60%,#d7262b 100%);
+      color: #fff;
+      padding: 16px 20px 12px 20px;
+      font-weight: bold;
+      font-size: 1.15em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #customChatBox .chat-header button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.3em;
+      cursor: pointer;
+    }
+    #customChatBox form {
+      padding: 18px 20px 10px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    #customChatBox input[type="text"],
+    #customChatBox input[type="email"],
+    #customChatBox input[type="tel"] {
+      padding: 10px;
+      border-radius: 7px;
+      border: 1.5px solid #e3e8f0;
+      font-size: 1em;
+    }
+    #customChatBox input[type="file"] {
+      padding: 6px 0;
+    }
+    #customChatBox button[type="submit"] {
+      background: linear-gradient(90deg,#d7262b 60%,#002c77 100%);
+      color: #fff;
+      font-weight: bold;
+      padding: 12px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.08em;
+      cursor: pointer;
+    }
+    #customChatThankYou {
+      display: none;
+      padding: 30px 20px 30px 20px;
+      text-align: center;
+      font-size: 1.13em;
+      color: #1DA851;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      #customChatBox {
+        right: 2vw !important;
+        width: 98vw !important;
+        min-width: 0 !important;
+      }
+      #customChatBtn {
+        right: 2vw !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -852,30 +952,39 @@
       gptMessages.scrollTop = gptMessages.scrollHeight;
     }
 
-    function getAIDemoResponse(userMsg) {
-      // Simple demo logic for university/course selection
-      const msg = userMsg.toLowerCase();
-      if(msg.includes('usa')) return "Top USA universities: MIT, Stanford, Harvard, UC Berkeley. Popular courses: Computer Science, Business, Engineering.";
-      if(msg.includes('canada')) return "Top Canada universities: University of Toronto, UBC, McGill. Popular courses: Data Science, MBA, Engineering.";
-      if(msg.includes('uk')) return "Top UK universities: Oxford, Cambridge, Imperial College, UCL. Popular courses: Law, MBA, Medicine, Engineering.";
-      if(msg.includes('australia')) return "Top Australia universities: University of Melbourne, UNSW, University of Sydney. Popular courses: Nursing, IT, Business, Engineering.";
-      if(msg.includes('europe')) return "Top Europe universities: ETH Zurich, LMU Munich, Sorbonne, TU Delft. Popular courses: Architecture, Business, Engineering, Arts.";
-      if(msg.includes('new zealand')) return "Top NZ universities: University of Auckland, Otago, Victoria University. Popular courses: Environmental Science, Business, IT.";
-      if(msg.includes('mba')) return "MBA is offered at top universities in all these countries. Let me know your preferred country for more details.";
-      if(msg.includes('engineering')) return "Engineering is a popular course in USA, Canada, UK, Australia, and Europe. Let me know your specialization or country preference.";
-      return "Please specify your preferred country (USA, Canada, UK, Australia, Europe, New Zealand) and course/degree. I can help you shortlist options!";
+    // --- ChatGPT Integration via Backend Proxy ---
+    // Instead of calling OpenAI directly (which fails due to CORS), call your backend endpoint
+    // Backend sample code provided below (Node.js/Express)
+    async function getAIGPTResponse(userMsg) {
+      try {
+        const res = await fetch('/api/chatgpt', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: userMsg })
+        });
+        const data = await res.json();
+        if (data && data.reply) {
+          return data.reply.trim();
+        } else {
+          return 'Sorry, I could not get a response from ChatGPT.';
+        }
+      } catch (e) {
+        return 'Sorry, there was a problem connecting to ChatGPT.';
+      }
     }
 
-    gptForm.addEventListener('submit', function(e) {
+    gptForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const userMsg = gptInput.value.trim();
       if(!userMsg) return;
       appendGptMessage('user', userMsg);
       gptInput.value = '';
-      setTimeout(() => {
-        const aiReply = getAIDemoResponse(userMsg);
-        appendGptMessage('ai', aiReply);
-      }, 600);
+      appendGptMessage('ai', '<span style="color:#aaa;">Thinking...</span>');
+      const aiReply = await getAIGPTResponse(userMsg);
+      // Remove the 'Thinking...' message
+      const lastMsg = gptMessages.lastChild;
+      if (lastMsg && lastMsg.className === 'ai-msg-ai') gptMessages.removeChild(lastMsg);
+      appendGptMessage('ai', aiReply);
     });
   </script>
 </body>
