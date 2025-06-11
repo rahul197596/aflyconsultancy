@@ -4,37 +4,253 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Afly Consultancy Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f9f9f9; }
-    .top-bar { background: #001a4d; color: white; padding: 10px 20px; text-align: right; font-size: 14px; display: flex; justify-content: flex-end; align-items: center; gap: 20px; }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #f9f9f9 60%, #e3e8f0 100%);
+      color: #222;
+    }
+    .top-bar {
+      background: #001a4d;
+      color: white;
+      padding: 10px 20px;
+      text-align: right;
+      font-size: 14px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 20px;
+      letter-spacing: 0.5px;
+    }
     .top-bar span, .top-bar a { color: white; text-decoration: none; }
     .top-bar a.book-link {
       background: #d7262b;
-      padding: 6px 12px;
+      padding: 6px 18px;
       border-radius: 20px;
       font-weight: bold;
       transition: background 0.3s;
+      box-shadow: 0 2px 8px rgba(215,38,43,0.10);
     }
-    .top-bar a.book-link:hover {
-      background: #b71c22;
+    .top-bar a.book-link:hover { background: #b71c22; }
+    header {
+      background: linear-gradient(90deg, #002c77 60%, #0041c4 100%);
+      color: white;
+      padding: 0 0 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 170px;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
     }
-    header { background: #002c77; color: white; padding: 8px 20px; display: flex; align-items: center; justify-content: space-between; }
-    .logo { max-width: 100px; }
-    .header-text { text-align: right; }
-    nav { background: #001f5c; display: flex; justify-content: center; flex-wrap: wrap; }
-    nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+    .logo {
+      max-width: 120px;
+      margin: 24px 0 24px 40px;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+    }
+    .header-text {
+      text-align: right;
+      margin-right: 40px;
+    }
+    .header-text h1 {
+      font-size: 2.5rem;
+      margin: 0 0 8px 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+    .header-text p {
+      font-size: 1.2rem;
+      color: #e3e8f0;
+      margin: 0;
+      font-style: italic;
+    }
+    nav {
+      background: #001f5c;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
     nav li { position: relative; }
-    nav a { display: block; padding: 15px 20px; color: white; text-decoration: none; font-weight: bold; }
-    nav li:hover { background: #0041c4; }
-    nav li ul { display: none; position: absolute; top: 100%; left: 0; background: #0041c4; padding: 0; min-width: 200px; z-index: 1000; }
+    nav a {
+      display: block;
+      padding: 16px 28px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Roboto', Arial, sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav li:hover, nav a:focus {
+      background: #0041c4;
+      color: #fff;
+    }
+    nav li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #0041c4;
+      padding: 0;
+      min-width: 220px;
+      z-index: 1000;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
     nav li:hover ul { display: block; }
     nav li ul li { width: 100%; }
-    section { padding: 30px; max-width: 1000px; margin: auto; }
-    h1, h2 { color: #002c77; }
-    .contact-box { background: #e3e8f0; padding: 20px; border-radius: 8px; margin-top: 20px; }
-    .cta { text-align: center; margin-top: 40px; }
-    .cta a { background: #002c77; color: white; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 6px; }
-    footer { background: #002c77; color: white; text-align: center; padding: 10px; margin-top: 40px; }
+    section.hero {
+      background: linear-gradient(120deg, #e3e8f0 60%, #dbeafe 100%);
+      padding: 60px 0 40px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      max-width: 700px;
+      margin: auto;
+      z-index: 2;
+      position: relative;
+    }
+    .hero-content h2 {
+      font-size: 2.7rem;
+      color: #002c77;
+      margin-bottom: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .hero-content p {
+      font-size: 1.25rem;
+      color: #333;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: linear-gradient(90deg, #d7262b 60%, #b71c22 100%);
+      color: #fff;
+      padding: 16px 38px;
+      border-radius: 30px;
+      font-size: 1.15rem;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(215,38,43,0.10);
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 10px;
+    }
+    .hero-cta:hover { background: #002c77; color: #fff; transform: scale(1.07); }
+    .hero-graphic {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 420px;
+      height: 320px;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80') no-repeat right center/cover;
+      opacity: 0.18;
+      z-index: 1;
+      pointer-events: none;
+      border-radius: 0 0 0 120px;
+    }
+    @media (max-width: 900px) {
+      .hero-graphic { display: none; }
+      .hero-content h2 { font-size: 2.1rem; }
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 36px;
+      margin: 40px auto 0 auto;
+      max-width: 1100px;
+    }
+    .feature-box {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,44,119,0.07);
+      padding: 32px 28px 28px 28px;
+      flex: 1 1 260px;
+      min-width: 260px;
+      max-width: 340px;
+      text-align: center;
+      transition: transform 0.18s, box-shadow 0.18s;
+      position: relative;
+    }
+    .feature-box:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 32px rgba(0,44,119,0.13);
+    }
+    .feature-box img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 18px;
+      filter: drop-shadow(0 2px 8px rgba(0,44,119,0.10));
+    }
+    .feature-box h3 {
+      color: #002c77;
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .feature-box p {
+      color: #444;
+      font-size: 1.05rem;
+      margin: 0;
+    }
+    section.cta {
+      text-align: center;
+      margin: 60px 0 0 0;
+    }
+    .cta a {
+      background: #002c77;
+      color: white;
+      padding: 16px 38px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 16px rgba(0,44,119,0.10);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta a:hover { background: #d7262b; color: #fff; transform: scale(1.07); }
+    section#contact {
+      background: #e3e8f0;
+      border-radius: 18px;
+      margin: 60px auto 0 auto;
+      max-width: 700px;
+      padding: 40px 32px 32px 32px;
+      box-shadow: 0 2px 16px rgba(0,44,119,0.07);
+    }
+    section#contact h2 { color: #002c77; }
+    .contact-box {
+      background: #fff;
+      padding: 24px;
+      border-radius: 10px;
+      margin-top: 18px;
+      box-shadow: 0 2px 8px rgba(0,44,119,0.07);
+      font-size: 1.08rem;
+    }
+    footer {
+      background: #002c77;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      margin-top: 60px;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+    }
 
     .floating-btn {
       position: fixed;
@@ -267,13 +483,11 @@
       Exciting Extra Scholarships, Profile-Based Counselling with Long-Term Career Guidance&nbsp;&nbsp;&nbsp;
     </span>
   </div>
-
   <div class="top-bar" style="margin-top: 32px;">
     <span>Email: info@aflyconsultancy.com</span>
     <span>Phone: <a href="https://wa.me/+918125144079" style="color: white; text-decoration: none;">+91 81251 44079</a></span>
     <a href="#" class="book-link">Book a Consultation</a>
   </div>
-
   <header>
     <img src="./assets/afly_logo_uploaded.png" alt="Afly Consultancy Logo" class="logo" onerror="this.onerror=null;this.src='./assets/afly_logo_uploaded.jpg';">
     <div class="header-text">
@@ -281,7 +495,6 @@
       <p><em>Aim High, Fly High</em></p>
     </div>
   </header>
-
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -331,18 +544,36 @@
       </li>
     </ul>
   </nav>
-
-  <section id="about">
-    <h2>Welcome to Afly Consultancy Services</h2>
-    <p>Afly Consultancy Services is your trusted partner in global education...</p>
-    <p>We specialize in guiding students to achieve their academic dreams by providing tailored counseling, course selection assistance, and visa support. Our experienced team ensures a seamless journey from application to admission, helping you explore top study destinations like the USA, UK, Australia, Canada, and more.</p>
-    <p>With a commitment to excellence, we empower students to aim high and fly high in their educational pursuits. Let us be your bridge to success in international education.</p>
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Empowering Your Global Education Journey</h2>
+      <p>Unlock your potential with Afly Consultancy Services. We guide you to top universities worldwide, offering personalized counseling, expert visa support, and exclusive scholarships. Your dream career starts here!</p>
+      <a href="#" class="hero-cta">Start Your Journey Now</a>
+    </div>
+    <div class="hero-graphic"></div>
   </section>
-
-  <section class="cta">
-    <a href="#">Start Your Journey Now</a>
-  </section>
-
+  <div class="features">
+    <div class="feature-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Counseling">
+      <h3>Personalized Counseling</h3>
+      <p>Expert guidance tailored to your academic profile and career aspirations.</p>
+    </div>
+    <div class="feature-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Destinations">
+      <h3>Top Study Destinations</h3>
+      <p>USA, UK, Australia, Canada, Europe, and more – we open doors to the world.</p>
+    </div>
+    <div class="feature-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Visa">
+      <h3>Visa & Admission Support</h3>
+      <p>Seamless application and visa process with our experienced team.</p>
+    </div>
+    <div class="feature-box">
+      <img src="https://cdn-icons-png.flaticon.com/512/3132/3132693.png" alt="Scholarships">
+      <h3>Exclusive Scholarships</h3>
+      <p>Access to extra scholarships and financial aid for deserving students.</p>
+    </div>
+  </div>
   <section id="contact">
     <h2>Contact Us</h2>
     <div class="contact-box">
