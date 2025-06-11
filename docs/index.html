@@ -398,14 +398,14 @@
 
     document.getElementById('formSubmit').addEventListener('submit', function(e) {
       e.preventDefault();
+      // Google Apps Script Web App URL for storing data in your Google Sheet
       const scriptURL = 'https://script.google.com/macros/s/AKfycbwq1rokUzhb6Et9-zV4I3YpyCfVOVUMsQ1cylaSBEXFCkXHYkovfrQFyBFCR7D9C8zt/exec';
       const form = e.target;
 
-      // Show the thank you message immediately
-      form.innerHTML = '<div style="padding: 20px 0; color: #1DA851; font-size: 18px; font-weight: bold;">Thank you! Your consultation request has been received.<br>We will contact you soon.</div>';
-
       fetch(scriptURL, { method: 'POST', body: new FormData(form) })
         .then(response => {
+          // Show a nice success message instead of alert
+          form.innerHTML = '<div style="padding: 20px 0; color: #1DA851; font-size: 18px; font-weight: bold;">Thank you! Your consultation request has been received.<br>We will contact you soon.</div>';
           setTimeout(() => {
             overlay.classList.remove('active');
             formPopup.classList.remove('active');
