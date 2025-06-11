@@ -475,6 +475,174 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
+
+    /* Enhanced Stylish AI Chatbox Styles */
+    .ai-chat-stylish {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 36px auto 0 auto;
+      max-width: 900px;
+      z-index: 10;
+      position: relative;
+      animation: fadeInChat 0.7s cubic-bezier(.4,2,.6,1);
+    }
+    @keyframes fadeInChat {
+      0% { opacity: 0; transform: translateY(-30px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .ai-chat-container {
+      background: linear-gradient(120deg, #fff 80%, #e3e8f0 100%);
+      border-radius: 26px;
+      box-shadow: 0 8px 36px rgba(0,44,119,0.15), 0 2px 12px rgba(215,38,43,0.09);
+      padding: 38px 36px 30px 36px;
+      width: 100%;
+      max-width: 620px;
+      position: relative;
+      border: 2px solid #e3e8f0;
+      transition: box-shadow 0.2s;
+      overflow: hidden;
+    }
+    .ai-chat-container:before {
+      content: '';
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, #d7262b22 0%, transparent 80%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .ai-chat-title {
+      color: #002c77;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px rgba(0,44,119,0.07);
+      z-index: 1;
+      position: relative;
+    }
+    .ai-chatbox {
+      margin: 0 auto;
+      max-width: 540px;
+      background: #f6f8fa;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,44,119,0.06);
+      padding: 20px 16px 16px 16px;
+      border: 1.5px solid #e3e8f0;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 1;
+      position: relative;
+    }
+    .ai-messages {
+      height: 180px;
+      overflow-y: auto;
+      background: transparent;
+      border-radius: 10px;
+      padding: 0 2px 0 0;
+      margin-bottom: 10px;
+      font-size: 1.07rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .ai-form {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .ai-input {
+      flex: 1;
+      padding: 13px 16px;
+      border-radius: 10px;
+      border: 1.7px solid #cfd8e3;
+      font-size: 1.07rem;
+      background: #fff;
+      transition: border 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 4px rgba(0,44,119,0.04);
+    }
+    .ai-input:focus {
+      outline: none;
+      border: 1.7px solid #002c77;
+      background: #f0f6ff;
+      box-shadow: 0 2px 8px #d7262b22;
+    }
+    .ai-send-btn {
+      background: linear-gradient(90deg, #002c77 60%, #0041c4 100%);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0 28px;
+      font-weight: bold;
+      font-size: 1.15rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,44,119,0.10);
+      transition: background 0.2s, transform 0.2s;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ai-send-btn:hover {
+      background: #d7262b;
+      color: #fff;
+      transform: scale(1.09);
+    }
+    .ai-chat-hint {
+      font-size: 1.01rem;
+      color: #888;
+      text-align: center;
+      margin-top: 16px;
+      z-index: 1;
+      position: relative;
+    }
+    /* Stylish message bubbles */
+    .ai-messages .ai-msg-user span {
+      display: inline-block;
+      background: linear-gradient(90deg, #d7262b 60%, #b71c22 100%);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 18px 18px 6px 18px;
+      max-width: 80%;
+      font-size: 1.07rem;
+      margin-left: 20%;
+      box-shadow: 0 2px 8px rgba(215,38,43,0.10);
+      word-break: break-word;
+      border: 1.5px solid #fff0;
+      animation: bubbleInUser 0.4s cubic-bezier(.4,2,.6,1);
+    }
+    .ai-messages .ai-msg-ai span {
+      display: inline-block;
+      background: #e3e8f0;
+      color: #222;
+      padding: 10px 18px;
+      border-radius: 18px 18px 18px 6px;
+      max-width: 80%;
+      font-size: 1.07rem;
+      margin-right: 20%;
+      box-shadow: 0 2px 8px rgba(0,44,119,0.07);
+      word-break: break-word;
+      border: 1.5px solid #fff0;
+      animation: bubbleInAI 0.4s cubic-bezier(.4,2,.6,1);
+    }
+    @keyframes bubbleInUser {
+      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes bubbleInAI {
+      0% { opacity: 0; transform: translateY(-20px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @media (max-width: 700px) {
+      .ai-chat-container { padding: 14px 2vw 12px 2vw; }
+      .ai-chatbox { max-width: 98vw; }
+      .ai-messages { height: 120px; }
+    }
   </style>
 </head>
 <body>
@@ -544,6 +712,19 @@
       </li>
     </ul>
   </nav>
+  <section id="ai-chat-section" class="ai-chat-stylish">
+    <div class="ai-chat-container">
+      <h2 class="ai-chat-title"><span style="vertical-align: middle; font-size:1.3em; margin-right:8px;">🤖</span>AI University & Course Selection Chat</h2>
+      <div id="gpt-chatbox" class="ai-chatbox">
+        <form id="gpt-form" class="ai-form" style="margin-bottom: 12px;">
+          <input type="text" id="gpt-input" class="ai-input" placeholder="Ask about universities or courses (e.g., 'Best MBA in UK')" required />
+          <button type="submit" class="ai-send-btn"><span style="font-size:1.2em;">➤</span></button>
+        </form>
+        <div id="gpt-messages" class="ai-messages"></div>
+      </div>
+      <div class="ai-chat-hint">AI can help you shortlist universities and courses in USA, Canada, UK, Australia, Europe, and New Zealand.</div>
+    </div>
+  </section>
   <section class="hero">
     <div class="hero-content">
       <h2>Empowering Your Global Education Journey</h2>
@@ -653,6 +834,47 @@
           alert('There was an error. Please try again.');
           console.error('Error!', error.message);
         });
+    });
+
+    // AI ChatGPT-like chatbox logic (client-side demo)
+    const gptMessages = document.getElementById('gpt-messages');
+    const gptForm = document.getElementById('gpt-form');
+    const gptInput = document.getElementById('gpt-input');
+
+    function appendGptMessage(sender, text) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = sender === 'user' ? 'ai-msg-user' : 'ai-msg-ai';
+      msgDiv.style.marginBottom = '8px';
+      msgDiv.style.textAlign = sender === 'user' ? 'right' : 'left';
+      msgDiv.innerHTML = `<span>${text}</span>`;
+      gptMessages.appendChild(msgDiv);
+      gptMessages.scrollTop = gptMessages.scrollHeight;
+    }
+
+    function getAIDemoResponse(userMsg) {
+      // Simple demo logic for university/course selection
+      const msg = userMsg.toLowerCase();
+      if(msg.includes('usa')) return "Top USA universities: MIT, Stanford, Harvard, UC Berkeley. Popular courses: Computer Science, Business, Engineering.";
+      if(msg.includes('canada')) return "Top Canada universities: University of Toronto, UBC, McGill. Popular courses: Data Science, MBA, Engineering.";
+      if(msg.includes('uk')) return "Top UK universities: Oxford, Cambridge, Imperial College, UCL. Popular courses: Law, MBA, Medicine, Engineering.";
+      if(msg.includes('australia')) return "Top Australia universities: University of Melbourne, UNSW, University of Sydney. Popular courses: Nursing, IT, Business, Engineering.";
+      if(msg.includes('europe')) return "Top Europe universities: ETH Zurich, LMU Munich, Sorbonne, TU Delft. Popular courses: Architecture, Business, Engineering, Arts.";
+      if(msg.includes('new zealand')) return "Top NZ universities: University of Auckland, Otago, Victoria University. Popular courses: Environmental Science, Business, IT.";
+      if(msg.includes('mba')) return "MBA is offered at top universities in all these countries. Let me know your preferred country for more details.";
+      if(msg.includes('engineering')) return "Engineering is a popular course in USA, Canada, UK, Australia, and Europe. Let me know your specialization or country preference.";
+      return "Please specify your preferred country (USA, Canada, UK, Australia, Europe, New Zealand) and course/degree. I can help you shortlist options!";
+    }
+
+    gptForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const userMsg = gptInput.value.trim();
+      if(!userMsg) return;
+      appendGptMessage('user', userMsg);
+      gptInput.value = '';
+      setTimeout(() => {
+        const aiReply = getAIDemoResponse(userMsg);
+        appendGptMessage('ai', aiReply);
+      }, 600);
     });
   </script>
 </body>
