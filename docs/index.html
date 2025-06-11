@@ -398,7 +398,8 @@
 
     document.getElementById('formSubmit').addEventListener('submit', function(e) {
       e.preventDefault();
-      const scriptURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // Replace this
+      // Google Apps Script Web App URL for storing data in your Google Sheet
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwq1rokUzhb6Et9-zV4I3YpyCfVOVUMsQ1cylaSBEXFCkXHYkovfrQFyBFCR7D9C8zt/exec';
       const form = e.target;
 
       fetch(scriptURL, { method: 'POST', body: new FormData(form) })
