@@ -744,6 +744,53 @@
         right: 2vw !important;
       }
     }
+
+    /* Our Partnered Universities Section */
+    .partnered-universities-section {
+      margin: 0 0 0 0;
+    }
+    .partnered-uni-scrollers {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .uni-scroll-row {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      animation: uni-scroll var(--duration,60s) linear infinite;
+      will-change: transform;
+    }
+    .uni-scroll-row img {
+      height: 54px;
+      width: auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,44,119,0.10);
+      padding: 6px 18px;
+      display: block;
+      transition: transform 0.2s, box-shadow 0.2s;
+      max-width: 180px;
+      object-fit: contain;
+    }
+    .uni-scroll-row img:hover {
+      transform: scale(1.18);
+      box-shadow: 0 8px 32px rgba(0,44,119,0.18);
+      z-index: 2;
+    }
+    @keyframes uni-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    @media (max-width: 900px) {
+      .uni-scroll-row img { height: 38px; max-width: 110px; padding: 4px 8px; }
+      .partnered-uni-scrollers { gap: 18px; }
+    }
+    @media (max-width: 600px) {
+      .uni-scroll-row img { height: 28px; max-width: 80px; padding: 2px 4px; }
+    }
   </style>
 </head>
 <body>
@@ -826,11 +873,67 @@
       <div class="ai-chat-hint">AI can help you shortlist universities and courses in USA, Canada, UK, Australia, Europe, and New Zealand.</div>
     </div>
   </section>
+  <section class="partnered-universities-section" style="background:linear-gradient(120deg,#e3e8f0 60%,#dbeafe 100%);padding:60px 0 0 0;">
+    <h2 style="text-align:center;color:#002c77;font-size:2.2rem;font-weight:700;margin-bottom:36px;letter-spacing:1px;">Our Partnered Universities</h2>
+    <div class="partnered-uni-scrollers">
+      <div class="uni-scroll-row" style="--duration:60s;">
+        <img src="assets/University_of_Leicester.png" alt="University of Leicester" title="University of Leicester">
+        <img src="assets/istituto_marangoni.png" alt="Istituto Marangoni" title="Istituto Marangoni">
+      </div>
+    </div>
+    <style>
+      .partnered-universities-section {
+        margin: 0 0 0 0;
+      }
+      .partnered-uni-scrollers {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .uni-scroll-row {
+        display: flex;
+        align-items: center;
+        gap: 48px;
+        animation: uni-scroll var(--duration,60s) linear infinite;
+        will-change: transform;
+      }
+      .uni-scroll-row img {
+        height: 54px;
+        width: auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,44,119,0.10);
+        padding: 6px 18px;
+        display: block;
+        transition: transform 0.2s, box-shadow 0.2s;
+        max-width: 180px;
+        object-fit: contain;
+      }
+      .uni-scroll-row img:hover {
+        transform: scale(1.18);
+        box-shadow: 0 8px 32px rgba(0,44,119,0.18);
+        z-index: 2;
+      }
+      @keyframes uni-scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+      }
+      @media (max-width: 900px) {
+        .uni-scroll-row img { height: 38px; max-width: 110px; padding: 4px 8px; }
+        .partnered-uni-scrollers { gap: 18px; }
+      }
+      @media (max-width: 600px) {
+        .uni-scroll-row img { height: 28px; max-width: 80px; padding: 2px 4px; }
+      }
+    </style>
+  </section>
   <section class="hero">
     <div class="hero-content">
+      <a href="#" class="hero-cta">Start Your Journey Now</a>
       <h2>Empowering Your Global Education Journey</h2>
       <p>Unlock your potential with Afly Consultancy Services. We guide you to top universities worldwide, offering personalized counseling, expert visa support, and exclusive scholarships. Your dream career starts here!</p>
-      <a href="#" class="hero-cta">Start Your Journey Now</a>
     </div>
     <div class="hero-graphic"></div>
   </section>
