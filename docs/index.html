@@ -1009,19 +1009,6 @@
       </li>
     </ul>
   </nav>
-  <section id="ai-chat-section" class="ai-chat-stylish">
-    <div class="ai-chat-container">
-      <h2 class="ai-chat-title"><span style="vertical-align: middle; font-size:1.3em; margin-right:8px;">🤖</span>AI University & Course Selection Chat</h2>
-      <div id="gpt-chatbox" class="ai-chatbox">
-        <form id="gpt-form" class="ai-form" style="margin-bottom: 12px;">
-          <input type="text" id="gpt-input" class="ai-input" placeholder="Ask about universities or courses (e.g., 'Best MBA in UK')" required />
-          <button type="submit" class="ai-send-btn"><span style="font-size:1.2em;">➤</span></button>
-        </form>
-        <div id="gpt-messages" class="ai-messages"></div>
-      </div>
-      <div class="ai-chat-hint">AI can help you shortlist universities and courses in USA, Canada, UK, Australia, Europe, and New Zealand.</div>
-    </div>
-  </section>
   <section class="partnered-universities-section" style="background:linear-gradient(120deg,#e3e8f0 60%,#dbeafe 100%);padding:60px 0 0 0;">
     <h2 style="text-align:center;color:#002c77;font-size:2.2rem;font-weight:700;margin-bottom:36px;letter-spacing:1px;">Our Partnered Universities</h2>
     <div class="partnered-uni-scrollers">
@@ -1186,56 +1173,6 @@
           alert('There was an error. Please try again.');
           console.error('Error!', error.message);
         });
-    });
-
-    // AI ChatGPT-like chatbox logic (client-side demo)
-    const gptMessages = document.getElementById('gpt-messages');
-    const gptForm = document.getElementById('gpt-form');
-    const gptInput = document.getElementById('gpt-input');
-
-    function appendGptMessage(sender, text) {
-      const msgDiv = document.createElement('div');
-      msgDiv.className = sender === 'user' ? 'ai-msg-user' : 'ai-msg-ai';
-      msgDiv.style.marginBottom = '8px';
-      msgDiv.style.textAlign = sender === 'user' ? 'right' : 'left';
-      msgDiv.innerHTML = `<span>${text}</span>`;
-      gptMessages.appendChild(msgDiv);
-      gptMessages.scrollTop = gptMessages.scrollHeight;
-    }
-
-    // --- ChatGPT Integration via Backend Proxy ---
-    // Instead of calling OpenAI directly (which fails due to CORS), call your backend endpoint
-    // Backend sample code provided below (Node.js/Express)
-    async function getAIGPTResponse(userMsg) {
-      try {
-        const res = await fetch('/api/chatgpt', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: userMsg })
-        });
-        const data = await res.json();
-        if (data && data.reply) {
-          return data.reply.trim();
-        } else {
-          return 'Sorry, I could not get a response from ChatGPT.';
-        }
-      } catch (e) {
-        return 'Sorry, there was a problem connecting to ChatGPT.';
-      }
-    }
-
-    gptForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const userMsg = gptInput.value.trim();
-      if(!userMsg) return;
-      appendGptMessage('user', userMsg);
-      gptInput.value = '';
-      appendGptMessage('ai', '<span style="color:#aaa;">Thinking...</span>');
-      const aiReply = await getAIGPTResponse(userMsg);
-      // Remove the 'Thinking...' message
-      const lastMsg = gptMessages.lastChild;
-      if (lastMsg && lastMsg.className === 'ai-msg-ai') gptMessages.removeChild(lastMsg);
-      appendGptMessage('ai', aiReply);
     });
   </script>
 </body>
