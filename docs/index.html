@@ -843,7 +843,8 @@
         font-size: 0.97rem;
       }
       .partnered-universities-section {
-        padding: 18px 0 0 0 !important;
+        padding: 40px 0 0 0 !important;
+        min-height: 180px;
       }
       .partnered-uni-scrollers {
         gap: 10px;
@@ -1132,7 +1133,7 @@
       </li>
     </ul>
   </nav>
-  <section class="partnered-universities-section" style="background:linear-gradient(120deg,#e3e8f0 60%,#dbeafe 100%);padding:60px 0 0 0;">
+  <section class="partnered-universities-section" style="background:linear-gradient(120deg,#e3e8f0 60%,#dbeafe 100%);padding:100px 0 60px 0;min-height:340px;">
     <h2 style="text-align:center;color:#002c77;font-size:2.2rem;font-weight:700;margin-bottom:36px;letter-spacing:1px;">Our Partnered Universities</h2>
     <div class="partnered-uni-scrollers">
       <div class="uni-scroll-row" style="--duration:60s;">
@@ -1143,31 +1144,34 @@
     <style>
       .partnered-universities-section {
         margin: 0 0 0 0;
+        min-height: 340px;
+        padding-top: 100px !important;
+        padding-bottom: 60px !important;
       }
       .partnered-uni-scrollers {
         display: flex;
         flex-direction: column;
-        gap: 28px;
+        gap: 48px;
         max-width: 1200px;
         margin: 0 auto;
       }
       .uni-scroll-row {
         display: flex;
         align-items: center;
-        gap: 48px;
+        gap: 80px;
         animation: uni-scroll var(--duration,60s) linear infinite;
         will-change: transform;
       }
       .uni-scroll-row img {
-        height: 54px;
+        height: 74px;
         width: auto;
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 2px 8px rgba(0,44,119,0.10);
-        padding: 6px 18px;
+        padding: 10px 28px;
         display: block;
         transition: transform 0.2s, box-shadow 0.2s;
-        max-width: 180px;
+        max-width: 220px;
         object-fit: contain;
       }
       .uni-scroll-row img:hover {
@@ -1180,11 +1184,13 @@
         100% { transform: translateX(-100%); }
       }
       @media (max-width: 900px) {
-        .uni-scroll-row img { height: 38px; max-width: 110px; padding: 4px 8px; }
-        .partnered-uni-scrollers { gap: 18px; }
+        .uni-scroll-row img { height: 48px; max-width: 140px; padding: 6px 12px; }
+        .partnered-uni-scrollers { gap: 28px; }
+        .partnered-universities-section { min-height: 180px; padding-top: 40px !important; }
       }
       @media (max-width: 600px) {
-        .uni-scroll-row img { height: 28px; max-width: 80px; padding: 2px 4px; }
+        .uni-scroll-row img { height: 32px; max-width: 90px; padding: 2px 4px; }
+        .partnered-universities-section { min-height: 100px; padding-top: 18px !important; }
       }
     </style>
   </section>
