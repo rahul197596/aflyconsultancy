@@ -35,10 +35,9 @@
     }
     .top-bar a.book-link:hover { background: #b71c22; }
     header {
-      background: linear-gradient(90deg, #d7262b 0%, #002c77 100%);
-      /* red (right) to blue (left) */
+      background: linear-gradient(90deg, #f7b733 0%, #fc4a1a 100%);
       color: white;
-      padding: 0 0 0 0;
+      padding: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -252,7 +251,6 @@
       font-size: 1.05rem;
       letter-spacing: 0.5px;
     }
-
     .floating-btn {
       position: fixed;
       bottom: 30px;
@@ -266,14 +264,10 @@
       text-decoration: none;
       z-index: 9999;
       transition: background 0.3s;
-      /* Removed transform and animation for static look */
-      /* transform-origin: bottom right; */
     }
     .floating-btn:hover {
       background: #b71c22;
-      /* Removed transform: scale(1.5); */
     }
-
     .floating-whatsapp {
       position: fixed;
       bottom: 30px;
@@ -290,67 +284,20 @@
       align-items: center;
       gap: 10px;
       transition: background 0.3s;
-      /* Removed transform and animation for static look */
-      /* transform-origin: bottom left; */
     }
     .floating-whatsapp:hover {
       background: #1DA851;
-      /* Removed transform: scale(1.5); */
     }
     .floating-whatsapp img {
       width: 20px;
       height: 20px;
     }
-    /* Removed animation and transform from floating-certifications as well, if present */
-    .floating-certifications {
-      position: fixed;
-      bottom: 100px;
-      left: 30px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: flex-start;
-      overflow: visible;
-      max-width: 100vw;
-      transition: bottom 0.25s cubic-bezier(.4,2,.6,1);
-    }
-    .floating-certifications img {
-      width: 140px;
-      height: auto;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-      padding: 6px 8px;
-      display: block;
-      max-width: 90vw;
-      /* Removed transform and transition for animation */
-    }
-    .floating-certifications img:hover {
-      /* Removed transform: scale(2); and box-shadow animation */
-      z-index: 10001;
-      max-width: 60vw;
-      position: relative;
-    }
-    .floating-whatsapp:hover ~ .floating-certifications,
-    .floating-whatsapp:focus ~ .floating-certifications {
-      /* Removed transform for animation */
-    }
     @media (max-width: 700px) {
-      .floating-certifications img {
-        width: 90px;
-        max-width: 60vw;
-      }
-      .floating-certifications img:hover {
-        /* Removed transform: scale(1); */
-        max-width: 80vw;
-      }
-      .floating-whatsapp:hover ~ .floating-certifications,
-      .floating-whatsapp:focus ~ .floating-certifications {
-        /* Removed transform for animation */
+      .floating-whatsapp img {
+        width: 16px;
+        height: 16px;
       }
     }
-
     #consultationOverlay {
       display: none;
       position: fixed;
@@ -379,7 +326,6 @@
       box-sizing: border-box;
       padding-top: 32px;
       z-index: 10001;
-      /* Ensure the form is above the overlay and not faded */
     }
     @keyframes popIn {
       0% { opacity: 0; transform: translate(-50%, -60%) scale(0.95);}
@@ -447,7 +393,6 @@
     #consultationForm button:hover {
       background: #b71c22;
     }
-
     .scrolling-bar {
       position: fixed;
       top: 0;
@@ -475,476 +420,94 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
-
-    /* Enhanced Stylish AI Chatbox Styles */
-    .ai-chat-stylish {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      margin: 36px auto 0 auto;
-      max-width: 900px;
-      z-index: 10;
-      position: relative;
-      animation: fadeInChat 0.7s cubic-bezier(.4,2,.6,1);
-    }
-    @keyframes fadeInChat {
-      0% { opacity: 0; transform: translateY(-30px) scale(0.97); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .ai-chat-container {
-      background: linear-gradient(120deg, #fff 80%, #e3e8f0 100%);
-      border-radius: 26px;
-      box-shadow: 0 8px 36px rgba(0,44,119,0.15), 0 2px 12px rgba(215,38,43,0.09);
-      padding: 38px 36px 30px 36px;
-      width: 100%;
-      max-width: 620px;
-      position: relative;
-      border: 2px solid #e3e8f0;
-      transition: box-shadow 0.2s;
-      overflow: hidden;
-    }
-    .ai-chat-container:before {
-      content: '';
-      position: absolute;
-      top: -60px; left: -60px;
-      width: 180px; height: 180px;
-      background: radial-gradient(circle, #d7262b22 0%, transparent 80%);
-      z-index: 0;
-      pointer-events: none;
-    }
-    .ai-chat-title {
-      color: #002c77;
-      text-align: center;
-      margin-top: 0;
-      margin-bottom: 18px;
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-shadow: 0 2px 8px rgba(0,44,119,0.07);
-      z-index: 1;
-      position: relative;
-    }
-    .ai-chatbox {
-      margin: 0 auto;
-      max-width: 540px;
-      background: #f6f8fa;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(0,44,119,0.06);
-      padding: 20px 16px 16px 16px;
-      border: 1.5px solid #e3e8f0;
-      min-height: 220px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      z-index: 1;
-      position: relative;
-    }
-    .ai-messages {
-      height: 180px;
-      overflow-y: auto;
-      background: transparent;
-      border-radius: 10px;
-      padding: 0 2px 0 0;
-      margin-bottom: 10px;
-      font-size: 1.07rem;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .ai-form {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    .ai-input {
-      flex: 1;
-      padding: 13px 16px;
-      border-radius: 10px;
-      border: 1.7px solid #cfd8e3;
-      font-size: 1.07rem;
-      background: #fff;
-      transition: border 0.2s, box-shadow 0.2s;
-      box-shadow: 0 1px 4px rgba(0,44,119,0.04);
-    }
-    .ai-input:focus {
-      outline: none;
-      border: 1.7px solid #002c77;
-      background: #f0f6ff;
-      box-shadow: 0 2px 8px #d7262b22;
-    }
-    .ai-send-btn {
-      background: linear-gradient(90deg, #002c77 60%, #0041c4 100%);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 0 28px;
-      font-weight: bold;
-      font-size: 1.15rem;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,44,119,0.10);
-      transition: background 0.2s, transform 0.2s;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .ai-send-btn:hover {
-      background: #d7262b;
-      color: #fff;
-      transform: scale(1.09);
-    }
-    .ai-chat-hint {
-      font-size: 1.01rem;
-      color: #888;
-      text-align: center;
-      margin-top: 16px;
-      z-index: 1;
-      position: relative;
-    }
-    /* Stylish message bubbles */
-    .ai-messages .ai-msg-user span {
-      display: inline-block;
-      background: linear-gradient(90deg, #d7262b 60%, #b71c22 100%);
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 18px 18px 6px 18px;
-      max-width: 80%;
-      font-size: 1.07rem;
-      margin-left: 20%;
-      box-shadow: 0 2px 8px rgba(215,38,43,0.10);
-      word-break: break-word;
-      border: 1.5px solid #fff0;
-      animation: bubbleInUser 0.4s cubic-bezier(.4,2,.6,1);
-    }
-    .ai-messages .ai-msg-ai span {
-      display: inline-block;
-      background: #e3e8f0;
-      color: #222;
-      padding: 10px 18px;
-      border-radius: 18px 18px 18px 6px;
-      max-width: 80%;
-      font-size: 1.07rem;
-      margin-right: 20%;
-      box-shadow: 0 2px 8px rgba(0,44,119,0.07);
-      word-break: break-word;
-      border: 1.5px solid #fff0;
-      animation: bubbleInAI 0.4s cubic-bezier(.4,2,.6,1);
-    }
-    @keyframes bubbleInUser {
-      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    @keyframes bubbleInAI {
-      0% { opacity: 0; transform: translateY(-20px) scale(0.95); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    @media (max-width: 700px) {
-      .ai-chat-container { padding: 14px 2vw 12px 2vw; }
-      .ai-chatbox { max-width: 98vw; }
-      .ai-messages { height: 120px; }
-    }
-
-    /* --- Customised Floating Chatbox for Personal Details & Document Upload --- */
-    #customChatBtn {
-      position: fixed;
-      bottom: 110px;
-      right: 30px;
-      width: 56px;
-      height: 56px;
-      background: linear-gradient(90deg,#002c77 60%,#d7262b 100%);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 16px rgba(0,44,119,0.18);
-      cursor: pointer;
-      z-index: 10001;
-      transition: background 0.2s, transform 0.2s;
-    }
-    #customChatBtn:hover {
-      transform: scale(1.1);
-    }
-    #customChatBox {
-      position: fixed;
-      bottom: 180px;
-      right: 30px;
-      width: 340px;
-      max-width: 95vw;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 8px 36px rgba(0,44,119,0.15), 0 2px 12px rgba(215,38,43,0.09);
-      padding: 0;
-      display: none;
-      flex-direction: column;
-      z-index: 10002;
-      overflow: hidden;
-    }
-    #customChatBox .chat-header {
-      background: linear-gradient(90deg,#002c77 60%,#d7262b 100%);
-      color: #fff;
-      padding: 16px 20px 12px 20px;
-      font-weight: bold;
-      font-size: 1.15em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    #customChatBox .chat-header button {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.3em;
-      cursor: pointer;
-    }
-    #customChatBox form {
-      padding: 18px 20px 10px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    #customChatBox input[type="text"],
-    #customChatBox input[type="email"],
-    #customChatBox input[type="tel"] {
-      padding: 10px;
-      border-radius: 7px;
-      border: 1.5px solid #e3e8f0;
-      font-size: 1em;
-    }
-    #customChatBox input[type="file"] {
-      padding: 6px 0;
-    }
-    #customChatBox button[type="submit"] {
-      background: linear-gradient(90deg,#d7262b 60%,#002c77 100%);
-      color: #fff;
-      font-weight: bold;
-      padding: 12px 0;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.08em;
-      cursor: pointer;
-    }
-    #customChatThankYou {
-      display: none;
-      padding: 30px 20px 30px 20px;
-      text-align: center;
-      font-size: 1.13em;
-      color: #1DA851;
-      font-weight: bold;
-    }
-
     @media (max-width: 600px) {
-      body {
-        font-size: 1rem;
-        padding: 0;
-      }
-      .top-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 8px 8px 8px 8px;
-        font-size: 13px;
-        gap: 6px;
-        margin-top: 32px !important;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        min-height: 100px;
-        padding: 0 0 0 0;
-      }
-      .logo {
-        max-width: 70px;
-        margin: 16px 0 0 12px;
-      }
-      .header-text {
-        margin: 0 0 12px 12px;
-        text-align: left;
-      }
-      .header-text h1 {
-        font-size: 1.25rem;
-        margin-bottom: 2px;
-      }
-      .header-text p {
-        font-size: 0.98rem;
-      }
-      nav {
-        overflow-x: auto;
-        white-space: nowrap;
-        padding: 0;
-        box-shadow: none;
-        position: relative;
-      }
-      nav ul {
-        flex-wrap: nowrap;
-        flex-direction: row;
-        width: 100vw;
-        overflow-x: auto;
-        gap: 0;
-      }
-      nav > ul > li {
-        min-width: 120px;
-        border-bottom: 1px solid #dbeafe33;
-      }
-      nav a {
-        padding: 13px 10px;
-        font-size: 1.01rem;
-        width: 100%;
-        box-sizing: border-box;
-      }
-      nav li ul {
-        left: 0;
-        min-width: 120px;
-        font-size: 0.97rem;
-      }
-      section.hero {
-        padding: 24px 0 12px 0;
-      }
-      .hero-content {
-        max-width: 98vw;
-        padding: 0 6vw;
-      }
-      .hero-content h2 {
-        font-size: 1.25rem;
-        margin-bottom: 10px;
-      }
-      .hero-content p {
-        font-size: 1.01rem;
-        margin-bottom: 18px;
-      }
-      .hero-cta {
-        padding: 12px 18px;
-        font-size: 1.01rem;
-        border-radius: 18px;
-      }
-      .features {
-        flex-direction: column;
-        gap: 18px;
-        margin: 18px auto 0 auto;
-        max-width: 98vw;
-        padding: 0 2vw;
-      }
-      .feature-box {
-        min-width: 0;
-        max-width: 100vw;
-        padding: 18px 10px 14px 10px;
-        font-size: 0.98rem;
-      }
-      .feature-box img {
-        width: 38px;
-        height: 38px;
-        margin-bottom: 8px;
-      }
-      .feature-box h3 {
-        font-size: 1.05rem;
-        margin-bottom: 6px;
-      }
-      .feature-box p {
-        font-size: 0.97rem;
-      }
-      .partnered-universities-section {
-        padding: 40px 0 0 0 !important;
-        min-height: 180px;
-      }
-      .partnered-uni-scrollers {
-        gap: 10px;
-        padding: 0 2vw;
-      }
-      .uni-scroll-row {
-        gap: 2%; /* Decreased by 50% from previous 4% gap */
-      }
-      .uni-scroll-row img {
-        height: 22px !important;
-        max-width: 50vw !important;
-        padding: 1px 2px !important;
-      }
-      section#contact {
-        padding: 18px 6vw 12px 6vw;
-        margin: 18px auto 0 auto;
-        max-width: 99vw;
-        border-radius: 10px;
-      }
-      .contact-box {
-        padding: 12px 6px;
-        font-size: 0.98rem;
-      }
-      footer {
-        padding: 10px 2vw;
-        font-size: 0.97rem;
-        margin-top: 18px;
-      }
-      .floating-btn {
-        padding: 10px 16px;
-        font-size: 0.98rem;
-        bottom: 16px;
-        right: 12px;
-        border-radius: 30px;
-      }
-      .floating-whatsapp {
-        padding: 10px 12px;
-        font-size: 0.98rem;
-        bottom: 16px;
-        left: 12px;
-        border-radius: 30px;
-        gap: 6px;
-      }
-      .floating-whatsapp img {
-        width: 16px;
-        height: 16px;
-      }
-      .floating-certifications {
-        bottom: 60px;
-        left: 12px;
-        gap: 8px;
-      }
-      .floating-certifications img {
-        width: 48px;
-        padding: 2px 3px;
-        border-radius: 6px;
-      }
-      .ai-chat-stylish {
-        margin: 12px auto 0 auto;
-        max-width: 99vw;
-        padding: 0 2vw;
-      }
-      .ai-chat-container {
-        padding: 12px 2vw 10px 2vw;
-        border-radius: 12px;
-        max-width: 99vw;
-      }
-      .ai-chat-title {
-        font-size: 1.01rem;
-        margin-bottom: 8px;
-      }
-      .ai-chatbox {
-        max-width: 99vw;
-        min-height: 80px;
-        padding: 8px 2vw 8px 2vw;
-        border-radius: 10px;
-      }
-      .ai-messages {
-        height: 60px;
-        font-size: 0.97rem;
-      }
-      .ai-form {
-        gap: 4px;
-      }
-      .ai-input {
-        padding: 8px 8px;
-        font-size: 0.97rem;
-        border-radius: 6px;
-      }
-      .ai-send-btn {
-        padding: 0 10px;
-        font-size: 1.01rem;
-        height: 32px;
-        border-radius: 6px;
-      }
+      body { font-size: 1rem; padding: 0; }
+      .top-bar { flex-direction: column; align-items: flex-start; padding: 8px; font-size: 13px; gap: 6px; margin-top: 32px !important; }
+      header { flex-direction: column; align-items: flex-start; min-height: 100px; padding: 0; }
+      .logo { max-width: 70px; margin: 16px 0 0 12px; }
+      .header-text { margin: 0 0 12px 12px; text-align: left; }
+      .header-text h1 { font-size: 1.25rem; margin-bottom: 2px; }
+      .header-text p { font-size: 0.98rem; }
+      nav { overflow-x: auto; white-space: nowrap; padding: 0; box-shadow: none; position: relative; }
+      nav ul { flex-wrap: nowrap; flex-direction: row; width: 100vw; overflow-x: auto; gap: 0; }
+      nav > ul > li { min-width: 120px; border-bottom: 1px solid #dbeafe33; }
+      nav a { padding: 13px 10px; font-size: 1.01rem; width: 100%; box-sizing: border-box; }
+      nav li ul { left: 0; min-width: 120px; font-size: 0.97rem; }
+      section.hero { padding: 24px 0 12px 0; }
+      .hero-content { max-width: 98vw; padding: 0 6vw; }
+      .hero-content h2 { font-size: 1.25rem; margin-bottom: 10px; }
+      .hero-content p { font-size: 1.01rem; margin-bottom: 18px; }
+      .hero-cta { padding: 12px 18px; font-size: 1.01rem; border-radius: 18px; }
+      .features { flex-direction: column; gap: 18px; margin: 18px auto 0 auto; max-width: 98vw; padding: 0 2vw; }
+      .feature-box { min-width: 0; max-width: 100vw; padding: 18px 10px 14px 10px; font-size: 0.98rem; }
+      .feature-box img { width: 38px; height: 38px; margin-bottom: 8px; }
+      .feature-box h3 { font-size: 1.05rem; margin-bottom: 6px; }
+      .feature-box p { font-size: 0.97rem; }
+      .partnered-universities-section { padding: 40px 0 0 0 !important; min-height: 180px; }
+      .partnered-uni-scrollers { gap: 10px; padding: 0 2vw; }
+      .uni-scroll-row { gap: 2%; }
+      .uni-scroll-row img { height: 22px !important; max-width: 50vw !important; padding: 1px 2px !important; }
+      section#contact { padding: 18px 6vw 12px 6vw; margin: 18px auto 0 auto; max-width: 99vw; border-radius: 10px; }
+      .contact-box { padding: 12px 6px; font-size: 0.98rem; }
+      footer { padding: 10px 2vw; font-size: 0.97rem; margin-top: 18px; }
+      .floating-btn { padding: 10px 16px; font-size: 0.98rem; bottom: 16px; right: 12px; border-radius: 30px; }
+      .floating-whatsapp { padding: 10px 12px; font-size: 0.98rem; bottom: 16px; left: 12px; border-radius: 30px; gap: 6px; }
     }
-
+    /* Partnered Universities Scroller Styles */
+    .partnered-universities-section {
+      margin: 0;
+      min-height: 340px;
+      padding-top: 100px !important;
+      padding-bottom: 60px !important;
+    }
+    .partnered-uni-scrollers {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .uni-scroll-row {
+      display: flex;
+      align-items: center;
+      gap: 2%;
+      animation: uni-scroll var(--duration,60s) linear infinite;
+      will-change: transform;
+    }
+    .uni-scroll-row img {
+      height: 74px;
+      width: auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,44,119,0.10);
+      padding: 10px 28px;
+      display: block;
+      transition: transform 0.2s, box-shadow 0.2s;
+      max-width: 220px;
+      object-fit: contain;
+    }
+    .uni-scroll-row img:hover {
+      transform: scale(1.18);
+      box-shadow: 0 8px 32px rgba(0,44,119,0.18);
+      z-index: 2;
+    }
+    @keyframes uni-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    @media (max-width: 900px) {
+      .uni-scroll-row img { height: 48px; max-width: 140px; padding: 6px 12px; }
+      .partnered-uni-scrollers { gap: 28px; }
+      .partnered-universities-section { min-height: 180px; padding-top: 40px !important; }
+    }
+    @media (max-width: 600px) {
+      .uni-scroll-row img { height: 32px; max-width: 90px; padding: 2px 4px; }
+      .partnered-universities-section { min-height: 100px; padding-top: 18px !important; }
+    }
     /* Dynamic Highlight Section Styles */
     .afly-dynamic-highlight {
       position: relative;
-      margin: 48px auto 48px auto;
+      margin: 48px auto;
       max-width: 700px;
       min-height: 180px;
       background: #fff;
@@ -1002,13 +565,13 @@
     }
     @media (max-width: 700px) {
       .afly-dynamic-highlight {
-        margin: 24px 2vw 24px 2vw;
+        margin: 24px 2vw;
         max-width: 99vw;
         border-radius: 14px;
         min-height: 120px;
       }
       .afly-dynamic-content {
-        padding: 18px 4vw 18px 4vw;
+        padding: 18px 4vw;
       }
       .afly-dynamic-content h2 {
         font-size: 1.18rem;
@@ -1022,7 +585,6 @@
         border-radius: 18px;
       }
     }
-
     /* Preloader Styles */
     #preloader {
       position: fixed;
