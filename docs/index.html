@@ -940,6 +940,88 @@
         border-radius: 6px;
       }
     }
+
+    /* Dynamic Highlight Section Styles */
+    .afly-dynamic-highlight {
+      position: relative;
+      margin: 48px auto 48px auto;
+      max-width: 700px;
+      min-height: 180px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,44,119,0.10), 0 2px 0 #d7262b22 inset;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .afly-dynamic-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .afly-dynamic-content {
+      position: relative;
+      z-index: 1;
+      padding: 38px 32px 32px 32px;
+      text-align: center;
+    }
+    .afly-dynamic-content h2 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #002c77 0%, #d7262b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+    .afly-dynamic-content p {
+      font-size: 1.18rem;
+      color: #1a2340;
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+    .afly-cta-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #d7262b 60%, #002c77 100%);
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 30px;
+      font-size: 1.13rem;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(215,38,43,0.10);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .afly-cta-btn:hover {
+      background: #002c77;
+      color: #fff;
+      transform: scale(1.07);
+    }
+    @media (max-width: 700px) {
+      .afly-dynamic-highlight {
+        margin: 24px 2vw 24px 2vw;
+        max-width: 99vw;
+        border-radius: 14px;
+        min-height: 120px;
+      }
+      .afly-dynamic-content {
+        padding: 18px 4vw 18px 4vw;
+      }
+      .afly-dynamic-content h2 {
+        font-size: 1.18rem;
+      }
+      .afly-dynamic-content p {
+        font-size: 1.01rem;
+      }
+      .afly-cta-btn {
+        padding: 10px 18px;
+        font-size: 1.01rem;
+        border-radius: 18px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1095,6 +1177,30 @@
       <p>Access to extra scholarships and financial aid for deserving students.</p>
     </div>
   </div>
+  <section class="afly-dynamic-highlight">
+    <div class="afly-dynamic-bg">
+      <svg viewBox="0 0 400 180" width="100%" height="180" preserveAspectRatio="none" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;">
+        <defs>
+          <linearGradient id="aflyGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#d7262b"/>
+            <stop offset="100%" stop-color="#002c77"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,120 Q100,180 200,120 T400,120 V180 H0Z" fill="url(#aflyGradient)" opacity="0.18"/>
+        <circle cx="320" cy="60" r="38" fill="#d7262b" opacity="0.13">
+          <animate attributeName="cy" values="60;90;60" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="80" cy="80" r="24" fill="#002c77" opacity="0.13">
+          <animate attributeName="cy" values="80;110;80" dur="5s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+    <div class="afly-dynamic-content">
+      <h2>Unlock Your Global Future</h2>
+      <p>At <strong>Afly Consultancy</strong>, we empower students to reach their dream universities worldwide. Our expert team provides personalized guidance, exclusive scholarships, and seamless support—every step of your journey.</p>
+      <a href="online-application.html" class="afly-cta-btn">Start Your Application</a>
+    </div>
+  </section>
   <section id="contact">
     <h2>Contact Us</h2>
     <div class="contact-box">
