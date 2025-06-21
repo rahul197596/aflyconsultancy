@@ -6,14 +6,28 @@
   <title>Afly Consultancy Services</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    /* --- THEME INTEGRATION FOR OVERSEAS EDUCATION CONSULTANCY --- */
     body {
       font-family: 'Montserrat', Arial, sans-serif;
       margin: 0;
-      background: #fff;
-      color: #222;
+      background: linear-gradient(120deg, #f6f9ff 0%, #e3e8f0 100%) !important;
+      color: #1a2340;
+      /* Add 3D animated world map background */
+      background-image: none;
+      position: relative;
+    }
+    #worldmap-bg {
+      display: none !important;
+    }
+    canvas#worldmap-canvas {
+      display: none !important;
+    }
+    main, header, nav, section, footer, .features, .afly-dynamic-highlight, .partnered-universities-section {
+      position: relative;
+      z-index: 1;
     }
     header {
-      background: #fff;
+      background: linear-gradient(90deg, #fff 60%, #e3e8f0 100%);
       color: #222;
       padding: 0;
       display: flex;
@@ -21,7 +35,7 @@
       justify-content: space-between;
       min-height: 170px;
       position: relative;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      box-shadow: 0 4px 24px rgba(0,44,119,0.08);
       margin-top: 0 !important;
     }
     .logo {
@@ -38,14 +52,19 @@
       margin: 0 0 8px 0;
       font-weight: 700;
       letter-spacing: 1px;
-      color: #222;
+      color: #002c77;
+      background: linear-gradient(90deg, #002c77 60%, #d7262b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       text-shadow: none;
     }
     .header-text p {
       font-size: 1.2rem;
-      color: #555;
+      color: #b71c22;
       margin: 0;
       font-style: italic;
+      font-weight: 500;
     }
     nav {
       background: #001f5c;
@@ -92,11 +111,13 @@
     nav li:hover ul { display: block; }
     nav li ul li { width: 100%; }
     section.hero {
-      background: #fff;
+      background: linear-gradient(120deg, #e3e8f0 60%, #dbeafe 100%) !important;
       padding: 60px 0 40px 0;
       text-align: center;
       position: relative;
       overflow: hidden;
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 8px 32px rgba(0,44,119,0.07);
     }
     .hero-content {
       max-width: 700px;
@@ -110,6 +131,10 @@
       margin-bottom: 18px;
       font-weight: 700;
       letter-spacing: 1px;
+      background: linear-gradient(90deg, #002c77 0%, #d7262b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     .hero-content p {
       font-size: 1.25rem;
@@ -119,7 +144,7 @@
     }
     .hero-cta {
       display: inline-block;
-      background: linear-gradient(90deg, #d7262b 60%, #b71c22 100%);
+      background: linear-gradient(90deg, #d7262b 60%, #002c77 100%);
       color: #fff;
       padding: 16px 38px;
       border-radius: 30px;
@@ -132,16 +157,8 @@
     }
     .hero-cta:hover { background: #002c77; color: #fff; transform: scale(1.07); }
     .hero-graphic {
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 420px;
-      height: 320px;
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80') no-repeat right center/cover;
-      opacity: 0.18;
-      z-index: 1;
-      pointer-events: none;
-      border-radius: 0 0 0 120px;
+      background: none !important;
+      opacity: 0 !important;
     }
     @media (max-width: 900px) {
       .hero-graphic { display: none; }
@@ -154,11 +171,14 @@
       gap: 36px;
       margin: 40px auto 0 auto;
       max-width: 1100px;
-      background: #fff;
+      background: linear-gradient(120deg, #fff 60%, #e3e8f0 100%);
+      border-radius: 32px;
+      box-shadow: 0 8px 32px rgba(0,44,119,0.07);
+      padding: 32px 0 32px 0;
     }
     .feature-box {
       background: #fff;
-      border-radius: 16px;
+      border: 1.5px solid #e3e8f0;
       box-shadow: 0 2px 16px rgba(0,44,119,0.07);
       padding: 32px 28px 28px 28px;
       flex: 1 1 260px;
@@ -179,7 +199,7 @@
       filter: drop-shadow(0 2px 8px rgba(0,44,119,0.10));
     }
     .feature-box h3 {
-      color: #002c77;
+      color: #d7262b;
       font-size: 1.25rem;
       margin-bottom: 10px;
       font-weight: 700;
@@ -195,8 +215,8 @@
       background: #fff;
     }
     .cta a {
-      background: #002c77;
-      color: white;
+      background: linear-gradient(90deg, #002c77 60%, #d7262b 100%);
+      color: #fff;
       padding: 16px 38px;
       text-decoration: none;
       font-weight: bold;
@@ -207,7 +227,7 @@
     }
     .cta a:hover { background: #d7262b; color: #fff; transform: scale(1.07); }
     section#contact {
-      background: #fff;
+      background: linear-gradient(120deg, #fff 60%, #e3e8f0 100%);
       border-radius: 18px;
       margin: 60px auto 0 auto;
       max-width: 700px;
@@ -224,20 +244,22 @@
       font-size: 1.08rem;
     }
     footer {
-      background: #002c77;
-      color: white;
+      background: linear-gradient(90deg, #002c77 60%, #d7262b 100%);
+      color: #fff;
       text-align: center;
       padding: 16px;
       margin-top: 60px;
       font-size: 1.05rem;
       letter-spacing: 0.5px;
+      border-radius: 0 0 18px 18px;
+      box-shadow: 0 -2px 16px rgba(0,44,119,0.07);
     }
     .floating-btn {
       position: fixed;
       bottom: 68px; /* increased gap for mobile, ensures no overlap with scrolling bar */
       right: 30px;
-      background: #d7262b;
-      color: white;
+      background: linear-gradient(90deg, #d7262b 60%, #002c77 100%);
+      color: #fff;
       padding: 15px 25px;
       border-radius: 50px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -247,14 +269,15 @@
       transition: background 0.3s;
     }
     .floating-btn:hover {
-      background: #b71c22;
+      background: #002c77;
+      color: #fff;
     }
     .floating-whatsapp {
       position: fixed;
       bottom: 68px; /* increased gap for mobile, ensures no overlap with scrolling bar */
       left: 30px;
-      background: #25D366;
-      color: white;
+      background: linear-gradient(90deg, #25D366 60%, #002c77 100%);
+      color: #fff;
       padding: 15px 20px;
       border-radius: 50px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -268,6 +291,7 @@
     }
     .floating-whatsapp:hover {
       background: #1DA851;
+      color: #fff;
     }
     .floating-whatsapp img {
       width: 20px;
@@ -366,7 +390,7 @@
       border-color: #d7262b;
     }
     #consultationForm button {
-      background: #d7262b;
+      background: linear-gradient(90deg, #d7262b 60%, #002c77 100%);
       color: #fff;
       border: none;
       font-weight: bold;
@@ -376,7 +400,8 @@
       transition: background 0.2s;
     }
     #consultationForm button:hover {
-      background: #b71c22;
+      background: #002c77;
+      color: #fff;
     }
     @media (max-width: 600px) {
       body { font-size: 1rem; padding: 0; }
@@ -469,8 +494,8 @@
       margin: 48px auto;
       max-width: 700px;
       min-height: 180px;
-      background: #fff;
-      border-radius: 24px;
+      background: linear-gradient(120deg, #fff 60%, #e3e8f0 100%);
+      border-radius: 32px;
       box-shadow: 0 8px 32px rgba(0,44,119,0.10), 0 2px 0 #d7262b22 inset;
       overflow: hidden;
       display: flex;
@@ -478,10 +503,7 @@
       justify-content: center;
     }
     .afly-dynamic-bg {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 0;
-      pointer-events: none;
+      display: none !important;
     }
     .afly-dynamic-content {
       position: relative;
@@ -580,15 +602,37 @@
     }
     /* Partnered Universities Section Adjustments */
     .partnered-universities-section {
-      background: #fff !important;
-      color: #222;
+      background: linear-gradient(120deg, #e3e8f0 60%, #dbeafe 100%) !important;
+      color: #002c77;
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 8px 32px rgba(0,44,119,0.07);
     }
     .partnered-universities-section h2 {
-      color: #222 !important;
+      color: #002c77 !important;
+    }
+    /* Section divider shape */
+    .section-divider {
+      width: 100%;
+      height: 48px;
+      background: url('data:image/svg+xml;utf8,<svg width="100%25" height="48" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H1440V48C960 24 480 24 0 48V0Z" fill="%23e3e8f0"/></svg>') no-repeat center/cover;
+      margin: 0;
+      border: none;
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .features, .afly-dynamic-highlight, .partnered-universities-section {
+        border-radius: 14px;
+      }
+      .section-divider {
+        height: 24px;
+      }
     }
   </style>
 </head>
 <body>
+  <div id="worldmap-bg">
+    <canvas id="worldmap-canvas"></canvas>
+  </div>
   <!-- Sidebar Navigation Trigger -->
   <button id="sidebarToggle" aria-label="Open Navigation" style="position:fixed;top:32px;right:18px;left:auto;z-index:11000;background:#002c77;color:#fff;border:none;border-radius:8px;padding:10px 14px;box-shadow:0 2px 8px rgba(0,44,119,0.10);font-size:1.3rem;cursor:pointer;">
     &#9776;
@@ -653,7 +697,7 @@
       display:block;padding:16px 24px;color:#fff;text-decoration:none;font-weight:600;font-size:1.08rem;transition:background 0.2s;cursor:pointer;
     }
     #sidebarNav ul.sidebar-menu > li > a:hover, #sidebarNav ul.sidebar-menu > li.active > a {
-      background:#0041c4;
+      background:#d7262b;
     }
     #sidebarNav ul.sub-menu {
       display:none;padding-left:0;background:#002c77;
@@ -661,7 +705,7 @@
     #sidebarNav ul.sub-menu li a {
       display:block;padding:13px 36px;color:#e3e8f0;text-decoration:none;font-size:1rem;font-weight:500;transition:background 0.2s;
     }
-    #sidebarNav ul.sub-menu li a:hover { background:#0041c4;color:#fff; }
+    #sidebarNav ul.sub-menu li a:hover { background:#d7262b;color:#fff; }
     #sidebarNav ul.sidebar-menu > li.open > ul.sub-menu { display:block; }
     #sidebarNav ul.sidebar-menu > li.has-sub > a:after {
       content:'▼';float:right;font-size:0.8em;margin-top:4px;transition:transform 0.2s; }
@@ -855,6 +899,61 @@
     <p>&copy; 2025 Afly Consultancy Services | All Rights Reserved</p>
   </footer>
 
+  <!-- Three.js CDN scripts for 3D globe background -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/controls/OrbitControls.min.js"></script>
+  <script>
+    // 3D World Map Globe using Three.js (Production: No debug theme)
+    window.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.getElementById('worldmap-canvas');
+      if (!canvas || !window.THREE) return;
+      // Remove debug styles
+      canvas.style.border = '';
+      canvas.style.background = '';
+      canvas.style.zIndex = '';
+      canvas.style.pointerEvents = '';
+      document.getElementById('worldmap-bg').style.pointerEvents = '';
+      document.getElementById('worldmap-bg').style.zIndex = '';
+      document.querySelectorAll('main, header, nav, section, footer, .features, .afly-dynamic-highlight, .partnered-universities-section').forEach(el => el.style.zIndex = '1');
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setClearColor(0xffffff, 0); // transparent
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.set(0, 0, 3.5);
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+      scene.add(ambientLight);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
+      directionalLight.position.set(5, 3, 5);
+      scene.add(directionalLight);
+      // Minimal blue sphere (no textures)
+      const globeGeometry = new THREE.SphereGeometry(1.5, 64, 64);
+      const globeMaterial = new THREE.MeshPhongMaterial({ color: 0x2266ff, shininess: 18, opacity: 0.7, transparent: true });
+      const globe = new THREE.Mesh(globeGeometry, globeMaterial);
+      scene.add(globe);
+      // Animate globe on scroll
+      let lastScrollY = window.scrollY;
+      function animate() {
+        requestAnimationFrame(animate);
+        // Rotate globe based on scroll position
+        const scrollY = window.scrollY;
+        globe.rotation.y += 0.002 + (scrollY - lastScrollY) * 0.0002;
+        globe.rotation.x = Math.sin(scrollY * 0.0002) * 0.2;
+        lastScrollY = scrollY;
+        renderer.render(scene, camera);
+      }
+      animate();
+      // Responsive
+      window.addEventListener('resize', () => {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      });
+      // Debug: Log when script runs
+      console.log('Three.js minimal blue sphere script loaded.');
+    });
+  </script>
   <script>
     // Preloader hide on page load
     window.addEventListener('load', function() {
