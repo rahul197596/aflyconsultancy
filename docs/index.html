@@ -1036,21 +1036,6 @@
       z-index: 20000;
       transition: opacity 0.5s;
     }
-    #preloader-logo {
-      width: 160px;
-      height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-    }
-    #preloader-logo img {
-      width: 100%;
-      height: auto;
-      filter: drop-shadow(0 4px 24px rgba(0,0,0,0.18));
-      z-index: 2;
-    }
     .flag-wave-bg {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -1079,9 +1064,6 @@
 <div id="preloader">
   <div class="flag-wave-bg">
     <div class="flag-wave"></div>
-  </div>
-  <div id="preloader-logo">
-    <img src="./assets/afly_logo_uploaded.png" alt="Afly Consultancy Logo" onerror="this.onerror=null;this.src='./assets/afly_logo_uploaded.jpg';">
   </div>
 </div>
   <div class="scrolling-bar">
@@ -1305,7 +1287,7 @@
 
     const overlay = document.getElementById('consultationOverlay');
     const formPopup = document.getElementById('consultationForm');
-    document.querySelectorAll('.book-link, .floating-btn, .hero-cta').forEach(btn => {
+    document.querySelectorAll('.book-link, .floating-btn, .hero-cta, .afly-cta-btn').forEach(btn => {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
         overlay.classList.add('active');
