@@ -265,12 +265,13 @@
       font-weight: bold;
       text-decoration: none;
       z-index: 9999;
-      transition: background 0.3s, transform 0.25s cubic-bezier(.4,2,.6,1);
-      transform-origin: bottom right;
+      transition: background 0.3s;
+      /* Removed transform and animation for static look */
+      /* transform-origin: bottom right; */
     }
     .floating-btn:hover {
       background: #b71c22;
-      transform: scale(1.5);
+      /* Removed transform: scale(1.5); */
     }
 
     .floating-whatsapp {
@@ -288,18 +289,19 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      transition: background 0.3s, transform 0.25s cubic-bezier(.4,2,.6,1);
-      transform-origin: bottom left;
+      transition: background 0.3s;
+      /* Removed transform and animation for static look */
+      /* transform-origin: bottom left; */
     }
     .floating-whatsapp:hover {
       background: #1DA851;
-      transform: scale(1.5);
+      /* Removed transform: scale(1.5); */
     }
     .floating-whatsapp img {
       width: 20px;
       height: 20px;
     }
-
+    /* Removed animation and transform from floating-certifications as well, if present */
     .floating-certifications {
       position: fixed;
       bottom: 100px;
@@ -311,7 +313,7 @@
       align-items: flex-start;
       overflow: visible;
       max-width: 100vw;
-      transition: bottom 0.25s cubic-bezier(.4,2,.6,1), transform 0.25s cubic-bezier(.4,2,.6,1);
+      transition: bottom 0.25s cubic-bezier(.4,2,.6,1);
     }
     .floating-certifications img {
       width: 140px;
@@ -321,21 +323,18 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.10);
       padding: 6px 8px;
       display: block;
-      transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
       max-width: 90vw;
-      transform-origin: bottom left;
+      /* Removed transform and transition for animation */
     }
     .floating-certifications img:hover {
-      transform: scale(2);
-      box-shadow: 0 12px 40px rgba(215,38,43,0.25), 0 4px 16px rgba(0,0,0,0.16);
+      /* Removed transform: scale(2); and box-shadow animation */
       z-index: 10001;
       max-width: 60vw;
       position: relative;
     }
     .floating-whatsapp:hover ~ .floating-certifications,
     .floating-whatsapp:focus ~ .floating-certifications {
-      /* Move up by exactly the height of the zoomed WhatsApp button minus the original height, keeping the gap same */
-      transform: translateY(-30px);
+      /* Removed transform for animation */
     }
     @media (max-width: 700px) {
       .floating-certifications img {
@@ -343,12 +342,12 @@
         max-width: 60vw;
       }
       .floating-certifications img:hover {
-        transform: scale(1);
+        /* Removed transform: scale(1); */
         max-width: 80vw;
       }
       .floating-whatsapp:hover ~ .floating-certifications,
       .floating-whatsapp:focus ~ .floating-certifications {
-        transform: translateY(-20px);
+        /* Removed transform for animation */
       }
     }
 
@@ -851,7 +850,7 @@
         padding: 0 2vw;
       }
       .uni-scroll-row {
-        gap: 18px;
+        gap: 28px;
       }
       .uni-scroll-row img {
         height: 22px !important;
@@ -1158,7 +1157,7 @@
       .uni-scroll-row {
         display: flex;
         align-items: center;
-        gap: 80px;
+        gap: 28px; /* Decreased from 80px to 28px for tighter packing */
         animation: uni-scroll var(--duration,60s) linear infinite;
         will-change: transform;
       }
