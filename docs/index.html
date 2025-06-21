@@ -12,35 +12,6 @@
       background: linear-gradient(135deg, #f9f9f9 60%, #e3e8f0 100%);
       color: #222;
     }
-    /* Restore scrolling bar to top and consolidate layers */
-    .scrolling-bar {
-      position: fixed;
-      bottom: 0;
-      top: auto;
-      left: 0;
-      width: 100%;
-      background: #d7262b;
-      color: white;
-      text-align: center;
-      padding: 0;
-      z-index: 10000;
-      font-weight: bold;
-      font-size: 14px;
-      overflow: hidden;
-      white-space: nowrap;
-      height: 32px;
-      line-height: 32px;
-    }
-    .scrolling-bar .scrolling-text {
-      display: inline-block;
-      padding-left: 100vw;
-      animation: scrollText 14s linear infinite;
-      white-space: nowrap;
-    }
-    @keyframes scrollText {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
     header {
       background: linear-gradient(90deg, #f7b733 0%, #fc4a1a 100%);
       color: white;
@@ -261,7 +232,7 @@
     }
     .floating-btn {
       position: fixed;
-      bottom: 36px; /* just above the scrolling bar (32px height + 4px gap) */
+      bottom: 68px; /* increased gap for mobile, ensures no overlap with scrolling bar */
       right: 30px;
       background: #d7262b;
       color: white;
@@ -278,7 +249,7 @@
     }
     .floating-whatsapp {
       position: fixed;
-      bottom: 36px; /* just above the scrolling bar (32px height + 4px gap) */
+      bottom: 68px; /* increased gap for mobile, ensures no overlap with scrolling bar */
       left: 30px;
       background: #25D366;
       color: white;
@@ -301,9 +272,13 @@
       height: 20px;
     }
     @media (max-width: 700px) {
-      .floating-whatsapp img {
-        width: 16px;
-        height: 16px;
+      .floating-btn {
+        bottom: 100px; /* further increased for mobile to avoid overlap */
+        right: 12px;
+      }
+      .floating-whatsapp {
+        bottom: 100px;
+        left: 12px;
       }
     }
     #consultationOverlay {
@@ -862,10 +837,6 @@
       <input type="email" name="email" placeholder="Your Email" required>
       <button type="submit">Submit</button>
     </form>
-  </div>
-
-  <div class="scrolling-bar">
-    <div class="scrolling-text">Welcome to Afly Consultancy Services - Your Partner in Global Education</div>
   </div>
 
   <footer>
