@@ -12,28 +12,35 @@
       background: linear-gradient(135deg, #f9f9f9 60%, #e3e8f0 100%);
       color: #222;
     }
-    .top-bar {
-      background: #001a4d;
-      color: white;
-      padding: 10px 20px;
-      text-align: right;
-      font-size: 14px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 20px;
-      letter-spacing: 0.5px;
-    }
-    .top-bar span, .top-bar a { color: white; text-decoration: none; }
-    .top-bar a.book-link {
+    /* Restore scrolling bar to top and consolidate layers */
+    .scrolling-bar {
+      position: fixed;
+      bottom: 0;
+      top: auto;
+      left: 0;
+      width: 100%;
       background: #d7262b;
-      padding: 6px 18px;
-      border-radius: 20px;
+      color: white;
+      text-align: center;
+      padding: 0;
+      z-index: 10000;
       font-weight: bold;
-      transition: background 0.3s;
-      box-shadow: 0 2px 8px rgba(215,38,43,0.10);
+      font-size: 14px;
+      overflow: hidden;
+      white-space: nowrap;
+      height: 32px;
+      line-height: 32px;
     }
-    .top-bar a.book-link:hover { background: #b71c22; }
+    .scrolling-bar .scrolling-text {
+      display: inline-block;
+      padding-left: 100vw;
+      animation: scrollText 14s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
     header {
       background: linear-gradient(90deg, #f7b733 0%, #fc4a1a 100%);
       color: white;
@@ -44,6 +51,7 @@
       min-height: 170px;
       position: relative;
       box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      margin-top: 0 !important;
     }
     .logo {
       max-width: 120px;
@@ -253,7 +261,7 @@
     }
     .floating-btn {
       position: fixed;
-      bottom: 30px;
+      bottom: 36px; /* just above the scrolling bar (32px height + 4px gap) */
       right: 30px;
       background: #d7262b;
       color: white;
@@ -270,7 +278,7 @@
     }
     .floating-whatsapp {
       position: fixed;
-      bottom: 30px;
+      bottom: 36px; /* just above the scrolling bar (32px height + 4px gap) */
       left: 30px;
       background: #25D366;
       color: white;
@@ -392,33 +400,6 @@
     }
     #consultationForm button:hover {
       background: #b71c22;
-    }
-    .scrolling-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #d7262b;
-      color: white;
-      text-align: center;
-      padding: 0;
-      z-index: 10000;
-      font-weight: bold;
-      font-size: 14px;
-      overflow: hidden;
-      white-space: nowrap;
-      height: 32px;
-      line-height: 32px;
-    }
-    .scrolling-bar .scrolling-text {
-      display: inline-block;
-      padding-left: 100vw;
-      animation: scrollText 14s linear infinite;
-      white-space: nowrap;
-    }
-    @keyframes scrollText {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
     }
     @media (max-width: 600px) {
       body { font-size: 1rem; padding: 0; }
@@ -622,43 +603,27 @@
   </style>
 </head>
 <body>
-<!-- Preloader HTML -->
-<div id="preloader">
-  <div class="flag-wave-bg">
-    <div class="flag-wave"></div>
-  </div>
-</div>
-  <div class="scrolling-bar">
-    <span class="scrolling-text">
-      Exciting Extra Scholarships, Profile-Based Counselling with Long-Term Career Guidance&nbsp;&nbsp;&nbsp;
-    </span>
-  </div>
-  <div class="top-bar" style="margin-top: 32px;">
-    <span>Email: info@aflyconsultancy.com</span>
-    <span>Phone: <a href="https://wa.me/+918125144079" style="color: white; text-decoration: none;">+91 81251 44079</a></span>
-    <a href="#" class="book-link">Book a Consultation</a>
-  </div>
-  <header>
-    <a href="index.html" onclick="window.location.href='index.html'; return false;">
-      <img src="./assets/afly_logo_uploaded.png" alt="Afly Consultancy Logo" class="logo" onerror="this.onerror=null;this.src='./assets/afly_logo_uploaded.jpg';">
-    </a>
-    <div class="header-text">
-      <h1>Afly Consultancy Services</h1>
-      <p><em>Aim High, Fly High</em></p>
+  <!-- Sidebar Navigation Trigger -->
+  <button id="sidebarToggle" aria-label="Open Navigation" style="position:fixed;top:32px;right:18px;left:auto;z-index:11000;background:#002c77;color:#fff;border:none;border-radius:8px;padding:10px 14px;box-shadow:0 2px 8px rgba(0,44,119,0.10);font-size:1.3rem;cursor:pointer;">
+    &#9776;
+  </button>
+  <!-- Sidebar Navigation -->
+  <nav id="sidebarNav" style="position:fixed;top:0;right:-270px;left:auto;width:260px;height:100vh;background:#001f5c;color:#fff;z-index:11001;box-shadow:-2px 0 16px rgba(0,44,119,0.10);transition:right 0.3s;overflow-y:auto;">
+    <div style="padding:24px 18px 12px 18px;border-bottom:1px solid #dbeafe33;display:flex;align-items:center;gap:12px;">
+      <a href="index.html" onclick="window.location.href='index.html'; return false;" style="display:inline-block;"><img src="./assets/afly_logo_uploaded.png" alt="Afly Consultancy Logo" class="logo" style="max-width:60px;margin:0;" onerror="this.onerror=null;this.src='./assets/afly_logo_uploaded.jpg';"></a>
+      <span style="font-weight:bold;font-size:1.1rem;">Afly Consultancy</span>
     </div>
-  </header>
-  <nav>
-    <ul>
+    <ul class="sidebar-menu" style="list-style:none;padding:0;margin:0;">
       <li><a href="index.html" onclick="window.location.href='index.html'; return false;">Home</a></li>
-      <li><a href="#">About Us</a>
-        <ul>
+      <li class="has-sub"><a href="#">About Us</a>
+        <ul class="sub-menu">
           <li><a href="company-overview.html">Company Overview</a></li>
           <li><a href="why-choose-us.html">Why Choose Us</a></li>
           <li><a href="our-team.html">Our Team</a></li>
         </ul>
       </li>
-      <li><a href="#">Study Destinations</a>
-        <ul>
+      <li class="has-sub"><a href="#">Study Destinations</a>
+        <ul class="sub-menu">
           <li><a href="usa.html">USA</a></li>
           <li><a href="uk.html">UK</a></li>
           <li><a href="australia.html">Australia</a></li>
@@ -667,35 +632,98 @@
           <li><a href="new-zealand.html">New Zealand</a></li>
         </ul>
       </li>
-      <li><a href="#">Services</a>
-        <ul>
+      <li class="has-sub"><a href="#">Services</a>
+        <ul class="sub-menu">
           <li><a href="student-counseling.html">Student Counseling</a></li>
           <li><a href="course-selection.html">Course Selection</a></li>
           <li><a href="visa-assistance.html">Visa Assistance</a></li>
           <li><a href="pre-departure-briefing.html">Pre-Departure Briefing</a></li>
         </ul>
       </li>
-      <li><a href="#">Resources</a>
-        <ul>
+      <li class="has-sub"><a href="#">Resources</a>
+        <ul class="sub-menu">
           <li><a href="faqs.html">FAQs</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="gallery.html">Gallery</a></li>
         </ul>
       </li>
-      <li><a href="#">Contact</a>
-        <ul>
+      <li class="has-sub"><a href="#">Contact</a>
+        <ul class="sub-menu">
           <li><a href="contact-email.html">Email</a></li>
           <li><a href="contact-phone.html">Phone</a></li>
         </ul>
       </li>
-      <li><a href="#">Apply</a>
-        <ul>
+      <li class="has-sub"><a href="#">Apply</a>
+        <ul class="sub-menu">
           <li><a href="online-application.html">Online Application</a></li>
           <li><a href="book-a-consultation.html">Book a Consultation</a></li>
         </ul>
       </li>
     </ul>
   </nav>
+  <style>
+    #sidebarNav { font-family: 'Montserrat', Arial, sans-serif; }
+    #sidebarNav ul.sidebar-menu > li > a {
+      display:block;padding:16px 24px;color:#fff;text-decoration:none;font-weight:600;font-size:1.08rem;transition:background 0.2s;cursor:pointer;
+    }
+    #sidebarNav ul.sidebar-menu > li > a:hover, #sidebarNav ul.sidebar-menu > li.active > a {
+      background:#0041c4;
+    }
+    #sidebarNav ul.sub-menu {
+      display:none;padding-left:0;background:#002c77;
+    }
+    #sidebarNav ul.sub-menu li a {
+      display:block;padding:13px 36px;color:#e3e8f0;text-decoration:none;font-size:1rem;font-weight:500;transition:background 0.2s;
+    }
+    #sidebarNav ul.sub-menu li a:hover { background:#0041c4;color:#fff; }
+    #sidebarNav ul.sidebar-menu > li.open > ul.sub-menu { display:block; }
+    #sidebarNav ul.sidebar-menu > li.has-sub > a:after {
+      content:'▼';float:right;font-size:0.8em;margin-top:4px;transition:transform 0.2s; }
+    #sidebarNav ul.sidebar-menu > li.open > a:after { transform:rotate(-180deg); }
+    @media (max-width:700px) {
+      #sidebarNav { width:90vw;min-width:0; }
+    }
+    body.sidebar-open #sidebarNav { right:0;left:auto; }
+    body.sidebar-open #sidebarToggle { right:270px;left:auto; }
+    body.sidebar-open { overflow:hidden; }
+  </style>
+  <script>
+    // Sidebar open/close logic
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebarNav = document.getElementById('sidebarNav');
+    sidebarToggle.addEventListener('click', function() {
+      document.body.classList.toggle('sidebar-open');
+    });
+    // Close sidebar on outside click
+    document.addEventListener('click', function(e) {
+      if(document.body.classList.contains('sidebar-open')) {
+        if(!sidebarNav.contains(e.target) && e.target !== sidebarToggle) {
+          document.body.classList.remove('sidebar-open');
+        }
+      }
+    });
+    // Expand/collapse submenus
+    document.querySelectorAll('#sidebarNav .has-sub > a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const parent = this.parentElement;
+        parent.classList.toggle('open');
+        // Close other open submenus
+        document.querySelectorAll('#sidebarNav .has-sub').forEach(function(li) {
+          if(li !== parent) li.classList.remove('open');
+        });
+      });
+    });
+  </script>
+  <header style="margin-left:0;">
+    <a href="index.html" onclick="window.location.href='index.html'; return false;">
+      <img src="./assets/afly_logo_uploaded.png" alt="Afly Consultancy Logo" class="logo" onerror="this.onerror=null;this.src='./assets/afly_logo_uploaded.jpg';">
+    </a>
+    <div class="header-text">
+      <h1>Afly Consultancy Services</h1>
+      <p><em>Aim High, Fly High</em></p>
+    </div>
+  </header>
   <section class="partnered-universities-section" style="background:linear-gradient(120deg,#e3e8f0 60%,#dbeafe 100%);padding:100px 0 60px 0;min-height:340px;">
     <h2 style="text-align:center;color:#002c77;font-size:2.2rem;font-weight:700;margin-bottom:36px;letter-spacing:1px;">Our Partnered Universities</h2>
     <div class="partnered-uni-scrollers">
@@ -834,6 +862,10 @@
       <input type="email" name="email" placeholder="Your Email" required>
       <button type="submit">Submit</button>
     </form>
+  </div>
+
+  <div class="scrolling-bar">
+    <div class="scrolling-text">Welcome to Afly Consultancy Services - Your Partner in Global Education</div>
   </div>
 
   <footer>
