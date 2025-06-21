@@ -772,35 +772,41 @@
       <p><em>Aim High, Fly High</em></p>
     </div>
   </header>
-  <section class="partnered-universities-section" style="background:linear-gradient(120deg,#e3e8f0 60%,#dbeafe 100%);padding:100px 0 60px 0;min-height:340px;">
+  <section class="partnered-universities-section" style="background:linear-gradient(120deg,#e3e8f0 60%,#dbeafe 100%);padding:100px 0 80px 0;min-height:320px;">
     <h2 style="text-align:center;color:#002c77;font-size:2.2rem;font-weight:700;margin-bottom:36px;letter-spacing:1px;">Our Partnered Universities</h2>
-    <div class="partnered-uni-scrollers">
-      <div class="uni-scroll-row" style="--duration:60s;">
+    <div class="partnered-uni-scroller" id="partneredUniScroller" style="overflow:hidden;width:100vw;max-width:1200px;margin:0 auto;position:relative;">
+      <div class="uni-scroll-row" data-row="0">
         <img src="assets/University_of_Leicester.png" alt="University of Leicester" title="University of Leicester">
+      </div>
+      <div class="uni-scroll-row" data-row="1">
         <img src="assets/istituto_marangoni.png" alt="Istituto Marangoni" title="Istituto Marangoni">
+      </div>
+      <div class="uni-scroll-row" data-row="2">
+        <img src="assets/University_of_east_london.png" alt="University of East London" title="University of East London">
+      </div>
+      <div class="uni-scroll-row" data-row="3">
+        <img src="assets/Kings_college_london.png" alt="Kings College London" title="Kings College London">
       </div>
     </div>
     <style>
-      .partnered-universities-section {
-        margin: 0 0 0 0;
-        min-height: 340px;
-        padding-top: 100px !important;
-        padding-bottom: 60px !important;
-        background: #fff !important;
-      }
-      .partnered-uni-scrollers {
-        display: flex;
-        flex-direction: column;
-        gap: 48px;
+      .partnered-uni-scroller {
+        overflow: hidden;
+        width: 100vw;
         max-width: 1200px;
         margin: 0 auto;
+        position: relative;
+        height: 420px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        justify-content: center;
       }
       .uni-scroll-row {
+        width: 100%;
+        height: 90px;
+        position: relative;
         display: flex;
         align-items: center;
-        gap: 2%; /* Decreased by 50% from previous 4% gap */
-        animation: uni-scroll var(--duration,60s) linear infinite;
-        will-change: transform;
       }
       .uni-scroll-row img {
         height: 74px;
@@ -813,26 +819,70 @@
         transition: transform 0.2s, box-shadow 0.2s;
         max-width: 220px;
         object-fit: contain;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        will-change: left;
       }
       .uni-scroll-row img:hover {
-        transform: scale(1.18);
+        transform: translateY(-50%) scale(1.18);
         box-shadow: 0 8px 32px rgba(0,44,119,0.18);
         z-index: 2;
       }
-      @keyframes uni-scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-100%); }
-      }
       @media (max-width: 900px) {
-        .uni-scroll-row img { height: 48px; max-width: 140px; padding: 6px 12px; }
-        .partnered-uni-scrollers { gap: 28px; }
-        .partnered-universities-section { min-height: 180px; padding-top: 40px !important; }
+        .partnered-uni-scroller { height: 220px; gap: 8px; }
+        .uni-scroll-row { height: 40px; }
+        .uni-scroll-row img { height: 38px; max-width: 90px; padding: 4px 10px; }
       }
       @media (max-width: 600px) {
-        .uni-scroll-row img { height: 32px; max-width: 90px; padding: 2px 4px; }
-        .partnered-universities-section { min-height: 100px; padding-top: 18px !important; }
+        .partnered-uni-scroller { height: 120px; gap: 4px; }
+        .uni-scroll-row { height: 22px; }
+        .uni-scroll-row img { height: 22px; max-width: 60px; padding: 2px 4px; }
       }
     </style>
+    <script>
+      // JavaScript for 4-row infinite logo loop, no duplicates in all rows
+      window.addEventListener('DOMContentLoaded', function() {
+        const scroller = document.getElementById('partneredUniScroller');
+        const rows = Array.from(scroller.querySelectorAll('.uni-scroll-row'));
+        if (!scroller || rows.length === 0) return;
+        function getGap() {
+          return Math.max(scroller.offsetWidth * 0.04, 24);
+        }
+        function layoutRow(row, speed, direction) {
+          // Only one logo per row, no clones
+          const logo = row.children[0];
+          let gap = getGap();
+          let rowWidth = scroller.offsetWidth;
+          let logoWidth = logo.offsetWidth;
+          let pos = direction === -1 ? rowWidth : -logoWidth;
+          logo.style.position = 'absolute';
+          logo.style.left = pos + 'px';
+          function animate() {
+            pos += speed * direction;
+            // If logo is fully out of view, reset to the other side
+            if (direction === -1 && pos < -logoWidth) {
+              pos = rowWidth;
+            } else if (direction === 1 && pos > rowWidth) {
+              pos = -logoWidth;
+            }
+            logo.style.left = pos + 'px';
+            requestAnimationFrame(animate);
+          }
+          animate();
+          window.addEventListener('resize', () => {
+            rowWidth = scroller.offsetWidth;
+            logoWidth = logo.offsetWidth;
+            pos = direction === -1 ? rowWidth : -logoWidth;
+            logo.style.left = pos + 'px';
+          });
+        }
+        // Each row has a unique logo, alternate direction for visual interest
+        rows.forEach((row, idx) => {
+          layoutRow(row, 1.1 + idx * 0.2, idx % 2 === 0 ? -1 : 1);
+        });
+      });
+    </script>
   </section>
   <section class="hero">
     <div class="hero-content">
