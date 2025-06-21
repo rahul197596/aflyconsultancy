@@ -1022,9 +1022,68 @@
         border-radius: 18px;
       }
     }
+
+    /* Preloader Styles */
+    #preloader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #001a4d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20000;
+      transition: opacity 0.5s;
+    }
+    #preloader-logo {
+      width: 160px;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    #preloader-logo img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 4px 24px rgba(0,0,0,0.18));
+      z-index: 2;
+    }
+    .flag-wave-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .flag-wave {
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(120deg, #d7262b 0%, #fff 40%, #002c77 100%);
+      background-size: 200% 200%;
+      animation: flagWave 2.5s linear infinite alternate;
+      opacity: 0.85;
+    }
+    @keyframes flagWave {
+      0% { background-position: 0% 50%; filter: brightness(1.1) saturate(1.2); }
+      50% { background-position: 100% 50%; filter: brightness(1.3) saturate(1.5); }
+      100% { background-position: 0% 50%; filter: brightness(1.1) saturate(1.2); }
+    }
   </style>
 </head>
 <body>
+<!-- Preloader HTML -->
+<div id="preloader">
+  <div class="flag-wave-bg">
+    <div class="flag-wave"></div>
+  </div>
+  <div id="preloader-logo">
+    <img src="./assets/afly_logo_uploaded.png" alt="Afly Consultancy Logo" onerror="this.onerror=null;this.src='./assets/afly_logo_uploaded.jpg';">
+  </div>
+</div>
   <div class="scrolling-bar">
     <span class="scrolling-text">
       Exciting Extra Scholarships, Profile-Based Counselling with Long-Term Career Guidance&nbsp;&nbsp;&nbsp;
@@ -1235,6 +1294,15 @@
   </footer>
 
   <script>
+    // Preloader hide on page load
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => { preloader.style.display = 'none'; }, 600);
+      }
+    });
+
     const overlay = document.getElementById('consultationOverlay');
     const formPopup = document.getElementById('consultationForm');
     document.querySelectorAll('.book-link, .floating-btn, .hero-cta').forEach(btn => {
