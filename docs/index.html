@@ -1034,16 +1034,23 @@
   <script>
     (function() {
       const flight = document.getElementById('floatingFlight');
+      const consultBtn = document.querySelector('.floating-btn');
+      const menuBtn = document.getElementById('sidebarToggle');
       function updateFlight() {
-        // Move flight vertically based on scroll position
+        if (!consultBtn || !menuBtn) return;
+        // Get bounding rectangles
+        const consultRect = consultBtn.getBoundingClientRect();
+        const menuRect = menuBtn.getBoundingClientRect();
+        // Calculate top and bottom boundaries relative to viewport
+        const flightHeight = window.innerWidth > 700 ? 56 : 36;
+        const minTop = menuRect.bottom + 12; // 12px below menu button
+        const maxTop = consultRect.top - flightHeight - 12; // 12px above consultation button
+        // Scroll percent
         const scrollY = window.scrollY || window.pageYOffset;
         const docHeight = document.body.scrollHeight - window.innerHeight;
         const percent = docHeight > 0 ? Math.min(scrollY / docHeight, 1) : 0;
-        // Move from bottom: 128px (desktop) or 180px (mobile) up to 10vh from top
-        const minBottom = window.innerWidth > 700 ? 128 : 180;
-        const minTop = window.innerHeight * 0.10;
-        const maxTop = window.innerHeight - minBottom - 56; // 56px = image height
-        const moveY = minTop + percent * (maxTop - minTop);
+        // Move flight between minTop and maxTop as you scroll
+        const moveY = maxTop - percent * (maxTop - minTop);
         flight.style.top = moveY + 'px';
       }
       window.addEventListener('scroll', updateFlight);
