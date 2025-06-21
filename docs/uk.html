@@ -2,10 +2,163 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UK | Afly Consultancy Services</title>
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #f9f9f9 60%, #e3e8f0 100%);
+      color: #222;
+    }
+    /* Add your other styles here */
+  </style>
 </head>
 <body>
-  <h1>Study in UK</h1>
-  <p>Information about studying in the UK.</p>
+<!-- Preloader HTML -->
+<div id="preloader">
+  <div class="flag-wave-bg">
+    <div class="flag-wave"></div>
+  </div>
+</div>
+  <div class="scrolling-bar">
+    <span class="scrolling-text">
+      Exciting Extra Scholarships, Profile-Based Counselling with Long-Term Career Guidance&nbsp;&nbsp;&nbsp;
+    </span>
+  </div>
+  <div class="top-bar" style="margin-top: 32px;">
+    <span>Email: info@aflyconsultancy.com</span>
+    <span>Phone: <a href="https://wa.me/+918125144079" style="color: white; text-decoration: none;">+91 81251 44079</a></span>
+    <a href="#" class="book-link">Book a Consultation</a>
+  </div>
+  <header>
+    <img src="./assets/afly_logo_uploaded.png" alt="Afly Consultancy Logo" class="logo" onerror="this.onerror=null;this.src='./assets/afly_logo_uploaded.jpg';">
+    <div class="header-text">
+      <h1>Afly Consultancy Services</h1>
+      <p><em>Aim High, Fly High</em></p>
+    </div>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">About Us</a>
+        <ul>
+          <li><a href="company-overview.html">Company Overview</a></li>
+          <li><a href="why-choose-us.html">Why Choose Us</a></li>
+          <li><a href="our-team.html">Our Team</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Study Destinations</a>
+        <ul>
+          <li><a href="usa.html">USA</a></li>
+          <li><a href="uk.html">UK</a></li>
+          <li><a href="australia.html">Australia</a></li>
+          <li><a href="canada.html">Canada</a></li>
+          <li><a href="europe.html">Europe</a></li>
+          <li><a href="new-zealand.html">New Zealand</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Services</a>
+        <ul>
+          <li><a href="student-counseling.html">Student Counseling</a></li>
+          <li><a href="course-selection.html">Course Selection</a></li>
+          <li><a href="visa-assistance.html">Visa Assistance</a></li>
+          <li><a href="pre-departure-briefing.html">Pre-Departure Briefing</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Resources</a>
+        <ul>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contact</a>
+        <ul>
+          <li><a href="contact-email.html">Email</a></li>
+          <li><a href="contact-phone.html">Phone</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Apply</a>
+        <ul>
+          <li><a href="online-application.html">Online Application</a></li>
+          <li><a href="book-a-consultation.html">Book a Consultation</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <main style="max-width:900px;margin:60px auto 0 auto;padding:32px 16px 0 16px;">
+    <h1>Study in UK</h1>
+    <p>Information about studying in the UK.</p>
+  </main>
+  <a href="#" class="floating-btn">Consultation</a>
+  <a href="https://wa.me/+918125144079" class="floating-whatsapp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+  </a>
+  <div class="floating-certifications" style="bottom: 90px; left: 30px;">
+    <img src="assets/british_council_cert.png" alt="British Council Certified">
+  </div>
+  <div id="consultationOverlay"></div>
+  <div id="consultationForm">
+    <button class="close-btn" type="button" aria-label="Close">&times;</button>
+    <h3>Book a Consultation</h3>
+    <form id="formSubmit">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Your Phone" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <footer>
+    <p>&copy; 2025 Afly Consultancy Services | All Rights Reserved</p>
+  </footer>
+  <script>
+    // Preloader hide on page load
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => { preloader.style.display = 'none'; }, 600);
+      }
+    });
+    const overlay = document.getElementById('consultationOverlay');
+    const formPopup = document.getElementById('consultationForm');
+    document.querySelectorAll('.book-link, .floating-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        overlay.classList.add('active');
+        formPopup.classList.add('active');
+      });
+    });
+    overlay.addEventListener('click', () => {
+      overlay.classList.remove('active');
+      formPopup.classList.remove('active');
+    });
+    document.querySelector('#consultationForm .close-btn').addEventListener('click', () => {
+      overlay.classList.remove('active');
+      formPopup.classList.remove('active');
+    });
+    document.getElementById('formSubmit').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwq1rokUzhb6Et9-zV4I3YpyCfVOVUMsQ1cylaSBEXFCkXHYkovfrQFyBFCR7D9C8zt/exec';
+      const form = e.target;
+      const formData = new FormData(form);
+      form.innerHTML = '<div style="padding: 20px 0; color: #1DA851; font-size: 18px; font-weight: bold;">Thank you! Your consultation request has been received.<br>We will contact you soon.</div>';
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => {
+          setTimeout(() => {
+            overlay.classList.remove('active');
+            formPopup.classList.remove('active');
+            setTimeout(() => {
+              form.innerHTML = `<input type=\"text\" name=\"name\" placeholder=\"Your Name\" required>\n<input type=\"tel\" name=\"phone\" placeholder=\"Your Phone\" required>\n<input type=\"email\" name=\"email\" placeholder=\"Your Email\" required>\n<button type=\"submit\">Submit</button>`;
+            }, 400);
+          }, 2200);
+        })
+        .catch(error => {
+          alert('There was an error. Please try again.');
+          console.error('Error!', error.message);
+        });
+    });
+  </script>
 </body>
 </html>
