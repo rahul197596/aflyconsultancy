@@ -256,7 +256,7 @@
     }
     .floating-btn {
       position: fixed;
-      bottom: 68px; /* increased gap for mobile, ensures no overlap with scrolling bar */
+      bottom: 38px; /* increased gap for mobile, ensures no overlap with scrolling bar */
       right: 30px;
       background: linear-gradient(90deg, #d7262b 60%, #002c77 100%);
       color: #fff;
@@ -274,8 +274,8 @@
     }
     .floating-whatsapp {
       position: fixed;
-      bottom: 68px; /* increased gap for mobile, ensures no overlap with scrolling bar */
-      left: 10px;
+      bottom: 38px; /* increased gap for mobile, ensures no overlap with scrolling bar */
+      left: 30px;
       background: #25D366;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       border-radius: 50%;
@@ -767,69 +767,68 @@
       <span style="position:absolute;left:0;top:14px;width:20px;height:3px;background:#002c77;border-radius:2px;box-shadow:0 1px 4px #002c7722;transition:all 0.2s;"></span>
     </span>
   </button>
-  <nav id="dropdownMenu" style="display:none;position:fixed;top:56px;right:0;z-index:12001;background:#fff;border-radius:0 0 0 18px;box-shadow:0 8px 32px rgba(0,44,119,0.13);padding:10px 0 10px 0;min-width:210px;">
-    <ul style="list-style:none;margin:0;padding:0;">
-      <li class="has-submenu"><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Destinations</a>
-        <ul class="submenu" style="display:none;list-style:none;padding:0;margin:0;background:#f6f9ff;">
-          <li><a href="usa.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">USA</a></li>
-          <li><a href="uk.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">UK</a></li>
-          <li><a href="australia.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Australia</a></li>
-          <li><a href="canada.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Canada</a></li>
-          <li><a href="europe.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Europe</a></li>
-          <li><a href="new-zealand.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">New Zealand</a></li>
+  <div id="dropdownMenu" style="display:none;position:fixed;top:54px;right:16px;z-index:12001;background:rgba(255,255,255,0.98);box-shadow:0 8px 32px 0 rgba(0,44,119,0.13),0 2px 8px rgba(0,44,119,0.10);border-radius:18px;padding:18px 0 10px 0;min-width:220px;backdrop-filter:blur(4px);border:1.5px solid #dbeafe;">
+    <ul style="list-style:none;margin:0;padding:0;font-size:1.08rem;">
+      <li class="dropdown-item has-submenu" style="padding:10px 28px 10px 24px;cursor:pointer;position:relative;">
+        Destinations <span style="float:left;">&#9664;</span>
+        <ul class="submenu" style="display:none;position:absolute;top:0;right:100%;left:auto;background:rgba(255,255,255,0.98);box-shadow:0 4px 18px 0 rgba(0,44,119,0.13);border-radius:14px;padding:8px 0;min-width:170px;border:1.5px solid #dbeafe;">
+          <li style="padding:8px 22px;cursor:pointer;">UK</li>
+          <li style="padding:8px 22px;cursor:pointer;">USA</li>
+          <li style="padding:8px 22px;cursor:pointer;">Canada</li>
+          <li style="padding:8px 22px;cursor:pointer;">Australia</li>
+          <li style="padding:8px 22px;cursor:pointer;">Europe</li>
         </ul>
       </li>
-      <li class="has-submenu"><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Services</a>
-        <ul class="submenu" style="display:none;list-style:none;padding:0;margin:0;background:#f6f9ff;">
-          <li><a href="student-counseling.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Student Counseling</a></li>
-          <li><a href="course-selection.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Course Selection</a></li>
-          <li><a href="visa-assistance.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Visa Assistance</a></li>
-          <li><a href="pre-departure-briefing.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Pre-Departure Briefing</a></li>
+      <li class="dropdown-item has-submenu" style="padding:10px 28px 10px 24px;cursor:pointer;position:relative;">
+        Services <span style="float:left;">&#9664;</span>
+        <ul class="submenu" style="display:none;position:absolute;top:0;right:100%;left:auto;background:rgba(255,255,255,0.98);box-shadow:0 4px 18px 0 rgba(0,44,119,0.13);border-radius:14px;padding:8px 0;min-width:170px;border:1.5px solid #dbeafe;">
+          <li style="padding:8px 22px;cursor:pointer;">Admissions</li>
+          <li style="padding:8px 22px;cursor:pointer;">Visa Guidance</li>
+          <li style="padding:8px 22px;cursor:pointer;">Scholarships</li>
+          <li style="padding:8px 22px;cursor:pointer;">Pre-Departure</li>
         </ul>
       </li>
-      <li><a href="company-overview.html" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">About Us</a></li>
-      <li><a href="contact-email.html" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Contact</a></li>
-      <li><a href="online-application.html" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Apply</a></li>
+      <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;">About Us</li>
+      <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;">Contact</li>
+      <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;">Apply</li>
     </ul>
-  </nav>
+  </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var menuToggle = document.getElementById('menuToggle');
-      var dropdownMenu = document.getElementById('dropdownMenu');
-      if(menuToggle && dropdownMenu) {
-        menuToggle.onclick = function(e) {
-          e.stopPropagation();
-          dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        };
-        document.addEventListener('click', function(e) {
-          if(dropdownMenu.style.display === 'block' && !dropdownMenu.contains(e.target) && e.target !== menuToggle) {
-            dropdownMenu.style.display = 'none';
-          }
-        });
-        // Dropdown submenu logic
-        dropdownMenu.querySelectorAll('.has-submenu > .menu-link').forEach(function(link) {
-          link.onclick = function(e) {
-            e.preventDefault();
-            var submenu = this.nextElementSibling;
-            if(submenu && submenu.classList.contains('submenu')) {
-              submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-              // Hide other open submenus
-              dropdownMenu.querySelectorAll('.submenu').forEach(function(other) {
-                if(other !== submenu) other.style.display = 'none';
-              });
-            }
-          };
-        });
-        // Close dropdown on submenu link click
-        dropdownMenu.querySelectorAll('.submenu a').forEach(function(link) {
-          link.onclick = function() { dropdownMenu.style.display = 'none'; };
-        });
-        // Close dropdown on main menu link click
-        dropdownMenu.querySelectorAll('> ul > li:not(.has-submenu) > a').forEach(function(link) {
-          link.onclick = function() { dropdownMenu.style.display = 'none'; };
-        });
+  // Dropdown menu toggle logic
+  const menuToggle = document.getElementById('menuToggle');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  let dropdownOpen = false;
+  menuToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    dropdownMenu.style.display = dropdownOpen ? 'none' : 'block';
+    dropdownOpen = !dropdownOpen;
+  });
+  document.addEventListener('click', function(e) {
+    if (dropdownOpen && !dropdownMenu.contains(e.target) && e.target !== menuToggle) {
+      dropdownMenu.style.display = 'none';
+      dropdownOpen = false;
+    }
+  });
+  // Submenu logic
+  const submenuParents = document.querySelectorAll('.has-submenu');
+  submenuParents.forEach(parent => {
+    parent.addEventListener('mouseenter', function() {
+      this.querySelector('.submenu').style.display = 'block';
+    });
+    parent.addEventListener('mouseleave', function() {
+      this.querySelector('.submenu').style.display = 'none';
+    });
+  });
+  // Close dropdown on option click
+  const dropdownItems = document.querySelectorAll('#dropdownMenu .dropdown-item');
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      if (!this.classList.contains('has-submenu')) {
+        dropdownMenu.style.display = 'none';
+        dropdownOpen = false;
       }
     });
+  });
   </script>
   <header style="margin-left:0;">
     <a href="index.html" onclick="window.location.href='index.html'; return false;">
@@ -1014,21 +1013,29 @@
     </div>
   </section>
 
-  <a href="#" class="floating-btn">Consultation</a>
-  <a href="https://wa.me/+918125144079" class="floating-whatsapp" style="position:fixed;bottom:68px;left:10px;background:#25D366;box-shadow:0 4px 10px rgba(0,0,0,0.3);border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;padding:0;z-index:9999;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" style="width:32px;height:32px;display:block;" />
+  <a href="https://wa.me/+918125144079" class="floating-whatsapp" style="position:fixed;bottom:38px;left:30px;background:#25D366;box-shadow:0 4px 10px rgba(0,0,0,0.3);border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;padding:0;z-index:9999;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" style="width:32px;height:32px;display:block;">
   </a>
+  <a href="#" class="floating-btn" style="position:fixed;bottom:38px;right:30px;background:linear-gradient(90deg,#d7262b 60%,#002c77 100%);color:#fff;padding:15px 25px;border-radius:50px;box-shadow:0 4px 10px rgba(0,0,0,0.3);font-weight:bold;text-decoration:none;z-index:9999;transition:background 0.3s;">Consultation</a>
   <style>
     @media (min-width: 701px) {
       .floating-whatsapp {
-        bottom: 68px !important;
-        left: 10px !important;
+        bottom: 38px !important;
+        left: 30px !important;
+      }
+      .floating-btn {
+        bottom: 38px !important;
+        right: 30px !important;
       }
     }
     @media (max-width: 700px) {
       .floating-whatsapp {
         bottom: 16px !important;
         left: 10px !important;
+      }
+      .floating-btn {
+        bottom: 16px !important;
+        right: 12px !important;
       }
     }
   </style>
