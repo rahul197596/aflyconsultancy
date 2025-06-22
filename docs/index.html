@@ -652,7 +652,7 @@
     <canvas id="worldmap-canvas"></canvas>
   </div>
   <!-- Sidebar Navigation Trigger -->
-  <button id="sidebarToggle" aria-label="Open Navigation" style="position:fixed;top:32px;right:18px;left:auto;z-index:11000;background:#002c77;color:#fff;border:none;border-radius:8px;padding:10px 14px;box-shadow:0 2px 8px rgba(0,44,119,0.10);font-size:1.3rem;cursor:pointer;">
+  <button id="sidebarToggle" aria-label="Open Navigation" style="position:fixed;top:0;right:0;left:auto;z-index:11000;background:#002c77;color:#fff;border:none;border-radius:0 0 0 12px;padding:10px 18px 10px 18px;box-shadow:0 2px 8px rgba(0,44,119,0.10);font-size:1.3rem;cursor:pointer;">
     &#9776;
   </button>
   <!-- Sidebar Navigation -->
@@ -761,6 +761,49 @@
           if(li !== parent) li.classList.remove('open');
         });
       });
+    });
+  </script>
+  <!-- Modern Top-Right Menu Button (absolute top right corner) -->
+  <button id="menuToggle" aria-label="Open Menu" style="position:fixed;top:0;right:0;z-index:12000;background:#002c77;color:#fff;border:none;border-radius:0 0 0 18px;padding:16px 20px 16px 20px;box-shadow:0 2px 8px rgba(0,44,119,0.10);font-size:1.7rem;cursor:pointer;">
+    &#9776;
+  </button>
+  <nav id="dropdownMenu" style="display:none;position:fixed;top:56px;right:0;z-index:12001;background:#fff;border-radius:0 0 0 18px;box-shadow:0 8px 32px rgba(0,44,119,0.13);padding:10px 0 10px 0;min-width:210px;">
+    <ul style="list-style:none;margin:0;padding:0;">
+      <li><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Destinations</a></li>
+      <li><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Services</a></li>
+      <li><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">About Us</a></li>
+      <li><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Contact</a></li>
+      <li><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Apply</a></li>
+    </ul>
+  </nav>
+  <style>
+    #menuToggle { transition: background 0.2s; border-radius:0 0 0 18px !important; }
+    #menuToggle:hover { background: #d7262b; }
+    #dropdownMenu ul li a:hover { background: #e3e8f0; color: #d726b; }
+    @media (max-width: 700px) {
+      #menuToggle { top:0; right:0; font-size:1.2rem; padding:12px 12px 12px 12px; }
+      #dropdownMenu { top:44px; right:0; min-width:140px; }
+      #dropdownMenu ul li a { font-size:1.01rem; padding:10px 16px; }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var menuToggle = document.getElementById('menuToggle');
+      var dropdownMenu = document.getElementById('dropdownMenu');
+      if(menuToggle && dropdownMenu) {
+        menuToggle.onclick = function(e) {
+          e.stopPropagation();
+          dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        };
+        document.addEventListener('click', function(e) {
+          if(dropdownMenu.style.display === 'block' && !dropdownMenu.contains(e.target) && e.target !== menuToggle) {
+            dropdownMenu.style.display = 'none';
+          }
+        });
+        dropdownMenu.querySelectorAll('.menu-link').forEach(function(link) {
+          link.onclick = function() { dropdownMenu.style.display = 'none'; };
+        });
+      }
     });
   </script>
   <header style="margin-left:0;">
