@@ -767,25 +767,31 @@
       <span style="position:absolute;left:0;top:14px;width:20px;height:3px;background:#002c77;border-radius:2px;box-shadow:0 1px 4px #002c7722;transition:all 0.2s;"></span>
     </span>
   </button>
-  <nav id="dropdownMenu" style="display:none;position:fixed;top:56px;right:0;z-index=12001;background:#fff;border-radius:0 0 0 18px;box-shadow:0 8px 32px rgba(0,44,119,0.13);padding:10px 0 10px 0;min-width:210px;">
+  <nav id="dropdownMenu" style="display:none;position:fixed;top:56px;right:0;z-index:12001;background:#fff;border-radius:0 0 0 18px;box-shadow:0 8px 32px rgba(0,44,119,0.13);padding:10px 0 10px 0;min-width:210px;">
     <ul style="list-style:none;margin:0;padding:0;">
-      <li><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Destinations</a></li>
-      <li><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Services</a></li>
-      <li><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">About Us</a></li>
-      <li><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Contact</a></li>
-      <li><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Apply</a></li>
+      <li class="has-submenu"><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Destinations</a>
+        <ul class="submenu" style="display:none;list-style:none;padding:0;margin:0;background:#f6f9ff;">
+          <li><a href="usa.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">USA</a></li>
+          <li><a href="uk.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">UK</a></li>
+          <li><a href="australia.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Australia</a></li>
+          <li><a href="canada.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Canada</a></li>
+          <li><a href="europe.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Europe</a></li>
+          <li><a href="new-zealand.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">New Zealand</a></li>
+        </ul>
+      </li>
+      <li class="has-submenu"><a href="#" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Services</a>
+        <ul class="submenu" style="display:none;list-style:none;padding:0;margin:0;background:#f6f9ff;">
+          <li><a href="student-counseling.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Student Counseling</a></li>
+          <li><a href="course-selection.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Course Selection</a></li>
+          <li><a href="visa-assistance.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Visa Assistance</a></li>
+          <li><a href="pre-departure-briefing.html" style="display:block;padding:10px 32px;color:#002c77;text-decoration:none;">Pre-Departure Briefing</a></li>
+        </ul>
+      </li>
+      <li><a href="company-overview.html" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">About Us</a></li>
+      <li><a href="contact-email.html" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Contact</a></li>
+      <li><a href="online-application.html" class="menu-link" style="display:block;padding:13px 28px;color:#002c77;font-weight:600;text-decoration:none;font-size:1.08rem;">Apply</a></li>
     </ul>
   </nav>
-  <style>
-    #menuToggle { transition: background 0.2s; border-radius:0 0 0 18px !important; }
-    #menuToggle:hover { background: #d7262b; }
-    #dropdownMenu ul li a:hover { background: #e3e8f0; color: #d726b; }
-    @media (max-width: 700px) {
-      #menuToggle { top:0; right:0; font-size:1.2rem; padding:12px 12px 12px 12px; }
-      #dropdownMenu { top:44px; right:0; min-width:140px; }
-      #dropdownMenu ul li a { font-size:1.01rem; padding:10px 16px; }
-    }
-  </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var menuToggle = document.getElementById('menuToggle');
@@ -800,7 +806,26 @@
             dropdownMenu.style.display = 'none';
           }
         });
-        dropdownMenu.querySelectorAll('.menu-link').forEach(function(link) {
+        // Dropdown submenu logic
+        dropdownMenu.querySelectorAll('.has-submenu > .menu-link').forEach(function(link) {
+          link.onclick = function(e) {
+            e.preventDefault();
+            var submenu = this.nextElementSibling;
+            if(submenu && submenu.classList.contains('submenu')) {
+              submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+              // Hide other open submenus
+              dropdownMenu.querySelectorAll('.submenu').forEach(function(other) {
+                if(other !== submenu) other.style.display = 'none';
+              });
+            }
+          };
+        });
+        // Close dropdown on submenu link click
+        dropdownMenu.querySelectorAll('.submenu a').forEach(function(link) {
+          link.onclick = function() { dropdownMenu.style.display = 'none'; };
+        });
+        // Close dropdown on main menu link click
+        dropdownMenu.querySelectorAll('> ul > li:not(.has-submenu) > a').forEach(function(link) {
           link.onclick = function() { dropdownMenu.style.display = 'none'; };
         });
       }
