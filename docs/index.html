@@ -630,17 +630,18 @@
     /* Flight animation GIF above Consultation button (right bottom, vertical movement, local asset) */
     .floating-flight {
       position: fixed;
-      right: 38px;
+      top: 0;
+      right: 0;
       z-index: 10000;
       width: 56px;
       height: 56px;
       pointer-events: none;
       transition: top 0.2s cubic-bezier(.4,2,.6,1);
-      will-change: top;
+      will-change: top, right;
     }
     @media (max-width: 700px) {
       .floating-flight {
-        right: 18px;
+        right: 0;
         width: 36px;
         height: 36px;
       }
