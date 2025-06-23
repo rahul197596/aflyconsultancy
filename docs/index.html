@@ -789,8 +789,7 @@
         </ul>
       </li>
       <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;">About Us</li>
-      <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;">Contact</li>
-      <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;">Apply</li>
+      <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;" data-link="contact.html">Contact</li>
     </ul>
   </div>
   <style>
@@ -1059,7 +1058,8 @@
       <p><strong>Phone:</strong> <a href="https://wa.me/+918125144079">+91 8125144079</a></p>
     </div>
   </section>
-
+  <a href="#consultation" class="floating-btn" id="consultationBtn">Consultation</a>
+  <section id="consultation" style="display:none;"></section>
   <a href="https://wa.me/+918125144079" class="floating-whatsapp" style="position:fixed;bottom:38px;left:30px;background:#25D366;box-shadow:0 4px 10px rgba(0,0,0,0.3);border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;padding:0;z-index:9999;">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" style="width:32px;height:32px;display:block;">
   </a>
@@ -1303,11 +1303,28 @@
           }
         });
       });
-      // Close menu on any menu item click (except submenu expanders)
-      dropdown.querySelectorAll('.dropdown-item:not(.has-submenu), .submenu li').forEach(function(item) {
+      // Add navigation for Contact
+      dropdown.querySelectorAll('.dropdown-item[data-link]').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          window.location.href = item.getAttribute('data-link');
+        });
+      });
+      dropdown.querySelectorAll('.dropdown-item:not(.has-submenu):not([data-link]), .submenu li').forEach(function(item) {
         item.addEventListener('click', function(e) {
           closeMenu();
         });
+      });
+    })();
+  </script>
+  <script>
+    (function() {
+      // Smooth scroll to #consultation section
+      document.getElementById('consultationBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        var contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       });
     })();
   </script>
