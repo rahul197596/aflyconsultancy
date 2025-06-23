@@ -844,31 +844,33 @@
       border-radius: 12px;
       margin: 8px 0 8px 0;
       box-shadow: 0 2px 12px rgba(0,44,119,0.07);
-      padding: 6px 0 6px 18px;
+      padding: 6px 0 6px 8px;
       border: none;
       min-width: 180px;
       animation: submenuFadeIn 0.22s cubic-bezier(.4,2,.6,1);
-    }
-    @keyframes submenuFadeIn {
-      0% { opacity: 0; transform: translateY(-10px) scale(0.98); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    #dropdownMenu .submenu li {
-      padding: 0;
-      margin: 0;
-    }
-    #dropdownMenu .submenu li:hover {
-      background: #e3e8f0;
-      color: #d7262b;
-      border-radius: 8px;
-    }
-    #dropdownMenu .submenu li {
-      padding: 9px 18px 9px 10px !important;
-      color: #002c77;
+      list-style: none;
       font-size: 1.04rem;
+    }
+    #dropdownMenu .submenu li {
+      padding: 10px 20px 10px 18px !important;
+      color: #002c77;
+      font-size: 1.07rem;
       font-weight: 500;
       cursor: pointer;
-      transition: background 0.16s, color 0.16s;
+      transition: background 0.16s, color 0.16s, box-shadow 0.16s;
+      border-radius: 8px;
+      margin: 4px 8px;
+      list-style: none;
+      border-left: 3.5px solid #d7262b22;
+      background: none;
+      box-shadow: none;
+      position: relative;
+    }
+    #dropdownMenu .submenu li:hover {
+      background: linear-gradient(90deg, #e3e8f0 60%, #dbeafe 100%);
+      color: #d7262b;
+      border-left: 3.5px solid #d7262b;
+      box-shadow: 0 2px 8px rgba(0,44,119,0.08);
     }
     #dropdownMenu .submenu li:active {
       background: #dbeafe;
@@ -1243,72 +1245,69 @@
     })();
   </script>
   <script>
-    // Modern Dropdown Menu Button Logic
+    // Modern dropdown menu logic for #menuToggle and #dropdownMenu
     (function() {
       const menuBtn = document.getElementById('menuToggle');
       const dropdown = document.getElementById('dropdownMenu');
-      let open = false;
+      let openSubmenu = null;
 
-      // Toggle dropdown menu
+      function closeMenu() {
+        dropdown.style.display = 'none';
+        menuBtn.setAttribute('aria-expanded', 'false');
+        if (openSubmenu) {
+          openSubmenu.classList.remove('open');
+          openSubmenu.querySelector('.submenu').style.display = 'none';
+          openSubmenu = null;
+        }
+      }
+      function openMenu() {
+        dropdown.style.display = 'block';
+        menuBtn.setAttribute('aria-expanded', 'true');
+      }
       menuBtn.addEventListener('click', function(e) {
         e.stopPropagation();
-        open = !open;
-        dropdown.style.display = open ? 'block' : 'none';
-        if (open) {
-          setTimeout(() => {
-            dropdown.focus && dropdown.focus();
-          }, 10);
+        if (dropdown.style.display === 'block') {
+          closeMenu();
+        } else {
+          openMenu();
         }
       });
-
-      // Close dropdown on outside click
+      // Close on outside click
       document.addEventListener('mousedown', function(e) {
-        if (open && !dropdown.contains(e.target) && e.target !== menuBtn) {
-          dropdown.style.display = 'none';
-          open = false;
+        if (dropdown.style.display === 'block' && !dropdown.contains(e.target) && e.target !== menuBtn) {
+          closeMenu();
         }
       });
-
-      // Close dropdown on any menu item click
-      dropdown.querySelectorAll('.dropdown-item').forEach(function(item) {
+      // Close on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+      // Accordion submenu logic
+      dropdown.querySelectorAll('.has-submenu').forEach(function(item) {
         item.addEventListener('click', function(e) {
-          // If submenu, handle accordion logic
-          if (item.classList.contains('has-submenu')) {
-            e.stopPropagation();
-            // Accordion: only one submenu open at a time
-            dropdown.querySelectorAll('.has-submenu').forEach(function(other) {
-              if (other !== item) {
-                other.classList.remove('open');
-                const submenu = other.querySelector('.submenu');
-                if (submenu) submenu.style.display = 'none';
-              }
-            });
-            // Toggle this submenu
-            const submenu = item.querySelector('.submenu');
-            const isOpen = item.classList.toggle('open');
-            if (submenu) submenu.style.display = isOpen ? 'block' : 'none';
+          e.stopPropagation();
+          // Only one submenu open at a time
+          if (openSubmenu && openSubmenu !== item) {
+            openSubmenu.classList.remove('open');
+            openSubmenu.querySelector('.submenu').style.display = 'none';
+          }
+          const submenu = item.querySelector('.submenu');
+          if (submenu.style.display === 'block') {
+            submenu.style.display = 'none';
+            item.classList.remove('open');
+            openSubmenu = null;
           } else {
-            // Close menu on direct link click
-            dropdown.style.display = 'none';
-            open = false;
+            submenu.style.display = 'block';
+            item.classList.add('open');
+            openSubmenu = item;
           }
         });
       });
-
-      // Also close dropdown on submenu item click
-      dropdown.querySelectorAll('.submenu li').forEach(function(subitem) {
-        subitem.addEventListener('click', function(e) {
-          dropdown.style.display = 'none';
-          open = false;
+      // Close menu on any menu item click (except submenu expanders)
+      dropdown.querySelectorAll('.dropdown-item:not(.has-submenu), .submenu li').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          closeMenu();
         });
-      });
-
-      // Keyboard accessibility: close on Escape
-      document.addEventListener('keydown', function(e) {
-        if (open && e.key === 'Escape') {
-          dropdown.style.display = 'none';
-          open = false;
-        }
       });
     })();
   </script>
