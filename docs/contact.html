@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Afly Consultancy Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(120deg, #f6f9ff 0%, #e3e8f0 100%) !important;
+      color: #1a2340;
+    }
+    header {
+      background: linear-gradient(90deg, #fff 60%, #e3e8f0 100%);
+      color: #222;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 170px;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0,44,119,0.08);
+      margin-top: 0 !important;
+    }
+    .logo {
+      max-width: 120px;
+      margin: 24px 0 24px 40px;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+    }
+    .header-text {
+      text-align: right;
+      margin-right: 40px;
+    }
+    .header-text h1 {
+      font-size: 2.5rem;
+      margin: 0 0 8px 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #002c77;
+      background: linear-gradient(90deg, #002c77 60%, #d7262b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+    }
+    .header-text p {
+      font-size: 1.2rem;
+      color: #b71c22;
+      margin: 0;
+      font-style: italic;
+      font-weight: 500;
+    }
+    /* Floating buttons */
+    .floating-btn {
+      position: fixed;
+      bottom: 38px;
+      right: 30px;
+      background: linear-gradient(90deg, #d7262b 60%, #002c77 100%);
+      color: #fff;
+      padding: 15px 25px;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      font-weight: bold;
+      text-decoration: none;
+      z-index: 9999;
+      transition: background 0.3s;
+    }
+    .floating-btn:hover {
+      background: #002c77;
+      color: #fff;
+    }
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 38px;
+      left: 30px;
+      background: #25D366;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      z-index: 9999;
+    }
+    .floating-whatsapp:hover {
+      background: #1DA851;
+      color: #fff;
+    }
+    .floating-whatsapp img {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+    @media (max-width: 700px) {
+      .floating-btn {
+        bottom: 16px;
+        right: 12px;
+      }
+      .floating-whatsapp {
+        bottom: 16px;
+        left: 10px;
+      }
+    }
+    /* Flight animation GIF above Consultation button */
+    .floating-flight {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 10000;
+      width: 56px;
+      height: 56px;
+      pointer-events: none;
+      transition: top 0.2s cubic-bezier(.4,2,.6,1);
+      will-change: top, right;
+    }
+    @media (max-width: 700px) {
+      .floating-flight {
+        right: 0;
+        width: 36px;
+        height: 36px;
+      }
+    }
+    /* Dropdown menu styles (copied from index.html) */
+    #menuToggle {
+      position:fixed;top:0;right:0;z-index:12000;background:rgba(255,255,255,0.82);color:#002c77;border:none;border-radius:50%;padding:10px 11px 10px 11px;box-shadow:0 4px 18px 0 rgba(0,44,119,0.13),0 1.5px 6px rgba(0,44,119,0.10);font-size:1.3rem;cursor:pointer;transition:background 0.18s,box-shadow 0.18s,transform 0.15s,opacity 0.15s;display:flex;align-items:center;justify-content:center;gap:0;overflow:hidden;opacity:0.92;backdrop-filter:blur(3px);border:1.5px solid #dbeafe;
+    }
+    #dropdownMenu {
+      display:none;position:fixed;top:54px;right:16px;z-index:12001;background:rgba(255,255,255,0.98);box-shadow:0 8px 32px 0 rgba(0,44,119,0.13),0 2px 8px rgba(0,44,119,0.10);border-radius:18px;padding:18px 0 10px 0;min-width:220px;backdrop-filter:blur(4px);border:1.5px solid #dbeafe;
+    }
+    #dropdownMenu ul {
+      font-size: 1.13rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    #dropdownMenu .dropdown-item {
+      padding: 10px 28px 10px 24px !important;
+      border-radius: 14px;
+      margin: 0 10px 6px 10px;
+      background: none;
+      color: #002c77;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      box-shadow: none;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+    #dropdownMenu .dropdown-item:hover, #dropdownMenu .dropdown-item:focus {
+      background: linear-gradient(90deg, #e3e8f0 60%, #dbeafe 100%);
+      color: #d7262b;
+      box-shadow: 0 2px 12px rgba(0,44,119,0.08);
+    }
+    #dropdownMenu .has-submenu > span {
+      font-size: 1.1em;
+      color: #d7262b;
+      margin-left: 8px;
+      transition: transform 0.2s;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    #dropdownMenu .submenu {
+      background: linear-gradient(120deg, #fff 60%, #e3e8f0 100%);
+      border-radius: 12px;
+      margin: 8px 0 8px 0;
+      box-shadow: 0 2px 12px rgba(0,44,119,0.07);
+      padding: 6px 0 6px 8px;
+      border: none;
+      min-width: 180px;
+      animation: submenuFadeIn 0.22s cubic-bezier(.4,2,.6,1);
+      list-style: none;
+      font-size: 1.04rem;
+    }
+    @keyframes submenuFadeIn {
+      0% { opacity: 0; transform: translateY(-10px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    #dropdownMenu .submenu li {
+      padding: 10px 20px 10px 18px !important;
+      color: #002c77;
+      font-size: 1.07rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.16s, color 0.16s, box-shadow 0.16s;
+      border-radius: 8px;
+      margin: 4px 8px;
+      list-style: none;
+      border-left: 3.5px solid #d7262b22;
+      background: none;
+      box-shadow: none;
+      position: relative;
+    }
+    #dropdownMenu .submenu li:hover {
+      background: linear-gradient(90deg, #e3e8f0 60%, #dbeafe 100%);
+      color: #d7262b;
+      border-left: 3.5px solid #d7262b;
+      box-shadow: 0 2px 8px rgba(0,44,119,0.08);
+    }
+    #dropdownMenu .submenu li:active {
+      background: #dbeafe;
+      color: #d7262b;
+    }
+    @media (max-width: 600px) {
+      body { font-size: 1rem; padding: 0; }
+      .top-bar { flex-direction: column; align-items: flex-start; padding: 8px; font-size: 13px; gap: 6px; margin-top: 32px !important; }
+      header { flex-direction: column; align-items: flex-start; min-height: 100px; padding: 0; }
+      .logo { max-width: 70px; margin: 16px 0 0 12px; }
+      .header-text { margin: 0 0 12px 12px; text-align: left; }
+      .header-text h1 { font-size: 1.25rem; margin-bottom: 2px; }
+      .header-text p { font-size: 0.98rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu Button -->
+  <button id="menuToggle" aria-label="Open Menu" style="position:fixed;top:0;right:0;z-index:12000;background:rgba(255,255,255,0.82);color:#002c77;border:none;border-radius:50%;padding:10px 11px 10px 11px;box-shadow:0 4px 18px 0 rgba(0,44,119,0.13),0 1.5px 6px rgba(0,44,119,0.10);font-size:1.3rem;cursor:pointer;transition:background 0.18s,box-shadow 0.18s,transform 0.15s,opacity 0.15s;display:flex;align-items:center;justify-content:center;gap:0;overflow:hidden;opacity:0.92;backdrop-filter:blur(3px);border:1.5px solid #dbeafe;">
+    <span style="display:inline-block;width:20px;height:20px;position:relative;">
+      <span style="position:absolute;left:0;top:4px;width:20px;height:3px;background:#002c77;border-radius:2px;box-shadow:0 1px 4px #002c7722;transition:all 0.2s;"></span>
+      <span style="position:absolute;left:0;top:9px;width:20px;height:3px;background:#d7262b;border-radius:2px;box-shadow:0 1px 4px #d7262b22;transition:all 0.2s;"></span>
+      <span style="position:absolute;left:0;top:14px;width:20px;height:3px;background:#002c77;border-radius:2px;box-shadow:0 1px 4px #002c7722;transition:all 0.2s;"></span>
+    </span>
+  </button>
+  <!-- Dropdown Menu -->
+  <div id="dropdownMenu" style="display:none;position:fixed;top:54px;right:16px;z-index:12001;background:rgba(255,255,255,0.98);box-shadow:0 8px 32px 0 rgba(0,44,119,0.13),0 2px 8px rgba(0,44,119,0.10);border-radius:18px;padding:18px 0 10px 0;min-width:220px;backdrop-filter:blur(4px);border:1.5px solid #dbeafe;">
+    <ul style="list-style:none;margin:0;padding:0;font-size:1.08rem;">
+      <li class="dropdown-item has-submenu" style="padding:10px 28px 10px 24px;cursor:pointer;position:relative;">
+        Destinations <span class="submenu-arrow" style="float:right;">&#9660;</span>
+        <ul class="submenu" style="display:none;position:relative;top:auto;left:auto;right:auto;background:rgba(245,247,255,0.98);box-shadow:none;border-radius:10px;padding:0 0 0 10px;min-width:170px;border:none;margin-top:6px;">
+          <li style="padding:8px 22px;cursor:pointer;">UK</li>
+          <li style="padding:8px 22px;cursor:pointer;">USA</li>
+          <li style="padding:8px 22px;cursor:pointer;">Canada</li>
+          <li style="padding:8px 22px;cursor:pointer;">Australia</li>
+          <li style="padding:8px 22px;cursor:pointer;">Europe</li>
+        </ul>
+      </li>
+      <li class="dropdown-item has-submenu" style="padding:10px 28px 10px 24px;cursor:pointer;position:relative;">
+        Services <span class="submenu-arrow" style="float:right;">&#9660;</span>
+        <ul class="submenu" style="display:none;position:relative;top:auto;left:auto;right:auto;background:rgba(245,247,255,0.98);box-shadow:none;border-radius:10px;padding:0 0 0 10px;min-width:170px;border:none;margin-top:6px;">
+          <li style="padding:8px 22px;cursor:pointer;">Admissions</li>
+          <li style="padding:8px 22px;cursor:pointer;">Visa Guidance</li>
+          <li style="padding:8px 22px;cursor:pointer;">Scholarships</li>
+          <li style="padding:8px 22px;cursor:pointer;">Pre-Departure</li>
+        </ul>
+      </li>
+      <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;" data-link="about.html">About Us</li>
+      <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;" data-link="contact.html">Contact</li>
+    </ul>
+  </div>
+  <header style="margin-left: 0px; z-index: 1;">
+    <a href="index.html" onclick="window.location.href='index.html'; return false;">
+      <img src="./assets/afly_logo_uploaded.png" alt="Afly Consultancy Logo" class="logo" onerror="this.onerror=null;this.src='./assets/afly_logo_uploaded.jpg';">
+    </a>
+    <div class="header-text">
+      <h1>Afly Consultancy Services</h1>
+      <p><em>Aim High, Fly High</em></p>
+    </div>
+  </header>
+  <!-- Floating Flight Icon -->
+  <div class="floating-flight" id="floatingFlight">
+    <img src="./assets/flight_animation.gif" alt="Flight Animation" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,44,119,0.18));">
+  </div>
+  <!-- Floating WhatsApp and Consultation Buttons -->
+  <a href="https://wa.me/+918125144079" class="floating-whatsapp" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+  </a>
+  <a href="#consultation" class="floating-btn" id="consultationBtn">Consultation</a>
+  <section id="consultation" style="display:none;"></section>
+  <!-- Contact Us Section -->
+  <section id="contact" style="background: linear-gradient(120deg, #fff 60%, #e3e8f0 100%); border-radius: 18px; margin: 60px auto 0 auto; max-width: 700px; padding: 40px 32px 32px 32px; box-shadow: 0 2px 16px rgba(0,44,119,0.07);">
+    <h2>Contact Us</h2>
+    <div class="contact-box" style="background: #fff; padding: 24px; border-radius: 10px; margin-top: 18px; box-shadow: 0 2px 8px rgba(0,44,119,0.07); font-size: 1.08rem;">
+      <p><strong>Email:</strong> info@aflyconsultancy.com</p>
+      <p><strong>Phone:</strong> <a href="https://wa.me/+918125144079">+91 8125144079</a></p>
+    </div>
+  </section>
+  <footer style="background: linear-gradient(90deg, #002c77 60%, #d7262b 100%); color: #fff; text-align: center; padding: 16px; margin-top: 60px; font-size: 1.05rem; letter-spacing: 0.5px; border-radius: 0 0 18px 18px; box-shadow: 0 -2px 16px rgba(0,44,119,0.07);">
+    <p>&copy; 2025 Afly Consultancy Services | All Rights Reserved</p>
+  </footer>
+  <!-- Dropdown Menu JS (copied from index.html) -->
+  <script>
+    (function() {
+      const menuBtn = document.getElementById('menuToggle');
+      const dropdown = document.getElementById('dropdownMenu');
+      let openSubmenu = null;
+      function closeMenu() {
+        dropdown.style.display = 'none';
+        menuBtn.setAttribute('aria-expanded', 'false');
+        if (openSubmenu) {
+          openSubmenu.classList.remove('open');
+          openSubmenu.querySelector('.submenu').style.display = 'none';
+          openSubmenu = null;
+        }
+      }
+      function openMenu() {
+        dropdown.style.display = 'block';
+        menuBtn.setAttribute('aria-expanded', 'true');
+      }
+      menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (dropdown.style.display === 'block') {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+      document.addEventListener('mousedown', function(e) {
+        if (dropdown.style.display === 'block' && !dropdown.contains(e.target) && e.target !== menuBtn) {
+          closeMenu();
+        }
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+      // Remove all click handlers from parent li (clone node to remove listeners)
+      dropdown.querySelectorAll('.has-submenu').forEach(function(item) {
+        const newItem = item.cloneNode(true);
+        item.parentNode.replaceChild(newItem, item);
+      });
+      // Add click only to the arrow
+      dropdown.querySelectorAll('.has-submenu > .submenu-arrow').forEach(function(arrow) {
+        arrow.style.cursor = 'pointer';
+        arrow.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const item = this.parentElement;
+          if (openSubmenu && openSubmenu !== item) {
+            openSubmenu.classList.remove('open');
+            openSubmenu.querySelector('.submenu').style.display = 'none';
+          }
+          const submenu = item.querySelector('.submenu');
+          if (submenu.style.display === 'block') {
+            submenu.style.display = 'none';
+            item.classList.remove('open');
+            openSubmenu = null;
+          } else {
+            submenu.style.display = 'block';
+            item.classList.add('open');
+            openSubmenu = item;
+          }
+        });
+      });
+      // Accordion submenu logic: open/close on parent li click, but only if click is not on submenu or arrow
+      dropdown.querySelectorAll('.has-submenu').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          if (e.target === item || e.target === item.childNodes[0]) {
+            e.stopPropagation();
+            if (openSubmenu && openSubmenu !== item) {
+              openSubmenu.classList.remove('open');
+              openSubmenu.querySelector('.submenu').style.display = 'none';
+            }
+            const submenu = item.querySelector('.submenu');
+            if (submenu.style.display === 'block') {
+              submenu.style.display = 'none';
+              item.classList.remove('open');
+              openSubmenu = null;
+            } else {
+              submenu.style.display = 'block';
+              item.classList.add('open');
+              openSubmenu = item;
+            }
+          }
+        });
+      });
+      // Add navigation for Contact and About Us
+      dropdown.querySelectorAll('.dropdown-item[data-link]').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          var link = item.getAttribute('data-link');
+          if (link) {
+            window.location.href = link;
+          }
+        });
+      });
+      dropdown.querySelectorAll('.dropdown-item:not(.has-submenu):not([data-link]), .submenu li').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          closeMenu();
+        });
+      });
+    })();
+    // Consultation button scrolls to contact section (home page logic)
+    document.getElementById('consultationBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      var contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
+  <!-- Floating Flight Animation JS (copied from index.html) -->
+  <script>
+    (function() {
+      const flight = document.getElementById('floatingFlight');
+      const consultBtn = document.querySelector('.floating-btn');
+      const menuBtn = document.getElementById('menuToggle');
+      function updateFlight() {
+        if (!consultBtn || !menuBtn || !flight) return;
+        const consultRect = consultBtn.getBoundingClientRect();
+        const menuRect = menuBtn.getBoundingClientRect();
+        const flightHeight = window.innerWidth > 700 ? 56 : 36;
+        const minTop = menuRect.bottom + 12;
+        const maxTop = consultRect.top - flightHeight - 12;
+        const scrollY = window.scrollY || window.pageYOffset;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const percent = docHeight > 0 ? Math.min(scrollY / docHeight, 1) : 0;
+        const moveY = maxTop - percent * (maxTop - minTop);
+        flight.style.top = moveY + 'px';
+      }
+      window.addEventListener('scroll', updateFlight);
+      window.addEventListener('resize', updateFlight);
+      updateFlight();
+    })();
+  </script>
+</body>
+</html>
