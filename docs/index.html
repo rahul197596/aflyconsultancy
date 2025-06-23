@@ -770,8 +770,8 @@
   <div id="dropdownMenu" style="display:none;position:fixed;top:54px;right:16px;z-index:12001;background:rgba(255,255,255,0.98);box-shadow:0 8px 32px 0 rgba(0,44,119,0.13),0 2px 8px rgba(0,44,119,0.10);border-radius:18px;padding:18px 0 10px 0;min-width:220px;backdrop-filter:blur(4px);border:1.5px solid #dbeafe;">
     <ul style="list-style:none;margin:0;padding:0;font-size:1.08rem;">
       <li class="dropdown-item has-submenu" style="padding:10px 28px 10px 24px;cursor:pointer;position:relative;">
-        Destinations <span style="float:left;">&#9664;</span>
-        <ul class="submenu" style="display:none;position:absolute;top:0;right:100%;left:auto;background:rgba(255,255,255,0.98);box-shadow:0 4px 18px 0 rgba(0,44,119,0.13);border-radius:14px;padding:8px 0;min-width:170px;border:1.5px solid #dbeafe;">
+        Destinations <span style="float:right;">&#9660;</span>
+        <ul class="submenu" style="display:none;position:relative;top:auto;left:auto;right:auto;background:rgba(245,247,255,0.98);box-shadow:none;border-radius:10px;padding:0 0 0 10px;min-width:170px;border:none;margin-top:6px;">
           <li style="padding:8px 22px;cursor:pointer;">UK</li>
           <li style="padding:8px 22px;cursor:pointer;">USA</li>
           <li style="padding:8px 22px;cursor:pointer;">Canada</li>
@@ -780,8 +780,8 @@
         </ul>
       </li>
       <li class="dropdown-item has-submenu" style="padding:10px 28px 10px 24px;cursor:pointer;position:relative;">
-        Services <span style="float:left;">&#9664;</span>
-        <ul class="submenu" style="display:none;position:absolute;top:0;right:100%;left:auto;background:rgba(255,255,255,0.98);box-shadow:0 4px 18px 0 rgba(0,44,119,0.13);border-radius:14px;padding:8px 0;min-width:170px;border:1.5px solid #dbeafe;">
+        Services <span style="float:right;">&#9660;</span>
+        <ul class="submenu" style="display:none;position:relative;top:auto;left:auto;right:auto;background:rgba(245,247,255,0.98);box-shadow:none;border-radius:10px;padding:0 0 0 10px;min-width:170px;border:none;margin-top:6px;">
           <li style="padding:8px 22px;cursor:pointer;">Admissions</li>
           <li style="padding:8px 22px;cursor:pointer;">Visa Guidance</li>
           <li style="padding:8px 22px;cursor:pointer;">Scholarships</li>
@@ -793,43 +793,88 @@
       <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;">Apply</li>
     </ul>
   </div>
-  <script>
-  // Dropdown menu toggle logic
-  const menuToggle = document.getElementById('menuToggle');
-  const dropdownMenu = document.getElementById('dropdownMenu');
-  let dropdownOpen = false;
-  menuToggle.addEventListener('click', function(e) {
-    e.stopPropagation();
-    dropdownMenu.style.display = dropdownOpen ? 'none' : 'block';
-    dropdownOpen = !dropdownOpen;
-  });
-  document.addEventListener('click', function(e) {
-    if (dropdownOpen && !dropdownMenu.contains(e.target) && e.target !== menuToggle) {
-      dropdownMenu.style.display = 'none';
-      dropdownOpen = false;
+  <style>
+    #dropdownMenu {
+      background: linear-gradient(120deg, #f6f9ff 0%, #e3e8f0 100%) !important;
+      box-shadow: 0 8px 32px 0 rgba(0,44,119,0.13), 0 2px 8px rgba(0,44,119,0.10);
+      border-radius: 22px;
+      border: 1.5px solid #dbeafe;
+      padding: 18px 0 10px 0;
+      min-width: 240px;
+      backdrop-filter: blur(8px) saturate(120%);
+      transition: box-shadow 0.18s, background 0.18s;
+      animation: dropdownFadeIn 0.25s cubic-bezier(.4,2,.6,1);
     }
-  });
-  // Submenu logic
-  const submenuParents = document.querySelectorAll('.has-submenu');
-  submenuParents.forEach(parent => {
-    parent.addEventListener('mouseenter', function() {
-      this.querySelector('.submenu').style.display = 'block';
-    });
-    parent.addEventListener('mouseleave', function() {
-      this.querySelector('.submenu').style.display = 'none';
-    });
-  });
-  // Close dropdown on option click
-  const dropdownItems = document.querySelectorAll('#dropdownMenu .dropdown-item');
-  dropdownItems.forEach(item => {
-    item.addEventListener('click', function(e) {
-      if (!this.classList.contains('has-submenu')) {
-        dropdownMenu.style.display = 'none';
-        dropdownOpen = false;
-      }
-    });
-  });
-  </script>
+    @keyframes dropdownFadeIn {
+      0% { opacity: 0; transform: translateY(-18px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    #dropdownMenu ul {
+      font-size: 1.13rem;
+    }
+    #dropdownMenu .dropdown-item {
+      padding: 13px 32px 13px 28px !important;
+      border-radius: 14px;
+      margin: 0 10px 6px 10px;
+      background: none;
+      color: #002c77;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      box-shadow: none;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+    #dropdownMenu .dropdown-item:hover, #dropdownMenu .dropdown-item:focus {
+      background: linear-gradient(90deg, #e3e8f0 60%, #dbeafe 100%);
+      color: #d7262b;
+      box-shadow: 0 2px 12px rgba(0,44,119,0.08);
+    }
+    #dropdownMenu .has-submenu > span {
+      font-size: 1.1em;
+      color: #d7262b;
+      margin-left: 8px;
+      transition: transform 0.2s;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    #dropdownMenu .submenu {
+      background: linear-gradient(120deg, #fff 60%, #e3e8f0 100%);
+      border-radius: 12px;
+      margin: 8px 0 8px 0;
+      box-shadow: 0 2px 12px rgba(0,44,119,0.07);
+      padding: 6px 0 6px 18px;
+      border: none;
+      min-width: 180px;
+      animation: submenuFadeIn 0.22s cubic-bezier(.4,2,.6,1);
+    }
+    @keyframes submenuFadeIn {
+      0% { opacity: 0; transform: translateY(-10px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    #dropdownMenu .submenu li {
+      padding: 0;
+      margin: 0;
+    }
+    #dropdownMenu .submenu li:hover {
+      background: #e3e8f0;
+      color: #d7262b;
+      border-radius: 8px;
+    }
+    #dropdownMenu .submenu li {
+      padding: 9px 18px 9px 10px !important;
+      color: #002c77;
+      font-size: 1.04rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.16s, color 0.16s;
+    }
+    #dropdownMenu .submenu li:active {
+      background: #dbeafe;
+      color: #d7262b;
+    }
+  </style>
   <header style="margin-left:0;">
     <a href="index.html" onclick="window.location.href='index.html'; return false;">
       <img src="./assets/afly_logo_uploaded.png" alt="Afly Consultancy Logo" class="logo" onerror="this.onerror=null;this.src='./assets/afly_logo_uploaded.jpg';">
@@ -1195,6 +1240,76 @@
       window.addEventListener('scroll', updateFlight);
       window.addEventListener('resize', updateFlight);
       updateFlight();
+    })();
+  </script>
+  <script>
+    // Modern Dropdown Menu Button Logic
+    (function() {
+      const menuBtn = document.getElementById('menuToggle');
+      const dropdown = document.getElementById('dropdownMenu');
+      let open = false;
+
+      // Toggle dropdown menu
+      menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        open = !open;
+        dropdown.style.display = open ? 'block' : 'none';
+        if (open) {
+          setTimeout(() => {
+            dropdown.focus && dropdown.focus();
+          }, 10);
+        }
+      });
+
+      // Close dropdown on outside click
+      document.addEventListener('mousedown', function(e) {
+        if (open && !dropdown.contains(e.target) && e.target !== menuBtn) {
+          dropdown.style.display = 'none';
+          open = false;
+        }
+      });
+
+      // Close dropdown on any menu item click
+      dropdown.querySelectorAll('.dropdown-item').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          // If submenu, handle accordion logic
+          if (item.classList.contains('has-submenu')) {
+            e.stopPropagation();
+            // Accordion: only one submenu open at a time
+            dropdown.querySelectorAll('.has-submenu').forEach(function(other) {
+              if (other !== item) {
+                other.classList.remove('open');
+                const submenu = other.querySelector('.submenu');
+                if (submenu) submenu.style.display = 'none';
+              }
+            });
+            // Toggle this submenu
+            const submenu = item.querySelector('.submenu');
+            const isOpen = item.classList.toggle('open');
+            if (submenu) submenu.style.display = isOpen ? 'block' : 'none';
+          } else {
+            // Close menu on direct link click
+            dropdown.style.display = 'none';
+            open = false;
+          }
+        });
+      });
+
+      // Also close dropdown on submenu item click
+      dropdown.querySelectorAll('.submenu li').forEach(function(subitem) {
+        subitem.addEventListener('click', function(e) {
+          dropdown.style.display = 'none';
+          open = false;
+        });
+      });
+
+      // Keyboard accessibility: close on Escape
+      document.addEventListener('keydown', function(e) {
+        if (open && e.key === 'Escape') {
+          dropdown.style.display = 'none';
+          open = false;
+        }
+      });
     })();
   </script>
 </body>
