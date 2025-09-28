@@ -1,100 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USA - Study in the United States</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>USA - Study in the United States | Afly Consultancy</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="description" content="Study in the USA with Afly Consultancy. University selection, applications, scholarships, visa guidance and more." />
 </head>
 <body>
-    <header class="afly-header">
-        <div class="afly-header-inner">
-          <div style="display:flex;align-items:center;gap:18px;">
-            <img src="assets/afly_logo_uploaded.png" alt="Afly Logo" style="height:54px;width:54px;border-radius:16px;object-fit:contain;padding:0;background:none;box-shadow:none;">
-            <div style="display:flex;flex-direction:column;align-items:flex-start;">
-              <span class="afly-brand-title">Afly Consultancy Services</span>
-              <span class="afly-brand-tagline">Aim High Fly High</span>
-            </div>
+  <header class="site-header" role="banner">
+    <div class="container flex center" style="justify-content:space-between;height:var(--nav-height);">
+      <a href="index.html" class="brand" aria-label="Afly Consultancy Services home">
+        <img src="assets/afly_logo_uploaded.png" alt="Afly Logo" />
+        <span>Afly Consultancy Services</span>
+      </a>
+      <button class="theme-toggle icon-btn" id="themeToggle" aria-label="Activate dark mode" aria-pressed="false" title="Dark Mode" data-mode="light">
+        <svg class="icon-sun" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg>
+        <svg class="icon-moon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 12 17a7 7 0 0 0 9-4.21z" /></svg>
+      </button>
+      <button class="hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="navbar-wrapper" id="navMenu" aria-label="Main navigation">
+      <ul class="navbar" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="about.html">About Us</a></li>
+        <li role="none">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false">Destinations</button>
+          <div class="dropdown-panel" role="menu">
+            <a role="menuitem" href="uk.html">UK</a>
+            <a role="menuitem" href="usa.html" class="active">USA</a>
+            <a role="menuitem" href="australia.html">Australia</a>
+            <a role="menuitem" href="canada.html">Canada</a>
+            <a role="menuitem" href="newzealand.html">New Zealand</a>
+            <a role="menuitem" href="europe.html">Europe</a>
           </div>
-          <nav class="afly-nav">
-            <ul id="aflyNavMenu">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About Us</a></li>
-              <li class="dropdown">
-                <a href="uk.html" class="dropdown-toggle" tabindex="0">Destinations</a>
-                <ul class="dropdown-content">
-                  <li><a href="uk.html">UK</a></li>
-                  <li><a href="usa.html">USA</a></li>
-                  <li><a href="australia.html">Australia</a></li>
-                  <li><a href="canada.html">Canada</a></li>
-                  <li><a href="newzealand.html">New Zealand</a></li>
-                  <li><a href="europe.html">Europe</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="postvisa.html" class="dropdown-toggle" tabindex="0">Services</a>
-                <ul class="dropdown-content">
-                  <li><a href="postvisa.html">Post Visa Services</a></li>
-                  <li><a href="predeparture.html">Pre Departure Instructions</a></li>
-                  <li><a href="loan.html">Education Loan Support</a></li>
-                  <li><a href="university.html">University & Course Selection Help</a></li>
-                  <li><a href="career.html">Career Guidance</a></li>
-                </ul>
-              </li>
-              <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-          </nav>
-          <button class="afly-hamburger" onclick="toggleHamburger(this)" aria-label="Toggle navigation">
-            <span></span><span></span><span></span>
-          </button>
+        </li>
+        <li role="none">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false">Services</button>
+          <div class="dropdown-panel" role="menu">
+            <a role="menuitem" href="postvisa.html">Post Visa Services</a>
+            <a role="menuitem" href="predeparture.html">Pre Departure Instructions</a>
+            <a role="menuitem" href="loan.html">Education Loan Support</a>
+            <a role="menuitem" href="university.html">University & Course Selection Help</a>
+            <a role="menuitem" href="career.html">Career Guidance</a>
+          </div>
+        </li>
+        <li role="none"><a role="menuitem" href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="container">
+      <h1>USA - Study in the United States</h1>
+      <p>The USA is a top destination for international students, offering world-class education, research opportunities, and a diverse campus life. Afly Consultancy Services assists you with university selection, applications, scholarships, visa, and settling in the US.</p>
+      <ul class="list-ticks">
+        <li>Leading universities: Harvard, MIT, Stanford, and more</li>
+        <li>STEM OPT and work opportunities</li>
+        <li>Vast range of courses and research options</li>
+        <li>Support for scholarships and financial aid</li>
+      </ul>
+    </div>
+  </main>
+
+  <aside class="fab" aria-label="Quick actions">
+    <a href="https://wa.me/918125144079" target="_blank" rel="noopener" aria-label="WhatsApp Chat">
+      <img src="assets/WhatsApp.svg.webp" alt="WhatsApp" />
+    </a>
+  </aside>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html#process">Process</a></li>
+          </ul>
         </div>
-      </header>
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          window.toggleHamburger = function(btn) {
-            btn.classList.toggle('open');
-            document.getElementById('aflyNavMenu').classList.toggle('open');
-          };
-          document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
-            toggle.addEventListener('click', function(e) {
-              if(window.innerWidth <= 900) {
-                e.preventDefault();
-                document.querySelectorAll('.afly-nav .dropdown').forEach(function(drop) {
-                  if(drop !== toggle.parentElement) drop.classList.remove('open');
-                });
-                this.parentElement.classList.toggle('open');
-              }
-            });
-          });
-          document.querySelectorAll('.afly-nav a').forEach(function(link){
-            link.addEventListener('click',function(){
-              document.getElementById('aflyNavMenu').classList.remove('open');
-              document.querySelector('.afly-hamburger').classList.remove('open');
-              document.querySelectorAll('.afly-nav .dropdown').forEach(function(drop) {
-                drop.classList.remove('open');
-              });
-            });
-          });
-          window.addEventListener('resize', function() {
-            if(window.innerWidth > 900) {
-              document.querySelectorAll('.afly-nav .dropdown').forEach(function(drop) {
-                drop.classList.remove('open');
-              });
-              document.getElementById('aflyNavMenu').classList.remove('open');
-              document.querySelector('.afly-hamburger').classList.remove('open');
-            }
-          });
-        });
-      </script>
-      <main style="max-width:900px;margin:40px auto 0 auto;padding:0 16px;">
-        <h1>USA - Study in the United States</h1>
-        <p>The USA is a top destination for international students, offering world-class education, research opportunities, and a diverse campus life. Afly Consultancy Services assists you with university selection, applications, scholarships, visa, and settling in the US.</p>
-        <ul>
-          <li>Leading universities: Harvard, MIT, Stanford, and more</li>
-          <li>STEM OPT and work opportunities</li>
-          <li>Vast range of courses and research options</li>
-          <li>Support for scholarships and financial aid</li>
-        </ul>
-      </main>
+        <div>
+          <h4>Destinations</h4>
+          <ul>
+            <li><a href="uk.html">UK</a></li>
+            <li><a href="usa.html">USA</a></li>
+            <li><a href="australia.html">Australia</a></li>
+            <li><a href="canada.html">Canada</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="university.html">Course & University</a></li>
+            <li><a href="loan.html">Education Loan</a></li>
+            <li><a href="predeparture.html">Pre Departure</a></li>
+            <li><a href="postvisa.html">Post Visa</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Value Add</h4>
+          <ul>
+            <li><a href="career.html">Career Guidance</a></li>
+            <li><a href="index.html#stories">Testimonials</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2025 Afly Consultancy Services. British Council Certified. All rights reserved.</div>
+    </div>
+  </footer>
+  <script src="assets/main.js"></script>
 </body>
 </html>

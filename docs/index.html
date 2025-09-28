@@ -355,40 +355,6 @@
       <div class="copyright">&copy; 2025 Afly Consultancy Services. British Council Certified. All rights reserved.</div>
     </div>
   </footer>
-  <script>
-    (function(){
-      const root=document.documentElement;
-      const navToggle=document.getElementById('navToggle');
-      const navMenu=document.getElementById('navMenu');
-      const themeToggle=document.getElementById('themeToggle');
-      // Nav toggle
-      navToggle.addEventListener('click',()=>{const open=navToggle.classList.toggle('open');navMenu.classList.toggle('open');navToggle.setAttribute('aria-expanded',open);});
-      // Dropdown logic
-      document.querySelectorAll('.nav-link').forEach(btn=>{
-        btn.addEventListener('click',e=>{if(window.innerWidth>940)return;const expanded=btn.getAttribute('aria-expanded')==='true';document.querySelectorAll('.nav-link').forEach(b=>b.setAttribute('aria-expanded','false'));btn.setAttribute('aria-expanded',expanded?'false':'true');btn.parentElement.classList.toggle('show',!expanded);});
-        btn.addEventListener('mouseenter',()=>{if(window.innerWidth<=940)return;btn.setAttribute('aria-expanded','true');btn.parentElement.classList.add('show');});
-        btn.parentElement.addEventListener('mouseleave',()=>{if(window.innerWidth<=940)return;btn.setAttribute('aria-expanded','false');btn.parentElement.classList.remove('show');});
-      });
-      // Close on resize
-      window.addEventListener('resize',()=>{if(window.innerWidth>940){navMenu.classList.remove('open');navToggle.classList.remove('open');navToggle.setAttribute('aria-expanded','false');document.querySelectorAll('.nav-link').forEach(b=>{b.setAttribute('aria-expanded','false');b.parentElement.classList.remove('show');});}});
-      // Theme toggle with explicit naming
-      function updateThemeUI(theme){
-        const isDark = theme==='dark';
-        themeToggle.setAttribute('aria-pressed', isDark? 'true':'false');
-        themeToggle.setAttribute('aria-label', isDark? 'Activate light mode':'Activate dark mode');
-        themeToggle.title = isDark? 'Light Mode':'Dark Mode';
-        themeToggle.querySelector('.icon-sun').style.display = isDark? 'none':'block';
-        themeToggle.querySelector('.icon-moon').style.display = isDark? 'block':'none';
-        themeToggle.dataset.mode = theme;
-      }
-      updateThemeUI(root.getAttribute('data-theme')||'light');
-      themeToggle.addEventListener('click',()=>{
-        const current = root.getAttribute('data-theme')||'light';
-        const next = current==='light' ? 'dark' : 'light';
-        root.setAttribute('data-theme', next);
-        updateThemeUI(next);
-      });
-    })();
-  </script>
+  <script src="assets/main.js"></script>
 </body>
 </html>
