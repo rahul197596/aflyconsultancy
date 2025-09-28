@@ -1,1330 +1,392 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Afly Consultancy Services</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    /* --- THEME INTEGRATION FOR OVERSEAS EDUCATION CONSULTANCY --- */
-    body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      margin: 0;
-      background: linear-gradient(120deg, #f6f9ff 0%, #e3e8f0 100%) !important;
-      color: #1a2340;
-      /* Add 3D animated world map background */
-      background-image: none;
-      position: relative;
-    }
-    #worldmap-bg {
-      display: none !important;
-    }
-    canvas#worldmap-canvas {
-      display: none !important;
-    }
-    main, header, nav, section, footer, .features, .afly-dynamic-highlight, .partnered-universities-section {
-      position: relative;
-      z-index: 1;
-    }
-    header {
-      background: linear-gradient(90deg, #fff 60%, #e3e8f0 100%);
-      color: #222;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 170px;
-      position: relative;
-      box-shadow: 0 4px 24px rgba(0,44,119,0.08);
-      margin-top: 0 !important;
-    }
-    .logo {
-      max-width: 120px;
-      margin: 24px 0 24px 40px;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
-    }
-    .header-text {
-      text-align: right;
-      margin-right: 40px;
-    }
-    .header-text h1 {
-      font-size: 2.5rem;
-      margin: 0 0 8px 0;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #002c77;
-      background: linear-gradient(90deg, #002c77 60%, #d7262b 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: none;
-    }
-    .header-text p {
-      font-size: 1.2rem;
-      color: #b71c22;
-      margin: 0;
-      font-style: italic;
-      font-weight: 500;
-    }
-    nav {
-      background: #001f5c;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-    }
-    nav li { position: relative; }
-    nav a {
-      display: block;
-      padding: 16px 28px;
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-family: 'Roboto', Arial, sans-serif;
-      font-size: 1.05rem;
-      letter-spacing: 0.5px;
-      transition: background 0.2s, color 0.2s;
-    }
-    nav li:hover, nav a:focus {
-      background: #0041c4;
-      color: #fff;
-    }
-    nav li ul {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #0041c4;
-      padding: 0;
-      min-width: 220px;
-      z-index: 1000;
-      border-radius: 0 0 10px 10px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-    }
-    nav li:hover ul { display: block; }
-    nav li ul li { width: 100%; }
-    section.hero {
-      background: linear-gradient(120deg, #e3e8f0 60%, #dbeafe 100%) !important;
-      padding: 60px 0 40px 0;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border-radius: 0 0 40px 40px;
-      box-shadow: 0 8px 32px rgba(0,44,119,0.07);
-    }
-    .hero-content {
-      max-width: 700px;
-      margin: auto;
-      z-index: 2;
-      position: relative;
-    }
-    .hero-content h2 {
-      font-size: 2.7rem;
-      color: #002c77;
-      margin-bottom: 18px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      background: linear-gradient(90deg, #002c77 0%, #d7262b 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-content p {
-      font-size: 1.25rem;
-      color: #333;
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
-    .hero-cta {
-      display: inline-block;
-      background: linear-gradient(90deg, #d7262b 60%, #002c77 100%);
-      color: #fff;
-      padding: 16px 38px;
-      border-radius: 30px;
-      font-size: 1.15rem;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 4px 16px rgba(215,38,43,0.10);
-      transition: background 0.2s, transform 0.2s;
-      margin-top: 10px;
-    }
-    .hero-cta:hover { background: #002c77; color: #fff; transform: scale(1.07); }
-    .hero-graphic {
-      background: none !important;
-      opacity: 0 !important;
-    }
-    @media (max-width: 900px) {
-      .hero-graphic { display: none; }
-      .hero-content h2 { font-size: 2.1rem; }
-    }
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 36px;
-      margin: 40px auto 0 auto;
-      max-width: 1100px;
-      background: linear-gradient(120deg, #fff 60%, #e3e8f0 100%);
-      border-radius: 32px;
-      box-shadow: 0 8px 32px rgba(0,44,119,0.07);
-      padding: 32px 0 32px 0;
-    }
-    .feature-box {
-      background: #fff;
-      border: 1.5px solid #e3e8f0;
-      box-shadow: 0 2px 16px rgba(0,44,119,0.07);
-      padding: 32px 28px 28px 28px;
-      flex: 1 1 260px;
-      min-width: 260px;
-      max-width: 340px;
-      text-align: center;
-      transition: transform 0.18s, box-shadow 0.18s;
-      position: relative;
-    }
-    .feature-box:hover {
-      transform: translateY(-8px) scale(1.04);
-      box-shadow: 0 8px 32px rgba(0,44,119,0.13);
-    }
-    .feature-box img {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 18px;
-      filter: drop-shadow(0 2px 8px rgba(0,44,119,0.10));
-    }
-    .feature-box h3 {
-      color: #d7262b;
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-    .feature-box p {
-      color: #444;
-      font-size: 1.05rem;
-      margin: 0;
-    }
-    section.cta {
-      text-align: center;
-      margin: 60px 0 0 0;
-      background: #fff;
-    }
-    .cta a {
-      background: linear-gradient(90deg, #002c77 60%, #d7262b 100%);
-      color: #fff;
-      padding: 16px 38px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 30px;
-      font-size: 1.15rem;
-      box-shadow: 0 4px 16px rgba(0,44,119,0.10);
-      transition: background 0.2s, transform 0.2s;
-    }
-    .cta a:hover { background: #d7262b; color: #fff; transform: scale(1.07); }
-    section#contact {
-      background: linear-gradient(120deg, #fff 60%, #e3e8f0 100%);
-      border-radius: 18px;
-      margin: 60px auto 0 auto;
-      max-width: 700px;
-      padding: 40px 32px 32px 32px;
-      box-shadow: 0 2px 16px rgba(0,44,119,0.07);
-    }
-    section#contact h2 { color: #002c77; }
-    .contact-box {
-      background: #fff;
-      padding: 24px;
-      border-radius: 10px;
-      margin-top: 18px;
-      box-shadow: 0 2px 8px rgba(0,44,119,0.07);
-      font-size: 1.08rem;
-    }
-    footer {
-      background: linear-gradient(90deg, #002c77 60%, #d7262b 100%);
-      color: #fff;
-      text-align: center;
-      padding: 16px;
-      margin-top: 60px;
-      font-size: 1.05rem;
-      letter-spacing: 0.5px;
-      border-radius: 0 0 18px 18px;
-      box-shadow: 0 -2px 16px rgba(0,44,119,0.07);
-    }
-    .floating-btn {
-      position: fixed;
-      bottom: 38px; /* increased gap for mobile, ensures no overlap with scrolling bar */
-      right: 30px;
-      background: linear-gradient(90deg, #d7262b 60%, #002c77 100%);
-      color: #fff;
-      padding: 15px 25px;
-      border-radius: 50px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      font-weight: bold;
-      text-decoration: none;
-      z-index: 9999;
-      transition: background 0.3s;
-    }
-    .floating-btn:hover {
-      background: #002c77;
-      color: #fff;
-    }
-    .floating-whatsapp {
-      position: fixed;
-      bottom: 38px; /* increased gap for mobile, ensures no overlap with scrolling bar */
-      left: 30px;
-      background: #25D366;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      z-index: 9999;
-    }
-    .floating-whatsapp:hover {
-      background: #1DA851;
-      color: #fff;
-    }
-    .floating-whatsapp img {
-      width: 32px;
-      height: 32px;
-      display: block;
-    }
-    @media (max-width: 700px) {
-      .floating-btn {
-        bottom: 100px; /* further increased for mobile to avoid overlap */
-        right: 12px;
-      }
-      .floating-whatsapp {
-        bottom: 100px;
-        left: 10px;
-      }
-    }
-    #consultationOverlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.45);
-      z-index: 9998;
-      transition: opacity 0.3s;
-      pointer-events: auto;
-      backdrop-filter: blur(8px) saturate(140%);
-      -webkit-backdrop-filter: blur(8px) saturate(140%);
-    }
-    #consultationForm {
-      display: none;
-      background: #fff;
-      border: none;
-      padding: 32px 24px 24px 24px;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 360px;
-      min-width: 260px;
-      border-radius: 18px;
-      text-align: center;
-      animation: popIn 0.3s;
-      box-sizing: border-box;
-      padding-top: 32px;
-      z-index: 10001;
-    }
-    @keyframes popIn {
-      0% { opacity: 0; transform: translate(-50%, -60%) scale(0.95);}
-      100% { opacity: 1; transform: translate(-50%, -50%) scale(1);}
-    }
-    #consultationForm.active {
-      display: block;
-    }
-    #consultationOverlay.active {
-      display: block;
-    }
-    #consultationForm .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 20px;
-      color: #d7262b;
-      cursor: pointer;
-      font-weight: bold;
-      transition: color 0.2s;
-      z-index: 1;
-      padding: 0;
-      line-height: 1;
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #consultationForm .close-btn:hover {
-      color: #002c77;
-    }
-    #consultationForm h3 {
-      margin-top: 0;
-      font-size: 22px;
-      color: #d7262b;
-      margin-bottom: 18px;
-      letter-spacing: 0.5px;
-    }
-    #consultationForm input, #consultationForm button {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 14px;
-      border-radius: 6px;
-      border: 1px solid #e3e8f0;
-      font-size: 15px;
-      box-sizing: border-box;
-    }
-    #consultationForm input:focus {
-      outline: 2px solid #d7262b;
-      border-color: #d7262b;
-    }
-    #consultationForm button {
-      background: linear-gradient(90deg, #d7262b 60%, #002c77 100%);
-      color: #fff;
-      border: none;
-      font-weight: bold;
-      font-size: 16px;
-      margin-bottom: 0;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    #consultationForm button:hover {
-      background: #002c77;
-      color: #fff;
-    }
-    @media (max-width: 600px) {
-      body { font-size: 1rem; padding: 0; }
-      .top-bar { flex-direction: column; align-items: flex-start; padding: 8px; font-size: 13px; gap: 6px; margin-top: 32px !important; }
-      header { flex-direction: column; align-items: flex-start; min-height: 100px; padding: 0; }
-      .logo { max-width: 70px; margin: 16px 0 0 12px; }
-      .header-text { margin: 0 0 12px 12px; text-align: left; }
-      .header-text h1 { font-size: 1.25rem; margin-bottom: 2px; }
-      .header-text p { font-size: 0.98rem; }
-      nav { overflow-x: auto; white-space: nowrap; padding: 0; box-shadow: none; position: relative; }
-      nav ul { flex-wrap: nowrap; flex-direction: row; width: 100vw; overflow-x: auto; gap: 0; }
-      nav > ul > li { min-width: 120px; border-bottom: 1px solid #dbeafe33; }
-      nav a { padding: 13px 10px; font-size: 1.01rem; width: 100%; box-sizing: border-box; }
-      nav li ul { left: 0; min-width: 120px; font-size: 0.97rem; }
-      section.hero { padding: 24px 0 12px 0; }
-      .hero-content { max-width: 98vw; padding: 0 6vw; }
-      .hero-content h2 { font-size: 1.25rem; margin-bottom: 10px; }
-      .hero-content p { font-size: 1.01rem; margin-bottom: 18px; }
-      .hero-cta { padding: 12px 18px; font-size: 1.01rem; border-radius: 18px; }
-      .features { flex-direction: column; gap: 18px; margin: 18px auto 0 auto; max-width: 98vw; padding: 0 2vw; }
-      .feature-box { min-width: 0; max-width: 100vw; padding: 18px 10px 14px 10px; font-size: 0.98rem; }
-      .feature-box img { width: 38px; height: 38px; margin-bottom: 8px; }
-      .feature-box h3 { font-size: 1.05rem; margin-bottom: 6px; }
-      .feature-box p { font-size: 0.97rem; }
-      .partnered-universities-section { padding: 40px 0 0 0 !important; min-height: 180px; }
-      .partnered-uni-scrollers { gap: 10px; padding: 0 2vw; }
-      .uni-scroll-row { gap: 2%; }
-      .uni-scroll-row img { height: 22px !important; max-width: 50vw !important; padding: 1px 2px !important; }
-      section#contact { padding: 18px 6vw 12px 6vw; margin: 18px auto 0 auto; max-width: 99vw; border-radius: 10px; }
-      .contact-box { padding: 12px 6px; font-size: 0.98rem; }
-      footer { padding: 10px 2vw; font-size: 0.97rem; margin-top: 18px; }
-      .floating-btn { padding: 10px 16px; font-size: 0.98rem; bottom: 16px; right: 12px; border-radius: 30px; }
-      .floating-whatsapp { padding: 10px 12px; font-size: 0.98rem; bottom: 16px; left: 10px; border-radius: 30px; gap: 6px; }
-    }
-    /* Partnered Universities Scroller Styles */
-    .partnered-universities-section {
-      margin: 0;
-      min-height: 340px;
-      padding-top: 100px !important;
-      padding-bottom: 60px !important;
-      background: #fff !important;
-    }
-    .partnered-uni-scrollers {
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .uni-scroll-row {
-      display: flex;
-      align-items: center;
-      gap: 2%;
-      animation: uni-scroll var(--duration,60s) linear infinite;
-      will-change: transform;
-    }
-    .uni-scroll-row img {
-      height: 74px;
-      width: auto;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,44,119,0.10);
-      padding: 10px 28px;
-      display: block;
-      transition: transform 0.2s, box-shadow 0.2s;
-      max-width: 220px;
-      object-fit: contain;
-    }
-    .uni-scroll-row img:hover {
-      transform: scale(1.18);
-      box-shadow: 0 8px 32px rgba(0,44,119,0.18);
-      z-index: 2;
-    }
-    @keyframes uni-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-    @media (max-width: 900px) {
-      .uni-scroll-row img { height: 48px; max-width: 140px; padding: 6px 12px; }
-      .partnered-uni-scrollers { gap: 28px; }
-      .partnered-universities-section { min-height: 180px; padding-top: 40px !important; }
-    }
-    @media (max-width: 600px) {
-      .uni-scroll-row img { height: 32px; max-width: 90px; padding: 2px 4px; }
-      .partnered-universities-section { min-height: 100px; padding-top: 18px !important; }
-    }
-    /* Dynamic Highlight Section Styles */
-    .afly-dynamic-highlight {
-      position: relative;
-      margin: 48px auto;
-      max-width: 700px;
-      min-height: 180px;
-      background: linear-gradient(120deg, #fff 60%, #e3e8f0 100%);
-      border-radius: 32px;
-      box-shadow: 0 8px 32px rgba(0,44,119,0.10), 0 2px 0 #d7262b22 inset;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .afly-dynamic-bg {
-      display: none !important;
-    }
-    .afly-dynamic-content {
-      position: relative;
-      z-index: 1;
-      padding: 38px 32px 32px 32px;
-      text-align: center;
-    }
-    .afly-dynamic-content h2 {
-      font-size: 2.1rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, #002c77 0%, #d7262b 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 16px;
-      letter-spacing: 1px;
-    }
-    .afly-dynamic-content p {
-      font-size: 1.18rem;
-      color: #1a2340;
-      margin-bottom: 22px;
-      line-height: 1.6;
-    }
-    .afly-cta-btn {
-      display: inline-block;
-      background: linear-gradient(90deg, #d7262b 60%, #002c77 100%);
-      color: #fff;
-      padding: 14px 36px;
-      border-radius: 30px;
-      font-size: 1.13rem;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 4px 16px rgba(215,38,43,0.10);
-      transition: background 0.2s, transform 0.2s;
-    }
-    .afly-cta-btn:hover {
-      background: #002c77;
-      color: #fff;
-      transform: scale(1.07);
-    }
-    @media (max-width: 700px) {
-      .afly-dynamic-highlight {
-        margin: 24px 2vw;
-        max-width: 99vw;
-        border-radius: 14px;
-        min-height: 120px;
-      }
-      .afly-dynamic-content {
-        padding: 18px 4vw;
-      }
-      .afly-dynamic-content h2 {
-        font-size: 1.18rem;
-      }
-      .afly-dynamic-content p {
-        font-size: 1.01rem;
-      }
-      .afly-cta-btn {
-        padding: 10px 18px;
-        font-size: 1.01rem;
-        border-radius: 18px;
-      }
-    }
-    /* Preloader Styles */
-    #preloader {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #001a4d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 20000;
-      transition: opacity 0.5s;
-    }
-    .flag-wave-bg {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 1;
-      overflow: hidden;
-    }
-    .flag-wave {
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(120deg, #d7262b 0%, #fff 40%, #002c77 100%);
-      background-size: 200% 200%;
-      animation: flagWave 2.5s linear infinite alternate;
-      opacity: 0.85;
-    }
-    @keyframes flagWave {
-      0% { background-position: 0% 50%; filter: brightness(1.1) saturate(1.2); }
-      50% { background-position: 100% 50%; filter: brightness(1.3) saturate(1.5); }
-      100% { background-position: 0% 50%; filter: brightness(1.1) saturate(1.2); }
-    }
-    /* Partnered Universities Section Adjustments */
-    .partnered-universities-section {
-      background: linear-gradient(120deg, #e3e8f0 60%, #dbeafe 100%) !important;
-      color: #002c77;
-      border-radius: 0 0 40px 40px;
-      box-shadow: 0 8px 32px rgba(0,44,119,0.07);
-    }
-    .partnered-universities-section h2 {
-      color: #002c77 !important;
-    }
-    /* Section divider shape */
-    .section-divider {
-      width: 100%;
-      height: 48px;
-      background: url('data:image/svg+xml;utf8,<svg width="100%25" height="48" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H1440V48C960 24 480 24 0 48V0Z" fill="%23e3e8f0"/></svg>') no-repeat center/cover;
-      margin: 0;
-      border: none;
-      display: block;
-    }
-    @media (max-width: 700px) {
-      .features, .afly-dynamic-highlight, .partnered-universities-section {
-        border-radius: 14px;
-      }
-      .section-divider {
-        height: 24px;
-      }
-    }
-    /* Flight animation GIF above Consultation button (right bottom, vertical movement, local asset) */
-    .floating-flight {
-      position: fixed;
-      top: 0;
-      right: 0;
-      z-index: 10000;
-      width: 56px;
-      height: 56px;
-      pointer-events: none;
-      transition: top 0.2s cubic-bezier(.4,2,.6,1);
-      will-change: top, right;
-    }
-    @media (max-width: 700px) {
-      .floating-flight {
-        right: 0;
-        width: 36px;
-        height: 36px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Afly Consultancy Services | Aim High Fly High</title>
+  <meta name="description" content="British Council Certified Overseas Education Consultancy offering end-to-end study abroad support: university selection, applications, visas, scholarships, pre & post departure services." />
+  <link rel="preload" href="assets/afly_logo_uploaded.png" as="image" />
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-  <div id="worldmap-bg">
-    <canvas id="worldmap-canvas"></canvas>
-  </div>
-  <!-- Sidebar Navigation -->
-  <nav id="sidebarNav" style="position:fixed;top:0;right:-270px;left:auto;width:260px;height:100vh;background:#001f5c;color:#fff;z-index:11001;box-shadow:-2px 0 16px rgba(0,44,119,0.10);transition:right 0.3s;overflow-y:auto;">
-    <div style="padding:24px 18px 12px 18px;border-bottom:1px solid #dbeafe33;display:flex;align-items:center;gap:12px;">
-      <a href="index.html" onclick="window.location.href='index.html'; return false;" style="display:inline-block;"><img src="./assets/afly_logo_uploaded.png" alt="Afly Consultancy Logo" class="logo" style="max-width:60px;margin:0;" onerror="this.onerror=null;this.src='./assets/afly_logo_uploaded.jpg';"></a>
-      <span style="font-weight:bold;font-size:1.1rem;">Afly Consultancy</span>
+  <header class="site-header" role="banner">
+    <div class="container flex center" style="justify-content:space-between;height:var(--nav-height);">
+      <a href="index.html" class="brand" aria-label="Afly Consultancy Services home">
+        <img src="assets/afly_logo_uploaded.png" alt="Afly Logo" />
+        <span>Afly Consultancy Services</span>
+      </a>
+      <button class="theme-toggle icon-btn" id="themeToggle" aria-label="Activate dark mode" aria-pressed="false" title="Dark Mode" data-mode="light">
+        <!-- Sun icon (shown in light mode to switch to dark) -->
+        <svg class="icon-sun" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <!-- Moon icon (hidden until dark mode active) -->
+        <svg class="icon-moon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 12 17a7 7 0 0 0 9-4.21z" />
+        </svg>
+      </button>
+      <button class="hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <ul class="sidebar-menu" style="list-style:none;padding:0;margin:0;">
-      <li><a href="index.html" onclick="window.location.href='index.html'; return false;">Home</a></li>
-      <li class="has-sub"><a href="#">About Us</a>
-        <ul class="sub-menu">
-          <li><a href="company-overview.html">Company Overview</a></li>
-          <li><a href="why-choose-us.html">Why Choose Us</a></li>
-          <li><a href="our-team.html">Our Team</a></li>
-        </ul>
-      </li>
-      <li class="has-sub"><a href="#">Study Destinations</a>
-        <ul class="sub-menu">
-          <li><a href="usa.html">USA</a></li>
-          <li><a href="uk.html">UK</a></li>
-          <li><a href="australia.html">Australia</a></li>
-          <li><a href="canada.html">Canada</a></li>
-          <li><a href="europe.html">Europe</a></li>
-          <li><a href="new-zealand.html">New Zealand</a></li>
-        </ul>
-      </li>
-      <li class="has-sub"><a href="#">Services</a>
-        <ul class="sub-menu">
-          <li><a href="student-counseling.html">Student Counseling</a></li>
-          <li><a href="course-selection.html">Course Selection</a></li>
-          <li><a href="visa-assistance.html">Visa Assistance</a></li>
-          <li><a href="pre-departure-briefing.html">Pre-Departure Briefing</a></li>
-        </ul>
-      </li>
-      <li class="has-sub"><a href="#">Resources</a>
-        <ul class="sub-menu">
-          <li><a href="faqs.html">FAQs</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-        </ul>
-      </li>
-      <li class="has-sub"><a href="#">Contact</a>
-        <ul class="sub-menu">
-          <li><a href="contact-email.html">Email</a></li>
-          <li><a href="contact-phone.html">Phone</a></li>
-        </ul>
-      </li>
-      <li class="has-sub"><a href="#">Apply</a>
-        <ul class="sub-menu">
-          <li><a href="online-application.html">Online Application</a></li>
-          <li><a href="book-a-consultation.html">Book a Consultation</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-  <style>
-    #sidebarNav { font-family: 'Montserrat', Arial, sans-serif; }
-    #sidebarNav ul.sidebar-menu > li > a {
-      display:block;padding:16px 24px;color:#fff;text-decoration:none;font-weight:600;font-size:1.08rem;transition:background 0.2s;cursor:pointer;
-    }
-    #sidebarNav ul.sidebar-menu > li > a:hover, #sidebarNav ul.sidebar-menu > li.active > a {
-      background:#d7262b;
-    }
-    #sidebarNav ul.sub-menu {
-      display:none;padding-left:0;background:#002c77;
-    }
-    #sidebarNav ul.sub-menu li a {
-      display:block;padding:13px 36px;color:#e3e8f0;text-decoration:none;font-size:1rem;font-weight:500;transition:background 0.2s;
-    }
-    #sidebarNav ul.sub-menu li a:hover { background:#d7262b;color:#fff; }
-    #sidebarNav ul.sidebar-menu > li.open > ul.sub-menu { display:block; }
-    #sidebarNav ul.sidebar-menu > li.has-sub > a:after {
-      content:'▼';float:right;font-size:0.8em;margin-top:4px;transition:transform 0.2s; }
-    #sidebarNav ul.sidebar-menu > li.open > a:after { transform:rotate(-180deg); }
-    @media (max-width:700px) {
-      #sidebarNav { width:90vw;min-width:0; }
-    }
-    body.sidebar-open #sidebarNav { right:0;left:auto; }
-    body.sidebar-open #sidebarToggle { right:270px;left:auto; }
-    body.sidebar-open { overflow:hidden; }
-  </style>
-  <script>
-    // Sidebar open/close logic
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const sidebarNav = document.getElementById('sidebarNav');
-    sidebarToggle.addEventListener('click', function() {
-      document.body.classList.toggle('sidebar-open');
-    });
-    // Close sidebar on outside click
-    document.addEventListener('click', function(e) {
-      if(document.body.classList.contains('sidebar-open')) {
-        if(!sidebarNav.contains(e.target) && e.target !== sidebarToggle) {
-          document.body.classList.remove('sidebar-open');
-        }
-      }
-    });
-    // Expand/collapse submenus
-    document.querySelectorAll('#sidebarNav .has-sub > a').forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const parent = this.parentElement;
-        parent.classList.toggle('open');
-        // Close other open submenus
-        document.querySelectorAll('#sidebarNav .has-sub').forEach(function(li) {
-          if(li !== parent) li.classList.remove('open');
-        });
-      });
-    });
-  </script>
-  <!-- Modern Top-Right Menu Button (absolute top right corner) -->
-  <button id="menuToggle" aria-label="Open Menu" style="position:fixed;top:0;right:0;z-index:12000;background:rgba(255,255,255,0.82);color:#002c77;border:none;border-radius:50%;padding:10px 11px 10px 11px;box-shadow:0 4px 18px 0 rgba(0,44,119,0.13),0 1.5px 6px rgba(0,44,119,0.10);font-size:1.3rem;cursor:pointer;transition:background 0.18s,box-shadow 0.18s,transform 0.15s,opacity 0.15s;display:flex;align-items:center;justify-content:center;gap:0;overflow:hidden;opacity:0.92;backdrop-filter:blur(3px);border:1.5px solid #dbeafe;">
-    <span style="display:inline-block;width:20px;height:20px;position:relative;">
-      <span style="position:absolute;left:0;top:4px;width:20px;height:3px;background:#002c77;border-radius:2px;box-shadow:0 1px 4px #002c7722;transition:all 0.2s;"></span>
-      <span style="position:absolute;left:0;top:9px;width:20px;height:3px;background:#d7262b;border-radius:2px;box-shadow:0 1px 4px #d7262b22;transition:all 0.2s;"></span>
-      <span style="position:absolute;left:0;top:14px;width:20px;height:3px;background:#002c77;border-radius:2px;box-shadow:0 1px 4px #002c7722;transition:all 0.2s;"></span>
-    </span>
-  </button>
-  <div id="dropdownMenu" style="display:none;position:fixed;top:54px;right:16px;z-index:12001;background:rgba(255,255,255,0.98);box-shadow:0 8px 32px 0 rgba(0,44,119,0.13),0 2px 8px rgba(0,44,119,0.10);border-radius:18px;padding:18px 0 10px 0;min-width:220px;backdrop-filter:blur(4px);border:1.5px solid #dbeafe;">
-    <ul style="list-style:none;margin:0;padding:0;font-size:1.08rem;">
-      <li class="dropdown-item has-submenu" style="padding:10px 28px 10px 24px;cursor:pointer;position:relative;">
-        Destinations <span style="float:right;">&#9660;</span>
-        <ul class="submenu" style="display:none;position:relative;top:auto;left:auto;right:auto;background:rgba(245,247,255,0.98);box-shadow:none;border-radius:10px;padding:0 0 0 10px;min-width:170px;border:none;margin-top:6px;">
-          <li style="padding:8px 22px;cursor:pointer;">UK</li>
-          <li style="padding:8px 22px;cursor:pointer;">USA</li>
-          <li style="padding:8px 22px;cursor:pointer;">Canada</li>
-          <li style="padding:8px 22px;cursor:pointer;">Australia</li>
-          <li style="padding:8px 22px;cursor:pointer;">Europe</li>
-        </ul>
-      </li>
-      <li class="dropdown-item has-submenu" style="padding:10px 28px 10px 24px;cursor:pointer;position:relative;">
-        Services <span style="float:right;">&#9660;</span>
-        <ul class="submenu" style="display:none;position:relative;top:auto;left:auto;right:auto;background:rgba(245,247,255,0.98);box-shadow:none;border-radius:10px;padding:0 0 0 10px;min-width:170px;border:none;margin-top:6px;">
-          <li style="padding:8px 22px;cursor:pointer;">Admissions</li>
-          <li style="padding:8px 22px;cursor:pointer;">Visa Guidance</li>
-          <li style="padding:8px 22px;cursor:pointer;">Scholarships</li>
-          <li style="padding:8px 22px;cursor:pointer;">Pre-Departure</li>
-        </ul>
-      </li>
-      <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;">About Us</li>
-      <li class="dropdown-item" style="padding:10px 28px 10px 24px;cursor:pointer;" data-link="contact.html">Contact</li>
-    </ul>
-  </div>
-  <style>
-    #dropdownMenu {
-      background: linear-gradient(120deg, #f6f9ff 0%, #e3e8f0 100%) !important;
-      box-shadow: 0 8px 32px 0 rgba(0,44,119,0.13), 0 2px 8px rgba(0,44,119,0.10);
-      border-radius: 22px;
-      border: 1.5px solid #dbeafe;
-      padding: 18px 0 10px 0;
-      min-width: 240px;
-      backdrop-filter: blur(8px) saturate(120%);
-      transition: box-shadow 0.18s, background 0.18s;
-      animation: dropdownFadeIn 0.25s cubic-bezier(.4,2,.6,1);
-    }
-    @keyframes dropdownFadeIn {
-      0% { opacity: 0; transform: translateY(-18px) scale(0.98); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    #dropdownMenu ul {
-      font-size: 1.13rem;
-    }
-    #dropdownMenu .dropdown-item {
-      padding: 13px 32px 13px 28px !important;
-      border-radius: 14px;
-      margin: 0 10px 6px 10px;
-      background: none;
-      color: #002c77;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
-      box-shadow: none;
-      position: relative;
-      cursor: pointer;
-      user-select: none;
-    }
-    #dropdownMenu .dropdown-item:hover, #dropdownMenu .dropdown-item:focus {
-      background: linear-gradient(90deg, #e3e8f0 60%, #dbeafe 100%);
-      color: #d7262b;
-      box-shadow: 0 2px 12px rgba(0,44,119,0.08);
-    }
-    #dropdownMenu .has-submenu > span {
-      font-size: 1.1em;
-      color: #d7262b;
-      margin-left: 8px;
-      transition: transform 0.2s;
-      display: inline-block;
-      vertical-align: middle;
-    }
-    #dropdownMenu .submenu {
-      background: linear-gradient(120deg, #fff 60%, #e3e8f0 100%);
-      border-radius: 12px;
-      margin: 8px 0 8px 0;
-      box-shadow: 0 2px 12px rgba(0,44,119,0.07);
-      padding: 6px 0 6px 8px;
-      border: none;
-      min-width: 180px;
-      animation: submenuFadeIn 0.22s cubic-bezier(.4,2,.6,1);
-      list-style: none;
-      font-size: 1.04rem;
-    }
-    #dropdownMenu .submenu li {
-      padding: 10px 20px 10px 18px !important;
-      color: #002c77;
-      font-size: 1.07rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.16s, color 0.16s, box-shadow 0.16s;
-      border-radius: 8px;
-      margin: 4px 8px;
-      list-style: none;
-      border-left: 3.5px solid #d7262b22;
-      background: none;
-      box-shadow: none;
-      position: relative;
-    }
-    #dropdownMenu .submenu li:hover {
-      background: linear-gradient(90deg, #e3e8f0 60%, #dbeafe 100%);
-      color: #d7262b;
-      border-left: 3.5px solid #d7262b;
-      box-shadow: 0 2px 8px rgba(0,44,119,0.08);
-    }
-    #dropdownMenu .submenu li:active {
-      background: #dbeafe;
-      color: #d7262b;
-    }
-  </style>
-  <header style="margin-left:0;">
-    <a href="index.html" onclick="window.location.href='index.html'; return false;">
-      <img src="./assets/afly_logo_uploaded.png" alt="Afly Consultancy Logo" class="logo" onerror="this.onerror=null;this.src='./assets/afly_logo_uploaded.jpg';">
-    </a>
-    <div class="header-text">
-      <h1>Afly Consultancy Services</h1>
-      <p><em>Aim High, Fly High</em></p>
-    </div>
+    <nav class="navbar-wrapper" id="navMenu" aria-label="Main navigation">
+      <ul class="navbar" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html" class="active">Home</a></li>
+        <li role="none"><a role="menuitem" href="about.html">About Us</a></li>
+        <li role="none">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false">Destinations</button>
+          <div class="dropdown-panel" role="menu">
+            <a role="menuitem" href="uk.html">UK</a>
+            <a role="menuitem" href="usa.html">USA</a>
+            <a role="menuitem" href="australia.html">Australia</a>
+            <a role="menuitem" href="canada.html">Canada</a>
+            <a role="menuitem" href="newzealand.html">New Zealand</a>
+            <a role="menuitem" href="europe.html">Europe</a>
+          </div>
+        </li>
+        <li role="none">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false">Services</button>
+          <div class="dropdown-panel" role="menu">
+            <a role="menuitem" href="postvisa.html">Post Visa Services</a>
+            <a role="menuitem" href="predeparture.html">Pre Departure Instructions</a>
+            <a role="menuitem" href="loan.html">Education Loan Support</a>
+            <a role="menuitem" href="university.html">University & Course Selection Help</a>
+            <a role="menuitem" href="career.html">Career Guidance</a>
+          </div>
+        </li>
+        <li role="none"><a role="menuitem" href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
   </header>
-  <section class="partnered-universities-section" style="background:linear-gradient(120deg,#e3e8f0 60%,#dbeafe 100%);padding:100px 0 80px 0;min-height:320px;">
-    <h2 style="text-align:center;color:#002c77;font-size:2.2rem;font-weight:700;margin-bottom:36px;letter-spacing:1px;">Our Partnered Universities</h2>
-    <div class="partnered-uni-scroller" id="partneredUniScroller" style="overflow:hidden;width:100vw;max-width:1200px;margin:0 auto;position:relative;">
-      <div class="uni-scroll-row" data-row="0">
-        <img src="assets/University_of_Leicester.png" alt="University of Leicester" title="University of Leicester">
-      </div>
-      <div class="uni-scroll-row" data-row="1">
-        <img src="assets/istituto_marangoni.png" alt="Istituto Marangoni" title="Istituto Marangoni">
-      </div>
-      <div class="uni-scroll-row" data-row="2">
-        <img src="assets/University_of_east_london.png" alt="University of East London" title="University of East London">
-      </div>
-      <div class="uni-scroll-row" data-row="3">
-        <img src="assets/Kings_college_london.png" alt="Kings College London" title="Kings College London">
-      </div>
-    </div>
-    <style>
-      .partnered-uni-scroller {
-        overflow: hidden;
-        width: 100vw;
-        max-width: 1200px;
-        margin: 0 auto;
-        position: relative;
-        height: 420px;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        justify-content: center;
-      }
-      .uni-scroll-row {
-        width: 100%;
-        height: 90px;
-        position: relative;
-        display: flex;
-        align-items: center;
-      }
-      .uni-scroll-row img {
-        height: 74px;
-        width: auto;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0,44,119,0.10);
-        padding: 10px 28px;
-        display: block;
-        transition: transform 0.2s, box-shadow 0.2s;
-        max-width: 220px;
-        object-fit: contain;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        will-change: left;
-      }
-      .uni-scroll-row img:hover {
-        transform: translateY(-50%) scale(1.18);
-        box-shadow: 0 8px 32px rgba(0,44,119,0.18);
-        z-index: 2;
-      }
-      @media (max-width: 900px) {
-        .partnered-uni-scroller { height: 220px; gap: 8px; }
-        .uni-scroll-row { height: 40px; }
-        .uni-scroll-row img { height: 38px; max-width: 90px; padding: 4px 10px; }
-      }
-      @media (max-width: 600px) {
-        .partnered-uni-scroller { height: 120px; gap: 4px; }
-        .uni-scroll-row { height: 22px; }
-        .uni-scroll-row img { height: 22px; max-width: 60px; padding: 2px 4px; }
-      }
-    </style>
-    <script>
-      // JavaScript for 4-row infinite logo loop, no duplicates in all rows
-      window.addEventListener('DOMContentLoaded', function() {
-        const scroller = document.getElementById('partneredUniScroller');
-        const rows = Array.from(scroller.querySelectorAll('.uni-scroll-row'));
-        if (!scroller || rows.length === 0) return;
-        function getGap() {
-          return Math.max(scroller.offsetWidth * 0.04, 24);
-        }
-        function layoutRow(row, speed, direction) {
-          // Only one logo per row, no clones
-          const logo = row.children[0];
-          let gap = getGap();
-          let rowWidth = scroller.offsetWidth;
-          let logoWidth = logo.offsetWidth;
-          let pos = direction === -1 ? rowWidth : -logoWidth;
-          logo.style.position = 'absolute';
-          logo.style.left = pos + 'px';
-          function animate() {
-            pos += speed * direction;
-            // If logo is fully out of view, reset to the other side
-            if (direction === -1 && pos < -logoWidth) {
-              pos = rowWidth;
-            } else if (direction === 1 && pos > rowWidth) {
-              pos = -logoWidth;
-            }
-            logo.style.left = pos + 'px';
-            requestAnimationFrame(animate);
-          }
-          animate();
-          window.addEventListener('resize', () => {
-            rowWidth = scroller.offsetWidth;
-            logoWidth = logo.offsetWidth;
-            pos = direction === -1 ? rowWidth : -logoWidth;
-            logo.style.left = pos + 'px';
-          });
-        }
-        // Each row has a unique logo, alternate direction for visual interest
-        rows.forEach((row, idx) => {
-          layoutRow(row, 1.1 + idx * 0.2, idx % 2 === 0 ? -1 : 1);
-        });
-      });
-    </script>
-  </section>
-  <section class="hero">
-    <div class="hero-content">
-      <a href="#" class="hero-cta">Start Your Journey Now</a>
-      <h2>Empowering Your Global Education Journey</h2>
-      <p>Unlock your potential with Afly Consultancy Services. We guide you to top universities worldwide, offering personalized counseling, expert visa support, and exclusive scholarships. Your dream career starts here!</p>
-    </div>
-    <div class="hero-graphic"></div>
-  </section>
-  <div class="features">
-    <div class="feature-box">
-      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Counseling">
-      <h3>Personalized Counseling</h3>
-      <p>Expert guidance tailored to your academic profile and career aspirations.</p>
-    </div>
-    <div class="feature-box">
-      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Destinations">
-      <h3>Top Study Destinations</h3>
-      <p>USA, UK, Australia, Canada, Europe, and more – we open doors to the world.</p>
-    </div>
-    <div class="feature-box">
-      <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Visa">
-      <h3>Visa & Admission Support</h3>
-      <p>Seamless application and visa process with our experienced team.</p>
-    </div>
-    <div class="feature-box">
-      <img src="https://cdn-icons-png.flaticon.com/512/3132/3132693.png" alt="Scholarships">
-      <h3>Exclusive Scholarships</h3>
-      <p>Access to extra scholarships and financial aid for deserving students.</p>
-    </div>
-  </div>
-  <section class="afly-dynamic-highlight">
-    <div class="afly-dynamic-bg">
-      <svg viewBox="0 0 400 180" width="100%" height="180" preserveAspectRatio="none" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;">
-        <defs>
-          <linearGradient id="aflyGradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#d7262b"/>
-            <stop offset="100%" stop-color="#002c77"/>
-          </linearGradient>
-        </defs>
-        <path d="M0,120 Q100,180 200,120 T400,120 V180 H0Z" fill="url(#aflyGradient)" opacity="0.18"/>
-        <circle cx="320" cy="60" r="38" fill="#d7262b" opacity="0.13">
-          <animate attributeName="cy" values="60;90;60" dur="4s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="80" cy="80" r="24" fill="#002c77" opacity="0.13">
-          <animate attributeName="cy" values="80;110;80" dur="5s" repeatCount="indefinite"/>
-        </circle>
-      </svg>
-    </div>
-    <div class="afly-dynamic-content">
-      <h2>Unlock Your Global Future</h2>
-      <p>At <strong>Afly Consultancy</strong>, we empower students to reach their dream universities worldwide. Our expert team provides personalized guidance, exclusive scholarships, and seamless support—every step of your journey.</p>
-      <a href="online-application.html" class="afly-cta-btn">Start Your Application</a>
-    </div>
-  </section>
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-box">
-      <p><strong>Email:</strong> info@aflyconsultancy.com</p>
-      <p><strong>Phone:</strong> <a href="https://wa.me/+918125144079">+91 8125144079</a></p>
-    </div>
-  </section>
-  <a href="#consultation" class="floating-btn" id="consultationBtn">Consultation</a>
-  <section id="consultation" style="display:none;"></section>
-  <a href="https://wa.me/+918125144079" class="floating-whatsapp" style="position:fixed;bottom:38px;left:30px;background:#25D366;box-shadow:0 4px 10px rgba(0,0,0,0.3);border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;padding:0;z-index:9999;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" style="width:32px;height:32px;display:block;">
-  </a>
-  <a href="#" class="floating-btn" style="position:fixed;bottom:38px;right:30px;background:linear-gradient(90deg,#d7262b 60%,#002c77 100%);color:#fff;padding:15px 25px;border-radius:50px;box-shadow:0 4px 10px rgba(0,0,0,0.3);font-weight:bold;text-decoration:none;z-index:9999;transition:background 0.3s;">Consultation</a>
-  <style>
-    @media (min-width: 701px) {
-      .floating-whatsapp {
-        bottom: 38px !important;
-        left: 30px !important;
-      }
-      .floating-btn {
-        bottom: 38px !important;
-        right: 30px !important;
-      }
-    }
-    @media (max-width: 700px) {
-      .floating-whatsapp {
-        bottom: 16px !important;
-        left: 10px !important;
-      }
-      .floating-btn {
-        bottom: 16px !important;
-        right: 12px !important;
-      }
-    }
-  </style>
-  <div class="floating-flight" id="floatingFlight">
-    <img src="./assets/flight_animation.gif" alt="Flight Animation" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,44,119,0.18));">
-  </div>
 
-  <div id="consultationOverlay"></div>
-  <div id="consultationForm">
-    <button class="close-btn" type="button" aria-label="Close">&times;</button>
-    <h3>Book a Consultation</h3>
-    <form id="formSubmit">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="tel" name="phone" placeholder="Your Phone" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
+  <main id="mainContent">
+    <section class="hero" id="hero">
+      <div class="container hero-inner">
+        <h1>Unlock Your Global Future</h1>
+        <p class="lead">British Council Certified Overseas Education Consultancy. Personalized guidance, 900+ university touchpoints and transparent, ethical advisory — from discovery to post‑arrival success.</p>
+        <div class="flex gap wrap center">
+          <a href="contact.html" class="btn">Free Consultation</a>
+          <a href="about.html" class="btn btn-outline">Why Choose Us</a>
+        </div>
+        <div class="cert-strip">
+          <img src="assets/british_council_cert.png" alt="British Council Certification" />
+          <p>Proudly British Council Certified ensuring compliance, quality and ethical student‑first processes.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section id="services-overview" class="features">
+      <div class="container">
+        <h2 class="section-title">Services We Offer</h2>
+        <p class="section-subtitle">Comprehensive, ethical and outcome-driven support tailored to your goals and timelines.</p>
+        <div class="feature-grid">
+          <a class="card card-link" href="university.html">
+            <h3>Course & University Selection</h3>
+            <p>Profiling, fitment scoring and curated shortlists across countries and ranking bands.</p>
+          </a>
+          <a class="card card-link" href="predeparture.html">
+            <h3>Application Readiness</h3>
+            <p>SOP/LOR coaching, document audits, portal submissions and deadline orchestration.</p>
+          </a>
+          <a class="card card-link" href="loan.html">
+            <h3>Education Loan Support</h3>
+            <p>Secured/unsecured options, eligibility guidance, paperwork and sanction acceleration.</p>
+          </a>
+          <a class="card card-link" href="postvisa.html">
+            <h3>Visa Strategy</h3>
+            <p>Finances & CAS/I20, interview simulations, health insurance, compliance checklists.</p>
+          </a>
+          <a class="card card-link" href="predeparture.html">
+            <h3>Pre‑Departure</h3>
+            <p>Housing, packing, travel, forex, SIM/banking, cultural onboarding and survival tips.</p>
+          </a>
+          <a class="card card-link" href="career.html">
+            <h3>Career Guidance</h3>
+            <p>Resume/LinkedIn upgrades, networking playbooks and internship readiness.</p>
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 Afly Consultancy Services | All Rights Reserved</p>
+    <section id="destinations-overview" class="features" aria-label="Top destinations">
+      <div class="container">
+        <h2 class="section-title">Study Destinations</h2>
+        <p class="section-subtitle">Discover opportunities, eligibility, fee structures and scholarship paths by country.</p>
+        <div class="feature-grid">
+          <a class="card card-link" href="uk.html"><h3>United Kingdom</h3><p>1‑year Master’s options, strong STEM & Business tracks, rich scholarship landscape.</p></a>
+          <a class="card card-link" href="usa.html"><h3>United States</h3><p>World‑leading research, assistantships, OPT/CPT pathways and vast program choice.</p></a>
+          <a class="card card-link" href="australia.html"><h3>Australia</h3><p>High employability, PR‑friendly pathways and great post‑study work rights.</p></a>
+          <a class="card card-link" href="canada.html"><h3>Canada</h3><p>Co‑op programs, competitive tuition, generous work rights and immigration routes.</p></a>
+          <a class="card card-link" href="newzealand.html"><h3>New Zealand</h3><p>Applied learning, innovation‑friendly economy, balanced cost of living.</p></a>
+          <a class="card card-link" href="europe.html"><h3>Europe</h3><p>Top public universities, selective English‑taught programs, compelling tuition value.</p></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="why-us">
+      <div class="container">
+        <div class="feature-grid">
+          <article class="card">
+            <h3>Expert Guidance</h3>
+            <p>Seasoned counselors evaluate your academic, financial and career profile to craft an optimal country–course–university matrix.</p>
+          </article>
+          <article class="card">
+            <h3>Certified & Ethical</h3>
+            <p>British Council certification assures evidence-based recommendations and unwavering transparency.</p>
+          </article>
+            <article class="card">
+            <h3>Scholarship Focus</h3>
+            <p>Structured approach to merit, need and destination scholarships with timeline alignment and documentation coaching.</p>
+          </article>
+          <article class="card">
+            <h3>End-to-End Support</h3>
+            <p>From profile positioning, application readiness, visa strategy to pre & post departure enablement.</p>
+          </article>
+          <article class="card">
+            <h3>Data-led Shortlisting</h3>
+            <p>Admission trends, acceptance ratios, ranking layers and ROI modelling inform every shortlist iteration.</p>
+          </article>
+          <article class="card">
+            <h3>Responsive Support</h3>
+            <p>Agile WhatsApp & email assistance with structured SLA so you are never stuck at a critical juncture.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="scholarships" class="features" aria-label="Scholarships & Funding">
+      <div class="container">
+        <h2 class="section-title">Scholarships & Funding</h2>
+        <p class="section-subtitle">We align your applications with the right merit, need‑based and destination scholarships.</p>
+        <div class="feature-grid">
+          <article class="card">
+            <h3>Merit Awards</h3>
+            <ul class="list-ticks">
+              <li>Automatic university merit waivers</li>
+              <li>Departmental assistantships (USA)</li>
+              <li>Early‑bird application grants</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Need‑Based Aid</h3>
+            <ul class="list-ticks">
+              <li>Financial need documentation support</li>
+              <li>Subsidized loans and bursaries</li>
+              <li>Fee installment planning</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Country Programs</h3>
+            <ul class="list-ticks">
+              <li>Commonwealth, Chevening (UK)</li>
+              <li>Erasmus+ (EU), DAAD (Germany)</li>
+              <li>Provincial/State awards (Canada/USA)</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="container">
+        <h2 class="section-title">Proven 5-Step Journey</h2>
+        <p class="section-subtitle">Clarity first, outcomes always. A structured flow minimizing uncertainty while accelerating offer conversions and funding wins.</p>
+        <div class="steps">
+          <div class="step"><strong>1. Diagnostic Consultation</strong><p>Career intent, competencies, budget, timeline and geographic resonance scan.</p></div>
+          <div class="step"><strong>2. Precision Shortlisting</strong><p>Multi-tier list (Ambitious / Competitive / Safe) aligned to acceptance probability and ROI.</p></div>
+          <div class="step"><strong>3. Application Excellence</strong><p>SOP/LOR refinement, document integrity checks, deadline orchestration and portal submission.</p></div>
+          <div class="step"><strong>4. Visa & Transition</strong><p>Finance proofs, CAS/I20 tracking, interview simulation, insurance, housing & packing brief.</p></div>
+          <div class="step"><strong>5. Post-Arrival Lift</strong><p>Orientation, SIM/bank support, part-time job readiness, career positioning roadmap.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners" id="partners">
+      <div class="container">
+        <h2>Partner Universities (Sample)</h2>
+        <div class="logo-marquee">
+          <div class="logo-row"><div class="logo-track">
+            <img src="assets/universities/istituto_marangoni.png" alt="Istituto Marangoni" />
+            <img src="assets/universities/Kings_college_london.png" alt="Kings College London" />
+            <img src="assets/universities/University_of_east_london.png" alt="University of East London" />
+            <img src="assets/universities/University_of_Leicester.png" alt="University of Leicester" />
+            <img src="assets/universities/istituto_marangoni.png" alt="Istituto Marangoni" />
+            <img src="assets/universities/Kings_college_london.png" alt="Kings College London" />
+            <img src="assets/universities/University_of_east_london.png" alt="University of East London" />
+            <img src="assets/universities/University_of_Leicester.png" alt="University of Leicester" />
+          </div></div>
+          <div class="logo-row"><div class="logo-track">
+            <img src="assets/universities/Kings_college_london.png" alt="Kings College London" />
+            <img src="assets/universities/University_of_east_london.png" alt="University of East London" />
+            <img src="assets/universities/University_of_Leicester.png" alt="University of Leicester" />
+            <img src="assets/universities/istituto_marangoni.png" alt="Istituto Marangoni" />
+            <img src="assets/universities/Kings_college_london.png" alt="Kings College London" />
+            <img src="assets/universities/University_of_east_london.png" alt="University of East London" />
+            <img src="assets/universities/University_of_Leicester.png" alt="University of Leicester" />
+            <img src="assets/universities/istituto_marangoni.png" alt="Istituto Marangoni" />
+          </div></div>
+          <div class="logo-row"><div class="logo-track">
+            <img src="assets/universities/University_of_east_london.png" alt="University of East London" />
+            <img src="assets/universities/University_of_Leicester.png" alt="University of Leicester" />
+            <img src="assets/universities/istituto_marangoni.png" alt="Istituto Marangoni" />
+            <img src="assets/universities/Kings_college_london.png" alt="Kings College London" />
+            <img src="assets/universities/University_of_east_london.png" alt="University of East London" />
+            <img src="assets/universities/University_of_Leicester.png" alt="University of Leicester" />
+            <img src="assets/universities/istituto_marangoni.png" alt="Istituto Marangoni" />
+            <img src="assets/universities/Kings_college_london.png" alt="Kings College London" />
+          </div></div>
+          <div class="logo-row"><div class="logo-track">
+            <img src="assets/universities/University_of_Leicester.png" alt="University of Leicester" />
+            <img src="assets/universities/istituto_marangoni.png" alt="Istituto Marangoni" />
+            <img src="assets/universities/Kings_college_london.png" alt="Kings College London" />
+            <img src="assets/universities/University_of_east_london.png" alt="University of East London" />
+            <img src="assets/universities/University_of_Leicester.png" alt="University of Leicester" />
+            <img src="assets/universities/istituto_marangoni.png" alt="Istituto Marangoni" />
+            <img src="assets/universities/Kings_college_london.png" alt="Kings College London" />
+            <img src="assets/universities/University_of_east_london.png" alt="University of East London" />
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Afly in numbers">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat"><div class="num">900+</div><div class="label">University Links</div></div>
+          <div class="stat"><div class="num">95%</div><div class="label">Visa Success</div></div>
+          <div class="stat"><div class="num">10+ yrs</div><div class="label">Counseling Experience</div></div>
+          <div class="stat"><div class="num">24/7</div><div class="label">Support Window</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials" id="stories">
+      <div class="container">
+        <h2>Student Success</h2>
+        <div class="quotes">
+          <blockquote>
+            “Afly refined my profile, strengthened my SOP and I received 3 admits with a tuition waiver.”
+            <footer>— Priya, MSc Computer Science (UK)</footer>
+          </blockquote>
+          <blockquote>
+            “Loan support and pre-departure mentoring were outstanding — zero surprises on arrival.”
+            <footer>— Rohan, Business Analytics (Canada)</footer>
+          </blockquote>
+          <blockquote>
+            “Their structured approach cut my stress dramatically. Visa cleared in first attempt.”
+            <footer>— Ananya, Data Science (Australia)</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="container">
+        <h2>FAQs</h2>
+        <details><summary>When should I start applications?</summary><p>Ideal runway is 9–12 months before intake for maximum scholarship and housing leverage. We also manage compressed timelines pragmatically.</p></details>
+        <details><summary>Do you guarantee admission?</summary><p>No ethical consultancy guarantees admission. We maximize probability by aligning profile positioning, timing and documentation quality.</p></details>
+        <details><summary>How are your services priced?</summary><p>Modular tiering based on scope: advisory only, application bundle, premium full-stack (visa + post-arrival). Transparent written proposal after diagnostic.</p></details>
+        <details><summary>Can you assist with internships abroad?</summary><p>We provide internship readiness frameworks, CV optimization and LinkedIn positioning but do not fabricate or place directly.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <aside class="fab" aria-label="Quick actions">
+    <a href="https://wa.me/918125144079" target="_blank" rel="noopener" aria-label="WhatsApp Chat">
+      <img src="assets/WhatsApp.svg.webp" alt="WhatsApp" />
+    </a>
+  </aside>
+  <section class="cta-band" aria-label="Get started">
+    <div class="container cta-inner">
+      <h3>Ready to Navigate Your Study Abroad Journey with Confidence?</h3>
+      <div class="flex gap wrap">
+        <a href="contact.html" class="btn">Book Free Consultation</a>
+        <a href="about.html" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#process">Process</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Destinations</h4>
+          <ul>
+            <li><a href="uk.html">UK</a></li>
+            <li><a href="usa.html">USA</a></li>
+            <li><a href="australia.html">Australia</a></li>
+            <li><a href="canada.html">Canada</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="university.html">Course & University</a></li>
+            <li><a href="loan.html">Education Loan</a></li>
+            <li><a href="predeparture.html">Pre Departure</a></li>
+            <li><a href="postvisa.html">Post Visa</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Value Add</h4>
+          <ul>
+            <li><a href="career.html">Career Guidance</a></li>
+            <li><a href="#stories">Testimonials</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2025 Afly Consultancy Services. British Council Certified. All rights reserved.</div>
+    </div>
   </footer>
-
-  <!-- Three.js CDN scripts for 3D globe background -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/controls/OrbitControls.min.js"></script>
   <script>
-    // 3D World Map Globe using Three.js (Production: No debug theme)
-    window.addEventListener('DOMContentLoaded', function() {
-      const canvas = document.getElementById('worldmap-canvas');
-      if (!canvas || !window.THREE) return;
-      // Remove debug styles
-      canvas.style.border = '';
-      canvas.style.background = '';
-      canvas.style.zIndex = '';
-      canvas.style.pointerEvents = '';
-      document.getElementById('worldmap-bg').style.pointerEvents = '';
-      document.getElementById('worldmap-bg').style.zIndex = '';
-      document.querySelectorAll('main, header, nav, section, footer, .features, .afly-dynamic-highlight, .partnered-universities-section').forEach(el => el.style.zIndex = '1');
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setClearColor(0xffffff, 0); // transparent
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.set(0, 0, 3.5);
-      // Lighting
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-      scene.add(ambientLight);
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
-      directionalLight.position.set(5, 3, 5);
-      scene.add(directionalLight);
-      // Minimal blue sphere (no textures)
-      const globeGeometry = new THREE.SphereGeometry(1.5, 64, 64);
-      const globeMaterial = new THREE.MeshPhongMaterial({ color: 0x2266ff, shininess: 18, opacity: 0.7, transparent: true });
-      const globe = new THREE.Mesh(globeGeometry, globeMaterial);
-      scene.add(globe);
-      // Animate globe on scroll
-      let lastScrollY = window.scrollY;
-      function animate() {
-        requestAnimationFrame(animate);
-        // Rotate globe based on scroll position
-        const scrollY = window.scrollY;
-        globe.rotation.y += 0.002 + (scrollY - lastScrollY) * 0.0002;
-        globe.rotation.x = Math.sin(scrollY * 0.0002) * 0.2;
-        lastScrollY = scrollY;
-        renderer.render(scene, camera);
+    (function(){
+      const root=document.documentElement;
+      const navToggle=document.getElementById('navToggle');
+      const navMenu=document.getElementById('navMenu');
+      const themeToggle=document.getElementById('themeToggle');
+      // Nav toggle
+      navToggle.addEventListener('click',()=>{const open=navToggle.classList.toggle('open');navMenu.classList.toggle('open');navToggle.setAttribute('aria-expanded',open);});
+      // Dropdown logic
+      document.querySelectorAll('.nav-link').forEach(btn=>{
+        btn.addEventListener('click',e=>{if(window.innerWidth>940)return;const expanded=btn.getAttribute('aria-expanded')==='true';document.querySelectorAll('.nav-link').forEach(b=>b.setAttribute('aria-expanded','false'));btn.setAttribute('aria-expanded',expanded?'false':'true');btn.parentElement.classList.toggle('show',!expanded);});
+        btn.addEventListener('mouseenter',()=>{if(window.innerWidth<=940)return;btn.setAttribute('aria-expanded','true');btn.parentElement.classList.add('show');});
+        btn.parentElement.addEventListener('mouseleave',()=>{if(window.innerWidth<=940)return;btn.setAttribute('aria-expanded','false');btn.parentElement.classList.remove('show');});
+      });
+      // Close on resize
+      window.addEventListener('resize',()=>{if(window.innerWidth>940){navMenu.classList.remove('open');navToggle.classList.remove('open');navToggle.setAttribute('aria-expanded','false');document.querySelectorAll('.nav-link').forEach(b=>{b.setAttribute('aria-expanded','false');b.parentElement.classList.remove('show');});}});
+      // Theme toggle with explicit naming
+      function updateThemeUI(theme){
+        const isDark = theme==='dark';
+        themeToggle.setAttribute('aria-pressed', isDark? 'true':'false');
+        themeToggle.setAttribute('aria-label', isDark? 'Activate light mode':'Activate dark mode');
+        themeToggle.title = isDark? 'Light Mode':'Dark Mode';
+        themeToggle.querySelector('.icon-sun').style.display = isDark? 'none':'block';
+        themeToggle.querySelector('.icon-moon').style.display = isDark? 'block':'none';
+        themeToggle.dataset.mode = theme;
       }
-      animate();
-      // Responsive
-      window.addEventListener('resize', () => {
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-      });
-      // Debug: Log when script runs
-      console.log('Three.js minimal blue sphere script loaded.');
-    });
-  </script>
-  <script>
-    // Preloader hide on page load
-    window.addEventListener('load', function() {
-      const preloader = document.getElementById('preloader');
-      if (preloader) {
-        preloader.style.opacity = '0';
-        setTimeout(() => { preloader.style.display = 'none'; }, 600);
-      }
-    });
-
-    const overlay = document.getElementById('consultationOverlay');
-    const formPopup = document.getElementById('consultationForm');
-    document.querySelectorAll('.book-link, .floating-btn, .hero-cta, .afly-cta-btn').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        overlay.classList.add('active');
-        formPopup.classList.add('active');
-      });
-    });
-    overlay.addEventListener('click', () => {
-      overlay.classList.remove('active');
-      formPopup.classList.remove('active');
-    });
-    document.querySelector('#consultationForm .close-btn').addEventListener('click', () => {
-      overlay.classList.remove('active');
-      formPopup.classList.remove('active');
-    });
-
-    document.getElementById('formSubmit').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbwq1rokUzhb6Et9-zV4I3YpyCfVOVUMsQ1cylaSBEXFCkXHYkovfrQFyBFCR7D9C8zt/exec';
-      const form = e.target;
-      // Save the form data before changing the UI
-      const formData = new FormData(form);
-
-      // Show the thank you message immediately
-      form.innerHTML = '<div style="padding: 20px 0; color: #1DA851; font-size: 18px; font-weight: bold;">Thank you! Your consultation request has been received.<br>We will contact you soon.</div>';
-
-      // Send the data to Google Sheets
-      fetch(scriptURL, { method: 'POST', body: formData })
-        .then(response => {
-          setTimeout(() => {
-            overlay.classList.remove('active');
-            formPopup.classList.remove('active');
-            // Restore form after closing
-            setTimeout(() => {
-              form.innerHTML = `<input type=\"text\" name=\"name\" placeholder=\"Your Name\" required>\n<input type=\"tel\" name=\"phone\" placeholder=\"Your Phone\" required>\n<input type=\"email\" name=\"email\" placeholder=\"Your Email\" required>\n<button type=\"submit\">Submit</button>`;
-            }, 400);
-          }, 2200);
-        })
-        .catch(error => {
-          alert('There was an error. Please try again.');
-          console.error('Error!', error.message);
-        });
-    });
-  </script>
-  <script>
-    (function() {
-      const flight = document.getElementById('floatingFlight');
-      const consultBtn = document.querySelector('.floating-btn');
-      const menuBtn = document.getElementById('menuToggle'); // <-- FIXED: use menuToggle
-      function updateFlight() {
-        if (!consultBtn || !menuBtn || !flight) return;
-        // Get bounding rectangles
-        const consultRect = consultBtn.getBoundingClientRect();
-        const menuRect = menuBtn.getBoundingClientRect();
-        // Calculate top and bottom boundaries relative to viewport
-        const flightHeight = window.innerWidth > 700 ? 56 : 36;
-        const minTop = menuRect.bottom + 12; // 12px below menu button
-        const maxTop = consultRect.top - flightHeight - 12; // 12px above consultation button
-        // Scroll percent
-        const scrollY = window.scrollY || window.pageYOffset;
-        const docHeight = document.body.scrollHeight - window.innerHeight;
-        const percent = docHeight > 0 ? Math.min(scrollY / docHeight, 1) : 0;
-        // Move flight between minTop and maxTop as you scroll
-        const moveY = maxTop - percent * (maxTop - minTop);
-        flight.style.top = moveY + 'px';
-      }
-      window.addEventListener('scroll', updateFlight);
-      window.addEventListener('resize', updateFlight);
-      updateFlight();
-    })();
-  </script>
-  <script>
-    // Modern dropdown menu logic for #menuToggle and #dropdownMenu
-    (function() {
-      const menuBtn = document.getElementById('menuToggle');
-      const dropdown = document.getElementById('dropdownMenu');
-      let openSubmenu = null;
-
-      function closeMenu() {
-        dropdown.style.display = 'none';
-        menuBtn.setAttribute('aria-expanded', 'false');
-        if (openSubmenu) {
-          openSubmenu.classList.remove('open');
-          openSubmenu.querySelector('.submenu').style.display = 'none';
-          openSubmenu = null;
-        }
-      }
-      function openMenu() {
-        dropdown.style.display = 'block';
-        menuBtn.setAttribute('aria-expanded', 'true');
-      }
-      menuBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (dropdown.style.display === 'block') {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-      // Close on outside click
-      document.addEventListener('mousedown', function(e) {
-        if (dropdown.style.display === 'block' && !dropdown.contains(e.target) && e.target !== menuBtn) {
-          closeMenu();
-        }
-      });
-      // Close on Escape
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeMenu();
-      });
-      // Accordion submenu logic
-      dropdown.querySelectorAll('.has-submenu').forEach(function(item) {
-        item.addEventListener('click', function(e) {
-          e.stopPropagation();
-          // Only one submenu open at a time
-          if (openSubmenu && openSubmenu !== item) {
-            openSubmenu.classList.remove('open');
-            openSubmenu.querySelector('.submenu').style.display = 'none';
-          }
-          const submenu = item.querySelector('.submenu');
-          if (submenu.style.display === 'block') {
-            submenu.style.display = 'none';
-            item.classList.remove('open');
-            openSubmenu = null;
-          } else {
-            submenu.style.display = 'block';
-            item.classList.add('open');
-            openSubmenu = item;
-          }
-        });
-      });
-      // Add navigation for Contact
-      dropdown.querySelectorAll('.dropdown-item[data-link]').forEach(function(item) {
-        item.addEventListener('click', function(e) {
-          window.location.href = item.getAttribute('data-link');
-        });
-      });
-      dropdown.querySelectorAll('.dropdown-item:not(.has-submenu):not([data-link]), .submenu li').forEach(function(item) {
-        item.addEventListener('click', function(e) {
-          closeMenu();
-        });
-      });
-    })();
-  </script>
-  <script>
-    (function() {
-      // Smooth scroll to #consultation section
-      document.getElementById('consultationBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        var contactSection = document.getElementById('contact');
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+      updateThemeUI(root.getAttribute('data-theme')||'light');
+      themeToggle.addEventListener('click',()=>{
+        const current = root.getAttribute('data-theme')||'light';
+        const next = current==='light' ? 'dark' : 'light';
+        root.setAttribute('data-theme', next);
+        updateThemeUI(next);
       });
     })();
   </script>

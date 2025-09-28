@@ -1,0 +1,68 @@
+<!-- ...existing code... -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Guidance - Afly Consultancy Services</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>body{background:#f7faff;}</style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo"><img src="assets/afly_logo_uploaded.png" alt="Afly Logo">Afly Consultancy Services</a>
+    <div class="tagline">Aim High Fly High</div>
+    <button class="nav-toggle" aria-label="Open navigation" onclick="document.querySelector('.nav-menu').classList.toggle('open')">&#9776;</button>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li class="dropdown">
+          <a href="#">Destinations</a>
+          <ul class="dropdown-content">
+            <li><a href="uk.html">UK</a></li>
+            <li><a href="usa.html">USA</a></li>
+            <li><a href="australia.html">Australia</a></li>
+            <li><a href="canada.html">Canada</a></li>
+            <li><a href="newzealand.html">New Zealand</a></li>
+            <li><a href="europe.html">Europe</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Services</a>
+          <ul class="dropdown-content">
+            <li><a href="post-visa.html">Post Visa Services</a></li>
+            <li><a href="pre-departure.html">Pre Departure Instructions</a></li>
+            <li><a href="loan-support.html">Education Loan Support</a></li>
+            <li><a href="university-selection.html">University & Course Selection Help</a></li>
+            <li><a href="career-guidance.html" class="active">Career Guidance</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <img src="assets/flight_animation.gif" alt="Flight Animation" class="flight-animation">
+  <button class="floating-btn" onclick="window.location.href='contact.html'"><span>Consultation</span></button>
+  <a class="whatsapp-btn" href="https://wa.me/919999999999" target="_blank" rel="noopener"><img src="assets/whatsapp.svg" alt="WhatsApp" style="height:22px;width:22px;vertical-align:middle;"> WhatsApp</a>
+  <section class="hero">
+    <div class="hero-content">
+      <a href="contact.html" class="hero-cta">Career Guidance</a>
+      <h2>Career Guidance</h2>
+      <p>Not sure which path to choose? Afly Consultancy Services offers expert career counseling, helping you identify your strengths, set goals, and plan a successful international career.</p>
+    </div>
+  </section>
+  <section class="partners">
+    <h3>Our Partner Universities</h3>
+    <div class="partner-logos">
+      <img src="assets/istituto_marangoni.png" alt="Istituto Marangoni">
+      <img src="assets/Kings_college_london.png" alt="Kings College London">
+      <img src="assets/University_of_east_london.png" alt="University of East London">
+      <img src="assets/University_of_Leicester.png" alt="University of Leicester">
+      <img src="assets/british_council_cert.png" alt="British Council Certified">
+    </div>
+  </section>
+  <footer>&copy; 2025 Afly Consultancy Services. All rights reserved.</footer>
+  <script>document.querySelectorAll('.nav-menu a').forEach(function(link){link.addEventListener('click',function(){document.querySelector('.nav-menu').classList.remove('open');});});</script>
+</body>
+</html>

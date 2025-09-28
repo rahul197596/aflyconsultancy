@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visa Guidance - Afly Consultancy</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="assets/afly_logo_uploaded.png" alt="Afly Logo">
+      Afly Consultancy
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" onclick="document.querySelector('.nav-menu').classList.toggle('open')">&#9776;</button>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Destinations</a>
+          <ul class="dropdown-content">
+            <li><a href="uk.html">UK</a></li>
+            <li><a href="usa.html">USA</a></li>
+            <li><a href="canada.html">Canada</a></li>
+            <li><a href="australia.html">Australia</a></li>
+            <li><a href="europe.html">Europe</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Services</a>
+          <ul class="dropdown-content">
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="visa-guidance.html" class="active">Visa Guidance</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="pre-departure.html">Pre-Departure</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <img src="assets/flight_animation.gif" alt="Flight Animation" class="flight-animation">
+  <button class="floating-btn" onclick="window.location.href='contact.html'">
+    <span>Consultation</span>
+  </button>
+  <a class="whatsapp-btn" href="https://wa.me/919999999999" target="_blank" rel="noopener">
+    <img src="assets/whatsapp.svg" alt="WhatsApp" style="height:22px;width:22px;vertical-align:middle;"> WhatsApp
+  </a>
+  <section class="hero">
+    <div class="hero-content">
+      <a href="#" class="hero-cta">Visa Guidance</a>
+      <h2>Visa Guidance</h2>
+      <p>Comprehensive visa support and guidance for your study abroad plans with Afly Consultancy Services.</p>
+    </div>
+  </section>
+  <footer>
+    &copy; 2025 Afly Consultancy. All rights reserved.
+  </footer>
+  <script>
+    document.querySelectorAll('.nav-menu a').forEach(function(link){
+      link.addEventListener('click',function(){
+        document.querySelector('.nav-menu').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
