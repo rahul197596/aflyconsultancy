@@ -13,36 +13,7 @@
     root.setAttribute('data-theme', 'dark');
   }
 
-  // Restore 3D effects preference
-  const savedFx = localStorage.getItem('afly-fx');
-  const fxToggle = document.getElementById('fxToggle');
-  const rootClassList = document.documentElement.classList;
-  let fxEnabled = true;
-  if (savedFx === 'off') {
-    fxEnabled = false;
-    rootClassList.add('no-fx');
-  } else if (savedFx === 'on') {
-    fxEnabled = true;
-    rootClassList.remove('no-fx');
-  }
-
-  function updateFxUI(enabled) {
-    if (!fxToggle) return;
-    fxToggle.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-    fxToggle.title = enabled ? 'Disable 3D effects' : 'Enable 3D effects';
-    fxToggle.dataset.fx = enabled ? 'on' : 'off';
-  }
-
-  updateFxUI(fxEnabled);
-
-  if (fxToggle) {
-    fxToggle.addEventListener('click', () => {
-      fxEnabled = !fxEnabled;
-      if (fxEnabled) rootClassList.remove('no-fx'); else rootClassList.add('no-fx');
-      localStorage.setItem('afly-fx', fxEnabled ? 'on' : 'off');
-      updateFxUI(fxEnabled);
-    });
-  }
+  // 3D effects: UI toggle removed — interactions enabled by default. Users who prefer reduced motion are respected.
   function updateThemeUI(theme){
     const isDark = theme==='dark';
     if(themeToggle){
@@ -119,7 +90,7 @@
 
   /* Lightweight hero parallax + card tilt interactions */
   (function add3DInteractions(){
-    if (!fxEnabled) return; // user disabled effects
+    // fxEnabled removed; interactions enabled by default (respect prefers-reduced-motion below)
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; // respect reduced motion
 
     const hero = document.getElementById('hero');
@@ -210,7 +181,7 @@
     }
 
     // only enable tilt for larger screens
-    if (window.innerWidth > 720 && fxEnabled) {
+    if (window.innerWidth > 720) {
       cards.forEach(enableTilt);
     }
 
@@ -219,7 +190,7 @@
       if (window.innerWidth <= 720) {
         cards.forEach(c => { const inner = c.querySelector('.card-inner') || c; inner.style.transform = ''; c.classList.remove('tilt'); });
       } else {
-        if (fxEnabled) cards.forEach(enableTilt);
+        cards.forEach(enableTilt);
       }
     });
   })();
