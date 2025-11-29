@@ -4,10 +4,13 @@
   const navMenu = document.getElementById('navMenu');
   const themeToggle = document.getElementById('themeToggle');
 
-  // Restore theme from localStorage
+  // Restore theme from localStorage; fall back to OS preference if not set
   const saved = localStorage.getItem('afly-theme');
   if(saved === 'light' || saved === 'dark'){
     root.setAttribute('data-theme', saved);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    // respect system preference on first visit
+    root.setAttribute('data-theme', 'dark');
   }
   function updateThemeUI(theme){
     const isDark = theme==='dark';
