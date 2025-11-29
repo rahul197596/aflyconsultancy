@@ -33,6 +33,12 @@
           <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 12 17a7 7 0 0 0 9-4.21z" />
         </svg>
       </button>
+      <button class="fx-toggle icon-btn" id="fxToggle" aria-label="Enable 3D effects" aria-pressed="true" title="Enable 3D effects" data-fx="on">
+        <!-- simple cube-ish icon made with SVG -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4.04a2 2 0 0 0-2 0l-7 4.04A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4.04a2 2 0 0 0 2 0l7-4.04A2 2 0 0 0 21 16z"></path>
+        </svg>
+      </button>
       <button class="hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
         <span></span><span></span><span></span>
       </button>
@@ -69,6 +75,12 @@
 
   <main id="mainContent">
     <section class="hero" id="hero">
+      <div class="hero-canvas" aria-hidden="true">
+        <!-- layers now use a polished SVG asset (assets/hero-graphic.svg) repeated with different transforms for depth -->
+        <div class="parallax-layer layer-3"><img src="assets/hero-graphic.svg" alt="" aria-hidden="true"/></div>
+        <div class="parallax-layer layer-2"><img src="assets/hero-graphic.svg" alt="" aria-hidden="true"/></div>
+        <div class="parallax-layer layer-1"><img src="assets/hero-graphic.svg" alt="" aria-hidden="true"/></div>
+      </div>
       <div class="container hero-inner">
         <h1>Unlock Your Global Future</h1>
         <p class="lead">British Council Certified Overseas Education Consultancy. Personalized guidance, 900+ university touchpoints and transparent, ethical advisory — from discovery to post‑arrival success.</p>
@@ -89,28 +101,40 @@
         <p class="section-subtitle">Comprehensive, ethical and outcome-driven support tailored to your goals and timelines.</p>
         <div class="feature-grid">
           <a class="card card-link" href="university.html">
-            <h3>Course & University Selection</h3>
-            <p>Profiling, fitment scoring and curated shortlists across countries and ranking bands.</p>
+            <div class="card-inner">
+              <h3>Course & University Selection</h3>
+              <p>Profiling, fitment scoring and curated shortlists across countries and ranking bands.</p>
+            </div>
           </a>
           <a class="card card-link" href="predeparture.html">
-            <h3>Application Readiness</h3>
-            <p>SOP/LOR coaching, document audits, portal submissions and deadline orchestration.</p>
+            <div class="card-inner">
+              <h3>Application Readiness</h3>
+              <p>SOP/LOR coaching, document audits, portal submissions and deadline orchestration.</p>
+            </div>
           </a>
           <a class="card card-link" href="loan.html">
-            <h3>Education Loan Support</h3>
-            <p>Secured/unsecured options, eligibility guidance, paperwork and sanction acceleration.</p>
+            <div class="card-inner">
+              <h3>Education Loan Support</h3>
+              <p>Secured/unsecured options, eligibility guidance, paperwork and sanction acceleration.</p>
+            </div>
           </a>
           <a class="card card-link" href="postvisa.html">
-            <h3>Visa Strategy</h3>
-            <p>Finances & CAS/I20, interview simulations, health insurance, compliance checklists.</p>
+            <div class="card-inner">
+              <h3>Visa Strategy</h3>
+              <p>Finances & CAS/I20, interview simulations, health insurance, compliance checklists.</p>
+            </div>
           </a>
           <a class="card card-link" href="predeparture.html">
-            <h3>Pre‑Departure</h3>
-            <p>Housing, packing, travel, forex, SIM/banking, cultural onboarding and survival tips.</p>
+            <div class="card-inner">
+              <h3>Pre‑Departure</h3>
+              <p>Housing, packing, travel, forex, SIM/banking, cultural onboarding and survival tips.</p>
+            </div>
           </a>
           <a class="card card-link" href="career.html">
-            <h3>Career Guidance</h3>
-            <p>Resume/LinkedIn upgrades, networking playbooks and internship readiness.</p>
+            <div class="card-inner">
+              <h3>Career Guidance</h3>
+              <p>Resume/LinkedIn upgrades, networking playbooks and internship readiness.</p>
+            </div>
           </a>
         </div>
       </div>
@@ -135,28 +159,40 @@
       <div class="container">
         <div class="feature-grid">
           <article class="card">
-            <h3>Expert Guidance</h3>
-            <p>Seasoned counselors evaluate your academic, financial and career profile to craft an optimal country–course–university matrix.</p>
+            <div class="card-inner">
+              <h3>Expert Guidance</h3>
+              <p>Seasoned counselors evaluate your academic, financial and career profile to craft an optimal country–course–university matrix.</p>
+            </div>
           </article>
           <article class="card">
-            <h3>Certified & Ethical</h3>
-            <p>British Council certification assures evidence-based recommendations and unwavering transparency.</p>
-          </article>
-            <article class="card">
-            <h3>Scholarship Focus</h3>
-            <p>Structured approach to merit, need and destination scholarships with timeline alignment and documentation coaching.</p>
+            <div class="card-inner">
+              <h3>Certified & Ethical</h3>
+              <p>British Council certification assures evidence-based recommendations and unwavering transparency.</p>
+            </div>
           </article>
           <article class="card">
-            <h3>End-to-End Support</h3>
-            <p>From profile positioning, application readiness, visa strategy to pre & post departure enablement.</p>
+            <div class="card-inner">
+              <h3>Scholarship Focus</h3>
+              <p>Structured approach to merit, need and destination scholarships with timeline alignment and documentation coaching.</p>
+            </div>
           </article>
           <article class="card">
-            <h3>Data-led Shortlisting</h3>
-            <p>Admission trends, acceptance ratios, ranking layers and ROI modelling inform every shortlist iteration.</p>
+            <div class="card-inner">
+              <h3>End-to-End Support</h3>
+              <p>From profile positioning, application readiness, visa strategy to pre & post departure enablement.</p>
+            </div>
           </article>
           <article class="card">
-            <h3>Responsive Support</h3>
-            <p>Agile WhatsApp & email assistance with structured SLA so you are never stuck at a critical juncture.</p>
+            <div class="card-inner">
+              <h3>Data-led Shortlisting</h3>
+              <p>Admission trends, acceptance ratios, ranking layers and ROI modelling inform every shortlist iteration.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-inner">
+              <h3>Responsive Support</h3>
+              <p>Agile WhatsApp & email assistance with structured SLA so you are never stuck at a critical juncture.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -168,28 +204,37 @@
         <p class="section-subtitle">We align your applications with the right merit, need‑based and destination scholarships.</p>
         <div class="feature-grid">
           <article class="card">
-            <h3>Merit Awards</h3>
-            <ul class="list-ticks">
+            <div class="card-inner">
+              <h3>Merit Awards</h3>
+              <ul class="list-ticks">
               <li>Automatic university merit waivers</li>
               <li>Departmental assistantships (USA)</li>
               <li>Early‑bird application grants</li>
             </ul>
+              </ul>
+            </div>
           </article>
           <article class="card">
-            <h3>Need‑Based Aid</h3>
-            <ul class="list-ticks">
+            <div class="card-inner">
+              <h3>Need‑Based Aid</h3>
+              <ul class="list-ticks">
               <li>Financial need documentation support</li>
               <li>Subsidized loans and bursaries</li>
               <li>Fee installment planning</li>
             </ul>
+              </ul>
+            </div>
           </article>
           <article class="card">
-            <h3>Country Programs</h3>
-            <ul class="list-ticks">
+            <div class="card-inner">
+              <h3>Country Programs</h3>
+              <ul class="list-ticks">
               <li>Commonwealth, Chevening (UK)</li>
               <li>Erasmus+ (EU), DAAD (Germany)</li>
               <li>Provincial/State awards (Canada/USA)</li>
             </ul>
+              </ul>
+            </div>
           </article>
         </div>
       </div>
