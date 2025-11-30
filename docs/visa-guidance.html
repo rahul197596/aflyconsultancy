@@ -7,47 +7,64 @@
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <header>
-    <a href="index.html" class="logo">
-      <img src="assets/afly_logo_uploaded.png" alt="Afly Logo">
-      Afly Consultancy
-    </a>
-    <button class="nav-toggle" aria-label="Open navigation" onclick="document.querySelector('.nav-menu').classList.toggle('open')">&#9776;</button>
-    <nav>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-          <a href="#">Destinations</a>
-          <ul class="dropdown-content">
-            <li><a href="uk.html">UK</a></li>
-            <li><a href="usa.html">USA</a></li>
-            <li><a href="canada.html">Canada</a></li>
-            <li><a href="australia.html">Australia</a></li>
-            <li><a href="europe.html">Europe</a></li>
-          </ul>
+  <header class="site-header" role="banner">
+    <div class="container flex center">
+      <a href="index.html" class="brand" aria-label="Afly Consultancy Services home">
+        <img src="assets/afly_logo_uploaded.png" alt="Afly Logo" />
+        <span>Afly Consultancy</span>
+      </a>
+      <button class="theme-toggle icon-btn" id="themeToggle" aria-label="Activate dark mode" aria-pressed="false" title="Dark Mode" data-mode="light">
+        <svg class="icon-sun" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+        </svg>
+        <svg class="icon-moon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 0 0 12 17a7 7 0 0 0 9-4.21z" />
+        </svg>
+      </button>
+      <button class="hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar-wrapper" id="navMenu" aria-label="Main navigation">
+      <ul class="navbar" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="about.html">About Us</a></li>
+        <li role="none">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false">Destinations</button>
+          <div class="dropdown-panel" role="menu">
+            <a role="menuitem" href="uk.html">UK</a>
+            <a role="menuitem" href="usa.html">USA</a>
+            <a role="menuitem" href="australia.html">Australia</a>
+            <a role="menuitem" href="canada.html">Canada</a>
+            <a role="menuitem" href="europe.html">Europe</a>
+          </div>
         </li>
-        <li class="dropdown">
-          <a href="#">Services</a>
-          <ul class="dropdown-content">
-            <li><a href="admissions.html">Admissions</a></li>
-            <li><a href="visa-guidance.html" class="active">Visa Guidance</a></li>
-            <li><a href="scholarships.html">Scholarships</a></li>
-            <li><a href="pre-departure.html">Pre-Departure</a></li>
-          </ul>
+        <li role="none">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false">Services</button>
+          <div class="dropdown-panel" role="menu">
+            <a role="menuitem" href="admissions.html">Admissions</a>
+            <a role="menuitem" href="visa-guidance.html" class="active">Visa Guidance</a>
+            <a role="menuitem" href="scholarships.html">Scholarships</a>
+            <a role="menuitem" href="predeparture.html">Pre-Departure</a>
+          </div>
         </li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li role="none"><a role="menuitem" href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
   </header>
   <img src="assets/flight_animation.gif" alt="Flight Animation" class="flight-animation">
-  <button class="floating-btn" onclick="window.location.href='contact.html'">
+  <a class="floating-btn" href="contact.html" aria-label="Contact for consultation">
     <span>Consultation</span>
-  </button>
+  </a>
   <a class="whatsapp-btn" href="https://wa.me/919999999999" target="_blank" rel="noopener">
-    <img src="assets/whatsapp.svg" alt="WhatsApp" style="height:22px;width:22px;vertical-align:middle;"> WhatsApp
+    <img src="assets/whatsapp.svg" alt="WhatsApp"> WhatsApp
   </a>
   <section class="hero">
+    <div class="hero-canvas" aria-hidden="true">
+      <div class="parallax-layer layer-3"><img src="assets/hero-graphic.svg" alt="" aria-hidden="true"/></div>
+      <div class="parallax-layer layer-2"><img src="assets/hero-graphic.svg" alt="" aria-hidden="true"/></div>
+      <div class="parallax-layer layer-1"><img src="assets/hero-graphic.svg" alt="" aria-hidden="true"/></div>
+    </div>
     <div class="hero-content">
       <a href="#" class="hero-cta">Visa Guidance</a>
       <h2>Visa Guidance</h2>
@@ -57,12 +74,6 @@
   <footer>
     &copy; 2025 Afly Consultancy. All rights reserved.
   </footer>
-  <script>
-    document.querySelectorAll('.nav-menu a').forEach(function(link){
-      link.addEventListener('click',function(){
-        document.querySelector('.nav-menu').classList.remove('open');
-      });
-    });
-  </script>
+  <script src="assets/main.js"></script>
 </body>
 </html>

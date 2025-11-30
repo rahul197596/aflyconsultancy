@@ -194,4 +194,168 @@
       }
     });
   })();
+
+  /* Site-wide interactive graphics canvas (particles + pointer attractor)
+     - auto-initializes on each page
+     - respects prefers-reduced-motion and small-screen fallbacks
+     - colors and density are read from CSS variables so theme-aware */
+  (function addInteractiveCanvas(){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // check css var to allow site config to turn off
+    const rootStyle = getComputedStyle(document.documentElement);
+    const enabled = rootStyle.getPropertyValue('--interactive-enabled').trim();
+    if (enabled === '0') return;
+    if (window.innerWidth <= 640) return; // small-screen disabled in CSS too
+
+    const canvas = document.createElement('canvas');
+    canvas.id = 'interactive-canvas';
+    canvas.className = 'interactive-canvas';
+    canvas.style.position = 'fixed';
+    canvas.style.inset = '0';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '0';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    let width = 0, height = 0, dpr = window.devicePixelRatio || 1;
+    let particles = [];
+    let pointer = { x: null, y: null, down: false };
+    let animId = null;
+
+    function parseColor(v){ return v ? v.trim() : 'rgba(10,36,114,0.12)'; }
+
+    function setup(){
+      dpr = window.devicePixelRatio || 1;
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // determine particle count based on density variable
+      const density = parseFloat(rootStyle.getPropertyValue('--interactive-density')) || 0.00011;
+      const count = Math.max(12, Math.round(width * height * density));
+      // initialize particles
+      particles = new Array(count).fill().map(()=>createParticle());
+    }
+
+    function rnd(min, max){ return Math.random()*(max-min)+min; }
+
+    function createParticle(){
+      return {
+        x: Math.random()*width,
+        y: Math.random()*height,
+        vx: rnd(-0.25,0.25),
+        vy: rnd(-0.25,0.25),
+        r: rnd(1.2,3.6),
+        life: rnd(60, 220),
+        age: Math.random()*220
+      };
+    }
+
+    function update(){
+      const primary = parseColor(rootStyle.getPropertyValue('--interactive-primary'));
+      const accent = parseColor(rootStyle.getPropertyValue('--interactive-accent'));
+
+      ctx.clearRect(0,0,width,height);
+
+      // pointer attraction
+      const px = pointer.x === null ? width*0.5 : pointer.x;
+      const py = pointer.y === null ? height*0.5 : pointer.y;
+
+      particles.forEach((p, i)=>{
+        // small wandering velocity
+        p.vx += rnd(-0.03, 0.03);
+        p.vy += rnd(-0.03, 0.03);
+        // attraction to pointer
+        const dx = px - p.x;
+        const dy = py - p.y;
+        const dist = Math.sqrt(dx*dx + dy*dy) + 0.001;
+        const attract = Math.min(0.08, 12 / (dist));
+        p.vx += dx/dist * attract * 0.02;
+        p.vy += dy/dist * attract * 0.02;
+        // damping
+        p.vx *= 0.985; p.vy *= 0.985;
+        p.x += p.vx; p.y += p.vy;
+
+        // wrap around
+        if(p.x < -40) p.x = width + 40;
+        if(p.x > width + 40) p.x = -40;
+        if(p.y < -40) p.y = height + 40;
+        if(p.y > height + 40) p.y = -40;
+
+        // aging
+        p.age += 1;
+        if(p.age > p.life){
+          // respawn
+          particles[i] = createParticle();
+        }
+
+        // draw
+        const t = (Math.sin((p.age/p.life) * Math.PI));
+        const size = p.r * (0.6 + 0.8*t);
+        // pick color mix partly varied per index
+        const alpha = 0.25 + 0.55 * t;
+        ctx.beginPath();
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, size*3);
+        grad.addColorStop(0, primary.replace(/rgba\(([^)]+)\)/, `rgba($1,${alpha})`));
+        grad.addColorStop(0.7, accent.replace(/rgba\(([^)]+)\)/, `rgba($1,${Math.max(0.06, alpha*0.2)})`));
+        grad.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = grad;
+        ctx.arc(p.x, p.y, size*2, 0, Math.PI*2);
+        ctx.fill();
+      });
+
+      // draw subtle connecting lines between nearby particles (cheap, few)
+      for(let i=0;i<particles.length;i+=Math.max(1, Math.floor(particles.length/14))){
+        for(let j=i+1;j<i+5 && j<particles.length;j++){
+          const a = particles[i], b = particles[j];
+          const dx = a.x-b.x; const dy = a.y-b.y; const d = Math.sqrt(dx*dx + dy*dy);
+          if(d < 160){
+            const strength = 1 - (d/160);
+            ctx.beginPath();
+            ctx.strokeStyle = primary.replace(/rgba\(([^)]+)\)/, `rgba($1,${0.06*strength})`);
+            ctx.lineWidth = 1.25 * strength;
+            ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function loop(){
+      update();
+      animId = requestAnimationFrame(loop);
+    }
+
+    // pointer handling - read from window so canvas can remain pointer-events: none
+    let lastPointerTime = 0;
+    window.addEventListener('pointermove', (e)=>{
+      const now = Date.now();
+      // throttle to ~60hz
+      if(now - lastPointerTime < 8) return;
+      lastPointerTime = now;
+      pointer.x = e.clientX;
+      pointer.y = e.clientY;
+    }, {passive:true});
+
+    window.addEventListener('pointerleave', ()=>{ pointer.x = null; pointer.y = null; });
+
+    // hide/stop on page hide
+    document.addEventListener('visibilitychange', ()=>{
+      if(document.hidden){ cancelAnimationFrame(animId); animId = null;} else { if(!animId) animId = requestAnimationFrame(loop); }
+    });
+
+    // responsive: rebuild on resize
+    let resizeId = null;
+    window.addEventListener('resize', ()=>{
+      if(resizeId) clearTimeout(resizeId);
+      resizeId = setTimeout(()=>{ setup(); }, 220);
+    });
+
+    // initialize and start
+    try{ setup(); animId = requestAnimationFrame(loop); } catch(e){ console.warn('interactive canvas failed', e); }
+  })();
 })();
