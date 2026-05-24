@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ServiceCard from '@/components/ServiceCard';
 import TestimonialCard from '@/components/TestimonialCard';
 
@@ -68,26 +69,37 @@ export default function Home() {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Your Gateway to Global Education
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              Expert guidance for overseas education and career success
-            </p>
-            <div className="flex gap-4 justify-center">
-              <Link
-                href="/services"
-                className="bg-orange-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-600 transition"
-              >
-                Explore Services
-              </Link>
-              <Link
-                href="/contact"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition"
-              >
-                Get Started
-              </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                Your Gateway to Global Education
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 text-blue-100">
+                Expert guidance for overseas education and career success
+              </p>
+              <div className="flex gap-4">
+                <Link
+                  href="/services"
+                  className="bg-orange-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-600 transition"
+                >
+                  Explore Services
+                </Link>
+                <Link
+                  href="/contact"
+                  className="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition"
+                >
+                  Get Started
+                </Link>
+              </div>
+            </div>
+            <div className="hidden md:flex justify-center">
+              <Image 
+                src="/hero-graphic.svg" 
+                alt="Global Education" 
+                width={400} 
+                height={400}
+                className="drop-shadow-lg"
+              />
             </div>
           </div>
         </div>
@@ -112,6 +124,70 @@ export default function Home() {
             <div>
               <div className="text-4xl font-bold text-blue-600 mb-2">98%</div>
               <p className="text-gray-700">Success Rate</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partner Universities Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-800">Our Partner Universities</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            We work with leading institutions across the globe to provide you with the best educational opportunities
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition">
+              <Image 
+                src="/universities/Kings_college_london.png" 
+                alt="King's College London" 
+                width={150} 
+                height={150}
+                className="object-contain"
+              />
+            </div>
+            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition">
+              <Image 
+                src="/universities/University_of_Leicester.png" 
+                alt="University of Leicester" 
+                width={150} 
+                height={150}
+                className="object-contain"
+              />
+            </div>
+            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition">
+              <Image 
+                src="/universities/University_of_east_london.png" 
+                alt="University of East London" 
+                width={150} 
+                height={150}
+                className="object-contain"
+              />
+            </div>
+            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition">
+              <Image 
+                src="/universities/istituto_marangoni.png" 
+                alt="Instituto Marangoni" 
+                width={150} 
+                height={150}
+                className="object-contain"
+              />
+            </div>
+          </div>
+          
+          {/* Certifications */}
+          <div className="mt-16 pt-8 border-t border-gray-200">
+            <h3 className="text-2xl font-bold text-center mb-8 text-gray-800">We are Certified & Recognized</h3>
+            <div className="flex justify-center">
+              <div className="p-6 bg-gray-50 rounded-lg">
+                <Image 
+                  src="/british_council_cert.png" 
+                  alt="British Council Certification" 
+                  width={200} 
+                  height={150}
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
