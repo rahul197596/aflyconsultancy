@@ -138,44 +138,40 @@ export default function Home() {
             We work with leading institutions across the globe to provide you with the best educational opportunities
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
-            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
+            <div className="flex justify-center items-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
               <Image 
                 src="/universities/Kings_college_london.png" 
                 alt="King's College London" 
-                width={120} 
-                height={120}
-                className="w-auto h-auto object-contain"
-                style={{ maxHeight: '120px', maxWidth: '120px' }}
+                width={200} 
+                height={160}
+                className="object-contain"
               />
             </div>
-            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
+            <div className="flex justify-center items-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
               <Image 
                 src="/universities/University_of_Leicester.png" 
                 alt="University of Leicester" 
-                width={120} 
-                height={120}
-                className="w-auto h-auto object-contain"
-                style={{ maxHeight: '120px', maxWidth: '120px' }}
+                width={200} 
+                height={160}
+                className="object-contain"
               />
             </div>
-            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
+            <div className="flex justify-center items-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
               <Image 
                 src="/universities/University_of_east_london.png" 
                 alt="University of East London" 
-                width={120} 
-                height={120}
-                className="w-auto h-auto object-contain"
-                style={{ maxHeight: '120px', maxWidth: '120px' }}
+                width={200} 
+                height={160}
+                className="object-contain"
               />
             </div>
-            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
+            <div className="flex justify-center items-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
               <Image 
                 src="/universities/istituto_marangoni.png" 
                 alt="Instituto Marangoni" 
-                width={120} 
-                height={120}
-                className="w-auto h-auto object-contain"
-                style={{ maxHeight: '120px', maxWidth: '120px' }}
+                width={200} 
+                height={160}
+                className="object-contain"
               />
             </div>
           </div>
@@ -184,14 +180,13 @@ export default function Home() {
           <div className="mt-16 pt-8 border-t border-gray-200">
             <h3 className="text-2xl font-bold text-center mb-8 text-gray-800">We are Certified & Recognized</h3>
             <div className="flex justify-center">
-              <div className="p-6 bg-gray-50 rounded-lg">
+              <div className="p-6 bg-gray-50 rounded-lg flex justify-center items-center">
                 <Image 
                   src="/british_council_cert.png" 
                   alt="British Council Certification" 
-                  width={180} 
-                  height={135}
-                  className="w-auto h-auto object-contain"
-                  style={{ maxHeight: '135px', maxWidth: '180px' }}
+                  width={200} 
+                  height={150}
+                  className="object-contain"
                 />
               </div>
             </div>
