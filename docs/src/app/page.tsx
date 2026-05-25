@@ -98,7 +98,8 @@ export default function Home() {
                 alt="Global Education" 
                 width={400} 
                 height={400}
-                className="drop-shadow-lg"
+                className="w-auto h-auto drop-shadow-lg"
+                priority
               />
             </div>
           </div>
@@ -137,40 +138,44 @@ export default function Home() {
             We work with leading institutions across the globe to provide you with the best educational opportunities
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
-            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition">
+            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
               <Image 
                 src="/universities/Kings_college_london.png" 
                 alt="King's College London" 
-                width={150} 
-                height={150}
-                className="object-contain"
+                width={120} 
+                height={120}
+                className="w-auto h-auto object-contain"
+                style={{ maxHeight: '120px', maxWidth: '120px' }}
               />
             </div>
-            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition">
+            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
               <Image 
                 src="/universities/University_of_Leicester.png" 
                 alt="University of Leicester" 
-                width={150} 
-                height={150}
-                className="object-contain"
+                width={120} 
+                height={120}
+                className="w-auto h-auto object-contain"
+                style={{ maxHeight: '120px', maxWidth: '120px' }}
               />
             </div>
-            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition">
+            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
               <Image 
                 src="/universities/University_of_east_london.png" 
                 alt="University of East London" 
-                width={150} 
-                height={150}
-                className="object-contain"
+                width={120} 
+                height={120}
+                className="w-auto h-auto object-contain"
+                style={{ maxHeight: '120px', maxWidth: '120px' }}
               />
             </div>
-            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition">
+            <div className="flex justify-center p-4 bg-gray-50 rounded-lg hover:shadow-lg transition h-40">
               <Image 
                 src="/universities/istituto_marangoni.png" 
                 alt="Instituto Marangoni" 
-                width={150} 
-                height={150}
-                className="object-contain"
+                width={120} 
+                height={120}
+                className="w-auto h-auto object-contain"
+                style={{ maxHeight: '120px', maxWidth: '120px' }}
               />
             </div>
           </div>
@@ -183,9 +188,10 @@ export default function Home() {
                 <Image 
                   src="/british_council_cert.png" 
                   alt="British Council Certification" 
-                  width={200} 
-                  height={150}
-                  className="object-contain"
+                  width={180} 
+                  height={135}
+                  className="w-auto h-auto object-contain"
+                  style={{ maxHeight: '135px', maxWidth: '180px' }}
                 />
               </div>
             </div>
