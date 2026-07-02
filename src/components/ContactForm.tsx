@@ -1,22 +1,31 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-
-const CONTACT_EMAIL = "hello@aflyconsultancy.com";
+import { submitEnquiry } from "@/lib/enquiry";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "submitting" | "done">("idle");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const subject = encodeURIComponent(`Consultation request from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`
+    setStatus("submitting");
+    await submitEnquiry({ name, email, phone, message, source: "Contact Page" });
+    setStatus("done");
+  }
+
+  if (status === "done") {
+    return (
+      <div className="rounded-lg bg-brand-red/5 p-6 text-center">
+        <p className="font-semibold text-brand-blue">Thank you!</p>
+        <p className="mt-1 text-sm text-slate-600">
+          We've received your message and will get back to you shortly.
+        </p>
+      </div>
     );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   }
 
   return (
@@ -79,9 +88,10 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="w-full rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-red-light sm:w-auto"
+        disabled={status === "submitting"}
+        className="w-full rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-red-light disabled:opacity-60 sm:w-auto"
       >
-        Send Message
+        {status === "submitting" ? "Sending..." : "Send Message"}
       </button>
     </form>
   );

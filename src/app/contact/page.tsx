@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact | Afly Consultancy",
+  title: "Contact | Afly Consultancy Services",
   description:
-    "Get in touch with Afly Consultancy for a free study-abroad consultation.",
+    "Get in touch with Afly Consultancy Services for a free study-abroad consultation.",
 };
 
 export default function ContactPage() {
@@ -29,7 +29,7 @@ export default function ContactPage() {
             <div className="rounded-2xl border border-slate-200 p-8">
               <h2 className="text-xl font-semibold text-brand-blue">Send Us a Message</h2>
               <p className="mt-2 text-sm text-slate-600">
-                Fill out the form and it'll open in your email client, ready to send.
+                Fill out the form and a counsellor will get back to you shortly.
               </p>
               <div className="mt-6">
                 <ContactForm />

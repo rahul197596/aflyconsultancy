@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Afly Consultancy",
+  title: "About Us | Afly Consultancy Services",
   description:
-    "Learn about Afly Consultancy's mission, values, and 15+ years of experience helping students study abroad.",
+    "Learn about Afly Consultancy Services' mission, values, and 15+ years of experience helping students study abroad.",
 };
 
 const values = [
@@ -30,7 +30,7 @@ export default function AboutPage() {
       <section className="bg-brand-blue py-20 text-white">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
-            About Afly Consultancy
+            About Afly Consultancy Services
           </p>
           <h1 className="mt-4 text-4xl font-bold">
             Helping Students Study Abroad Since Day One
@@ -46,7 +46,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-4xl px-6 py-20">
         <h2 className="text-2xl font-bold text-brand-blue">Our Story</h2>
         <p className="mt-4 leading-relaxed text-slate-600">
-          Afly Consultancy was founded to solve a simple problem: too many
+          Afly Consultancy Services was founded to solve a simple problem: too many
           students were making life-changing decisions about their education
           based on incomplete or biased advice. We set out to build a
           consultancy that puts the student's goals first — pairing deep
@@ -85,10 +85,17 @@ export default function AboutPage() {
       <section className="mx-auto max-w-4xl px-6 py-20 text-center">
         <h2 className="text-2xl font-bold text-brand-blue">Certified & Recognized</h2>
         <p className="mt-4 text-slate-600">
-          Afly Consultancy works with accredited partner institutions and
-          follows recognized standards for education counselling, ensuring
-          you get advice you can trust.
+          Afly Consultancy Services is a{" "}
+          <strong className="text-brand-blue">British Council Certified UK Agent & Counsellor</strong>,
+          working with accredited partner institutions and following
+          recognized standards for education counselling, so you get advice
+          you can trust.
         </p>
+        <img
+          src="/british-council-cert.png"
+          alt="British Council Certified UK Agent & Counsellor"
+          className="mx-auto mt-8 h-32 w-auto object-contain"
+        />
       </section>
     </div>
   );

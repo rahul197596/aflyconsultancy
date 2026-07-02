@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services | Afly Consultancy",
+  title: "Services | Afly Consultancy Services",
   description:
-    "Explore Afly Consultancy's overseas education services: university selection, visa guidance, test preparation, scholarships, and more.",
+    "Explore Afly Consultancy Services' overseas education services: university selection, visa guidance, test preparation, scholarships, and more.",
 };
 
 const services = [

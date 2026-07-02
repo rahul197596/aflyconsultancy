@@ -33,7 +33,7 @@ const services = [
 const testimonials = [
   {
     quote:
-      "Afly Consultancy made my application to a UK university effortless. Every step, from shortlisting to visa filing, was handled with care.",
+      "Afly Consultancy Services made my application to a UK university effortless. Every step, from shortlisting to visa filing, was handled with care.",
     name: "Priya S.",
     detail: "MSc Data Science, University of Leicester",
   },
@@ -59,8 +59,8 @@ export default function Home() {
             </h1>
             <p className="mt-6 text-lg text-slate-300">
               From choosing the right university to landing your visa, Afly
-              Consultancy guides you through every step of studying abroad —
-              with honest advice and a proven track record.
+              Consultancy Services guides you through every step of studying
+              abroad — with honest advice and a proven track record.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -88,6 +88,22 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-slate-100 bg-white py-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-4 px-6 text-center sm:flex-row sm:text-left">
+          <img
+            src="/british-council-cert.png"
+            alt="British Council Certified UK Agent & Counsellor"
+            className="h-14 w-auto object-contain"
+          />
+          <p className="text-sm font-medium text-slate-600">
+            Afly Consultancy Services is a{" "}
+            <span className="font-semibold text-brand-blue">
+              British Council Certified UK Agent & Counsellor
+            </span>
+          </p>
         </div>
       </section>
 
@@ -134,7 +150,7 @@ export default function Home() {
           <div className="grid gap-12 md:grid-cols-2">
             <div>
               <h2 className="text-3xl font-bold text-brand-blue">
-                Why Students Choose Afly
+                Why Students Choose Afly Consultancy Services
               </h2>
               <ul className="mt-8 space-y-6">
                 {[

@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
+  { href: "/countries", label: "Countries" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -19,8 +20,8 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold text-brand-blue">
-          <img src="/logo.png" alt="Afly Consultancy" className="h-10 w-10 object-contain" />
-          Afly Consultancy
+          <img src="/logo.png" alt="Afly Consultancy Services" className="h-10 w-10 object-contain" />
+          Afly Consultancy Services
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
