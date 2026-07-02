@@ -33,6 +33,17 @@ export default function Navbar() {
   const [mobileSection, setMobileSection] = useState<"services" | "countries" | null>(null);
   const pathname = usePathname();
   const navRef = useRef<HTMLElement>(null);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function openMenu(menu: "services" | "countries") {
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    setDesktopMenu(menu);
+  }
+
+  function scheduleClose() {
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    closeTimeoutRef.current = setTimeout(() => setDesktopMenu(null), 150);
+  }
 
   useEffect(() => {
     setMobileOpen(false);
@@ -53,6 +64,7 @@ export default function Navbar() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleEscape);
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     };
   }, []);
 
@@ -79,7 +91,11 @@ export default function Navbar() {
             </Link>
           </li>
 
-          <li className="relative">
+          <li
+            className="relative"
+            onMouseEnter={() => openMenu("services")}
+            onMouseLeave={scheduleClose}
+          >
             <button
               onClick={() => setDesktopMenu(desktopMenu === "services" ? null : "services")}
               className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-brand-red ${
@@ -125,7 +141,11 @@ export default function Navbar() {
             )}
           </li>
 
-          <li className="relative">
+          <li
+            className="relative"
+            onMouseEnter={() => openMenu("countries")}
+            onMouseLeave={scheduleClose}
+          >
             <button
               onClick={() => setDesktopMenu(desktopMenu === "countries" ? null : "countries")}
               className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-brand-red ${
