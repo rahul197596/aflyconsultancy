@@ -1,80 +1,12 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { countries } from "@/data/countries";
 
 export const metadata: Metadata = {
   title: "Study Destinations | Afly Consultancy Services",
   description:
     "Explore popular study-abroad destinations — the UK, USA, Canada, Australia, Ireland, and Germany — with Afly Consultancy Services.",
 };
-
-const countries = [
-  {
-    flag: "🇬🇧",
-    name: "United Kingdom",
-    blurb:
-      "World-renowned universities, shorter degree durations, and strong post-study work options via the Graduate Route.",
-    highlights: [
-      "1-year Master's programs",
-      "2-year post-study work visa",
-      "Globally recognized degrees",
-    ],
-  },
-  {
-    flag: "🇺🇸",
-    name: "United States",
-    blurb:
-      "The widest range of courses and research opportunities, with flexible curriculums and strong industry links.",
-    highlights: [
-      "STEM OPT extension up to 3 years",
-      "Extensive scholarship opportunities",
-      "Top-ranked research universities",
-    ],
-  },
-  {
-    flag: "🇨🇦",
-    name: "Canada",
-    blurb:
-      "Affordable, high-quality education with clear pathways to permanent residency for international graduates.",
-    highlights: [
-      "Post-Graduation Work Permit up to 3 years",
-      "Strong PR pathways",
-      "Welcoming to international students",
-    ],
-  },
-  {
-    flag: "🇦🇺",
-    name: "Australia",
-    blurb:
-      "High living standards, part-time work rights while studying, and a growing list of in-demand skilled courses.",
-    highlights: [
-      "Post-study work visa up to 4 years",
-      "Part-time work rights during study",
-      "Strong vocational & university pathways",
-    ],
-  },
-  {
-    flag: "🇮🇪",
-    name: "Ireland",
-    blurb:
-      "An English-speaking gateway to Europe with a booming tech and pharma sector and generous stay-back options.",
-    highlights: [
-      "2-year stay-back for Master's graduates",
-      "Home to major EU tech hubs",
-      "Compact, student-friendly cities",
-    ],
-  },
-  {
-    flag: "🇩🇪",
-    name: "Germany",
-    blurb:
-      "Low or no tuition fees at public universities, with a strong focus on engineering, and technology programs.",
-    highlights: [
-      "Little to no tuition at public universities",
-      "18-month post-study job search visa",
-      "Strong engineering & tech industry",
-    ],
-  },
-];
 
 export default function CountriesPage() {
   return (
@@ -96,9 +28,10 @@ export default function CountriesPage() {
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {countries.map((country) => (
-            <div
-              key={country.name}
-              className="rounded-2xl border border-slate-200 p-6"
+            <Link
+              key={country.slug}
+              href={`/countries/${country.slug}`}
+              className="rounded-2xl border border-slate-200 p-6 transition-shadow hover:shadow-lg"
             >
               <div className="text-4xl">{country.flag}</div>
               <h2 className="mt-4 text-xl font-semibold text-brand-blue">
@@ -118,7 +51,10 @@ export default function CountriesPage() {
                   </li>
                 ))}
               </ul>
-            </div>
+              <span className="mt-4 inline-block text-sm font-semibold text-brand-red">
+                Learn more →
+              </span>
+            </Link>
           ))}
         </div>
 

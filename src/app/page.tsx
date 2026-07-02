@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { services } from "@/data/services";
 
 const stats = [
   { value: "500+", label: "Students Placed" },
@@ -7,28 +8,7 @@ const stats = [
   { value: "98%", label: "Visa Success Rate" },
 ];
 
-const services = [
-  {
-    title: "University Selection",
-    description:
-      "Personalized shortlists based on your profile, budget, and career goals across top destinations.",
-  },
-  {
-    title: "Visa Guidance",
-    description:
-      "End-to-end visa documentation and interview preparation for higher approval rates.",
-  },
-  {
-    title: "Test Preparation",
-    description:
-      "Structured coaching for IELTS, PTE, TOEFL, and other admission requirements.",
-  },
-  {
-    title: "Scholarship Assistance",
-    description:
-      "Identify and apply for scholarships and financial aid you actually qualify for.",
-  },
-];
+const featuredServices = services.slice(0, 4);
 
 const testimonials = [
   {
@@ -117,9 +97,10 @@ export default function Home() {
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <div
-              key={service.title}
+          {featuredServices.map((service) => (
+            <Link
+              key={service.slug}
+              href={`/services/${service.slug}`}
               className="rounded-2xl border border-slate-200 p-6 transition-shadow hover:shadow-lg"
             >
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-red/10 font-bold text-brand-red">
@@ -131,7 +112,7 @@ export default function Home() {
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
                 {service.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
 
