@@ -32,7 +32,7 @@ export default function ContactForm() {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal"
+            className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-brand-red focus:outline-none focus:ring-1 focus:ring-brand-red"
           />
         </div>
         <div>
@@ -44,7 +44,7 @@ export default function ContactForm() {
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal"
+            className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-brand-red focus:outline-none focus:ring-1 focus:ring-brand-red"
           />
         </div>
       </div>
@@ -59,7 +59,7 @@ export default function ContactForm() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal"
+          className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-brand-red focus:outline-none focus:ring-1 focus:ring-brand-red"
         />
       </div>
 
@@ -73,13 +73,13 @@ export default function ContactForm() {
           required
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal"
+          className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-brand-red focus:outline-none focus:ring-1 focus:ring-brand-red"
         />
       </div>
 
       <button
         type="submit"
-        className="w-full rounded-full bg-teal px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-light sm:w-auto"
+        className="w-full rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-red-light sm:w-auto"
       >
         Send Message
       </button>

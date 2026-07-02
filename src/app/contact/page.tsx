@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div>
-      <section className="bg-navy py-20 text-white">
+      <section className="bg-brand-blue py-20 text-white">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-teal-light">
+          <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
             Get in Touch
           </p>
           <h1 className="mt-4 text-4xl font-bold">Let's Plan Your Journey</h1>
@@ -27,7 +27,7 @@ export default function ContactPage() {
         <div className="grid gap-12 md:grid-cols-5">
           <div className="md:col-span-3">
             <div className="rounded-2xl border border-slate-200 p-8">
-              <h2 className="text-xl font-semibold text-navy">Send Us a Message</h2>
+              <h2 className="text-xl font-semibold text-brand-blue">Send Us a Message</h2>
               <p className="mt-2 text-sm text-slate-600">
                 Fill out the form and it'll open in your email client, ready to send.
               </p>
@@ -43,25 +43,25 @@ export default function ContactPage() {
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
                   Email
                 </h3>
-                <p className="mt-1 text-navy">hello@aflyconsultancy.com</p>
+                <p className="mt-1 text-brand-blue">hello@aflyconsultancy.com</p>
               </div>
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
                   Phone
                 </h3>
-                <p className="mt-1 text-navy">+91 00000 00000</p>
+                <p className="mt-1 text-brand-blue">+91 81251 44079</p>
               </div>
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
                   Office Hours
                 </h3>
-                <p className="mt-1 text-navy">Monday – Saturday, 9:00 AM – 6:00 PM</p>
+                <p className="mt-1 text-brand-blue">Monday – Saturday, 9:00 AM – 6:00 PM</p>
               </div>
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
                   Address
                 </h3>
-                <p className="mt-1 text-navy">
+                <p className="mt-1 text-brand-blue">
                   Update with your office address here.
                 </p>
               </div>

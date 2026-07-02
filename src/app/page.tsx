@@ -48,10 +48,10 @@ const testimonials = [
 export default function Home() {
   return (
     <div>
-      <section className="bg-gradient-to-b from-navy to-navy-light text-white">
+      <section className="bg-gradient-to-b from-brand-blue to-brand-blue-light text-white">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-24 md:grid-cols-2">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-teal-light">
+            <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
               Overseas Education Consultants
             </p>
             <h1 className="mt-4 text-4xl font-bold leading-tight md:text-5xl">
@@ -65,7 +65,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="rounded-full bg-teal px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal-light"
+                className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-red-light"
               >
                 Book Free Consultation
               </Link>
@@ -82,7 +82,7 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-6">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-3xl font-bold text-teal-light">{stat.value}</p>
+                  <p className="text-3xl font-bold text-brand-red-light">{stat.value}</p>
                   <p className="mt-1 text-sm text-slate-300">{stat.label}</p>
                 </div>
               ))}
@@ -93,7 +93,7 @@ export default function Home() {
 
       <section className="mx-auto max-w-6xl px-6 py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-navy">How We Help You</h2>
+          <h2 className="text-3xl font-bold text-brand-blue">How We Help You</h2>
           <p className="mt-4 text-slate-600">
             A complete support system so you can focus on preparing for your
             new life abroad — not paperwork.
@@ -106,10 +106,10 @@ export default function Home() {
               key={service.title}
               className="rounded-2xl border border-slate-200 p-6 transition-shadow hover:shadow-lg"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal/10 font-bold text-teal">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-red/10 font-bold text-brand-red">
                 {service.title.charAt(0)}
               </div>
-              <h3 className="mt-5 text-lg font-semibold text-navy">
+              <h3 className="mt-5 text-lg font-semibold text-brand-blue">
                 {service.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
@@ -122,7 +122,7 @@ export default function Home() {
         <div className="mt-10 text-center">
           <Link
             href="/services"
-            className="text-sm font-semibold text-teal hover:text-teal-light"
+            className="text-sm font-semibold text-brand-red hover:text-brand-red-light"
           >
             View all services →
           </Link>
@@ -133,7 +133,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-12 md:grid-cols-2">
             <div>
-              <h2 className="text-3xl font-bold text-navy">
+              <h2 className="text-3xl font-bold text-brand-blue">
                 Why Students Choose Afly
               </h2>
               <ul className="mt-8 space-y-6">
@@ -152,11 +152,11 @@ export default function Home() {
                   },
                 ].map((item) => (
                   <li key={item.title} className="flex gap-4">
-                    <span className="mt-1 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-teal text-xs font-bold text-white">
+                    <span className="mt-1 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-brand-red text-xs font-bold text-white">
                       ✓
                     </span>
                     <div>
-                      <p className="font-semibold text-navy">{item.title}</p>
+                      <p className="font-semibold text-brand-blue">{item.title}</p>
                       <p className="mt-1 text-sm text-slate-600">{item.body}</p>
                     </div>
                   </li>
@@ -173,7 +173,7 @@ export default function Home() {
                   <p className="text-sm italic leading-relaxed text-slate-700">
                     &ldquo;{t.quote}&rdquo;
                   </p>
-                  <p className="mt-4 text-sm font-semibold text-navy">{t.name}</p>
+                  <p className="mt-4 text-sm font-semibold text-brand-blue">{t.name}</p>
                   <p className="text-xs text-slate-500">{t.detail}</p>
                 </div>
               ))}
@@ -182,7 +182,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-navy py-16 text-white">
+      <section className="bg-brand-blue py-16 text-white">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
           <div>
             <h2 className="text-2xl font-bold">Ready to start your application?</h2>
@@ -192,7 +192,7 @@ export default function Home() {
           </div>
           <Link
             href="/contact"
-            className="rounded-full bg-teal px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal-light"
+            className="rounded-full bg-brand-red px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-red-light"
           >
             Book Free Consultation
           </Link>

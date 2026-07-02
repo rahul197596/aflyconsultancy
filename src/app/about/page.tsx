@@ -27,9 +27,9 @@ const values = [
 export default function AboutPage() {
   return (
     <div>
-      <section className="bg-navy py-20 text-white">
+      <section className="bg-brand-blue py-20 text-white">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-teal-light">
+          <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
             About Afly Consultancy
           </p>
           <h1 className="mt-4 text-4xl font-bold">
@@ -44,7 +44,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-20">
-        <h2 className="text-2xl font-bold text-navy">Our Story</h2>
+        <h2 className="text-2xl font-bold text-brand-blue">Our Story</h2>
         <p className="mt-4 leading-relaxed text-slate-600">
           Afly Consultancy was founded to solve a simple problem: too many
           students were making life-changing decisions about their education
@@ -63,7 +63,7 @@ export default function AboutPage() {
 
       <section className="bg-slate-50 py-20">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-2xl font-bold text-navy">
+          <h2 className="text-center text-2xl font-bold text-brand-blue">
             What We Stand For
           </h2>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
@@ -72,7 +72,7 @@ export default function AboutPage() {
                 key={value.title}
                 className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-slate-100"
               >
-                <h3 className="text-lg font-semibold text-navy">{value.title}</h3>
+                <h3 className="text-lg font-semibold text-brand-blue">{value.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   {value.description}
                 </p>
@@ -83,7 +83,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-20 text-center">
-        <h2 className="text-2xl font-bold text-navy">Certified & Recognized</h2>
+        <h2 className="text-2xl font-bold text-brand-blue">Certified & Recognized</h2>
         <p className="mt-4 text-slate-600">
           Afly Consultancy works with accredited partner institutions and
           follows recognized standards for education counselling, ensuring

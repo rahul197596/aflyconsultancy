@@ -73,9 +73,9 @@ const services = [
 export default function ServicesPage() {
   return (
     <div>
-      <section className="bg-navy py-20 text-white">
+      <section className="bg-brand-blue py-20 text-white">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-teal-light">
+          <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
             What We Offer
           </p>
           <h1 className="mt-4 text-4xl font-bold">Services Built Around You</h1>
@@ -93,14 +93,14 @@ export default function ServicesPage() {
               key={service.title}
               className="rounded-2xl border border-slate-200 p-8"
             >
-              <h2 className="text-xl font-semibold text-navy">{service.title}</h2>
+              <h2 className="text-xl font-semibold text-brand-blue">{service.title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">
                 {service.description}
               </p>
               <ul className="mt-5 space-y-2">
                 {service.points.map((point) => (
                   <li key={point} className="flex items-start gap-2 text-sm text-slate-700">
-                    <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-teal" />
+                    <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-brand-red" />
                     {point}
                   </li>
                 ))}
@@ -110,7 +110,7 @@ export default function ServicesPage() {
         </div>
 
         <div className="mt-16 rounded-2xl bg-slate-50 p-10 text-center">
-          <h2 className="text-2xl font-bold text-navy">
+          <h2 className="text-2xl font-bold text-brand-blue">
             Not sure where to start?
           </h2>
           <p className="mt-2 text-slate-600">
@@ -118,7 +118,7 @@ export default function ServicesPage() {
           </p>
           <Link
             href="/contact"
-            className="mt-6 inline-block rounded-full bg-teal px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-light"
+            className="mt-6 inline-block rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-red-light"
           >
             Book Free Consultation
           </Link>
