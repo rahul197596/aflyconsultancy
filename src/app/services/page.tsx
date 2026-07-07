@@ -3,10 +3,14 @@ import type { Metadata } from "next";
 import { services } from "@/data/services";
 import { serviceIcons } from "@/components/icons/ServiceIcons";
 
+const description =
+  "Explore Afly Consultancy Services' overseas education services: university selection, visa guidance, test preparation, scholarships, and more.";
+
 export const metadata: Metadata = {
-  title: "Services | Afly Consultancy Services",
-  description:
-    "Explore Afly Consultancy Services' overseas education services: university selection, visa guidance, test preparation, scholarships, and more.",
+  title: "Services",
+  description,
+  openGraph: { title: "Services", description },
+  twitter: { title: "Services", description },
 };
 
 export default function ServicesPage() {

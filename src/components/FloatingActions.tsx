@@ -2,11 +2,15 @@
 
 import { useState } from "react";
 import EnquiryModal from "@/components/EnquiryModal";
+import { useMobileNav } from "@/components/MobileNavContext";
 
 const WHATSAPP_LINK = "https://wa.me/+918125144079";
 
 export default function FloatingActions() {
   const [open, setOpen] = useState(false);
+  const { mobileNavOpen } = useMobileNav();
+
+  if (mobileNavOpen) return null;
 
   return (
     <>

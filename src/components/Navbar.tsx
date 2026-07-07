@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { services } from "@/data/services";
 import { countries } from "@/data/countries";
 import { serviceIcons } from "@/components/icons/ServiceIcons";
+import { useMobileNav } from "@/components/MobileNavContext";
 
 const trailingLinks = [
   { href: "/about", label: "About" },
@@ -29,7 +30,7 @@ function ChevronIcon({ open }: { open: boolean }) {
 }
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const { mobileNavOpen: mobileOpen, setMobileNavOpen: setMobileOpen } = useMobileNav();
   const [desktopMenu, setDesktopMenu] = useState<"services" | "countries" | null>(null);
   const [mobileSection, setMobileSection] = useState<"services" | "countries" | null>(null);
   const pathname = usePathname();

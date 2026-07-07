@@ -17,8 +17,10 @@ export async function generateMetadata(props: {
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
   return {
-    title: `${service.title} | Afly Consultancy Services`,
+    title: service.title,
     description: service.description,
+    openGraph: { title: service.title, description: service.description },
+    twitter: { title: service.title, description: service.description },
   };
 }
 

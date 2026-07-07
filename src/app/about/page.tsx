@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { EyeIcon, HeartIcon, ShieldCheckIcon } from "@/components/icons/InfoIcons";
 
+const description =
+  "Learn about Afly Consultancy Services' mission, values, and 15+ years of experience helping students study abroad.";
+
 export const metadata: Metadata = {
-  title: "About Us | Afly Consultancy Services",
-  description:
-    "Learn about Afly Consultancy Services' mission, values, and 15+ years of experience helping students study abroad.",
+  title: "About Us",
+  description,
+  openGraph: { title: "About Us", description },
+  twitter: { title: "About Us", description },
 };
 
 const values = [

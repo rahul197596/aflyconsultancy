@@ -71,13 +71,25 @@ const testimonials = [
     quote:
       "Afly Consultancy Services made my application to a UK university effortless. Every step, from shortlisting to visa filing, was handled with care.",
     name: "Priya S.",
-    detail: "MSc Data Science, University of Leicester",
+    detail: "MSc Data Science, University of Leicester · UK",
   },
   {
     quote:
       "I couldn't have prepared for IELTS or the visa interview without their support. Highly recommend to anyone planning to study abroad.",
     name: "Arjun M.",
-    detail: "BA Business, University of East London",
+    detail: "BA Business, University of East London · UK",
+  },
+  {
+    quote:
+      "They helped me compare Canada and Australia side by side and were upfront about costs and PR pathways. I felt like I was getting real advice, not a sales pitch.",
+    name: "Sneha R.",
+    detail: "MBA, University of Toronto · Canada",
+  },
+  {
+    quote:
+      "From shortlisting to my pre-departure briefing, the team was with me at every step. Landed in Melbourne knowing exactly what to expect.",
+    name: "Karthik V.",
+    detail: "MEng Software Engineering, Monash University · Australia",
   },
 ];
 
@@ -235,59 +247,63 @@ export default function Home() {
       </section>
 
       <section className="py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-12 md:grid-cols-2">
-            <div>
-              <h2 className="text-3xl font-bold text-brand-blue">
-                Why Students Choose Afly Consultancy Services
-              </h2>
-              <ul className="mt-8 space-y-6">
-                {[
-                  {
-                    title: "Honest, student-first advice",
-                    body: "We recommend what fits your goals and budget — not what pays us the highest commission.",
-                  },
-                  {
-                    title: "End-to-end support",
-                    body: "One team for shortlisting, applications, tests, visas, and pre-departure prep.",
-                  },
-                  {
-                    title: "15+ years of track record",
-                    body: "Hundreds of successful placements across the UK, Europe, and beyond.",
-                  },
-                ].map((item) => (
-                  <li key={item.title} className="flex gap-4">
-                    <span className="mt-1 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-brand-red text-xs font-bold text-white">
-                      ✓
-                    </span>
-                    <div>
-                      <p className="font-semibold text-brand-blue">{item.title}</p>
-                      <p className="mt-1 text-sm text-slate-600">{item.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-6">
-              {testimonials.map((t) => (
-                <div
-                  key={t.name}
-                  className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100"
-                >
-                  <p className="text-sm italic leading-relaxed text-slate-700">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <p className="mt-4 text-sm font-semibold text-brand-blue">{t.name}</p>
-                  <p className="text-xs text-slate-500">{t.detail}</p>
-                </div>
-              ))}
-            </div>
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <h2 className="text-3xl font-bold text-brand-blue">
+            Why Students Choose Afly Consultancy Services
+          </h2>
+          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+            {[
+              {
+                title: "Honest, student-first advice",
+                body: "We recommend what fits your goals and budget — not what pays us the highest commission.",
+              },
+              {
+                title: "End-to-end support",
+                body: "One team for shortlisting, applications, tests, visas, and pre-departure prep.",
+              },
+              {
+                title: "15+ years of track record",
+                body: "Hundreds of successful placements across the UK, USA, Canada, Australia, and beyond.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="text-left">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-red text-xs font-bold text-white">
+                  ✓
+                </span>
+                <p className="mt-3 font-semibold text-brand-blue">{item.title}</p>
+                <p className="mt-1 text-sm text-slate-600">{item.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="bg-slate-50 py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-brand-blue">What Our Students Say</h2>
+            <p className="mt-4 text-slate-600">
+              Real students, placed across four different countries.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+            {testimonials.map((t) => (
+              <div
+                key={t.name}
+                className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100"
+              >
+                <p className="text-sm italic leading-relaxed text-slate-700">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <p className="mt-4 text-sm font-semibold text-brand-blue">{t.name}</p>
+                <p className="text-xs text-slate-500">{t.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24">
         <div className="mx-auto max-w-3xl px-6">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-brand-blue">

@@ -2,10 +2,14 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { countries } from "@/data/countries";
 
+const description =
+  "Explore popular study-abroad destinations — the UK, USA, Canada, Australia, Ireland, and Germany — with Afly Consultancy Services.";
+
 export const metadata: Metadata = {
-  title: "Study Destinations | Afly Consultancy Services",
-  description:
-    "Explore popular study-abroad destinations — the UK, USA, Canada, Australia, Ireland, and Germany — with Afly Consultancy Services.",
+  title: "Study Destinations",
+  description,
+  openGraph: { title: "Study Destinations", description },
+  twitter: { title: "Study Destinations", description },
 };
 
 export default function CountriesPage() {

@@ -16,9 +16,12 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
   const country = countries.find((c) => c.slug === slug);
   if (!country) return {};
+  const title = `Study in ${country.name}`;
   return {
-    title: `Study in ${country.name} | Afly Consultancy Services`,
+    title,
     description: country.blurb,
+    openGraph: { title, description: country.blurb },
+    twitter: { title, description: country.blurb },
   };
 }
 

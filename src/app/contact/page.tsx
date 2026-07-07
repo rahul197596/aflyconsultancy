@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from "@/components/icons/InfoIcons";
 
+const description =
+  "Get in touch with Afly Consultancy Services for a free study-abroad consultation.";
+
 export const metadata: Metadata = {
-  title: "Contact | Afly Consultancy Services",
-  description:
-    "Get in touch with Afly Consultancy Services for a free study-abroad consultation.",
+  title: "Contact",
+  description,
+  openGraph: { title: "Contact", description },
+  twitter: { title: "Contact", description },
 };
 
 export default function ContactPage() {
