@@ -1,28 +1,58 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { submitEnquiry } from "@/lib/enquiry";
+import { submitEnquiry, QUALIFICATION_OPTIONS, INTAKE_OPTIONS } from "@/lib/enquiry";
+
+const countries = [
+  "United Kingdom",
+  "United States",
+  "Canada",
+  "Australia",
+  "Ireland",
+  "Germany",
+  "Other",
+];
+
+const inputClass =
+  "mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-brand-red focus:outline-none focus:ring-1 focus:ring-brand-red";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [country, setCountry] = useState(countries[0]);
+  const [qualification, setQualification] = useState(QUALIFICATION_OPTIONS[0]);
+  const [intake, setIntake] = useState(INTAKE_OPTIONS[0]);
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "done">("idle");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
-    await submitEnquiry({ name, email, phone, message, source: "Contact Page" });
+    await submitEnquiry({
+      name,
+      email,
+      phone,
+      country,
+      qualification,
+      intake,
+      message,
+      source: "Contact Page",
+    });
     setStatus("done");
   }
 
   if (status === "done") {
     return (
       <div className="rounded-lg bg-brand-red/5 p-6 text-center">
-        <p className="font-semibold text-brand-blue">Thank you!</p>
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-red/10 text-brand-red">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <p className="mt-3 font-semibold text-brand-blue">Thank you, {name.split(" ")[0]}!</p>
         <p className="mt-1 text-sm text-slate-600">
-          We've received your message and will get back to you shortly.
+          We've received your message and a counsellor will get back to you shortly.
         </p>
       </div>
     );
@@ -41,7 +71,7 @@ export default function ContactForm() {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-brand-red focus:outline-none focus:ring-1 focus:ring-brand-red"
+            className={inputClass}
           />
         </div>
         <div>
@@ -51,9 +81,12 @@ export default function ContactForm() {
           <input
             id="phone"
             type="tel"
+            required
+            pattern="[0-9+\-\s()]{7,}"
+            title="Enter a valid phone number"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-brand-red focus:outline-none focus:ring-1 focus:ring-brand-red"
+            className={inputClass}
           />
         </div>
       </div>
@@ -68,8 +101,62 @@ export default function ContactForm() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-brand-red focus:outline-none focus:ring-1 focus:ring-brand-red"
+          className={inputClass}
         />
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-3">
+        <div>
+          <label htmlFor="country" className="text-sm font-medium text-slate-700">
+            Country of Interest
+          </label>
+          <select
+            id="country"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+            className={inputClass}
+          >
+            {countries.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="qualification" className="text-sm font-medium text-slate-700">
+            Highest Qualification
+          </label>
+          <select
+            id="qualification"
+            value={qualification}
+            onChange={(e) => setQualification(e.target.value)}
+            className={inputClass}
+          >
+            {QUALIFICATION_OPTIONS.map((q) => (
+              <option key={q} value={q}>
+                {q}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="intake" className="text-sm font-medium text-slate-700">
+            Preferred Intake
+          </label>
+          <select
+            id="intake"
+            value={intake}
+            onChange={(e) => setIntake(e.target.value)}
+            className={inputClass}
+          >
+            {INTAKE_OPTIONS.map((i) => (
+              <option key={i} value={i}>
+                {i}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div>
@@ -82,7 +169,7 @@ export default function ContactForm() {
           required
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="mt-1.5 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-brand-red focus:outline-none focus:ring-1 focus:ring-brand-red"
+          className={inputClass}
         />
       </div>
 

@@ -91,8 +91,53 @@ export default function ContactPage() {
                   </p>
                 </div>
               </div>
+
+              <a
+                href="https://wa.me/+918125144079"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 rounded-xl bg-[#25D366]/10 p-4 transition-colors hover:bg-[#25D366]/20"
+              >
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-[#25D366] text-white">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.45 1.27 4.9L2 22l5.25-1.28A9.94 9.94 0 0 0 12.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10Zm0 18.18c-1.6 0-3.13-.42-4.47-1.2l-.32-.19-3.12.76.77-3.13-.2-.32a8.17 8.17 0 0 1-1.26-4.3c0-4.55 3.7-8.25 8.25-8.25a8.19 8.19 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.42 5.83c0 4.55-3.7 8.25-8.25 8.25Z" />
+                  </svg>
+                </span>
+                <div>
+                  <h3 className="text-sm font-semibold text-brand-blue">Chat on WhatsApp</h3>
+                  <p className="text-xs text-slate-600">Usually replies within a few hours</p>
+                </div>
+              </a>
             </div>
           </div>
+        </div>
+
+        <div className="mt-16 grid gap-8 rounded-2xl bg-slate-50 p-8 sm:grid-cols-3">
+          {[
+            {
+              step: "1",
+              title: "Send your enquiry",
+              body: "Fill out the form above, WhatsApp us, or use the Enquire Now button on any page.",
+            },
+            {
+              step: "2",
+              title: "We review your profile",
+              body: "A counsellor looks at your goals, budget, and background before reaching out.",
+            },
+            {
+              step: "3",
+              title: "We call you back",
+              body: "Expect a response within 24 hours to schedule your free consultation.",
+            },
+          ].map((item) => (
+            <div key={item.step} className="text-center sm:text-left">
+              <span className="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-brand-red text-sm font-bold text-white sm:mx-0">
+                {item.step}
+              </span>
+              <p className="mt-3 font-semibold text-brand-blue">{item.title}</p>
+              <p className="mt-1 text-sm text-slate-600">{item.body}</p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

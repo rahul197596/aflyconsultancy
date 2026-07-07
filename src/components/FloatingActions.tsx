@@ -1,16 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EnquiryModal from "@/components/EnquiryModal";
 import { useMobileNav } from "@/components/MobileNavContext";
 
 const WHATSAPP_LINK = "https://wa.me/+918125144079";
+const FIELD_TAGS = ["INPUT", "TEXTAREA", "SELECT"];
 
 export default function FloatingActions() {
   const [open, setOpen] = useState(false);
+  const [fieldFocused, setFieldFocused] = useState(false);
   const { mobileNavOpen } = useMobileNav();
 
-  if (mobileNavOpen) return null;
+  useEffect(() => {
+    function onFocusIn(e: FocusEvent) {
+      if (FIELD_TAGS.includes((e.target as HTMLElement).tagName)) setFieldFocused(true);
+    }
+    function onFocusOut(e: FocusEvent) {
+      if (FIELD_TAGS.includes((e.target as HTMLElement).tagName)) setFieldFocused(false);
+    }
+    document.addEventListener("focusin", onFocusIn);
+    document.addEventListener("focusout", onFocusOut);
+    return () => {
+      document.removeEventListener("focusin", onFocusIn);
+      document.removeEventListener("focusout", onFocusOut);
+    };
+  }, []);
+
+  if (mobileNavOpen || fieldFocused) return null;
 
   return (
     <>
