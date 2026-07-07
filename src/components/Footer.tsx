@@ -48,7 +48,7 @@ export default function Footer() {
             Get in Touch
           </h3>
           <ul className="mt-4 space-y-2 text-sm text-slate-400">
-            <li>hello@aflyconsultancy.com</li>
+            <li>info@aflyconsultancy.com</li>
             <li>+91 81251 44079</li>
             <li>Mon – Sat, 9:00 AM – 6:00 PM</li>
           </ul>

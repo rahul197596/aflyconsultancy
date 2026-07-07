@@ -43,7 +43,7 @@ export default function ContactPage() {
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
                   Email
                 </h3>
-                <p className="mt-1 text-brand-blue">hello@aflyconsultancy.com</p>
+                <p className="mt-1 text-brand-blue">info@aflyconsultancy.com</p>
               </div>
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">

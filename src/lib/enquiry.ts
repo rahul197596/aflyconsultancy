@@ -8,7 +8,7 @@ export type EnquiryPayload = {
 };
 
 const ENQUIRY_ENDPOINT_URL = "";
-const FALLBACK_EMAIL = "hello@aflyconsultancy.com";
+const FALLBACK_EMAIL = "info@aflyconsultancy.com";
 
 export async function submitEnquiry(payload: EnquiryPayload) {
   if (!ENQUIRY_ENDPOINT_URL) {
