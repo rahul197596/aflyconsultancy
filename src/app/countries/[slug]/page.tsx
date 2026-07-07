@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { countries } from "@/data/countries";
+import { BookOpenIcon, BriefcaseIcon, CalendarIcon, CoinsIcon, CompassIcon } from "@/components/icons/InfoIcons";
 
 export function generateStaticParams() {
   return countries.map((country) => ({ slug: country.slug }));
@@ -30,9 +31,12 @@ export default async function CountryDetailPage(props: {
 
   return (
     <div>
-      <section className="bg-brand-blue py-20 text-white">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <div className="text-5xl">{country.flag}</div>
+      <section className="relative overflow-hidden bg-brand-blue py-20 text-white">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-4xl">
+            {country.flag}
+          </div>
           <h1 className="mt-4 text-4xl font-bold">Study in {country.name}</h1>
           <p className="mt-4 text-slate-300">{country.blurb}</p>
         </div>
@@ -41,7 +45,12 @@ export default async function CountryDetailPage(props: {
       <section className="mx-auto max-w-5xl px-6 py-20">
         <div className="grid gap-8 md:grid-cols-2">
           <div className="rounded-2xl border border-slate-200 p-6">
-            <h2 className="text-lg font-semibold text-brand-blue">Why {country.name}?</h2>
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                <CompassIcon className="h-5 w-5" />
+              </span>
+              <h2 className="text-lg font-semibold text-brand-blue">Why {country.name}?</h2>
+            </div>
             <ul className="mt-4 space-y-2">
               {country.highlights.map((point) => (
                 <li key={point} className="flex items-start gap-2 text-sm text-slate-700">
@@ -53,7 +62,12 @@ export default async function CountryDetailPage(props: {
           </div>
 
           <div className="rounded-2xl border border-slate-200 p-6">
-            <h2 className="text-lg font-semibold text-brand-blue">Popular Courses</h2>
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                <BookOpenIcon className="h-5 w-5" />
+              </span>
+              <h2 className="text-lg font-semibold text-brand-blue">Popular Courses</h2>
+            </div>
             <ul className="mt-4 space-y-2">
               {country.popularCourses.map((course) => (
                 <li key={course} className="flex items-start gap-2 text-sm text-slate-700">
@@ -65,17 +79,32 @@ export default async function CountryDetailPage(props: {
           </div>
 
           <div className="rounded-2xl border border-slate-200 p-6">
-            <h2 className="text-lg font-semibold text-brand-blue">Intakes</h2>
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                <CalendarIcon className="h-5 w-5" />
+              </span>
+              <h2 className="text-lg font-semibold text-brand-blue">Intakes</h2>
+            </div>
             <p className="mt-3 text-sm leading-relaxed text-slate-600">{country.intakes}</p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 p-6">
-            <h2 className="text-lg font-semibold text-brand-blue">Work Rights</h2>
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                <BriefcaseIcon className="h-5 w-5" />
+              </span>
+              <h2 className="text-lg font-semibold text-brand-blue">Work Rights</h2>
+            </div>
             <p className="mt-3 text-sm leading-relaxed text-slate-600">{country.workRights}</p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 p-6 md:col-span-2">
-            <h2 className="text-lg font-semibold text-brand-blue">Estimated Costs</h2>
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                <CoinsIcon className="h-5 w-5" />
+              </span>
+              <h2 className="text-lg font-semibold text-brand-blue">Estimated Costs</h2>
+            </div>
             <p className="mt-3 text-sm leading-relaxed text-slate-600">{country.costEstimate}</p>
           </div>
         </div>

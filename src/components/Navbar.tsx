@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { services } from "@/data/services";
 import { countries } from "@/data/countries";
+import { serviceIcons } from "@/components/icons/ServiceIcons";
 
 const trailingLinks = [
   { href: "/about", label: "About" },
@@ -114,25 +115,28 @@ export default function Navbar() {
             {desktopMenu === "services" && (
               <div className="absolute left-1/2 top-full z-20 mt-3 w-[560px] -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl">
                 <div className="grid grid-cols-2 gap-1">
-                  {services.map((service) => (
-                    <Link
-                      key={service.slug}
-                      href={`/services/${service.slug}`}
-                      className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-slate-50"
-                    >
-                      <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-sm font-bold text-brand-red">
-                        {service.title.charAt(0)}
-                      </span>
-                      <span>
-                        <span className="block text-sm font-semibold text-brand-blue">
-                          {service.title}
+                  {services.map((service) => {
+                    const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
+                    return (
+                      <Link
+                        key={service.slug}
+                        href={`/services/${service.slug}`}
+                        className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-slate-50"
+                      >
+                        <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                          <Icon className="h-5 w-5" />
                         </span>
-                        <span className="mt-0.5 block text-xs leading-relaxed text-slate-500 line-clamp-2">
-                          {service.description}
+                        <span>
+                          <span className="block text-sm font-semibold text-brand-blue">
+                            {service.title}
+                          </span>
+                          <span className="mt-0.5 block text-xs leading-relaxed text-slate-500 line-clamp-2">
+                            {service.description}
+                          </span>
                         </span>
-                      </span>
-                    </Link>
-                  ))}
+                      </Link>
+                    );
+                  })}
                 </div>
                 <div className="mt-2 border-t border-slate-100 pt-3">
                   <Link
@@ -248,20 +252,23 @@ export default function Navbar() {
               </button>
               {mobileSection === "services" && (
                 <ul className="ml-3 flex flex-col gap-1 border-l border-slate-100 pl-3">
-                  {services.map((service) => (
-                    <li key={service.slug}>
-                      <Link
-                        href={`/services/${service.slug}`}
-                        onClick={() => setMobileOpen(false)}
-                        className="flex items-center gap-2 py-1.5 text-sm text-slate-600 hover:text-brand-red"
-                      >
-                        <span className="flex h-6 w-6 flex-none items-center justify-center rounded-md bg-brand-red/10 text-xs font-bold text-brand-red">
-                          {service.title.charAt(0)}
-                        </span>
-                        {service.title}
-                      </Link>
-                    </li>
-                  ))}
+                  {services.map((service) => {
+                    const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
+                    return (
+                      <li key={service.slug}>
+                        <Link
+                          href={`/services/${service.slug}`}
+                          onClick={() => setMobileOpen(false)}
+                          className="flex items-center gap-2 py-1.5 text-sm text-slate-600 hover:text-brand-red"
+                        >
+                          <span className="flex h-6 w-6 flex-none items-center justify-center rounded-md bg-brand-red/10 text-brand-red">
+                            <Icon className="h-3.5 w-3.5" />
+                          </span>
+                          {service.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
                   <li>
                     <Link
                       href="/services"

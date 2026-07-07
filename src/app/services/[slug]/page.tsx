@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { services } from "@/data/services";
+import { serviceIcons } from "@/components/icons/ServiceIcons";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -27,15 +28,20 @@ export default async function ServiceDetailPage(props: {
   const { slug } = await props.params;
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
+  const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
 
   return (
     <div>
-      <section className="bg-brand-blue py-20 text-white">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
+      <section className="relative overflow-hidden bg-brand-blue py-20 text-white">
+        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-brand-red-light">
+            <Icon className="h-9 w-9" />
+          </div>
+          <p className="mt-4 text-sm font-semibold uppercase tracking-widest text-brand-red-light">
             Our Services
           </p>
-          <h1 className="mt-4 text-4xl font-bold">{service.title}</h1>
+          <h1 className="mt-2 text-4xl font-bold">{service.title}</h1>
           <p className="mt-4 text-slate-300">{service.description}</p>
         </div>
       </section>

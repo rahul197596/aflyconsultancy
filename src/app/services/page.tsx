@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { services } from "@/data/services";
+import { serviceIcons } from "@/components/icons/ServiceIcons";
 
 export const metadata: Metadata = {
   title: "Services | Afly Consultancy Services",
@@ -11,8 +12,9 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <div>
-      <section className="bg-brand-blue py-20 text-white">
-        <div className="mx-auto max-w-4xl px-6 text-center">
+      <section className="relative overflow-hidden bg-brand-blue py-20 text-white">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
             What We Offer
           </p>
@@ -26,13 +28,18 @@ export default function ServicesPage() {
 
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-8 md:grid-cols-2">
-          {services.map((service) => (
+          {services.map((service) => {
+            const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
+            return (
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
               className="rounded-2xl border border-slate-200 p-8 transition-shadow hover:shadow-lg"
             >
-              <h2 className="text-xl font-semibold text-brand-blue">{service.title}</h2>
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red">
+                <Icon className="h-7 w-7" />
+              </div>
+              <h2 className="mt-4 text-xl font-semibold text-brand-blue">{service.title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">
                 {service.description}
               </p>
@@ -48,7 +55,8 @@ export default function ServicesPage() {
                 Learn more →
               </span>
             </Link>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-16 rounded-2xl bg-slate-50 p-10 text-center">

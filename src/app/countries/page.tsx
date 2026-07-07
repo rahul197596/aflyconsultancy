@@ -11,8 +11,9 @@ export const metadata: Metadata = {
 export default function CountriesPage() {
   return (
     <div>
-      <section className="bg-brand-blue py-20 text-white">
-        <div className="mx-auto max-w-4xl px-6 text-center">
+      <section className="relative overflow-hidden bg-brand-blue py-20 text-white">
+        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
             Where You Could Study
           </p>
@@ -33,7 +34,9 @@ export default function CountriesPage() {
               href={`/countries/${country.slug}`}
               className="rounded-2xl border border-slate-200 p-6 transition-shadow hover:shadow-lg"
             >
-              <div className="text-4xl">{country.flag}</div>
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-red/10 text-3xl">
+                {country.flag}
+              </div>
               <h2 className="mt-4 text-xl font-semibold text-brand-blue">
                 {country.name}
               </h2>

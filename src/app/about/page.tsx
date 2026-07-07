@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { EyeIcon, HeartIcon, ShieldCheckIcon } from "@/components/icons/InfoIcons";
 
 export const metadata: Metadata = {
   title: "About Us | Afly Consultancy Services",
@@ -11,24 +12,35 @@ const values = [
     title: "Transparency",
     description:
       "We give honest recommendations, including when studying abroad isn't the right fit yet.",
+    icon: EyeIcon,
   },
   {
     title: "Student-first",
     description:
       "Every decision we make is judged by one question: is this good for the student?",
+    icon: HeartIcon,
   },
   {
     title: "Accountability",
     description:
       "We stay involved from the first consultation through to your arrival on campus.",
+    icon: ShieldCheckIcon,
   },
+];
+
+const milestones = [
+  { value: "500+", label: "Students Placed" },
+  { value: "50+", label: "Partner Universities" },
+  { value: "15+", label: "Years of Experience" },
+  { value: "98%", label: "Visa Success Rate" },
 ];
 
 export default function AboutPage() {
   return (
     <div>
-      <section className="bg-brand-blue py-20 text-white">
-        <div className="mx-auto max-w-4xl px-6 text-center">
+      <section className="relative overflow-hidden bg-brand-blue py-20 text-white">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
             About Afly Consultancy Services
           </p>
@@ -40,6 +52,17 @@ export default function AboutPage() {
             their overseas education journey — with honesty, expertise, and
             genuine care.
           </p>
+        </div>
+      </section>
+
+      <section className="border-b border-slate-100 py-12">
+        <div className="mx-auto grid max-w-4xl grid-cols-2 gap-8 px-6 text-center md:grid-cols-4">
+          {milestones.map((m) => (
+            <div key={m.label}>
+              <p className="text-3xl font-bold text-brand-red">{m.value}</p>
+              <p className="mt-1 text-sm text-slate-600">{m.label}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -72,7 +95,10 @@ export default function AboutPage() {
                 key={value.title}
                 className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-slate-100"
               >
-                <h3 className="text-lg font-semibold text-brand-blue">{value.title}</h3>
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red">
+                  <value.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-brand-blue">{value.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   {value.description}
                 </p>

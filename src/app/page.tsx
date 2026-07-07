@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { services } from "@/data/services";
+import { serviceIcons } from "@/components/icons/ServiceIcons";
+import FaqAccordion from "@/components/FaqAccordion";
 
 const stats = [
   { value: "500+", label: "Students Placed" },
@@ -9,6 +11,60 @@ const stats = [
 ];
 
 const featuredServices = services.slice(0, 4);
+
+const partnerUniversities = [
+  { name: "King's College London", logo: "/universities/Kings_college_london.png" },
+  { name: "University of Leicester", logo: "/universities/University_of_Leicester.png" },
+  { name: "University of East London", logo: "/universities/University_of_east_london.png" },
+  { name: "Istituto Marangoni", logo: "/universities/istituto_marangoni.png" },
+];
+
+const processSteps = [
+  {
+    title: "Free Consultation",
+    description: "Tell us your goals, budget, and background. We map out your realistic options.",
+  },
+  {
+    title: "Shortlist & Apply",
+    description: "We shortlist universities and courses, then handle applications end to end.",
+  },
+  {
+    title: "Test Prep & Visa",
+    description: "Structured test coaching and visa documentation, with mock interviews included.",
+  },
+  {
+    title: "Fly & Settle In",
+    description: "Pre-departure briefing on accommodation, travel, and student life abroad.",
+  },
+];
+
+const faqs = [
+  {
+    question: "How much does it cost to work with Afly Consultancy Services?",
+    answer:
+      "Your first consultation is completely free. We'll walk you through our service fees for application, visa, and test-prep support based on your specific destination and course before you commit to anything.",
+  },
+  {
+    question: "Which countries do you help students apply to?",
+    answer:
+      "We specialize in the UK, USA, Canada, Australia, Ireland, and Germany. See our Countries page for course options, intakes, and work rights for each destination.",
+  },
+  {
+    question: "Do you help with scholarships and financial aid?",
+    answer:
+      "Yes. We screen you against university and external scholarships you're eligible for and support you through the application and essay process.",
+  },
+  {
+    question: "What if my visa application is refused?",
+    answer:
+      "We prepare documentation and mock interviews specifically to minimize refusal risk. If a refusal does happen, we review the reasons with you and help you reapply or explore alternative options.",
+  },
+  {
+    question: "How long does the whole process take?",
+    answer:
+      "It varies by destination and intake, but most students start the process 8-12 months before their intended intake to leave time for tests, applications, and visa processing.",
+  },
+];
 
 const testimonials = [
   {
@@ -28,8 +84,10 @@ const testimonials = [
 export default function Home() {
   return (
     <div>
-      <section className="bg-gradient-to-b from-brand-blue to-brand-blue-light text-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-24 md:grid-cols-2">
+      <section className="relative overflow-hidden bg-gradient-to-b from-brand-blue to-brand-blue-light text-white">
+        <div className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="pointer-events-none absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-24 md:grid-cols-2">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
               Overseas Education Consultants · Aim High Fly High
@@ -87,6 +145,24 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-slate-50 py-12">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-500">
+            Some of Our Partner Institutions
+          </p>
+          <div className="mt-8 grid grid-cols-2 items-center gap-8 sm:grid-cols-4">
+            {partnerUniversities.map((uni) => (
+              <img
+                key={uni.name}
+                src={uni.logo}
+                alt={uni.name}
+                className="mx-auto h-14 w-auto object-contain grayscale transition-all hover:grayscale-0"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-6xl px-6 py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-brand-blue">How We Help You</h2>
@@ -97,23 +173,26 @@ export default function Home() {
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredServices.map((service) => (
-            <Link
-              key={service.slug}
-              href={`/services/${service.slug}`}
-              className="rounded-2xl border border-slate-200 p-6 transition-shadow hover:shadow-lg"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-red/10 font-bold text-brand-red">
-                {service.title.charAt(0)}
-              </div>
-              <h3 className="mt-5 text-lg font-semibold text-brand-blue">
-                {service.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                {service.description}
-              </p>
-            </Link>
-          ))}
+          {featuredServices.map((service) => {
+            const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
+            return (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="rounded-2xl border border-slate-200 p-6 transition-shadow hover:shadow-lg"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-5 text-lg font-semibold text-brand-blue">
+                  {service.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  {service.description}
+                </p>
+              </Link>
+            );
+          })}
         </div>
 
         <div className="mt-10 text-center">
@@ -127,6 +206,35 @@ export default function Home() {
       </section>
 
       <section className="bg-slate-50 py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-brand-blue">How It Works</h2>
+            <p className="mt-4 text-slate-600">
+              Four steps from your first conversation with us to landing
+              abroad.
+            </p>
+          </div>
+
+          <div className="relative mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="absolute left-0 right-0 top-6 hidden h-px bg-slate-200 lg:block" />
+            {processSteps.map((step, i) => (
+              <div key={step.title} className="relative text-center">
+                <div className="relative z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-red text-lg font-bold text-white">
+                  {i + 1}
+                </div>
+                <h3 className="mt-5 text-base font-semibold text-brand-blue">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-12 md:grid-cols-2">
             <div>
@@ -179,8 +287,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-brand-blue py-16 text-white">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
+      <section className="bg-slate-50 py-24">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-brand-blue">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-4 text-slate-600">
+              Answers to what most students ask before they get started.
+            </p>
+          </div>
+          <div className="mt-10">
+            <FaqAccordion items={faqs} />
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-brand-blue py-16 text-white">
+        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
           <div>
             <h2 className="text-2xl font-bold">Ready to start your application?</h2>
             <p className="mt-2 text-slate-300">

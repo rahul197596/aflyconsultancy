@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from "@/components/icons/InfoIcons";
 
 export const metadata: Metadata = {
   title: "Contact | Afly Consultancy Services",
@@ -10,8 +11,9 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div>
-      <section className="bg-brand-blue py-20 text-white">
-        <div className="mx-auto max-w-4xl px-6 text-center">
+      <section className="relative overflow-hidden bg-brand-blue py-20 text-white">
+        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
             Get in Touch
           </p>
@@ -39,31 +41,51 @@ export default function ContactPage() {
 
           <div className="md:col-span-2">
             <div className="space-y-6">
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                  Email
-                </h3>
-                <p className="mt-1 text-brand-blue">info@aflyconsultancy.com</p>
+              <div className="flex items-start gap-3">
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                  <MailIcon className="h-5 w-5" />
+                </span>
+                <div>
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                    Email
+                  </h3>
+                  <p className="mt-1 text-brand-blue">info@aflyconsultancy.com</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                  Phone
-                </h3>
-                <p className="mt-1 text-brand-blue">+91 81251 44079</p>
+              <div className="flex items-start gap-3">
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                  <PhoneIcon className="h-5 w-5" />
+                </span>
+                <div>
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                    Phone
+                  </h3>
+                  <p className="mt-1 text-brand-blue">+91 81251 44079</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                  Office Hours
-                </h3>
-                <p className="mt-1 text-brand-blue">Monday – Saturday, 9:00 AM – 6:00 PM</p>
+              <div className="flex items-start gap-3">
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                  <ClockIcon className="h-5 w-5" />
+                </span>
+                <div>
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                    Office Hours
+                  </h3>
+                  <p className="mt-1 text-brand-blue">Monday – Saturday, 9:00 AM – 6:00 PM</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                  Address
-                </h3>
-                <p className="mt-1 text-brand-blue">
-                  Update with your office address here.
-                </p>
+              <div className="flex items-start gap-3">
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                  <MapPinIcon className="h-5 w-5" />
+                </span>
+                <div>
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                    Address
+                  </h3>
+                  <p className="mt-1 text-brand-blue">
+                    Update with your office address here.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
