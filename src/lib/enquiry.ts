@@ -23,7 +23,8 @@ export const INTAKE_OPTIONS = [
   "September 2027",
 ];
 
-const ENQUIRY_ENDPOINT_URL = "";
+const ENQUIRY_ENDPOINT_URL =
+  "https://script.google.com/macros/s/AKfycbylqwL6-QAMcSbDqp65e3RoiqDBdX1z0g8_lFJqBUQxCR0wEVPOYudzbq6h0nPg1lV5CA/exec";
 const FALLBACK_EMAIL = "info@aflyconsultancy.com";
 
 export async function submitEnquiry(payload: EnquiryPayload) {

@@ -119,7 +119,7 @@ export default function EnquiryModal({
                 <input
                   type="tel"
                   required
-                  pattern="[0-9+\-\s()]{7,}"
+                  pattern="[0-9+\(\)\s\-]{7,}"
                   title="Enter a valid phone number"
                   placeholder="Phone Number"
                   value={phone}
