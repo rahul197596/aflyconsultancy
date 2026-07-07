@@ -9,6 +9,9 @@ export default function Footer() {
             <img src="/logo.png" alt="Afly Consultancy Services" className="h-9 w-9 object-contain" />
             Afly Consultancy Services
           </div>
+          <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-brand-red-light">
+            Aim High Fly High
+          </p>
           <p className="mt-4 text-sm leading-relaxed text-slate-400">
             Trusted guidance for students pursuing higher education abroad —
             from university selection to visa approval.
