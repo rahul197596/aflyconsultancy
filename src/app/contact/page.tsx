@@ -105,7 +105,7 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <h3 className="text-sm font-semibold text-brand-blue">Chat on WhatsApp</h3>
-                  <p className="text-xs text-slate-600">Usually replies within a few hours</p>
+                  <p className="text-xs text-slate-600">Usually replies within a few minutes</p>
                 </div>
               </a>
             </div>
