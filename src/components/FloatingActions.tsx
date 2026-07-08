@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import EnquiryModal from "@/components/EnquiryModal";
-import LiveChatModal from "@/components/LiveChatModal";
 import { useMobileNav } from "@/components/MobileNavContext";
 
 const WHATSAPP_LINK = "https://wa.me/+918125144079";
@@ -10,7 +9,6 @@ const FIELD_TAGS = ["INPUT", "TEXTAREA", "SELECT"];
 
 export default function FloatingActions() {
   const [open, setOpen] = useState(false);
-  const [chatOpen, setChatOpen] = useState(false);
   const [fieldFocused, setFieldFocused] = useState(false);
   const { mobileNavOpen } = useMobileNav();
 
@@ -42,16 +40,6 @@ export default function FloatingActions() {
             Enquire Now
           </button>
 
-          <button
-            onClick={() => setChatOpen(true)}
-            aria-label="Chat with us"
-            className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-blue shadow-lg transition-transform hover:scale-105"
-          >
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-              <path d="M4 4.5h16A1.5 1.5 0 0 1 21.5 6v10a1.5 1.5 0 0 1-1.5 1.5H9l-4.5 4V6A1.5 1.5 0 0 1 4 4.5Z" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-
           <a
             href={WHATSAPP_LINK}
             target="_blank"
@@ -67,7 +55,6 @@ export default function FloatingActions() {
       )}
 
       <EnquiryModal open={open} onClose={() => setOpen(false)} />
-      <LiveChatModal open={chatOpen} onClose={() => setChatOpen(false)} />
     </>
   );
 }

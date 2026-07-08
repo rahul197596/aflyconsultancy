@@ -46,29 +46,3 @@ export async function submitEnquiry(payload: EnquiryPayload) {
     body: JSON.stringify({ ...payload, timestamp: new Date().toISOString() }),
   });
 }
-
-export type LiveChatPayload = {
-  name: string;
-  message: string;
-};
-
-export async function submitLiveChatMessage(payload: LiveChatPayload) {
-  if (!ENQUIRY_ENDPOINT_URL) {
-    const subject = encodeURIComponent(`Live chat message from ${payload.name}`);
-    const body = encodeURIComponent(payload.message);
-    window.location.href = `mailto:${FALLBACK_EMAIL}?subject=${subject}&body=${body}`;
-    return;
-  }
-
-  await fetch(ENQUIRY_ENDPOINT_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify({
-      kind: "livechat",
-      ...payload,
-      page: window.location.pathname,
-      timestamp: new Date().toISOString(),
-    }),
-  });
-}
