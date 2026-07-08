@@ -124,7 +124,7 @@ export default function Navbar() {
                         href={`/services/${service.slug}`}
                         className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-slate-50"
                       >
-                        <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                        <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                           <Icon className="h-5 w-5" />
                         </span>
                         <span>
@@ -210,7 +210,7 @@ export default function Navbar() {
 
         <Link
           href="/contact"
-          className="hidden rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-red-light md:inline-block"
+          className="hidden rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg md:inline-block"
         >
           Book Free Consultation
         </Link>
@@ -262,7 +262,7 @@ export default function Navbar() {
                           onClick={() => setMobileOpen(false)}
                           className="flex items-center gap-2 py-1.5 text-sm text-slate-600 hover:text-brand-red"
                         >
-                          <span className="flex h-6 w-6 flex-none items-center justify-center rounded-md bg-brand-red/10 text-brand-red">
+                          <span className="flex h-6 w-6 flex-none items-center justify-center rounded-md bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                             <Icon className="h-3.5 w-3.5" />
                           </span>
                           {service.title}
@@ -340,7 +340,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="inline-block rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white"
+                className="inline-block rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25"
               >
                 Book Free Consultation
               </Link>

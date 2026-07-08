@@ -36,6 +36,7 @@ export default async function ServiceDetailPage(props: {
     <div>
       <section className="relative overflow-hidden bg-brand-blue py-20 text-white">
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-brand-red-light">
             <Icon className="h-9 w-9" />
@@ -50,7 +51,7 @@ export default async function ServiceDetailPage(props: {
 
       <section className="mx-auto max-w-5xl px-6 py-20">
         <div className="grid gap-8 md:grid-cols-2">
-          <div className="rounded-2xl border border-slate-200 p-6">
+          <div className="rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow hover:shadow-md">
             <h2 className="text-lg font-semibold text-brand-blue">What's Included</h2>
             <ul className="mt-4 space-y-2">
               {service.points.map((point) => (
@@ -62,7 +63,7 @@ export default async function ServiceDetailPage(props: {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 p-6">
+          <div className="rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow hover:shadow-md">
             <h2 className="text-lg font-semibold text-brand-blue">How It Works</h2>
             <ol className="mt-4 space-y-3">
               {service.process.map((step, i) => (
@@ -86,7 +87,7 @@ export default async function ServiceDetailPage(props: {
           </p>
           <Link
             href="/contact"
-            className="inline-block rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-red-light"
+            className="inline-block rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg"
           >
             Book Free Consultation
           </Link>

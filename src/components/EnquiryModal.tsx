@@ -83,7 +83,7 @@ export default function EnquiryModal({
 
         {status === "done" ? (
           <div className="py-6 text-center">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-red/10 text-brand-red">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -94,7 +94,7 @@ export default function EnquiryModal({
             </p>
             <button
               onClick={onClose}
-              className="mt-6 rounded-full bg-brand-red px-6 py-2.5 text-sm font-semibold text-white hover:bg-brand-red-light"
+              className="mt-6 rounded-full bg-brand-red px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg"
             >
               Close
             </button>
@@ -189,7 +189,7 @@ export default function EnquiryModal({
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="w-full rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-red-light disabled:opacity-60"
+                className="w-full rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg disabled:opacity-60"
               >
                 {status === "submitting" ? "Sending..." : "Submit Enquiry"}
               </button>

@@ -44,6 +44,7 @@ export default function AboutPage() {
     <div>
       <section className="relative overflow-hidden bg-brand-blue py-20 text-white">
         <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
             About Afly Consultancy Services
@@ -99,7 +100,7 @@ export default function AboutPage() {
                 key={value.title}
                 className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-slate-100"
               >
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                   <value.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-4 text-lg font-semibold text-brand-blue">{value.title}</h3>

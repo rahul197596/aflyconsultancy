@@ -36,6 +36,7 @@ export default async function CountryDetailPage(props: {
     <div>
       <section className="relative overflow-hidden bg-brand-blue py-20 text-white">
         <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-4xl">
             {country.flag}
@@ -47,9 +48,9 @@ export default async function CountryDetailPage(props: {
 
       <section className="mx-auto max-w-5xl px-6 py-20">
         <div className="grid gap-8 md:grid-cols-2">
-          <div className="rounded-2xl border border-slate-200 p-6">
+          <div className="rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow hover:shadow-md">
             <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                 <CompassIcon className="h-5 w-5" />
               </span>
               <h2 className="text-lg font-semibold text-brand-blue">Why {country.name}?</h2>
@@ -64,9 +65,9 @@ export default async function CountryDetailPage(props: {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 p-6">
+          <div className="rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow hover:shadow-md">
             <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                 <BookOpenIcon className="h-5 w-5" />
               </span>
               <h2 className="text-lg font-semibold text-brand-blue">Popular Courses</h2>
@@ -81,9 +82,9 @@ export default async function CountryDetailPage(props: {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 p-6">
+          <div className="rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow hover:shadow-md">
             <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                 <CalendarIcon className="h-5 w-5" />
               </span>
               <h2 className="text-lg font-semibold text-brand-blue">Intakes</h2>
@@ -91,9 +92,9 @@ export default async function CountryDetailPage(props: {
             <p className="mt-3 text-sm leading-relaxed text-slate-600">{country.intakes}</p>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 p-6">
+          <div className="rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow hover:shadow-md">
             <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                 <BriefcaseIcon className="h-5 w-5" />
               </span>
               <h2 className="text-lg font-semibold text-brand-blue">Work Rights</h2>
@@ -101,9 +102,9 @@ export default async function CountryDetailPage(props: {
             <p className="mt-3 text-sm leading-relaxed text-slate-600">{country.workRights}</p>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 p-6 md:col-span-2">
+          <div className="rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow hover:shadow-md md:col-span-2">
             <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+              <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                 <CoinsIcon className="h-5 w-5" />
               </span>
               <h2 className="text-lg font-semibold text-brand-blue">Estimated Costs</h2>
@@ -121,7 +122,7 @@ export default async function CountryDetailPage(props: {
           </p>
           <Link
             href="/contact"
-            className="inline-block rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-red-light"
+            className="inline-block rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg"
           >
             Book Free Consultation
           </Link>

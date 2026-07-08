@@ -17,6 +17,7 @@ export default function ContactPage() {
     <div>
       <section className="relative overflow-hidden bg-brand-blue py-20 text-white">
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
             Get in Touch
@@ -32,7 +33,7 @@ export default function ContactPage() {
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-12 md:grid-cols-5">
           <div className="md:col-span-3">
-            <div className="rounded-2xl border border-slate-200 p-8">
+            <div className="rounded-2xl border border-slate-200 p-8 shadow-sm">
               <h2 className="text-xl font-semibold text-brand-blue">Send Us a Message</h2>
               <p className="mt-2 text-sm text-slate-600">
                 Fill out the form and a counsellor will get back to you shortly.
@@ -46,7 +47,7 @@ export default function ContactPage() {
           <div className="md:col-span-2">
             <div className="space-y-6">
               <div className="flex items-start gap-3">
-                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                   <MailIcon className="h-5 w-5" />
                 </span>
                 <div>
@@ -57,7 +58,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                   <PhoneIcon className="h-5 w-5" />
                 </span>
                 <div>
@@ -68,7 +69,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                   <ClockIcon className="h-5 w-5" />
                 </span>
                 <div>
@@ -79,15 +80,15 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                   <MapPinIcon className="h-5 w-5" />
                 </span>
                 <div>
                   <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                    Address
+                    Consultations
                   </h3>
                   <p className="mt-1 text-brand-blue">
-                    Update with your office address here.
+                    Available by phone, WhatsApp, or video call
                   </p>
                 </div>
               </div>

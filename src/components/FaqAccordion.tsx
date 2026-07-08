@@ -8,7 +8,7 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white">
+    <div className="divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white shadow-sm">
       {items.map((item, i) => {
         const open = openIndex === i;
         return (

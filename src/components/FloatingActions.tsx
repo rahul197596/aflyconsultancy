@@ -34,7 +34,7 @@ export default function FloatingActions() {
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
         <button
           onClick={() => setOpen(true)}
-          className="rounded-full bg-brand-red px-5 py-3 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-brand-red-light"
+          className="rounded-full bg-brand-red px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-xl"
         >
           Enquire Now
         </button>
