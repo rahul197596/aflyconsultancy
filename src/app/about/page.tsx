@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { EyeIcon, HeartIcon, ShieldCheckIcon } from "@/components/icons/InfoIcons";
+import Reveal from "@/components/Reveal";
+import CountUp from "@/components/CountUp";
 
 const description =
   "Learn about Afly Consultancy Services' mission, values, and 15+ years of experience helping students study abroad.";
@@ -64,7 +66,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-4xl grid-cols-2 gap-8 px-6 text-center md:grid-cols-4">
           {milestones.map((m) => (
             <div key={m.label}>
-              <p className="text-3xl font-bold text-brand-red">{m.value}</p>
+              <CountUp value={m.value} className="text-3xl font-bold text-brand-red" />
               <p className="mt-1 text-sm text-slate-600">{m.label}</p>
             </div>
           ))}
@@ -95,19 +97,18 @@ export default function AboutPage() {
             What We Stand For
           </h2>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {values.map((value) => (
-              <div
-                key={value.title}
-                className="rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-slate-100"
-              >
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
-                  <value.icon className="h-6 w-6" />
+            {values.map((value, i) => (
+              <Reveal key={value.title} delay={i * 100}>
+                <div className="h-full rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-slate-100">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
+                    <value.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-brand-blue">{value.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    {value.description}
+                  </p>
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-brand-blue">{value.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  {value.description}
-                </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

@@ -33,9 +33,19 @@ export default function Navbar() {
   const { mobileNavOpen: mobileOpen, setMobileNavOpen: setMobileOpen } = useMobileNav();
   const [desktopMenu, setDesktopMenu] = useState<"services" | "countries" | null>(null);
   const [mobileSection, setMobileSection] = useState<"services" | "countries" | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const navRef = useRef<HTMLElement>(null);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 8);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   function openMenu(menu: "services" | "countries") {
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
@@ -74,7 +84,12 @@ export default function Navbar() {
   const isCountriesActive = pathname.startsWith("/countries");
 
   return (
-    <header ref={navRef} className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
+    <header
+      ref={navRef}
+      className={`sticky top-0 z-50 border-b bg-white/90 backdrop-blur transition-shadow duration-200 ${
+        scrolled ? "border-slate-200 shadow-sm" : "border-transparent"
+      }`}
+    >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2 text-brand-blue">
           <img src="/logo.png" alt="Afly Consultancy Services" className="h-10 w-10 object-contain" />
@@ -210,7 +225,7 @@ export default function Navbar() {
 
         <Link
           href="/contact"
-          className="hidden rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg md:inline-block"
+          className="hidden rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25 active:scale-[0.98] transition-all hover:bg-brand-red-light hover:shadow-lg md:inline-block"
         >
           Book Free Consultation
         </Link>
@@ -340,7 +355,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="inline-block rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25"
+                className="inline-block rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25 active:scale-[0.98]"
               >
                 Book Free Consultation
               </Link>

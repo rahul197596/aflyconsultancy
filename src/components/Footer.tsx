@@ -36,10 +36,11 @@ export default function Footer() {
             Services
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
-            <li>University Selection</li>
-            <li>Visa Guidance</li>
-            <li>Test Preparation</li>
-            <li>Scholarship Assistance</li>
+            <li><Link href="/services/university-selection" className="hover:text-brand-red-light">University Selection</Link></li>
+            <li><Link href="/services/visa-guidance" className="hover:text-brand-red-light">Visa Guidance</Link></li>
+            <li><Link href="/services/test-preparation" className="hover:text-brand-red-light">Test Preparation</Link></li>
+            <li><Link href="/services/scholarship-assistance" className="hover:text-brand-red-light">Scholarship Assistance</Link></li>
+            <li><Link href="/services/post-visa-support" className="hover:text-brand-red-light">Post-Visa Support</Link></li>
           </ul>
         </div>
 

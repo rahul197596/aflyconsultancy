@@ -109,4 +109,23 @@ export const services: Service[] = [
       "Orientation session on student life and support services",
     ],
   },
+  {
+    slug: "post-visa-support",
+    title: "Post-Visa Support",
+    description:
+      "Our support doesn't end when your visa is stamped. We stay with you after you land — through academics, accommodation, and finding work.",
+    points: [
+      "Academic support and tutor referrals",
+      "Accommodation search and lease assistance",
+      "Part-time job search while studying",
+      "Full-time job search and career guidance after graduation",
+    ],
+    process: [
+      "Post-arrival check-in once you've landed",
+      "Ongoing academic support and tutor referrals if you're struggling with coursework",
+      "Accommodation search, shortlisting, and lease guidance",
+      "CV building, interview prep, and part-time job search support during your studies",
+      "Full-time job search and career guidance as you approach graduation",
+    ],
+  },
 ];

@@ -120,3 +120,13 @@ export function MapPinIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+export function HomeIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M3.5 11 12 4l8.5 7" />
+      <path d="M5.5 9.5V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5" />
+      <path d="M9.5 20v-5.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V20" />
+    </svg>
+  );
+}

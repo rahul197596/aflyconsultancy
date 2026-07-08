@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { services } from "@/data/services";
 import { serviceIcons } from "@/components/icons/ServiceIcons";
+import Reveal from "@/components/Reveal";
 
 const description =
   "Explore Afly Consultancy Services' overseas education services: university selection, visa guidance, test preparation, scholarships, and more.";
@@ -33,33 +34,34 @@ export default function ServicesPage() {
 
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-8 md:grid-cols-2">
-          {services.map((service) => {
+          {services.map((service, i) => {
             const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
             return (
-            <Link
-              key={service.slug}
-              href={`/services/${service.slug}`}
-              className="rounded-2xl border border-slate-200 p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
-                <Icon className="h-7 w-7" />
-              </div>
-              <h2 className="mt-4 text-xl font-semibold text-brand-blue">{service.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                {service.description}
-              </p>
-              <ul className="mt-5 space-y-2">
-                {service.points.map((point) => (
-                  <li key={point} className="flex items-start gap-2 text-sm text-slate-700">
-                    <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-brand-red" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-              <span className="mt-5 inline-block text-sm font-semibold text-brand-red">
-                Learn more →
-              </span>
-            </Link>
+            <Reveal key={service.slug} delay={(i % 2) * 100}>
+              <Link
+                href={`/services/${service.slug}`}
+                className="block h-full rounded-2xl border border-slate-200 p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
+                  <Icon className="h-7 w-7" />
+                </div>
+                <h2 className="mt-4 text-xl font-semibold text-brand-blue">{service.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                  {service.description}
+                </p>
+                <ul className="mt-5 space-y-2">
+                  {service.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2 text-sm text-slate-700">
+                      <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-brand-red" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+                <span className="mt-5 inline-block text-sm font-semibold text-brand-red">
+                  Learn more →
+                </span>
+              </Link>
+            </Reveal>
             );
           })}
         </div>
@@ -73,7 +75,7 @@ export default function ServicesPage() {
           </p>
           <Link
             href="/contact"
-            className="mt-6 inline-block rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg"
+            className="mt-6 inline-block rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-red/25 active:scale-[0.98] transition-all hover:bg-brand-red-light hover:shadow-lg"
           >
             Book Free Consultation
           </Link>

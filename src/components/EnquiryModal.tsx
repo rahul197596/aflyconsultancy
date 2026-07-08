@@ -94,7 +94,7 @@ export default function EnquiryModal({
             </p>
             <button
               onClick={onClose}
-              className="mt-6 rounded-full bg-brand-red px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg"
+              className="mt-6 rounded-full bg-brand-red px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25 active:scale-[0.98] transition-all hover:bg-brand-red-light hover:shadow-lg"
             >
               Close
             </button>
@@ -189,7 +189,7 @@ export default function EnquiryModal({
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="w-full rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg disabled:opacity-60"
+                className="w-full rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-red/25 active:scale-[0.98] transition-all hover:bg-brand-red-light hover:shadow-lg disabled:opacity-60"
               >
                 {status === "submitting" ? "Sending..." : "Submit Enquiry"}
               </button>

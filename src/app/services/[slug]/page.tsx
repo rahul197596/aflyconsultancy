@@ -87,7 +87,7 @@ export default async function ServiceDetailPage(props: {
           </p>
           <Link
             href="/contact"
-            className="inline-block rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg"
+            className="inline-block rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-red/25 active:scale-[0.98] transition-all hover:bg-brand-red-light hover:shadow-lg"
           >
             Book Free Consultation
           </Link>

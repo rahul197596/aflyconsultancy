@@ -71,6 +71,16 @@ export function SuitcaseIcon({ className }: IconProps) {
   );
 }
 
+export function LifeRingIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} {...base}>
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="m5.8 5.8 3 3M15.2 15.2l3 3M18.2 5.8l-3 3M8.8 15.2l-3 3" />
+    </svg>
+  );
+}
+
 export const serviceIcons = {
   "university-selection": GraduationCapIcon,
   "application-support": DocumentCheckIcon,
@@ -78,4 +88,5 @@ export const serviceIcons = {
   "test-preparation": PencilTestIcon,
   "scholarship-assistance": ScholarshipIcon,
   "pre-departure-briefing": SuitcaseIcon,
+  "post-visa-support": LifeRingIcon,
 } as const;

@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { services } from "@/data/services";
 import { serviceIcons } from "@/components/icons/ServiceIcons";
+import { BookOpenIcon, BriefcaseIcon, HomeIcon } from "@/components/icons/InfoIcons";
 import FaqAccordion from "@/components/FaqAccordion";
+import Reveal from "@/components/Reveal";
+import CountUp from "@/components/CountUp";
 
 const stats = [
   { value: "500+", label: "Students Placed" },
@@ -35,6 +38,27 @@ const processSteps = [
   {
     title: "Fly & Settle In",
     description: "Pre-departure briefing on accommodation, travel, and student life abroad.",
+  },
+];
+
+const postVisaHighlights = [
+  {
+    icon: BookOpenIcon,
+    title: "Academic Support",
+    description:
+      "Struggling with coursework once classes start? We connect you with tutor referrals and academic guidance so you stay on track.",
+  },
+  {
+    icon: HomeIcon,
+    title: "Accommodation Help",
+    description:
+      "From shortlisting to signing the lease, we help you find safe, affordable housing near your campus before and after you land.",
+  },
+  {
+    icon: BriefcaseIcon,
+    title: "Job Search Support",
+    description:
+      "CV building, interview prep, and job search help for both part-time work during your studies and full-time roles after graduation.",
   },
 ];
 
@@ -104,7 +128,7 @@ export default function Home() {
             <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
               Overseas Education Consultants · Aim High Fly High
             </p>
-            <h1 className="mt-4 text-4xl font-bold leading-tight md:text-5xl">
+            <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl">
               Your Journey to Study Abroad Starts Here
             </h1>
             <p className="mt-6 text-lg text-slate-300">
@@ -115,7 +139,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg"
+                className="rounded-full bg-brand-red px-7 py-3.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25 active:scale-[0.98] transition-all hover:bg-brand-red-light hover:shadow-lg"
               >
                 Book Free Consultation
               </Link>
@@ -132,7 +156,7 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-6">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-3xl font-bold text-brand-red-light">{stat.value}</p>
+                  <CountUp value={stat.value} className="text-3xl font-bold text-brand-red-light" />
                   <p className="mt-1 text-sm text-slate-300">{stat.label}</p>
                 </div>
               ))}
@@ -247,6 +271,47 @@ export default function Home() {
       </section>
 
       <section className="py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-brand-blue">
+              Support That Doesn't End at Your Visa
+            </h2>
+            <p className="mt-4 text-slate-600">
+              Landing is just the beginning. Here's how we stay with you
+              after you arrive.
+            </p>
+          </Reveal>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-3">
+            {postVisaHighlights.map((item, i) => (
+              <Reveal key={item.title} delay={i * 100}>
+                <div className="h-full rounded-2xl border border-slate-200 p-8 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
+                    <item.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-brand-blue">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    {item.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/services/post-visa-support"
+              className="text-sm font-semibold text-brand-red hover:text-brand-red-light"
+            >
+              Learn more about post-visa support →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 py-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="text-3xl font-bold text-brand-blue">
             Why Students Choose Afly Consultancy Services
@@ -278,7 +343,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-24">
+      <section className="py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold text-brand-blue">What Our Students Say</h2>
@@ -303,7 +368,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="bg-slate-50 py-24">
         <div className="mx-auto max-w-3xl px-6">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-brand-blue">
@@ -330,7 +395,7 @@ export default function Home() {
           </div>
           <Link
             href="/contact"
-            className="rounded-full bg-brand-red px-8 py-3.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg"
+            className="rounded-full bg-brand-red px-8 py-3.5 text-sm font-semibold text-white shadow-md shadow-brand-red/25 active:scale-[0.98] transition-all hover:bg-brand-red-light hover:shadow-lg"
           >
             Book Free Consultation
           </Link>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
-import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from "@/components/icons/InfoIcons";
+import { ClockIcon, MailIcon, PhoneIcon } from "@/components/icons/InfoIcons";
 
 const description =
   "Get in touch with Afly Consultancy Services for a free study-abroad consultation.";
@@ -79,20 +79,6 @@ export default function ContactPage() {
                   <p className="mt-1 text-brand-blue">Monday – Saturday, 9:00 AM – 6:00 PM</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
-                  <MapPinIcon className="h-5 w-5" />
-                </span>
-                <div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-                    Consultations
-                  </h3>
-                  <p className="mt-1 text-brand-blue">
-                    Available by phone, WhatsApp, or video call
-                  </p>
-                </div>
-              </div>
-
               <a
                 href="https://wa.me/+918125144079"
                 target="_blank"

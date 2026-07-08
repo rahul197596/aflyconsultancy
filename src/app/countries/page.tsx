@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { countries } from "@/data/countries";
+import Reveal from "@/components/Reveal";
 
 const description =
   "Explore popular study-abroad destinations — the UK, USA, Canada, Australia, Ireland, and Germany — with Afly Consultancy Services.";
@@ -33,36 +34,37 @@ export default function CountriesPage() {
 
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {countries.map((country) => (
-            <Link
-              key={country.slug}
-              href={`/countries/${country.slug}`}
-              className="rounded-2xl border border-slate-200 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
-            >
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-3xl ring-1 ring-brand-red/10">
-                {country.flag}
-              </div>
-              <h2 className="mt-4 text-xl font-semibold text-brand-blue">
-                {country.name}
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                {country.blurb}
-              </p>
-              <ul className="mt-4 space-y-2">
-                {country.highlights.map((point) => (
-                  <li
-                    key={point}
-                    className="flex items-start gap-2 text-sm text-slate-700"
-                  >
-                    <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-brand-red" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-              <span className="mt-4 inline-block text-sm font-semibold text-brand-red">
-                Learn more →
-              </span>
-            </Link>
+          {countries.map((country, i) => (
+            <Reveal key={country.slug} delay={(i % 3) * 100}>
+              <Link
+                href={`/countries/${country.slug}`}
+                className="block h-full rounded-2xl border border-slate-200 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-3xl ring-1 ring-brand-red/10">
+                  {country.flag}
+                </div>
+                <h2 className="mt-4 text-xl font-semibold text-brand-blue">
+                  {country.name}
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  {country.blurb}
+                </p>
+                <ul className="mt-4 space-y-2">
+                  {country.highlights.map((point) => (
+                    <li
+                      key={point}
+                      className="flex items-start gap-2 text-sm text-slate-700"
+                    >
+                      <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-brand-red" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+                <span className="mt-4 inline-block text-sm font-semibold text-brand-red">
+                  Learn more →
+                </span>
+              </Link>
+            </Reveal>
           ))}
         </div>
 
@@ -76,7 +78,7 @@ export default function CountriesPage() {
           </p>
           <Link
             href="/contact"
-            className="mt-6 inline-block rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-red/25 transition-all hover:bg-brand-red-light hover:shadow-lg"
+            className="mt-6 inline-block rounded-full bg-brand-red px-7 py-3 text-sm font-semibold text-white shadow-md shadow-brand-red/25 active:scale-[0.98] transition-all hover:bg-brand-red-light hover:shadow-lg"
           >
             Book Free Consultation
           </Link>
