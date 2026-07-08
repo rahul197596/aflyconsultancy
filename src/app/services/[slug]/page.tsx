@@ -34,17 +34,17 @@ export default async function ServiceDetailPage(props: {
 
   return (
     <div>
-      <section className="relative overflow-hidden bg-brand-blue py-20 text-white">
-        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
-        <div className="pointer-events-none absolute -right-32 bottom-0 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+      <section className="relative overflow-hidden bg-ink py-24 text-white">
+        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-64 w-64 rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-brand-red-light">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gold/10 text-gold-light ring-1 ring-gold/30">
             <Icon className="h-9 w-9" />
           </div>
-          <p className="mt-4 text-sm font-semibold uppercase tracking-widest text-brand-red-light">
+          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-light">
             Our Services
           </p>
-          <h1 className="mt-2 text-4xl font-bold">{service.title}</h1>
+          <h1 className="mt-4 text-4xl font-black tracking-tight md:text-5xl">{service.title}</h1>
           <p className="mt-4 text-slate-300">{service.description}</p>
         </div>
       </section>

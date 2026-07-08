@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t border-slate-200 bg-brand-blue text-slate-300">
+    <footer className="mt-auto border-t border-slate-200 bg-ink text-slate-300">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-2 text-lg font-bold text-white">
             <img src="/logo.png" alt="Afly Consultancy Services" className="h-9 w-9 object-contain" />
             Afly Consultancy Services
           </div>
-          <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-brand-red-light">
+          <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-gold-light">
             Aim High Fly High
           </p>
           <p className="mt-4 text-sm leading-relaxed text-slate-400">

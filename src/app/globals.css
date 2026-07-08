@@ -7,6 +7,10 @@
   --brand-blue-light: #2f24c9;
   --brand-red: #c40a0d;
   --brand-red-light: #e3272b;
+  --ink: #08051c;
+  --ink-light: #120b33;
+  --gold: #f0b429;
+  --gold-light: #ffd166;
 }
 
 @theme inline {
@@ -16,6 +20,10 @@
   --color-brand-blue-light: var(--brand-blue-light);
   --color-brand-red: var(--brand-red);
   --color-brand-red-light: var(--brand-red-light);
+  --color-ink: var(--ink);
+  --color-ink-light: var(--ink-light);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
   --font-sans: var(--font-inter);
 }
 
@@ -27,6 +35,48 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(5%, 8%) scale(1.15); }
+  66% { transform: translate(-4%, -4%) scale(0.95); }
+}
+
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-6%, 5%) scale(0.9); }
+  66% { transform: translate(6%, -6%) scale(1.1); }
+}
+
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  50% { transform: translate(-50%, -6%) scale(1.08); }
+}
+
+.animate-aurora-1 {
+  animation: aurora-drift-1 18s ease-in-out infinite;
+}
+
+.animate-aurora-2 {
+  animation: aurora-drift-2 22s ease-in-out infinite;
+}
+
+.animate-aurora-3 {
+  animation: aurora-drift-3 16s ease-in-out infinite;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.pause-on-hover:hover .animate-marquee {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -14,6 +14,7 @@ const stats = [
 ];
 
 const featuredServices = services.slice(0, 4);
+const [heroService, ...restServices] = featuredServices;
 
 const partnerUniversities = [
   { name: "King's College London", logo: "/universities/Kings_college_london.png" },
@@ -117,24 +118,41 @@ const testimonials = [
   },
 ];
 
+function StarRow() {
+  return (
+    <div className="flex gap-0.5 text-gold">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="m12 2 2.9 6.6 7.1.7-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.7 7.1-.7L12 2Z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div>
-      <section className="relative overflow-hidden bg-gradient-to-b from-brand-blue to-brand-blue-light text-white">
-        <div className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-brand-red/20 blur-3xl" />
-        <div className="pointer-events-none absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-24 md:grid-cols-2">
+      <section className="relative overflow-hidden bg-ink text-white">
+        <div className="pointer-events-none absolute -left-24 -top-32 h-[28rem] w-[28rem] rounded-full bg-brand-blue/40 blur-3xl animate-aurora-1" />
+        <div className="pointer-events-none absolute right-[-8rem] top-0 h-[26rem] w-[26rem] rounded-full bg-brand-red/30 blur-3xl animate-aurora-2" />
+        <div className="pointer-events-none absolute bottom-[-10rem] left-1/2 h-[24rem] w-[24rem] -translate-x-1/2 rounded-full bg-gold/20 blur-3xl animate-aurora-3" />
+
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-28 md:grid-cols-2">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-light">
-              Overseas Education Consultants · Aim High Fly High
+            <p className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-light">
+              Aim High · Fly High
             </p>
-            <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl">
-              Your Journey to Study Abroad Starts Here
+            <h1 className="mt-6 text-5xl font-black leading-[0.95] tracking-tight md:text-7xl">
+              Study Abroad,
+              <span className="block bg-gradient-to-r from-brand-red-light via-gold to-brand-red-light bg-clip-text text-transparent">
+                Done Right.
+              </span>
             </h1>
-            <p className="mt-6 text-lg text-slate-300">
-              From choosing the right university to landing your visa, Afly
-              Consultancy Services guides you through every step of studying
-              abroad — with honest advice and a proven track record.
+            <p className="mt-6 max-w-md text-lg text-slate-300">
+              From choosing the right university to landing your visa — and
+              everything after — Afly Consultancy Services guides your entire
+              journey abroad.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -145,18 +163,21 @@ export default function Home() {
               </Link>
               <Link
                 href="/services"
-                className="rounded-full border border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                className="rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
                 Explore Services
               </Link>
             </div>
           </div>
 
-          <div className="rounded-2xl bg-white/5 p-8 ring-1 ring-white/10">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
             <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat) => (
+              {stats.map((stat, i) => (
                 <div key={stat.label}>
-                  <CountUp value={stat.value} className="text-3xl font-bold text-brand-red-light" />
+                  <CountUp
+                    value={stat.value}
+                    className={`text-4xl font-black ${i % 2 === 0 ? "text-gold-light" : "text-brand-red-light"}`}
+                  />
                   <p className="mt-1 text-sm text-slate-300">{stat.label}</p>
                 </div>
               ))}
@@ -165,12 +186,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-b border-slate-100 bg-white py-8">
+      <section className="border-b border-slate-100 bg-white py-6">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-4 px-6 text-center sm:flex-row sm:text-left">
           <img
             src="/british-council-cert.png"
             alt="British Council Certified UK Agent & Counsellor"
-            className="h-14 w-auto object-contain"
+            className="h-12 w-auto object-contain"
           />
           <p className="text-sm font-medium text-slate-600">
             Afly Consultancy Services is a{" "}
@@ -181,18 +202,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-12">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-500">
-            Some of Our Partner Institutions
-          </p>
-          <div className="mt-8 grid grid-cols-2 items-center gap-8 sm:grid-cols-4">
-            {partnerUniversities.map((uni) => (
+      <section className="overflow-hidden bg-slate-50 py-10">
+        <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-500">
+          Some of Our Partner Institutions
+        </p>
+        <div
+          className="pause-on-hover relative mt-8 overflow-hidden"
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+        >
+          <div className="animate-marquee flex w-max items-center gap-16">
+            {[...partnerUniversities, ...partnerUniversities].map((uni, i) => (
               <img
-                key={uni.name}
+                key={`${uni.name}-${i}`}
                 src={uni.logo}
                 alt={uni.name}
-                className="mx-auto h-14 w-auto object-contain grayscale transition-all hover:grayscale-0"
+                className="h-12 w-auto flex-none object-contain grayscale transition-all hover:grayscale-0"
               />
             ))}
           </div>
@@ -208,25 +235,50 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredServices.map((service) => {
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {heroService && (() => {
+            const Icon = serviceIcons[heroService.slug as keyof typeof serviceIcons];
+            return (
+              <Reveal className="lg:col-span-3">
+                <Link
+                  href={`/services/${heroService.slug}`}
+                  className="group relative flex flex-col gap-6 overflow-hidden rounded-3xl bg-ink p-8 text-white shadow-xl transition-all duration-200 hover:-translate-y-1 sm:flex-row sm:items-center md:p-10"
+                >
+                  <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-red/30 blur-3xl" />
+                  <div className="relative flex h-16 w-16 flex-none items-center justify-center rounded-2xl bg-gold/15 text-gold-light ring-1 ring-gold/30">
+                    <Icon className="h-8 w-8" />
+                  </div>
+                  <div className="relative">
+                    <h3 className="text-2xl font-bold">{heroService.title}</h3>
+                    <p className="mt-2 max-w-xl text-slate-300">{heroService.description}</p>
+                  </div>
+                  <span className="relative ml-auto flex-none text-sm font-semibold text-gold-light transition-transform group-hover:translate-x-1">
+                    Learn more →
+                  </span>
+                </Link>
+              </Reveal>
+            );
+          })()}
+
+          {restServices.map((service, i) => {
             const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
             return (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}`}
-                className="rounded-2xl border border-slate-200 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <h3 className="mt-5 text-lg font-semibold text-brand-blue">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  {service.description}
-                </p>
-              </Link>
+              <Reveal key={service.slug} delay={i * 100}>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="block h-full rounded-2xl border border-slate-200 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-5 text-lg font-semibold text-brand-blue">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    {service.description}
+                  </p>
+                </Link>
+              </Reveal>
             );
           })}
         </div>
@@ -241,7 +293,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-24">
+      <section className="relative overflow-hidden bg-slate-50 py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold text-brand-blue">How It Works</h2>
@@ -251,20 +303,19 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="relative mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="absolute left-0 right-0 top-6 hidden h-px bg-slate-200 lg:block" />
+          <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step, i) => (
-              <div key={step.title} className="relative text-center">
-                <div className="relative z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-brand-red text-lg font-bold text-white">
-                  {i + 1}
-                </div>
-                <h3 className="mt-5 text-base font-semibold text-brand-blue">
+              <Reveal key={step.title} delay={i * 100} className="relative">
+                <span className="pointer-events-none select-none text-7xl font-black text-brand-blue/10">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="-mt-4 text-lg font-semibold text-brand-blue">
                   {step.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">
                   {step.description}
                 </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -286,7 +337,7 @@ export default function Home() {
             {postVisaHighlights.map((item, i) => (
               <Reveal key={item.title} delay={i * 100}>
                 <div className="h-full rounded-2xl border border-slate-200 p-8 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-gold/20 to-gold/5 text-gold ring-1 ring-gold/20">
                     <item.icon className="h-6 w-6" />
                   </div>
                   <h3 className="mt-4 text-lg font-semibold text-brand-blue">
@@ -311,12 +362,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-24">
+      <section className="relative overflow-hidden bg-ink py-24 text-white">
+        <div className="pointer-events-none absolute -right-24 top-1/4 h-80 w-80 rounded-full bg-brand-blue/30 blur-3xl" />
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-3xl font-bold text-brand-blue">
+          <h2 className="text-3xl font-bold">
             Why Students Choose Afly Consultancy Services
           </h2>
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+          <div className="relative mt-12 grid gap-8 sm:grid-cols-3">
             {[
               {
                 title: "Honest, student-first advice",
@@ -330,14 +382,14 @@ export default function Home() {
                 title: "15+ years of track record",
                 body: "Hundreds of successful placements across the UK, USA, Canada, Australia, and beyond.",
               },
-            ].map((item) => (
-              <div key={item.title} className="text-left">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-red text-xs font-bold text-white">
+            ].map((item, i) => (
+              <Reveal key={item.title} delay={i * 100} className="text-left">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gold text-xs font-bold text-ink">
                   ✓
                 </span>
-                <p className="mt-3 font-semibold text-brand-blue">{item.title}</p>
-                <p className="mt-1 text-sm text-slate-600">{item.body}</p>
-              </div>
+                <p className="mt-3 font-semibold text-white">{item.title}</p>
+                <p className="mt-1 text-sm text-slate-400">{item.body}</p>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -352,17 +404,20 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100"
-              >
-                <p className="text-sm italic leading-relaxed text-slate-700">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <p className="mt-4 text-sm font-semibold text-brand-blue">{t.name}</p>
-                <p className="text-xs text-slate-500">{t.detail}</p>
-              </div>
+            {testimonials.map((t, i) => (
+              <Reveal key={t.name} delay={(i % 2) * 100}>
+                <div className="relative h-full overflow-hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+                  <span className="pointer-events-none absolute -right-2 -top-4 select-none font-serif text-8xl text-brand-blue/5">
+                    &rdquo;
+                  </span>
+                  <StarRow />
+                  <p className="relative mt-3 text-sm italic leading-relaxed text-slate-700">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <p className="relative mt-4 text-sm font-semibold text-brand-blue">{t.name}</p>
+                  <p className="relative text-xs text-slate-500">{t.detail}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -384,8 +439,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-brand-blue py-16 text-white">
-        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand-red/20 blur-3xl" />
+      <section className="relative overflow-hidden bg-ink py-20 text-white">
+        <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
+        <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-gold/15 blur-3xl animate-aurora-2" />
         <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
           <div>
             <h2 className="text-2xl font-bold">Ready to start your application?</h2>
