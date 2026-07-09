@@ -175,8 +175,9 @@ export default function JourneyRail() {
             style={{ top: `${(i / (CHAPTERS.length - 1)) * 100}%` }}
           >
             <svg
+              key={i === active ? `active-${i}` : `idle-${i}`}
               viewBox="-12 -12 24 24"
-              className="h-5 w-5"
+              className={`h-5 w-5 ${i === active ? "animate-pill-pop" : ""}`}
               fill="none"
               stroke="currentColor"
               strokeWidth="1.6"
@@ -195,7 +196,7 @@ export default function JourneyRail() {
         }`}
       >
         {active >= 0 && (
-          <>
+          <span key={active} className="flex items-center gap-2 animate-pill-pop">
             <svg
               viewBox="-12 -12 24 24"
               className="h-4 w-4 text-gold-light"
@@ -210,7 +211,7 @@ export default function JourneyRail() {
             <span>
               {active + 1}/{CHAPTERS.length} · {CHAPTERS[active].label}
             </span>
-          </>
+          </span>
         )}
       </div>
     </>

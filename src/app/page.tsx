@@ -10,6 +10,9 @@ import { FlightPathIllustration, CompassBadgeIllustration } from "@/components/i
 import ParallaxLayer from "@/components/ParallaxLayer";
 import JourneyRail from "@/components/JourneyRail";
 import JourneyConnector from "@/components/JourneyConnector";
+import HeroPlayground from "@/components/HeroPlayground";
+import StampCard from "@/components/StampCard";
+import TiltCard from "@/components/TiltCard";
 
 const stats = [
   { value: "500+", label: "Students Placed" },
@@ -93,6 +96,7 @@ export default function Home() {
         <ParallaxLayer speed={0.04} className="pointer-events-none absolute inset-0 hidden md:block">
           <FlightPathIllustration className="h-full w-full text-gold-light" />
         </ParallaxLayer>
+        <HeroPlayground />
 
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 pb-16 pt-28 md:grid-cols-2">
           <div>
@@ -241,18 +245,20 @@ export default function Home() {
                 delay={i * 100}
                 className="w-[78%] flex-none snap-start sm:w-auto sm:flex-auto"
               >
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="block h-full rounded-2xl border border-slate-200 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold text-brand-blue">{service.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    {service.description}
-                  </p>
-                </Link>
+                <TiltCard className="h-full">
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="block h-full rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow duration-200 hover:shadow-xl"
+                  >
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="mt-5 text-lg font-semibold text-brand-blue">{service.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                      {service.description}
+                    </p>
+                  </Link>
+                </TiltCard>
               </Reveal>
             );
           })}
@@ -319,14 +325,16 @@ export default function Home() {
             </Link>
           </Reveal>
           <Reveal delay={150}>
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-10 text-center backdrop-blur">
-              <PassportIcon className="mx-auto h-14 w-14 text-gold-light" />
-              <CountUp value="98%" className="mt-4 block text-6xl font-black text-gold-light" />
-              <p className="mt-2 text-slate-300">
-                of our students get their visa approved — because refusals are
-                usually avoidable with the right preparation.
-              </p>
-            </div>
+            <StampCard>
+              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-10 text-center backdrop-blur">
+                <PassportIcon className="mx-auto h-14 w-14 text-gold-light" />
+                <CountUp value="98%" className="mt-4 block text-6xl font-black text-gold-light" />
+                <p className="mt-2 text-slate-300">
+                  of our students get their visa approved — because refusals are
+                  usually avoidable with the right preparation.
+                </p>
+              </div>
+            </StampCard>
           </Reveal>
         </div>
       </section>

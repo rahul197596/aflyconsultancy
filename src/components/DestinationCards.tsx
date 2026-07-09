@@ -2,6 +2,7 @@ import Link from "next/link";
 import { countries } from "@/data/countries";
 import { countryFlags } from "@/components/icons/Flags";
 import Reveal from "@/components/Reveal";
+import TiltCard from "@/components/TiltCard";
 
 const plateGradients: Record<string, string> = {
   "united-kingdom": "from-brand-blue/15 via-brand-blue/5 to-brand-red/10",
@@ -23,9 +24,10 @@ export default function DestinationCards() {
             delay={(i % 3) * 90}
             className="w-[76%] flex-none snap-start sm:w-auto sm:flex-auto"
           >
+            <TiltCard className="h-full">
             <Link
               href={`/countries/${country.slug}`}
-              className="group block h-full overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_rgba(0,0,0,0.02),0_2px_6px_rgba(0,0,0,0.04),0_8px_20px_rgba(0,0,0,0.1)]"
+              className="group block h-full overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200 transition-shadow duration-200 hover:shadow-[0_0_0_1px_rgba(0,0,0,0.02),0_2px_6px_rgba(0,0,0,0.04),0_8px_20px_rgba(0,0,0,0.1)]"
             >
               <div
                 className={`relative flex aspect-[4/3] items-center justify-center bg-gradient-to-br ${plateGradients[country.slug] ?? "from-slate-100 to-slate-200"}`}
@@ -64,6 +66,7 @@ export default function DestinationCards() {
                 </div>
               </div>
             </Link>
+            </TiltCard>
           </Reveal>
         );
       })}

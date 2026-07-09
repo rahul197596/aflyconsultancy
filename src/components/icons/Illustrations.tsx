@@ -37,16 +37,7 @@ export function FlightPathIllustration({ className }: IllustrationProps) {
       />
       <circle cx="70" cy="300" r="6" fill="currentColor" fillOpacity="0.8" className={animate ? "animate-pulse" : undefined} />
       <circle cx="730" cy="110" r="6" fill="currentColor" fillOpacity="0.8" className={animate ? "animate-pulse" : undefined} />
-      {animate ? (
-        <g>
-          <path
-            d="M0 0l22-6 26 6-26 6-22-6Zm22-6 8-16 6 2-4 14M22 6l8 16 6-2-4-14"
-            fill="currentColor"
-            fillOpacity="0.85"
-          />
-          <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" path={FLIGHT_PATH} />
-        </g>
-      ) : (
+      {!animate && (
         <g transform="translate(430 78) rotate(-18)">
           <path
             d="M0 0l22-6 26 6-26 6-22-6Zm22-6 8-16 6 2-4 14M22 6l8 16 6-2-4-14"
