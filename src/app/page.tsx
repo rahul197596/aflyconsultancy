@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { services } from "@/data/services";
-import { serviceIcons } from "@/components/icons/ServiceIcons";
+import { countries } from "@/data/countries";
+import { serviceIcons, PassportIcon } from "@/components/icons/ServiceIcons";
+import { BookOpenIcon, BriefcaseIcon, CoinsIcon, CompassIcon, HomeIcon, ShieldCheckIcon } from "@/components/icons/InfoIcons";
+import { countryFlags } from "@/components/icons/Flags";
 import FaqAccordion from "@/components/FaqAccordion";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import { FlightPathIllustration, CompassBadgeIllustration } from "@/components/icons/Illustrations";
-import JourneyStory from "@/components/JourneyStory";
 import ParallaxLayer from "@/components/ParallaxLayer";
+import JourneyRail from "@/components/JourneyRail";
+import JourneyConnector from "@/components/JourneyConnector";
 
 const stats = [
   { value: "500+", label: "Students Placed" },
@@ -15,8 +19,12 @@ const stats = [
   { value: "98%", label: "Visa Success Rate" },
 ];
 
-const featuredServices = services.slice(0, 4);
-const [heroService, ...restServices] = featuredServices;
+const uniService = services.find((s) => s.slug === "university-selection")!;
+const visaService = services.find((s) => s.slug === "visa-guidance")!;
+const preDeparture = services.find((s) => s.slug === "pre-departure-briefing")!;
+const applyServices = ["application-support", "test-preparation", "scholarship-assistance"].map(
+  (slug) => services.find((s) => s.slug === slug)!
+);
 
 const partnerUniversities = [
   { name: "King's College London", logo: "/universities/Kings_college_london.png" },
@@ -92,9 +100,26 @@ function StarRow() {
   );
 }
 
+function ChapterTag({ n, label, dark = false }: { n: number; label: string; dark?: boolean }) {
+  return (
+    <p
+      className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-widest ${
+        dark
+          ? "border-gold/30 bg-gold/10 text-gold-light"
+          : "border-brand-red/20 bg-brand-red/5 text-brand-red"
+      }`}
+    >
+      Chapter {n} · {label}
+    </p>
+  );
+}
+
 export default function Home() {
   return (
     <div>
+      <JourneyRail />
+
+      {/* Prologue — the dream */}
       <section className="relative overflow-hidden bg-ink text-white">
         <ParallaxLayer speed={0.08} className="pointer-events-none absolute -left-24 -top-32 h-[28rem] w-[28rem]">
           <div className="h-full w-full rounded-full bg-brand-blue/40 blur-3xl animate-aurora-1" />
@@ -109,7 +134,7 @@ export default function Home() {
           <FlightPathIllustration className="h-full w-full text-gold-light" />
         </ParallaxLayer>
 
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-28 md:grid-cols-2">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 pb-16 pt-28 md:grid-cols-2">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-light">
               Aim High · Fly High
@@ -121,9 +146,9 @@ export default function Home() {
               </span>
             </h1>
             <p className="mt-6 max-w-md text-lg text-slate-300">
-              From choosing the right university to landing your visa — and
-              everything after — Afly Consultancy Services guides your entire
-              journey abroad.
+              From your first phone call to the day you settle abroad for
+              good — this page is the story of your journey, told in seven
+              chapters.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -156,6 +181,17 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div className="relative flex justify-center pb-8">
+          <div className="flex flex-col items-center gap-1 text-gold-light/80">
+            <span className="text-[11px] font-semibold uppercase tracking-widest">
+              Scroll — the journey unfolds
+            </span>
+            <svg className="h-5 w-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </div>
+        </div>
       </section>
 
       <section className="border-b border-slate-100 bg-white py-6">
@@ -174,9 +210,107 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Chapter 1 — Consult */}
+      <section data-chapter="consult" className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-4 pt-20">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <ChapterTag n={1} label="Consult" />
+          <h2 className="mt-4 text-3xl font-bold text-brand-blue">
+            It Starts With One Conversation
+          </h2>
+          <p className="mt-4 text-slate-600">
+            You tell us your goals, budget, and background. A counsellor maps
+            out your realistic options — honest, personalized, and completely
+            free. No pressure, no sales pitch.
+          </p>
+          <Link
+            href="/contact"
+            className="mt-6 inline-block text-sm font-semibold text-brand-red hover:text-brand-red-light"
+          >
+            Book your free consultation →
+          </Link>
+        </Reveal>
+      </section>
+
+      <JourneyConnector />
+
+      {/* Chapter 2 — Process */}
+      <section data-chapter="process" className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 pt-4">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <ChapterTag n={2} label="The Process" />
+          <h2 className="mt-4 text-3xl font-bold text-brand-blue">
+            We Shortlist, Apply & Prepare You
+          </h2>
+          <p className="mt-4 text-slate-600">
+            Universities that genuinely fit, applications handled end to end,
+            test coaching, and every scholarship you're eligible for.
+          </p>
+        </Reveal>
+
+        <div className="mt-12">
+          {(() => {
+            const Icon = serviceIcons[uniService.slug as keyof typeof serviceIcons];
+            return (
+              <Reveal>
+                <Link
+                  href={`/services/${uniService.slug}`}
+                  className="group relative flex flex-col gap-6 overflow-hidden rounded-3xl bg-ink p-8 text-white shadow-xl transition-all duration-200 hover:-translate-y-1 sm:flex-row sm:items-center md:p-10"
+                >
+                  <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-red/30 blur-3xl" />
+                  <div className="relative flex h-16 w-16 flex-none items-center justify-center rounded-2xl bg-gold/15 text-gold-light ring-1 ring-gold/30">
+                    <Icon className="h-8 w-8" />
+                  </div>
+                  <div className="relative">
+                    <h3 className="text-2xl font-bold">{uniService.title}</h3>
+                    <p className="mt-2 max-w-xl text-slate-300">{uniService.description}</p>
+                  </div>
+                  <span className="relative ml-auto flex-none text-sm font-semibold text-gold-light transition-transform group-hover:translate-x-1">
+                    Learn more →
+                  </span>
+                </Link>
+              </Reveal>
+            );
+          })()}
+        </div>
+
+        <div className="-mx-6 mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0">
+          {applyServices.map((service, i) => {
+            const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
+            return (
+              <Reveal
+                key={service.slug}
+                delay={i * 100}
+                className="w-[78%] flex-none snap-start sm:w-auto sm:flex-auto"
+              >
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="block h-full rounded-2xl border border-slate-200 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-5 text-lg font-semibold text-brand-blue">{service.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    {service.description}
+                  </p>
+                </Link>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link
+            href="/services"
+            className="text-sm font-semibold text-brand-red hover:text-brand-red-light"
+          >
+            View all services →
+          </Link>
+        </div>
+      </section>
+
       <section className="overflow-hidden bg-slate-50 py-10">
         <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-500">
-          Some of Our Partner Institutions
+          Partner institutions we apply to on your behalf
         </p>
         <div
           className="pause-on-hover relative mt-8 overflow-hidden"
@@ -198,118 +332,262 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-24">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-brand-blue">How We Help You</h2>
-          <p className="mt-4 text-slate-600">
-            A complete support system so you can focus on preparing for your
-            new life abroad — not paperwork.
-          </p>
-        </div>
+      <JourneyConnector flip />
 
-        <div className="mt-14">
-          {heroService && (() => {
-            const Icon = serviceIcons[heroService.slug as keyof typeof serviceIcons];
-            return (
-              <Reveal>
-                <Link
-                  href={`/services/${heroService.slug}`}
-                  className="group relative flex flex-col gap-6 overflow-hidden rounded-3xl bg-ink p-8 text-white shadow-xl transition-all duration-200 hover:-translate-y-1 sm:flex-row sm:items-center md:p-10"
-                >
-                  <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-red/30 blur-3xl" />
-                  <div className="relative flex h-16 w-16 flex-none items-center justify-center rounded-2xl bg-gold/15 text-gold-light ring-1 ring-gold/30">
-                    <Icon className="h-8 w-8" />
-                  </div>
-                  <div className="relative">
-                    <h3 className="text-2xl font-bold">{heroService.title}</h3>
-                    <p className="mt-2 max-w-xl text-slate-300">{heroService.description}</p>
-                  </div>
-                  <span className="relative ml-auto flex-none text-sm font-semibold text-gold-light transition-transform group-hover:translate-x-1">
-                    Learn more →
-                  </span>
-                </Link>
-              </Reveal>
-            );
-          })()}
+      {/* Chapter 3 — Visa */}
+      <section data-chapter="visa" className="relative scroll-mt-24 overflow-hidden bg-ink py-20 text-white">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
+        <div className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64 rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 md:grid-cols-2">
+          <Reveal>
+            <ChapterTag n={3} label="The Visa" dark />
+            <h2 className="mt-4 text-3xl font-bold">The Stamp That Changes Everything</h2>
+            <p className="mt-4 text-slate-300">{visaService.description}</p>
+            <ul className="mt-6 space-y-3">
+              {visaService.points.map((point) => (
+                <li key={point} className="flex items-start gap-3 text-sm text-slate-300">
+                  <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-gold" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/services/visa-guidance"
+              className="mt-6 inline-block text-sm font-semibold text-gold-light hover:text-gold"
+            >
+              Explore Visa Guidance →
+            </Link>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-10 text-center backdrop-blur">
+              <PassportIcon className="mx-auto h-14 w-14 text-gold-light" />
+              <CountUp value="98%" className="mt-4 block text-6xl font-black text-gold-light" />
+              <p className="mt-2 text-slate-300">
+                of our students get their visa approved — because refusals are
+                usually avoidable with the right preparation.
+              </p>
+            </div>
+          </Reveal>
         </div>
+      </section>
 
-        <div className="-mx-6 mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0">
-          {restServices.map((service, i) => {
-            const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
+      <JourneyConnector />
+
+      {/* Chapter 4 — Fly */}
+      <section data-chapter="fly" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-8">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <ChapterTag n={4} label="The Flight" />
+          <h2 className="mt-4 text-3xl font-bold text-brand-blue">Wheels Up — Six Destinations</h2>
+          <p className="mt-4 text-slate-600">{preDeparture.description}</p>
+        </Reveal>
+
+        <div className="mt-10 flex flex-wrap items-start justify-center gap-x-8 gap-y-6">
+          {countries.map((country) => {
+            const Flag = countryFlags[country.slug as keyof typeof countryFlags];
             return (
-              <Reveal
-                key={service.slug}
-                delay={i * 100}
-                className="w-[78%] flex-none snap-start sm:w-auto sm:flex-auto"
+              <Link
+                key={country.slug}
+                href={`/countries/${country.slug}`}
+                className="group flex flex-col items-center gap-2"
               >
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="block h-full rounded-2xl border border-slate-200 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold text-brand-blue">
-                    {service.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    {service.description}
-                  </p>
-                </Link>
-              </Reveal>
+                <span className="block h-8 w-12 overflow-hidden rounded-md shadow ring-1 ring-slate-200 transition-transform duration-200 group-hover:-translate-y-1">
+                  <Flag className="h-full w-full" />
+                </span>
+                <span className="text-xs font-medium text-slate-600 group-hover:text-brand-red">
+                  {country.name}
+                </span>
+              </Link>
             );
           })}
         </div>
 
+        <Reveal className="mx-auto mt-10 max-w-3xl">
+          <div className="rounded-2xl border border-slate-200 p-6 shadow-sm">
+            <ul className="grid gap-3 sm:grid-cols-3">
+              {preDeparture.points.map((point) => (
+                <li key={point} className="flex items-start gap-2 text-sm text-slate-700">
+                  <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-brand-red" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-center">
+              <Link
+                href="/services/pre-departure-briefing"
+                className="text-sm font-semibold text-brand-red hover:text-brand-red-light"
+              >
+                See the full pre-departure briefing →
+              </Link>
+            </p>
+          </div>
+        </Reveal>
+      </section>
+
+      <JourneyConnector flip />
+
+      {/* Chapter 5 — Study */}
+      <section data-chapter="study" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-8">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <ChapterTag n={5} label="The Degree" />
+          <h2 className="mt-4 text-3xl font-bold text-brand-blue">You Land. Classes Begin.</h2>
+          <p className="mt-4 text-slate-600">
+            Landing is just the beginning — we stay with you through your
+            studies so you graduate on track.
+          </p>
+        </Reveal>
+
+        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+          <Reveal>
+            <div className="h-full rounded-2xl border border-slate-200 p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-gold/20 to-gold/5 text-gold ring-1 ring-gold/20">
+                <BookOpenIcon className="h-6 w-6" />
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-brand-blue">Academic Support</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                Struggling with coursework once classes start? We connect you
+                with tutor referrals and academic guidance so you stay on
+                track to finish your degree.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="h-full rounded-2xl border border-slate-200 p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-gold/20 to-gold/5 text-gold ring-1 ring-gold/20">
+                <HomeIcon className="h-6 w-6" />
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-brand-blue">Accommodation Help</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                From shortlisting to signing the lease, we help you find safe,
+                affordable housing near your campus — before and after you
+                land.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <JourneyConnector />
+
+      {/* Chapter 6 — Work */}
+      <section data-chapter="work" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-8">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <ChapterTag n={6} label="The Career" />
+          <h2 className="mt-4 text-3xl font-bold text-brand-blue">
+            You Earn While You Learn — Then Launch a Career
+          </h2>
+          <p className="mt-4 text-slate-600">
+            Work rights aren't just pocket money — they're the start of your
+            career abroad. We help at both ends.
+          </p>
+        </Reveal>
+
+        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+          <Reveal>
+            <div className="h-full rounded-2xl border border-slate-200 p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
+                <CoinsIcon className="h-6 w-6" />
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-brand-blue">
+                Part-Time While You Study
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                CV building, interview prep, and job search support for
+                part-time roles that fit around your classes and your visa's
+                work rights.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="h-full rounded-2xl border border-slate-200 p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
+                <BriefcaseIcon className="h-6 w-6" />
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-brand-blue">
+                Full-Time After Graduation
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                As you approach graduation, we help you target full-time roles
+                and post-study work visas so your degree turns into a career.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+
         <div className="mt-10 text-center">
           <Link
-            href="/services"
+            href="/services/post-visa-support"
             className="text-sm font-semibold text-brand-red hover:text-brand-red-light"
           >
-            View all services →
+            See job search support →
           </Link>
         </div>
       </section>
 
-      <JourneyStory />
+      <JourneyConnector flip />
 
-      <section className="relative overflow-hidden bg-ink py-24 text-white">
-        <div className="pointer-events-none absolute -right-24 top-1/4 h-80 w-80 rounded-full bg-brand-blue/30 blur-3xl" />
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-3xl font-bold">
-            Why Students Choose Afly Consultancy Services
-          </h2>
-          <div className="relative mt-12 grid gap-8 sm:grid-cols-3">
+      {/* Chapter 7 — Settle */}
+      <section data-chapter="settle" className="relative scroll-mt-24 overflow-hidden bg-ink py-20 text-white">
+        <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-gold/15 blur-3xl animate-aurora-1" />
+        <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        <div className="relative mx-auto max-w-6xl px-6">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <ChapterTag n={7} label="The New Home" dark />
+            <h2 className="mt-4 text-3xl font-bold">You Stay. For Good.</h2>
+            <p className="mt-4 text-slate-300">
+              When you decide to make it permanent, we guide your settlement
+              plan and connect you with trusted immigration lawyers for PR and
+              long-term visa pathways.
+            </p>
+          </Reveal>
+
+          <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {[
               {
-                title: "Honest, student-first advice",
-                body: "We recommend what fits your goals and budget — not what pays us the highest commission.",
+                icon: CompassIcon,
+                title: "Settlement Planning",
+                body: "We map your route from graduate visa to long-term residence based on your country and career.",
               },
               {
-                title: "End-to-end support",
-                body: "One team for shortlisting, applications, tests, visas, and pre-departure prep.",
+                icon: ShieldCheckIcon,
+                title: "Trusted Immigration Lawyers",
+                body: "For the legal steps, we connect you with vetted immigration lawyers — the right expert at the right time.",
               },
               {
-                title: "15+ years of track record",
-                body: "Hundreds of successful placements across the UK, USA, Canada, Australia, and beyond.",
+                icon: HomeIcon,
+                title: "PR Pathway Guidance",
+                body: "Permanent residency rules change often. We keep you pointed at the pathway that actually fits your profile.",
               },
             ].map((item, i) => (
-              <Reveal key={item.title} delay={i * 100} className="text-left">
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gold text-xs font-bold text-ink">
-                  ✓
-                </span>
-                <p className="mt-3 font-semibold text-white">{item.title}</p>
-                <p className="mt-1 text-sm text-slate-400">{item.body}</p>
+              <Reveal key={item.title} delay={i * 100}>
+                <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gold/15 text-gold-light ring-1 ring-gold/30">
+                    <item.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-400">{item.body}</p>
+                </div>
               </Reveal>
             ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/services/post-visa-support"
+              className="text-sm font-semibold text-gold-light hover:text-gold"
+            >
+              See settlement support →
+            </Link>
           </div>
         </div>
       </section>
 
+      {/* Epilogue */}
       <section className="py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-brand-blue">What Our Students Say</h2>
+            <h2 className="text-3xl font-bold text-brand-blue">
+              Students Who Finished This Journey
+            </h2>
             <p className="mt-4 text-slate-600">
               Real students, placed across four different countries.
             </p>
@@ -341,9 +619,7 @@ export default function Home() {
       <section className="bg-slate-50 py-24">
         <div className="mx-auto max-w-3xl px-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-brand-blue">
-              Frequently Asked Questions
-            </h2>
+            <h2 className="text-3xl font-bold text-brand-blue">Frequently Asked Questions</h2>
             <p className="mt-4 text-slate-600">
               Answers to what most students ask before they get started.
             </p>
@@ -359,9 +635,11 @@ export default function Home() {
         <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-gold/15 blur-3xl animate-aurora-2" />
         <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
           <div>
-            <h2 className="text-2xl font-bold">Ready to start your application?</h2>
+            <h2 className="text-2xl font-bold">
+              Every one of those stories began with Chapter 1.
+            </h2>
             <p className="mt-2 text-slate-300">
-              Talk to a counsellor and get a personalized study-abroad plan — free.
+              Book your free consultation — and start yours.
             </p>
           </div>
           <Link
