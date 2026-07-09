@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ClockIcon, MailIcon, PhoneIcon } from "@/components/icons/InfoIcons";
 
 export default function Footer() {
   return (
@@ -16,19 +17,32 @@ export default function Footer() {
             Trusted guidance for students pursuing higher education abroad —
             from university selection to visa approval.
           </p>
-          <a
-            href="https://www.instagram.com/aflyconsultancy/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Afly Consultancy Services on Instagram"
-            className="mt-5 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-gold hover:text-ink"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-              <rect x="3" y="3" width="18" height="18" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
-            </svg>
-          </a>
+          <div className="mt-5 flex gap-3">
+            <a
+              href="https://www.instagram.com/aflyconsultancy/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Afly Consultancy Services on Instagram"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-gold hover:text-ink"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a
+              href="https://wa.me/+918125144079"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat with Afly Consultancy Services on WhatsApp"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-[#25D366]"
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.45 1.27 4.9L2 22l5.25-1.28A9.94 9.94 0 0 0 12.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10Zm0 18.18c-1.6 0-3.13-.42-4.47-1.2l-.32-.19-3.12.76.77-3.13-.2-.32a8.17 8.17 0 0 1-1.26-4.3c0-4.55 3.7-8.25 8.25-8.25a8.19 8.19 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.42 5.83c0 4.55-3.7 8.25-8.25 8.25Z" />
+              </svg>
+            </a>
+          </div>
         </div>
 
         <div>
@@ -61,10 +75,23 @@ export default function Footer() {
           <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
             Get in Touch
           </h3>
-          <ul className="mt-4 space-y-2 text-sm text-slate-400">
-            <li>info@aflyconsultancy.com</li>
-            <li>+91 81251 44079</li>
-            <li>Mon – Sat, 9:00 AM – 6:00 PM</li>
+          <ul className="mt-4 space-y-3 text-sm text-slate-400">
+            <li>
+              <a href="mailto:info@aflyconsultancy.com" className="flex items-center gap-2 hover:text-brand-red-light">
+                <MailIcon className="h-4 w-4 flex-none" />
+                info@aflyconsultancy.com
+              </a>
+            </li>
+            <li>
+              <a href="tel:+918125144079" className="flex items-center gap-2 hover:text-brand-red-light">
+                <PhoneIcon className="h-4 w-4 flex-none" />
+                +91 81251 44079
+              </a>
+            </li>
+            <li className="flex items-center gap-2">
+              <ClockIcon className="h-4 w-4 flex-none" />
+              Mon – Sat, 9:00 AM – 6:00 PM
+            </li>
           </ul>
         </div>
       </div>

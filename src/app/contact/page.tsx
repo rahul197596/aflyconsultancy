@@ -95,6 +95,25 @@ export default function ContactPage() {
                   <p className="text-xs text-slate-600">Usually replies within a few minutes</p>
                 </div>
               </a>
+
+              <a
+                href="https://www.instagram.com/aflyconsultancy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 rounded-xl bg-gradient-to-br from-[#833AB4]/10 via-[#E1306C]/10 to-[#F77737]/10 p-4 transition-colors hover:from-[#833AB4]/20 hover:via-[#E1306C]/20 hover:to-[#F77737]/20"
+              >
+                <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-gradient-to-br from-[#833AB4] via-[#E1306C] to-[#F77737] text-white">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                </span>
+                <div>
+                  <h3 className="text-sm font-semibold text-brand-blue">Follow on Instagram</h3>
+                  <p className="text-xs text-slate-600">@aflyconsultancy</p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
