@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { services } from "@/data/services";
 import { serviceIcons } from "@/components/icons/ServiceIcons";
-import { BookOpenIcon, BriefcaseIcon, HomeIcon } from "@/components/icons/InfoIcons";
 import FaqAccordion from "@/components/FaqAccordion";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import { FlightPathIllustration, CompassBadgeIllustration } from "@/components/icons/Illustrations";
-import StudyJourney from "@/components/StudyJourney";
+import JourneyStory from "@/components/JourneyStory";
 import ParallaxLayer from "@/components/ParallaxLayer";
 
 const stats = [
@@ -24,46 +23,6 @@ const partnerUniversities = [
   { name: "University of Leicester", logo: "/universities/University_of_Leicester.png" },
   { name: "University of East London", logo: "/universities/University_of_east_london.png" },
   { name: "Istituto Marangoni", logo: "/universities/istituto_marangoni.png" },
-];
-
-const processSteps = [
-  {
-    title: "Free Consultation",
-    description: "Tell us your goals, budget, and background. We map out your realistic options.",
-  },
-  {
-    title: "Shortlist & Apply",
-    description: "We shortlist universities and courses, then handle applications end to end.",
-  },
-  {
-    title: "Test Prep & Visa",
-    description: "Structured test coaching and visa documentation, with mock interviews included.",
-  },
-  {
-    title: "Fly & Settle In",
-    description: "Pre-departure briefing on accommodation, travel, and student life abroad.",
-  },
-];
-
-const postVisaHighlights = [
-  {
-    icon: BookOpenIcon,
-    title: "Academic Support",
-    description:
-      "Struggling with coursework once classes start? We connect you with tutor referrals and academic guidance so you stay on track.",
-  },
-  {
-    icon: HomeIcon,
-    title: "Accommodation Help",
-    description:
-      "From shortlisting to signing the lease, we help you find safe, affordable housing near your campus before and after you land.",
-  },
-  {
-    icon: BriefcaseIcon,
-    title: "Job Search Support",
-    description:
-      "CV building, interview prep, and job search help for both part-time work during your studies and full-time roles after graduation.",
-  },
 ];
 
 const faqs = [
@@ -312,76 +271,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-slate-50 py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-brand-blue">How It Works</h2>
-            <p className="mt-4 text-slate-600">
-              Four steps from your first conversation with us to landing
-              abroad.
-            </p>
-          </div>
-
-          <StudyJourney />
-
-          <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {processSteps.map((step, i) => (
-              <Reveal key={step.title} delay={i * 100} className="relative">
-                <span className="pointer-events-none select-none text-7xl font-black text-brand-blue/10">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="-mt-4 text-lg font-semibold text-brand-blue">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  {step.description}
-                </p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-brand-blue">
-              Support That Doesn't End at Your Visa
-            </h2>
-            <p className="mt-4 text-slate-600">
-              Landing is just the beginning. Here's how we stay with you
-              after you arrive.
-            </p>
-          </Reveal>
-
-          <div className="mt-14 grid gap-8 sm:grid-cols-3">
-            {postVisaHighlights.map((item, i) => (
-              <Reveal key={item.title} delay={i * 100}>
-                <div className="h-full rounded-2xl border border-slate-200 p-8 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-gold/20 to-gold/5 text-gold ring-1 ring-gold/20">
-                    <item.icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-brand-blue">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                    {item.description}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <Link
-              href="/services/post-visa-support"
-              className="text-sm font-semibold text-brand-red hover:text-brand-red-light"
-            >
-              Learn more about post-visa support →
-            </Link>
-          </div>
-        </div>
-      </section>
+      <JourneyStory />
 
       <section className="relative overflow-hidden bg-ink py-24 text-white">
         <div className="pointer-events-none absolute -right-24 top-1/4 h-80 w-80 rounded-full bg-brand-blue/30 blur-3xl" />

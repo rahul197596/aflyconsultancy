@@ -119,6 +119,7 @@ export const services: Service[] = [
       "Accommodation search and lease assistance",
       "Part-time job search while studying",
       "Full-time job search and career guidance after graduation",
+      "Settlement guidance and referrals to trusted immigration lawyers",
     ],
     process: [
       "Post-arrival check-in once you've landed",
@@ -126,6 +127,7 @@ export const services: Service[] = [
       "Accommodation search, shortlisting, and lease guidance",
       "CV building, interview prep, and part-time job search support during your studies",
       "Full-time job search and career guidance as you approach graduation",
+      "Settlement planning and referrals to trusted immigration lawyers for PR and long-term visa pathways",
     ],
   },
 ];
