@@ -19,7 +19,7 @@ export const countries: Country[] = [
     blurb:
       "World-renowned universities, shorter degree durations, and strong post-study work options via the Graduate Route.",
     highlights: [
-      "1-year Master's programs",
+      "1 or 2-year Master's programs",
       "2-year post-study work visa",
       "Globally recognized degrees",
     ],

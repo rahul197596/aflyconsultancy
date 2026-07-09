@@ -60,45 +60,6 @@ const faqs = [
   },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Afly Consultancy Services made my application to a UK university effortless. Every step, from shortlisting to visa filing, was handled with care.",
-    name: "Priya S.",
-    detail: "MSc Data Science, University of Leicester · UK",
-  },
-  {
-    quote:
-      "I couldn't have prepared for IELTS or the visa interview without their support. Highly recommend to anyone planning to study abroad.",
-    name: "Arjun M.",
-    detail: "BA Business, University of East London · UK",
-  },
-  {
-    quote:
-      "They helped me compare Canada and Australia side by side and were upfront about costs and PR pathways. I felt like I was getting real advice, not a sales pitch.",
-    name: "Sneha R.",
-    detail: "MBA, University of Toronto · Canada",
-  },
-  {
-    quote:
-      "From shortlisting to my pre-departure briefing, the team was with me at every step. Landed in Melbourne knowing exactly what to expect.",
-    name: "Karthik V.",
-    detail: "MEng Software Engineering, Monash University · Australia",
-  },
-];
-
-function StarRow() {
-  return (
-    <div className="flex gap-0.5 text-gold">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path d="m12 2 2.9 6.6 7.1.7-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.7 7.1-.7L12 2Z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
-
 function ChapterTag({ n, label, dark = false }: { n: number; label: string; dark?: boolean }) {
   return (
     <p
@@ -550,65 +511,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Epilogue */}
-      <section className="py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-brand-blue">
-              Students Who Finished This Journey
-            </h2>
-            <p className="mt-4 text-slate-600">
-              Real students, placed across four different countries.
-            </p>
-
-            <div className="mt-10 flex items-center justify-center gap-4">
-              <svg viewBox="0 0 24 48" className="h-12 w-6 text-foreground" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
-                <path d="M20 4 C8 12, 6 30, 16 44" />
-                <path d="M17 8c-3-.5-5.5.8-6.5 3 2.8 1 5.3 0 6.5-3ZM12.5 15c-3 0-5.2 1.8-5.8 4.2 3 .4 5.3-1.2 5.8-4.2ZM10.5 22.5c-2.9.6-4.6 2.8-4.7 5.3 3-.2 4.9-2.3 4.7-5.3ZM10.8 30c-2.6 1.2-3.8 3.6-3.4 6 2.8-.8 4.2-3.1 3.4-6ZM13 37c-2.2 1.7-2.8 4.3-1.8 6.6 2.5-1.4 3.2-4 1.8-6.6Z" fill="currentColor" stroke="none" />
-              </svg>
-              <div>
-                <p className="text-6xl font-black tracking-tight text-foreground">4.9</p>
-                <div className="mt-2 flex justify-center gap-1 text-gold">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="m12 2 2.9 6.6 7.1.7-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.7 7.1-.7L12 2Z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <svg viewBox="0 0 24 48" className="h-12 w-6 -scale-x-100 text-foreground" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
-                <path d="M20 4 C8 12, 6 30, 16 44" />
-                <path d="M17 8c-3-.5-5.5.8-6.5 3 2.8 1 5.3 0 6.5-3ZM12.5 15c-3 0-5.2 1.8-5.8 4.2 3 .4 5.3-1.2 5.8-4.2ZM10.5 22.5c-2.9.6-4.6 2.8-4.7 5.3 3-.2 4.9-2.3 4.7-5.3ZM10.8 30c-2.6 1.2-3.8 3.6-3.4 6 2.8-.8 4.2-3.1 3.4-6ZM13 37c-2.2 1.7-2.8 4.3-1.8 6.6 2.5-1.4 3.2-4 1.8-6.6Z" fill="currentColor" stroke="none" />
-              </svg>
-            </div>
-            <p className="mt-3 text-sm text-slate-500">
-              Average rating from 500+ students placed abroad
-            </p>
-          </div>
-          <div className="-mx-6 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0">
-            {testimonials.map((t, i) => (
-              <Reveal
-                key={t.name}
-                delay={(i % 2) * 100}
-                className="w-[85%] flex-none snap-start sm:w-auto sm:flex-auto"
-              >
-                <div className="relative h-full overflow-hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
-                  <span className="pointer-events-none absolute -right-2 -top-4 select-none font-serif text-8xl text-brand-blue/5">
-                    &rdquo;
-                  </span>
-                  <StarRow />
-                  <p className="relative mt-3 text-sm italic leading-relaxed text-slate-700">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <p className="relative mt-4 text-sm font-semibold text-brand-blue">{t.name}</p>
-                  <p className="relative text-xs text-slate-500">{t.detail}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="bg-slate-50 py-24">
         <div className="mx-auto max-w-3xl px-6">
           <div className="text-center">
@@ -629,7 +531,7 @@ export default function Home() {
         <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
           <div>
             <h2 className="text-2xl font-bold">
-              Every one of those stories began with Chapter 1.
+              Your story begins with Chapter 1.
             </h2>
             <p className="mt-2 text-slate-300">
               Book your free consultation — and start yours.
