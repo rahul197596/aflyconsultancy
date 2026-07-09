@@ -5,6 +5,7 @@ import { BookOpenIcon, BriefcaseIcon, HomeIcon } from "@/components/icons/InfoIc
 import FaqAccordion from "@/components/FaqAccordion";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
+import { FlightPathIllustration, CompassBadgeIllustration } from "@/components/icons/Illustrations";
 
 const stats = [
   { value: "500+", label: "Students Placed" },
@@ -137,6 +138,7 @@ export default function Home() {
         <div className="pointer-events-none absolute -left-24 -top-32 h-[28rem] w-[28rem] rounded-full bg-brand-blue/40 blur-3xl animate-aurora-1" />
         <div className="pointer-events-none absolute right-[-8rem] top-0 h-[26rem] w-[26rem] rounded-full bg-brand-red/30 blur-3xl animate-aurora-2" />
         <div className="pointer-events-none absolute bottom-[-10rem] left-1/2 h-[24rem] w-[24rem] -translate-x-1/2 rounded-full bg-gold/20 blur-3xl animate-aurora-3" />
+        <FlightPathIllustration className="pointer-events-none absolute inset-0 hidden h-full w-full text-gold-light md:block" />
 
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-28 md:grid-cols-2">
           <div>
@@ -170,8 +172,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-            <div className="grid grid-cols-2 gap-6">
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+            <CompassBadgeIllustration className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 text-gold-light" />
+            <div className="relative grid grid-cols-2 gap-6">
               {stats.map((stat, i) => (
                 <div key={stat.label}>
                   <CountUp
@@ -235,11 +238,11 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-14">
           {heroService && (() => {
             const Icon = serviceIcons[heroService.slug as keyof typeof serviceIcons];
             return (
-              <Reveal className="lg:col-span-3">
+              <Reveal>
                 <Link
                   href={`/services/${heroService.slug}`}
                   className="group relative flex flex-col gap-6 overflow-hidden rounded-3xl bg-ink p-8 text-white shadow-xl transition-all duration-200 hover:-translate-y-1 sm:flex-row sm:items-center md:p-10"
@@ -259,11 +262,17 @@ export default function Home() {
               </Reveal>
             );
           })()}
+        </div>
 
+        <div className="-mx-6 mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0">
           {restServices.map((service, i) => {
             const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
             return (
-              <Reveal key={service.slug} delay={i * 100}>
+              <Reveal
+                key={service.slug}
+                delay={i * 100}
+                className="w-[78%] flex-none snap-start sm:w-auto sm:flex-auto"
+              >
                 <Link
                   href={`/services/${service.slug}`}
                   className="block h-full rounded-2xl border border-slate-200 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
@@ -403,9 +412,13 @@ export default function Home() {
               Real students, placed across four different countries.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="-mx-6 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0">
             {testimonials.map((t, i) => (
-              <Reveal key={t.name} delay={(i % 2) * 100}>
+              <Reveal
+                key={t.name}
+                delay={(i % 2) * 100}
+                className="w-[85%] flex-none snap-start sm:w-auto sm:flex-auto"
+              >
                 <div className="relative h-full overflow-hidden rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
                   <span className="pointer-events-none absolute -right-2 -top-4 select-none font-serif text-8xl text-brand-blue/5">
                     &rdquo;

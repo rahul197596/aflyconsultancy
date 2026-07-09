@@ -1,7 +1,8 @@
 type IconProps = { className?: string };
 
 const base = {
-  fill: "none",
+  fill: "currentColor",
+  fillOpacity: 0.14,
   stroke: "currentColor",
   strokeWidth: 1.6,
   strokeLinecap: "round" as const,

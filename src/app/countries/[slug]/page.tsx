@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { countries } from "@/data/countries";
 import { BookOpenIcon, BriefcaseIcon, CalendarIcon, CoinsIcon, CompassIcon } from "@/components/icons/InfoIcons";
+import { countryFlags } from "@/components/icons/Flags";
 
 export function generateStaticParams() {
   return countries.map((country) => ({ slug: country.slug }));
@@ -32,14 +33,16 @@ export default async function CountryDetailPage(props: {
   const country = countries.find((c) => c.slug === slug);
   if (!country) notFound();
 
+  const Flag = countryFlags[country.slug as keyof typeof countryFlags];
+
   return (
     <div>
       <section className="relative overflow-hidden bg-ink py-24 text-white">
         <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
         <div className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64 rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
         <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gold/10 text-4xl ring-1 ring-gold/30">
-            {country.flag}
+          <div className="mx-auto h-12 w-16 overflow-hidden rounded-xl shadow-lg ring-1 ring-white/20">
+            {Flag ? <Flag className="h-full w-full" /> : null}
           </div>
           <h1 className="mt-4 text-4xl font-black tracking-tight md:text-5xl">Study in {country.name}</h1>
           <p className="mt-4 text-slate-300">{country.blurb}</p>
