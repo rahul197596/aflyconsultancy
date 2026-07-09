@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lexend, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import { MobileNavProvider } from "@/components/MobileNavContext";
 
-const inter = Inter({
-  variable: "--font-inter",
+const lexend = Lexend({
+  variable: "--font-heading",
+  subsets: ["latin"],
+});
+
+const sourceSans = Source_Sans_3({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
@@ -61,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${lexend.variable} ${sourceSans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <script
           type="application/ld+json"
