@@ -8,6 +8,7 @@ export type Country = {
   intakes: string;
   workRights: string;
   costEstimate: string;
+  costShort: string;
 };
 
 export const countries: Country[] = [
@@ -32,6 +33,7 @@ export const countries: Country[] = [
     intakes: "Main intakes in September and January, with some courses offering a May intake.",
     workRights: "Students can work up to 20 hours per week during term time, full-time during breaks, and graduates get a 2-year Graduate Route visa (3 years for PhDs).",
     costEstimate: "Tuition typically ranges from £12,000–£25,000/year; living costs average £1,000–£1,400/month outside London.",
+    costShort: "Tuition £12k–£25k / year",
   },
   {
     slug: "united-states",
@@ -54,6 +56,7 @@ export const countries: Country[] = [
     intakes: "Main intake in Fall (August/September), with Spring (January) intake at many universities.",
     workRights: "On-campus work up to 20 hours/week; Optional Practical Training (OPT) gives 12 months of work authorization, extendable to 3 years for STEM graduates.",
     costEstimate: "Tuition ranges from $20,000–$55,000/year depending on the institution; living costs vary widely by city.",
+    costShort: "Tuition $20k–$55k / year",
   },
   {
     slug: "canada",
@@ -76,6 +79,7 @@ export const countries: Country[] = [
     intakes: "Main intakes in September, January, and May.",
     workRights: "Students can work up to 20 hours/week during term; the Post-Graduation Work Permit (PGWP) allows working full-time for up to 3 years after graduation.",
     costEstimate: "Tuition typically ranges from CAD 15,000–30,000/year; living costs average CAD 1,200–1,800/month.",
+    costShort: "Tuition CAD 15k–30k / year",
   },
   {
     slug: "australia",
@@ -98,6 +102,7 @@ export const countries: Country[] = [
     intakes: "Main intakes in February and July, with some courses offering a November intake.",
     workRights: "Students can work up to 48 hours per fortnight during term; the Temporary Graduate visa (subclass 485) allows 2–4 years of post-study work depending on qualification and location.",
     costEstimate: "Tuition ranges from AUD 20,000–45,000/year; living costs average AUD 1,400–2,000/month.",
+    costShort: "Tuition AUD 20k–45k / year",
   },
   {
     slug: "ireland",
@@ -120,6 +125,7 @@ export const countries: Country[] = [
     intakes: "Main intake in September, with a smaller January intake at select institutions.",
     workRights: "Students can work up to 20 hours/week during term; the Third Level Graduate Programme allows a 1–2 year stay-back to seek employment.",
     costEstimate: "Tuition typically ranges from €10,000–20,000/year; living costs average €900–1,300/month.",
+    costShort: "Tuition €10k–€20k / year",
   },
   {
     slug: "germany",
@@ -142,5 +148,6 @@ export const countries: Country[] = [
     intakes: "Main intakes in September/October (Winter) and March/April (Summer).",
     workRights: "Students can work up to 140 full or 280 half days per year; graduates get an 18-month residence permit to search for a qualified job.",
     costEstimate: "Public universities charge little to no tuition (a small semester fee applies); living costs average €850–1,100/month.",
+    costShort: "Little to no tuition",
   },
 ];

@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { services } from "@/data/services";
-import { countries } from "@/data/countries";
 import { serviceIcons, PassportIcon } from "@/components/icons/ServiceIcons";
 import { BookOpenIcon, BriefcaseIcon, CoinsIcon, CompassIcon, HomeIcon, ShieldCheckIcon } from "@/components/icons/InfoIcons";
-import { countryFlags } from "@/components/icons/Flags";
+import DestinationCards from "@/components/DestinationCards";
 import FaqAccordion from "@/components/FaqAccordion";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
@@ -381,46 +380,16 @@ export default function Home() {
           <p className="mt-4 text-slate-600">{preDeparture.description}</p>
         </Reveal>
 
-        <div className="mt-10 flex flex-wrap items-start justify-center gap-x-8 gap-y-6">
-          {countries.map((country) => {
-            const Flag = countryFlags[country.slug as keyof typeof countryFlags];
-            return (
-              <Link
-                key={country.slug}
-                href={`/countries/${country.slug}`}
-                className="group flex flex-col items-center gap-2"
-              >
-                <span className="block h-8 w-12 overflow-hidden rounded-md shadow ring-1 ring-slate-200 transition-transform duration-200 group-hover:-translate-y-1">
-                  <Flag className="h-full w-full" />
-                </span>
-                <span className="text-xs font-medium text-slate-600 group-hover:text-brand-red">
-                  {country.name}
-                </span>
-              </Link>
-            );
-          })}
-        </div>
+        <DestinationCards />
 
-        <Reveal className="mx-auto mt-10 max-w-3xl">
-          <div className="rounded-2xl border border-slate-200 p-6 shadow-sm">
-            <ul className="grid gap-3 sm:grid-cols-3">
-              {preDeparture.points.map((point) => (
-                <li key={point} className="flex items-start gap-2 text-sm text-slate-700">
-                  <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-brand-red" />
-                  {point}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-center">
-              <Link
-                href="/services/pre-departure-briefing"
-                className="text-sm font-semibold text-brand-red hover:text-brand-red-light"
-              >
-                See the full pre-departure briefing →
-              </Link>
-            </p>
-          </div>
-        </Reveal>
+        <p className="mt-8 text-center">
+          <Link
+            href="/services/pre-departure-briefing"
+            className="text-sm font-semibold text-brand-red hover:text-brand-red-light"
+          >
+            See the full pre-departure briefing →
+          </Link>
+        </p>
       </section>
 
       <JourneyConnector flip />
@@ -590,6 +559,30 @@ export default function Home() {
             </h2>
             <p className="mt-4 text-slate-600">
               Real students, placed across four different countries.
+            </p>
+
+            <div className="mt-10 flex items-center justify-center gap-4">
+              <svg viewBox="0 0 24 48" className="h-12 w-6 text-foreground" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+                <path d="M20 4 C8 12, 6 30, 16 44" />
+                <path d="M17 8c-3-.5-5.5.8-6.5 3 2.8 1 5.3 0 6.5-3ZM12.5 15c-3 0-5.2 1.8-5.8 4.2 3 .4 5.3-1.2 5.8-4.2ZM10.5 22.5c-2.9.6-4.6 2.8-4.7 5.3 3-.2 4.9-2.3 4.7-5.3ZM10.8 30c-2.6 1.2-3.8 3.6-3.4 6 2.8-.8 4.2-3.1 3.4-6ZM13 37c-2.2 1.7-2.8 4.3-1.8 6.6 2.5-1.4 3.2-4 1.8-6.6Z" fill="currentColor" stroke="none" />
+              </svg>
+              <div>
+                <p className="text-6xl font-black tracking-tight text-foreground">4.9</p>
+                <div className="mt-2 flex justify-center gap-1 text-gold">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="m12 2 2.9 6.6 7.1.7-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.7 7.1-.7L12 2Z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <svg viewBox="0 0 24 48" className="h-12 w-6 -scale-x-100 text-foreground" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+                <path d="M20 4 C8 12, 6 30, 16 44" />
+                <path d="M17 8c-3-.5-5.5.8-6.5 3 2.8 1 5.3 0 6.5-3ZM12.5 15c-3 0-5.2 1.8-5.8 4.2 3 .4 5.3-1.2 5.8-4.2ZM10.5 22.5c-2.9.6-4.6 2.8-4.7 5.3 3-.2 4.9-2.3 4.7-5.3ZM10.8 30c-2.6 1.2-3.8 3.6-3.4 6 2.8-.8 4.2-3.1 3.4-6ZM13 37c-2.2 1.7-2.8 4.3-1.8 6.6 2.5-1.4 3.2-4 1.8-6.6Z" fill="currentColor" stroke="none" />
+              </svg>
+            </div>
+            <p className="mt-3 text-sm text-slate-500">
+              Average rating from 500+ students placed abroad
             </p>
           </div>
           <div className="-mx-6 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0">

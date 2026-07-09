@@ -1,9 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { countries } from "@/data/countries";
-import Reveal from "@/components/Reveal";
-import { countryFlags } from "@/components/icons/Flags";
 import RouteMap from "@/components/RouteMap";
+import DestinationCards from "@/components/DestinationCards";
 
 const description =
   "Explore popular study-abroad destinations — the UK, USA, Canada, Australia, Ireland, and Germany — with Afly Consultancy Services.";
@@ -38,47 +36,7 @@ export default function CountriesPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="-mx-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3">
-          {countries.map((country, i) => {
-            const Flag = countryFlags[country.slug as keyof typeof countryFlags];
-            return (
-            <Reveal
-              key={country.slug}
-              delay={(i % 3) * 100}
-              className="w-[82%] flex-none snap-start sm:w-[60%] md:w-auto md:flex-auto"
-            >
-              <Link
-                href={`/countries/${country.slug}`}
-                className="block h-full rounded-2xl border border-slate-200 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="h-10 w-14 overflow-hidden rounded-lg shadow-sm ring-1 ring-slate-200">
-                  {Flag ? <Flag className="h-full w-full" /> : null}
-                </div>
-                <h2 className="mt-4 text-xl font-semibold text-brand-blue">
-                  {country.name}
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  {country.blurb}
-                </p>
-                <ul className="mt-4 space-y-2">
-                  {country.highlights.map((point) => (
-                    <li
-                      key={point}
-                      className="flex items-start gap-2 text-sm text-slate-700"
-                    >
-                      <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-brand-red" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-                <span className="mt-4 inline-block text-sm font-semibold text-brand-red">
-                  Learn more →
-                </span>
-              </Link>
-            </Reveal>
-            );
-          })}
-        </div>
+        <DestinationCards />
 
         <div className="mt-16 rounded-2xl bg-slate-50 p-10 text-center">
           <h2 className="text-2xl font-bold text-brand-blue">
