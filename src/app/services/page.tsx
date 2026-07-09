@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { services } from "@/data/services";
 import { serviceIcons } from "@/components/icons/ServiceIcons";
 import Reveal from "@/components/Reveal";
+import FloatingIconCluster from "@/components/FloatingIconCluster";
 
 const description =
   "Explore Afly Consultancy Services' overseas education services: university selection, visa guidance, test preparation, scholarships, and more.";
@@ -20,15 +21,18 @@ export default function ServicesPage() {
       <section className="relative overflow-hidden bg-ink py-24 text-white">
         <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
         <div className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64 rounded-full bg-gold/15 blur-3xl animate-aurora-2" />
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-light">
-            What We Offer
-          </p>
-          <h1 className="mt-6 text-4xl font-black tracking-tight md:text-5xl">Services Built Around You</h1>
-          <p className="mt-4 text-slate-300">
-            Every student's path abroad is different. Here's how we support
-            yours, end to end.
-          </p>
+        <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-6 lg:grid-cols-2">
+          <div className="text-center lg:text-left">
+            <p className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-light">
+              What We Offer
+            </p>
+            <h1 className="mt-6 text-4xl font-black tracking-tight md:text-5xl">Services Built Around You</h1>
+            <p className="mt-4 text-slate-300">
+              Every student's path abroad is different. Here's how we support
+              yours, end to end.
+            </p>
+          </div>
+          <FloatingIconCluster />
         </div>
       </section>
 

@@ -7,6 +7,7 @@ import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import { FlightPathIllustration, CompassBadgeIllustration } from "@/components/icons/Illustrations";
 import StudyJourney from "@/components/StudyJourney";
+import ParallaxLayer from "@/components/ParallaxLayer";
 
 const stats = [
   { value: "500+", label: "Students Placed" },
@@ -136,10 +137,18 @@ export default function Home() {
   return (
     <div>
       <section className="relative overflow-hidden bg-ink text-white">
-        <div className="pointer-events-none absolute -left-24 -top-32 h-[28rem] w-[28rem] rounded-full bg-brand-blue/40 blur-3xl animate-aurora-1" />
-        <div className="pointer-events-none absolute right-[-8rem] top-0 h-[26rem] w-[26rem] rounded-full bg-brand-red/30 blur-3xl animate-aurora-2" />
-        <div className="pointer-events-none absolute bottom-[-10rem] left-1/2 h-[24rem] w-[24rem] -translate-x-1/2 rounded-full bg-gold/20 blur-3xl animate-aurora-3" />
-        <FlightPathIllustration className="pointer-events-none absolute inset-0 hidden h-full w-full text-gold-light md:block" />
+        <ParallaxLayer speed={0.08} className="pointer-events-none absolute -left-24 -top-32 h-[28rem] w-[28rem]">
+          <div className="h-full w-full rounded-full bg-brand-blue/40 blur-3xl animate-aurora-1" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.14} className="pointer-events-none absolute right-[-8rem] top-0 h-[26rem] w-[26rem]">
+          <div className="h-full w-full rounded-full bg-brand-red/30 blur-3xl animate-aurora-2" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.1} className="pointer-events-none absolute bottom-[-10rem] left-1/2 -ml-[12rem] h-[24rem] w-[24rem]">
+          <div className="h-full w-full rounded-full bg-gold/20 blur-3xl animate-aurora-3" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.04} className="pointer-events-none absolute inset-0 hidden md:block">
+          <FlightPathIllustration className="h-full w-full text-gold-light" />
+        </ParallaxLayer>
 
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-28 md:grid-cols-2">
           <div>

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { countries } from "@/data/countries";
 import Reveal from "@/components/Reveal";
 import { countryFlags } from "@/components/icons/Flags";
+import RouteMap from "@/components/RouteMap";
 
 const description =
   "Explore popular study-abroad destinations — the UK, USA, Canada, Australia, Ireland, and Germany — with Afly Consultancy Services.";
@@ -20,16 +21,19 @@ export default function CountriesPage() {
       <section className="relative overflow-hidden bg-ink py-24 text-white">
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-blue/30 blur-3xl animate-aurora-1" />
         <div className="pointer-events-none absolute -right-32 bottom-0 h-64 w-64 rounded-full bg-gold/15 blur-3xl animate-aurora-2" />
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-light">
-            Where You Could Study
-          </p>
-          <h1 className="mt-6 text-4xl font-black tracking-tight md:text-5xl">Popular Study Destinations</h1>
-          <p className="mt-4 text-slate-300">
-            Every country offers a different mix of cost, career outcomes,
-            and lifestyle. Here's a quick look at where our students go —
-            and we'll help you figure out which fits you best.
-          </p>
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2">
+          <div className="text-center lg:text-left">
+            <p className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-light">
+              Where You Could Study
+            </p>
+            <h1 className="mt-6 text-4xl font-black tracking-tight md:text-5xl">Popular Study Destinations</h1>
+            <p className="mt-4 text-slate-300">
+              Every country offers a different mix of cost, career outcomes,
+              and lifestyle. Here's a quick look at where our students go —
+              and we'll help you figure out which fits you best.
+            </p>
+          </div>
+          <RouteMap />
         </div>
       </section>
 

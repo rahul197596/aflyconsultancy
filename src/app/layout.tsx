@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import { MobileNavProvider } from "@/components/MobileNavContext";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 
 const lexend = Lexend({
   variable: "--font-heading",
@@ -73,6 +74,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <MobileNavProvider>
+          <ScrollProgressBar />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

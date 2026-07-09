@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { EyeIcon, HeartIcon, ShieldCheckIcon } from "@/components/icons/InfoIcons";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
+import AboutTimeline from "@/components/AboutTimeline";
 
 const description =
   "Learn about Afly Consultancy Services' mission, values, and 15+ years of experience helping students study abroad.";
@@ -89,6 +90,11 @@ export default function AboutPage() {
           rate of 98%. But the number we care about most is simpler: how many
           students land, settle in, and thrive.
         </p>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-6 pb-20">
+        <h2 className="text-center text-2xl font-bold text-brand-blue">Our Journey So Far</h2>
+        <AboutTimeline />
       </section>
 
       <section className="bg-slate-50 py-20">
