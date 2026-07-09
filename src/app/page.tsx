@@ -6,6 +6,7 @@ import FaqAccordion from "@/components/FaqAccordion";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import { FlightPathIllustration, CompassBadgeIllustration } from "@/components/icons/Illustrations";
+import StudyJourney from "@/components/StudyJourney";
 
 const stats = [
   { value: "500+", label: "Students Placed" },
@@ -311,6 +312,8 @@ export default function Home() {
               abroad.
             </p>
           </div>
+
+          <StudyJourney />
 
           <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step, i) => (

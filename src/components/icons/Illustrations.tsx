@@ -1,6 +1,22 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 type IllustrationProps = { className?: string };
 
+const FLIGHT_PATH = "M70 300C260 90 520 60 730 110";
+
+function usePrefersMotion() {
+  const [animate, setAnimate] = useState(false);
+  useEffect(() => {
+    setAnimate(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+  return animate;
+}
+
 export function FlightPathIllustration({ className }: IllustrationProps) {
+  const animate = usePrefersMotion();
+
   return (
     <svg
       viewBox="0 0 800 400"
@@ -11,22 +27,34 @@ export function FlightPathIllustration({ className }: IllustrationProps) {
       <circle cx="180" cy="230" r="150" stroke="currentColor" strokeOpacity="0.5" strokeWidth="1.2" />
       <path d="M30 230h300M180 80v300M65 140c60 30 190 30 230 0M65 320c60-30 190-30 230 0" stroke="currentColor" strokeOpacity="0.35" strokeWidth="1" />
       <path
-        d="M70 300C260 90 520 60 730 110"
+        d={FLIGHT_PATH}
         stroke="currentColor"
         strokeOpacity="0.6"
         strokeWidth="2"
         strokeDasharray="2 10"
         strokeLinecap="round"
+        className={animate ? "animate-dash-flow" : undefined}
       />
-      <circle cx="70" cy="300" r="6" fill="currentColor" fillOpacity="0.8" />
-      <circle cx="730" cy="110" r="6" fill="currentColor" fillOpacity="0.8" />
-      <g transform="translate(430 78) rotate(-18)">
-        <path
-          d="M0 0l22-6 26 6-26 6-22-6Zm22-6 8-16 6 2-4 14M22 6l8 16 6-2-4-14"
-          fill="currentColor"
-          fillOpacity="0.85"
-        />
-      </g>
+      <circle cx="70" cy="300" r="6" fill="currentColor" fillOpacity="0.8" className={animate ? "animate-pulse" : undefined} />
+      <circle cx="730" cy="110" r="6" fill="currentColor" fillOpacity="0.8" className={animate ? "animate-pulse" : undefined} />
+      {animate ? (
+        <g>
+          <path
+            d="M0 0l22-6 26 6-26 6-22-6Zm22-6 8-16 6 2-4 14M22 6l8 16 6-2-4-14"
+            fill="currentColor"
+            fillOpacity="0.85"
+          />
+          <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" path={FLIGHT_PATH} />
+        </g>
+      ) : (
+        <g transform="translate(430 78) rotate(-18)">
+          <path
+            d="M0 0l22-6 26 6-26 6-22-6Zm22-6 8-16 6 2-4 14M22 6l8 16 6-2-4-14"
+            fill="currentColor"
+            fillOpacity="0.85"
+          />
+        </g>
+      )}
     </svg>
   );
 }
