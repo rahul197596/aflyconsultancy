@@ -5,7 +5,7 @@ import CountUp from "@/components/CountUp";
 import AboutTimeline from "@/components/AboutTimeline";
 
 const description =
-  "Learn about Afly Consultancy Services' mission, values, and 15+ years of experience helping students study abroad.";
+  "Learn about Afly Consultancy Services' mission, values, and 5+ years of experience helping students study abroad.";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -37,8 +37,8 @@ const values = [
 
 const milestones = [
   { value: "500+", label: "Students Placed" },
-  { value: "50+", label: "Partner Universities" },
-  { value: "15+", label: "Years of Experience" },
+  { value: "200+", label: "Partner Universities" },
+  { value: "5+", label: "Years of Experience" },
   { value: "98%", label: "Visa Success Rate" },
 ];
 
@@ -56,7 +56,7 @@ export default function AboutPage() {
             Helping Students Study Abroad Since Day One
           </h1>
           <p className="mt-4 text-slate-300">
-            For over 15 years, we've guided students through every stage of
+            For over 5 years, we've guided students through every stage of
             their overseas education journey — with honesty, expertise, and
             genuine care.
           </p>
@@ -85,7 +85,7 @@ export default function AboutPage() {
           honest, personalized guidance.
         </p>
         <p className="mt-4 leading-relaxed text-slate-600">
-          Today, we've helped over 500 students get placed at more than 50
+          Today, we've helped over 500 students get placed at more than 200
           partner universities across the UK and Europe, with a visa success
           rate of 98%. But the number we care about most is simpler: how many
           students land, settle in, and thrive.

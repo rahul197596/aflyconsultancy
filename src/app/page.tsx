@@ -17,8 +17,8 @@ import TiltCard from "@/components/TiltCard";
 
 const stats = [
   { value: "500+", label: "Students Placed" },
-  { value: "50+", label: "Partner Universities" },
-  { value: "15+", label: "Years of Experience" },
+  { value: "200+", label: "Partner Universities" },
+  { value: "5+", label: "Years of Experience" },
   { value: "98%", label: "Visa Success Rate" },
 ];
 
