@@ -3,6 +3,9 @@ import { EyeIcon, HeartIcon, ShieldCheckIcon } from "@/components/icons/InfoIcon
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import AboutTimeline from "@/components/AboutTimeline";
+import ScrollScrub from "@/components/ScrollScrub";
+import TiltCard from "@/components/TiltCard";
+import ParallaxLayer from "@/components/ParallaxLayer";
 
 const description =
   "Learn about Afly Consultancy Services' mission, values, and 5+ years of experience helping students study abroad.";
@@ -46,8 +49,12 @@ export default function AboutPage() {
   return (
     <div>
       <section className="relative overflow-hidden bg-ink py-24 text-white">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
-        <div className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64 rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        <ParallaxLayer speed={0.1} className="pointer-events-none absolute -right-24 -top-24 h-72 w-72">
+          <div className="h-full w-full rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.06} className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64">
+          <div className="h-full w-full rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        </ParallaxLayer>
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <p className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-light">
             About Afly Consultancy Services
@@ -75,6 +82,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-20">
+        <ScrollScrub>
         <h2 className="text-2xl font-bold text-brand-blue">Our Story</h2>
         <p className="mt-4 leading-relaxed text-slate-600">
           Afly Consultancy Services was founded to solve a simple problem: too many
@@ -86,25 +94,29 @@ export default function AboutPage() {
         </p>
         <p className="mt-4 leading-relaxed text-slate-600">
           Today, we've helped over 500 students get placed at more than 200
-          partner universities across the UK and Europe, with a visa success
+          partner universities across the UK, Europe, North America, and Australasia, with a visa success
           rate of 98%. But the number we care about most is simpler: how many
           students land, settle in, and thrive.
         </p>
+        </ScrollScrub>
       </section>
 
       <section className="mx-auto max-w-4xl px-6 pb-20">
-        <h2 className="text-center text-2xl font-bold text-brand-blue">Our Journey So Far</h2>
+        <ScrollScrub><h2 className="text-center text-2xl font-bold text-brand-blue">Our Journey So Far</h2></ScrollScrub>
         <AboutTimeline />
       </section>
 
       <section className="bg-slate-50 py-20">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-center text-2xl font-bold text-brand-blue">
-            What We Stand For
-          </h2>
+          <ScrollScrub>
+            <h2 className="text-center text-2xl font-bold text-brand-blue">
+              What We Stand For
+            </h2>
+          </ScrollScrub>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {values.map((value, i) => (
               <Reveal key={value.title} delay={i * 100}>
+                <TiltCard className="h-full">
                 <div className="h-full rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-slate-100">
                   <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                     <value.icon className="h-6 w-6" />
@@ -114,6 +126,7 @@ export default function AboutPage() {
                     {value.description}
                   </p>
                 </div>
+                </TiltCard>
               </Reveal>
             ))}
           </div>

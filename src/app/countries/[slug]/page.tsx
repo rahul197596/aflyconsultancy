@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { countries } from "@/data/countries";
 import { BookOpenIcon, BriefcaseIcon, CalendarIcon, CoinsIcon, CompassIcon } from "@/components/icons/InfoIcons";
 import { countryFlags } from "@/components/icons/Flags";
+import ParallaxLayer from "@/components/ParallaxLayer";
 
 export function generateStaticParams() {
   return countries.map((country) => ({ slug: country.slug }));
@@ -38,8 +39,12 @@ export default async function CountryDetailPage(props: {
   return (
     <div>
       <section className="relative overflow-hidden bg-ink py-24 text-white">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
-        <div className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64 rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        <ParallaxLayer speed={0.1} className="pointer-events-none absolute -right-24 -top-24 h-72 w-72">
+          <div className="h-full w-full rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.06} className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64">
+          <div className="h-full w-full rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        </ParallaxLayer>
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <div className="mx-auto h-12 w-16 overflow-hidden rounded-xl shadow-lg ring-1 ring-white/20">
             {Flag ? <Flag className="h-full w-full" /> : null}

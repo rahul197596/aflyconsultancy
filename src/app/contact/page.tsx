@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import { ClockIcon, MailIcon, PhoneIcon } from "@/components/icons/InfoIcons";
+import Reveal from "@/components/Reveal";
+import ParallaxLayer from "@/components/ParallaxLayer";
 
 const description =
   "Get in touch with Afly Consultancy Services for a free study-abroad consultation.";
@@ -16,8 +18,12 @@ export default function ContactPage() {
   return (
     <div>
       <section className="relative overflow-hidden bg-ink py-24 text-white">
-        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
-        <div className="pointer-events-none absolute -right-32 bottom-0 h-64 w-64 rounded-full bg-gold/15 blur-3xl animate-aurora-2" />
+        <ParallaxLayer speed={0.1} className="pointer-events-none absolute -left-24 -top-24 h-72 w-72">
+          <div className="h-full w-full rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.06} className="pointer-events-none absolute -right-32 bottom-0 h-64 w-64">
+          <div className="h-full w-full rounded-full bg-gold/15 blur-3xl animate-aurora-2" />
+        </ParallaxLayer>
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <p className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-light">
             Get in Touch
@@ -135,14 +141,14 @@ export default function ContactPage() {
               title: "We call you back",
               body: "Expect a response within 24 hours to schedule your free consultation.",
             },
-          ].map((item) => (
-            <div key={item.step} className="text-center sm:text-left">
+          ].map((item, i) => (
+            <Reveal key={item.step} delay={i * 100} className="text-center sm:text-left">
               <span className="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-brand-red text-sm font-bold text-white sm:mx-0">
                 {item.step}
               </span>
               <p className="mt-3 font-semibold text-brand-blue">{item.title}</p>
               <p className="mt-1 text-sm text-slate-600">{item.body}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>

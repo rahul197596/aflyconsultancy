@@ -41,6 +41,18 @@ const partnerUniversities: { name: string; logo: string; showName?: boolean }[] 
   { name: "Monash University", logo: "/universities/monash.svg", showName: true },
   { name: "University of Windsor", logo: "/universities/windsor.png", showName: true },
   { name: "Deakin University", logo: "/universities/deakin.png", showName: true },
+  { name: "University of Manchester", logo: "/universities/manchester.png", showName: true },
+  { name: "University of Glasgow", logo: "/universities/glasgow.png", showName: true },
+  { name: "University of Nottingham", logo: "/universities/nottingham.png", showName: true },
+  { name: "University of Sheffield", logo: "/universities/sheffield.png", showName: true },
+  { name: "Queen Mary University of London", logo: "/universities/qmul.png", showName: true },
+  { name: "University of Liverpool", logo: "/universities/liverpool.png", showName: true },
+  { name: "Cardiff University", logo: "/universities/cardiff.png", showName: true },
+  { name: "University of Waterloo", logo: "/universities/waterloo.png", showName: true },
+  { name: "University of Auckland", logo: "/universities/auckland.png", showName: true },
+  { name: "University College Dublin", logo: "/universities/ucd.png", showName: true },
+  { name: "TU Munich", logo: "/universities/tum.png", showName: true },
+  { name: "La Trobe University", logo: "/universities/latrobe.png", showName: true },
   { name: "Istituto Marangoni", logo: "/universities/istituto_marangoni.png" },
 ];
 

@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { services } from "@/data/services";
 import { serviceIcons } from "@/components/icons/ServiceIcons";
+import Reveal from "@/components/Reveal";
+import ParallaxLayer from "@/components/ParallaxLayer";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -35,8 +37,12 @@ export default async function ServiceDetailPage(props: {
   return (
     <div>
       <section className="relative overflow-hidden bg-ink py-24 text-white">
-        <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
-        <div className="pointer-events-none absolute -right-32 bottom-0 h-64 w-64 rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        <ParallaxLayer speed={0.1} className="pointer-events-none absolute -left-24 -top-24 h-72 w-72">
+          <div className="h-full w-full rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.06} className="pointer-events-none absolute -right-32 bottom-0 h-64 w-64">
+          <div className="h-full w-full rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        </ParallaxLayer>
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gold/10 text-gold-light ring-1 ring-gold/30">
             <Icon className="h-9 w-9" />
@@ -51,7 +57,8 @@ export default async function ServiceDetailPage(props: {
 
       <section className="mx-auto max-w-5xl px-6 py-20">
         <div className="grid gap-8 md:grid-cols-2">
-          <div className="rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow hover:shadow-md">
+          <Reveal>
+          <div className="h-full rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow hover:shadow-md">
             <h2 className="text-lg font-semibold text-brand-blue">What's Included</h2>
             <ul className="mt-4 space-y-2">
               {service.points.map((point) => (
@@ -62,8 +69,10 @@ export default async function ServiceDetailPage(props: {
               ))}
             </ul>
           </div>
+          </Reveal>
 
-          <div className="rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow hover:shadow-md">
+          <Reveal delay={120}>
+          <div className="h-full rounded-2xl border border-slate-200 p-6 shadow-sm transition-shadow hover:shadow-md">
             <h2 className="text-lg font-semibold text-brand-blue">How It Works</h2>
             <ol className="mt-4 space-y-3">
               {service.process.map((step, i) => (
@@ -76,6 +85,7 @@ export default async function ServiceDetailPage(props: {
               ))}
             </ol>
           </div>
+          </Reveal>
         </div>
 
         <div className="mt-12 flex flex-col items-center gap-4 rounded-2xl bg-slate-50 p-10 text-center">

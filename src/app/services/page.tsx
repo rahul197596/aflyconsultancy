@@ -4,6 +4,8 @@ import { services } from "@/data/services";
 import { serviceIcons } from "@/components/icons/ServiceIcons";
 import Reveal from "@/components/Reveal";
 import FloatingIconCluster from "@/components/FloatingIconCluster";
+import TiltCard from "@/components/TiltCard";
+import ParallaxLayer from "@/components/ParallaxLayer";
 
 const description =
   "Explore Afly Consultancy Services' overseas education services: university selection, visa guidance, test preparation, scholarships, and more.";
@@ -19,8 +21,12 @@ export default function ServicesPage() {
   return (
     <div>
       <section className="relative overflow-hidden bg-ink py-24 text-white">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
-        <div className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64 rounded-full bg-gold/15 blur-3xl animate-aurora-2" />
+        <ParallaxLayer speed={0.1} className="pointer-events-none absolute -right-24 -top-24 h-72 w-72">
+          <div className="h-full w-full rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.06} className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64">
+          <div className="h-full w-full rounded-full bg-gold/15 blur-3xl animate-aurora-2" />
+        </ParallaxLayer>
         <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-6 lg:grid-cols-2">
           <div className="text-center lg:text-left">
             <p className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-gold-light">
@@ -42,9 +48,10 @@ export default function ServicesPage() {
             const Icon = serviceIcons[service.slug as keyof typeof serviceIcons];
             return (
             <Reveal key={service.slug} delay={(i % 2) * 100}>
+              <TiltCard className="h-full">
               <Link
                 href={`/services/${service.slug}`}
-                className="block h-full rounded-2xl border border-slate-200 p-8 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+                className="block h-full rounded-2xl border border-slate-200 p-8 shadow-sm transition-all duration-200 hover:shadow-xl"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-red/15 to-brand-red/5 text-brand-red ring-1 ring-brand-red/10">
                   <Icon className="h-7 w-7" />
@@ -65,6 +72,7 @@ export default function ServicesPage() {
                   Learn more →
                 </span>
               </Link>
+              </TiltCard>
             </Reveal>
             );
           })}
