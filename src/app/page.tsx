@@ -11,7 +11,7 @@ import { FlightPathIllustration, CompassBadgeIllustration } from "@/components/i
 import ParallaxLayer from "@/components/ParallaxLayer";
 import JourneyRail from "@/components/JourneyRail";
 import JourneyConnector from "@/components/JourneyConnector";
-import PlaneCompanion from "@/components/PlaneCompanion";
+import HeroPlayground from "@/components/HeroPlayground";
 import StampCard from "@/components/StampCard";
 import TiltCard from "@/components/TiltCard";
 
@@ -82,7 +82,6 @@ export default function Home() {
   return (
     <div>
       <JourneyRail />
-      <PlaneCompanion />
 
       {/* Prologue — the dream */}
       <section className="relative overflow-hidden bg-ink text-white">
@@ -98,6 +97,7 @@ export default function Home() {
         <ParallaxLayer speed={0.04} className="pointer-events-none absolute inset-0 hidden md:block">
           <FlightPathIllustration className="h-full w-full text-gold-light" />
         </ParallaxLayer>
+        <HeroPlayground />
 
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 pb-16 pt-28 md:grid-cols-2">
           <div>
