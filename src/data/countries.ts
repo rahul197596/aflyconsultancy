@@ -150,4 +150,51 @@ export const countries: Country[] = [
     costEstimate: "Public universities charge little to no tuition (a small semester fee applies); living costs average €850–1,100/month.",
     costShort: "Little to no tuition",
   },
+  {
+    slug: "new-zealand",
+    flag: "🇳🇿",
+    name: "New Zealand",
+    blurb:
+      "Safe, welcoming, and career-friendly — globally ranked universities with clear post-study work rights.",
+    highlights: [
+      "Post-study work visa up to 3 years",
+      "Safe, student-friendly cities",
+      "Strong PR pathways for skilled graduates",
+    ],
+    popularCourses: [
+      "Business & Management",
+      "IT & Data Science",
+      "Health Sciences & Nursing",
+      "Engineering",
+      "Agriculture & Environmental Science",
+    ],
+    intakes: "Main intakes in February and July, with some courses offering additional start dates.",
+    workRights: "Students can work up to 20 hours per week during term and full-time during breaks; the Post-Study Work Visa allows up to 3 years of work depending on your qualification.",
+    costEstimate: "Tuition typically ranges from NZD 22,000–35,000/year; living costs average NZD 1,200–1,700/month.",
+    costShort: "Tuition NZD 22k–35k / year",
+  },
+  {
+    slug: "europe",
+    flag: "🇪🇺",
+    name: "Europe",
+    blurb:
+      "Beyond the big destinations — affordable, English-taught programs across France, the Netherlands, Italy, Spain, and more.",
+    highlights: [
+      "Low tuition at public universities",
+      "English-taught programs across the EU",
+      "Travel access to 25+ Schengen countries",
+    ],
+    popularCourses: [
+      "Business & Management",
+      "Engineering",
+      "Data Science",
+      "Fashion & Design",
+      "Hospitality & Tourism",
+    ],
+    intakes: "Main intakes in September/October, with February/March spring intakes at many universities.",
+    workRights: "Work rights vary by country — typically 15–20 hours per week during study, with post-study job-seeker permits available in France, the Netherlands, Italy, and others.",
+    costEstimate: "Tuition ranges from €0–15,000/year depending on the country and university; living costs average €700–1,300/month.",
+    costShort: "Tuition €0–€15k / year",
+  },
 ];
+

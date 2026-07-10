@@ -4,7 +4,7 @@ import RouteMap from "@/components/RouteMap";
 import DestinationCards from "@/components/DestinationCards";
 
 const description =
-  "Explore popular study-abroad destinations — the UK, USA, Canada, Australia, Ireland, and Germany — with Afly Consultancy Services.";
+  "Explore popular study-abroad destinations — the UK, USA, Canada, Australia, New Zealand, Ireland, Germany, and Europe — with Afly Consultancy Services.";
 
 export const metadata: Metadata = {
   title: "Study Destinations",

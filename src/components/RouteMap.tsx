@@ -7,7 +7,7 @@ const CENTER = SIZE / 2;
 const RADIUS = 260;
 
 const points = countries.map((country, i) => {
-  const angle = (i * 60 - 90) * (Math.PI / 180);
+  const angle = (i * (360 / countries.length) - 90) * (Math.PI / 180);
   const x = CENTER + RADIUS * Math.cos(angle);
   const y = CENTER + RADIUS * Math.sin(angle);
   return { country, x, y };

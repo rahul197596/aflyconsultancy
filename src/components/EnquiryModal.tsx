@@ -10,6 +10,8 @@ const countries = [
   "Australia",
   "Ireland",
   "Germany",
+  "New Zealand",
+  "Rest of Europe",
   "Other",
 ];
 

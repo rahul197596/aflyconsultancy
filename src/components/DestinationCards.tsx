@@ -11,6 +11,8 @@ const plateGradients: Record<string, string> = {
   australia: "from-brand-blue/15 via-sky-100 to-brand-blue/5",
   ireland: "from-emerald-100 via-white to-gold/15",
   germany: "from-gold/20 via-white to-brand-red/10",
+  "new-zealand": "from-brand-blue/15 via-sky-50 to-brand-red/10",
+  europe: "from-[#003399]/15 via-white to-gold/20",
 };
 
 export default function DestinationCards() {

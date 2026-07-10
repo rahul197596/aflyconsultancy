@@ -2,6 +2,29 @@ type FlagProps = { className?: string };
 
 const clipId = (name: string) => `flag-clip-${name}`;
 
+/** 5-pointed star path centered at (cx, cy) with outer radius r. */
+function starPath(cx: number, cy: number, r: number): string {
+  const pts: string[] = [];
+  for (let i = 0; i < 10; i++) {
+    const a = ((-90 + i * 36) * Math.PI) / 180;
+    const rad = i % 2 === 0 ? r : r * 0.42;
+    pts.push(`${(cx + Math.cos(a) * rad).toFixed(2)} ${(cy + Math.sin(a) * rad).toFixed(2)}`);
+  }
+  return `M${pts.join(" L")}Z`;
+}
+
+function UnionJack({ scale = 1 }: { scale?: number }) {
+  return (
+    <g transform={`scale(${scale})`}>
+      <rect width="24" height="16" fill="#1E3A8A" />
+      <path d="M0 0 24 16M24 0 0 16" stroke="#fff" strokeWidth="3.2" />
+      <path d="M0 0 24 16M24 0 0 16" stroke="#C8102E" strokeWidth="1.2" />
+      <path d="M12 0v16M0 8h24" stroke="#fff" strokeWidth="5.2" />
+      <path d="M12 0v16M0 8h24" stroke="#C8102E" strokeWidth="2" />
+    </g>
+  );
+}
+
 export function UKFlag({ className }: FlagProps) {
   const id = clipId("gb");
   return (
@@ -10,11 +33,7 @@ export function UKFlag({ className }: FlagProps) {
         <rect width="24" height="16" rx="2" />
       </clipPath>
       <g clipPath={`url(#${id})`}>
-        <rect width="24" height="16" fill="#1E3A8A" />
-        <path d="M0 0 24 16M24 0 0 16" stroke="#fff" strokeWidth="3.2" />
-        <path d="M0 0 24 16M24 0 0 16" stroke="#C8102E" strokeWidth="1.2" />
-        <path d="M12 0v16M0 8h24" stroke="#fff" strokeWidth="5.2" />
-        <path d="M12 0v16M0 8h24" stroke="#C8102E" strokeWidth="2" />
+        <UnionJack />
       </g>
     </svg>
   );
@@ -22,6 +41,7 @@ export function UKFlag({ className }: FlagProps) {
 
 export function USFlag({ className }: FlagProps) {
   const id = clipId("us");
+  const stripe = 16 / 13;
   return (
     <svg viewBox="0 0 24 16" className={className}>
       <clipPath id={id}>
@@ -29,19 +49,23 @@ export function USFlag({ className }: FlagProps) {
       </clipPath>
       <g clipPath={`url(#${id})`}>
         <rect width="24" height="16" fill="#fff" />
-        {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-          <rect key={i} y={i * (16 / 13)} width="24" height={16 / 13} fill="#B22234" />
+        {[0, 2, 4, 6, 8, 10, 12].map((i) => (
+          <rect key={i} y={i * stripe} width="24" height={stripe} fill="#B22234" />
         ))}
-        <rect width="10.5" height="8.6" fill="#1E3A8A" />
-        {Array.from({ length: 12 }).map((_, i) => (
-          <circle
-            key={i}
-            cx={1.3 + (i % 4) * 2.6}
-            cy={1.3 + Math.floor(i / 4) * 2.8}
-            r="0.5"
-            fill="#fff"
-          />
-        ))}
+        <rect width="10.5" height={stripe * 7} fill="#1E3A8A" />
+        {Array.from({ length: 5 }).map((_, row) => {
+          const count = row % 2 === 0 ? 5 : 4;
+          const offset = row % 2 === 0 ? 1.15 : 2.2;
+          return Array.from({ length: count }).map((_, col) => (
+            <circle
+              key={`${row}-${col}`}
+              cx={offset + col * 2.1}
+              cy={1.2 + row * 1.6}
+              r="0.45"
+              fill="#fff"
+            />
+          ));
+        })}
       </g>
     </svg>
   );
@@ -59,7 +83,7 @@ export function CanadaFlag({ className }: FlagProps) {
         <rect width="6" height="16" fill="#D80621" />
         <rect x="18" width="6" height="16" fill="#D80621" />
         <path
-          d="M12 3.2l1 2 2-1-.5 2.2 2 .2-1.6 1.6.9.9-2 .3.2 1.6-1-.8-1 .8.2-1.6-2-.3.9-.9-1.6-1.6 2-.2-.5-2.2 2 1z"
+          d="M12 3l.9 1.8 1.5-.8-.4 1.9 1.9-.3-.9 1.6 1.7.9-1.5.9.6 1.6-1.9-.4.1 1.6-1.6-.9v2.3h-.8v-2.3l-1.6.9.1-1.6-1.9.4.6-1.6-1.5-.9 1.7-.9-.9-1.6 1.9.3-.4-1.9 1.5.8L12 3z"
           fill="#D80621"
         />
       </g>
@@ -76,21 +100,41 @@ export function AustraliaFlag({ className }: FlagProps) {
       </clipPath>
       <g clipPath={`url(#${id})`}>
         <rect width="24" height="16" fill="#1E3A8A" />
-        <g transform="scale(0.5)" opacity="0.95">
-          <rect width="24" height="16" fill="#1E3A8A" />
-          <path d="M0 0 24 16M24 0 0 16" stroke="#fff" strokeWidth="3.2" />
-          <path d="M0 0 24 16M24 0 0 16" stroke="#C8102E" strokeWidth="1.2" />
-          <path d="M12 0v16M0 8h24" stroke="#fff" strokeWidth="5.2" />
-          <path d="M12 0v16M0 8h24" stroke="#C8102E" strokeWidth="2" />
-        </g>
+        <UnionJack scale={0.5} />
+        {/* Commonwealth star under the canton */}
+        <path d={starPath(6, 12, 1.5)} fill="#fff" />
+        {/* Southern Cross */}
+        <path d={starPath(17.5, 2.9, 1)} fill="#fff" />
+        <path d={starPath(20.3, 5.9, 1)} fill="#fff" />
+        <path d={starPath(17.5, 12.6, 1)} fill="#fff" />
+        <path d={starPath(14.8, 6.7, 1)} fill="#fff" />
+        <path d={starPath(19.2, 8.6, 0.6)} fill="#fff" />
+      </g>
+    </svg>
+  );
+}
+
+export function NewZealandFlag({ className }: FlagProps) {
+  const id = clipId("nz");
+  return (
+    <svg viewBox="0 0 24 16" className={className}>
+      <clipPath id={id}>
+        <rect width="24" height="16" rx="2" />
+      </clipPath>
+      <g clipPath={`url(#${id})`}>
+        <rect width="24" height="16" fill="#1E3A8A" />
+        <UnionJack scale={0.5} />
+        {/* Southern Cross — red stars with white borders */}
         {[
-          [17, 3.5, 0.6],
-          [19.5, 5.5, 0.6],
-          [19.5, 9, 0.6],
-          [16.5, 10.5, 0.6],
-          [21.5, 8.2, 0.4],
-        ].map(([cx, cy, r], i) => (
-          <circle key={i} cx={cx} cy={cy} r={r} fill="#fff" />
+          { x: 17.5, y: 3, r: 1.05 },
+          { x: 20.3, y: 6.2, r: 1.05 },
+          { x: 17.5, y: 12.4, r: 1.15 },
+          { x: 14.9, y: 6.8, r: 0.95 },
+        ].map((s, i) => (
+          <g key={i}>
+            <path d={starPath(s.x, s.y, s.r + 0.4)} fill="#fff" />
+            <path d={starPath(s.x, s.y, s.r)} fill="#CC142B" />
+          </g>
         ))}
       </g>
     </svg>
@@ -129,11 +173,37 @@ export function GermanyFlag({ className }: FlagProps) {
   );
 }
 
+export function EuropeFlag({ className }: FlagProps) {
+  const id = clipId("eu");
+  return (
+    <svg viewBox="0 0 24 16" className={className}>
+      <clipPath id={id}>
+        <rect width="24" height="16" rx="2" />
+      </clipPath>
+      <g clipPath={`url(#${id})`}>
+        <rect width="24" height="16" fill="#003399" />
+        {Array.from({ length: 12 }).map((_, i) => {
+          const a = ((i * 30 - 90) * Math.PI) / 180;
+          return (
+            <path
+              key={i}
+              d={starPath(12 + Math.cos(a) * 5, 8 + Math.sin(a) * 5, 0.85)}
+              fill="#FFCC00"
+            />
+          );
+        })}
+      </g>
+    </svg>
+  );
+}
+
 export const countryFlags = {
   "united-kingdom": UKFlag,
   "united-states": USFlag,
   canada: CanadaFlag,
   australia: AustraliaFlag,
+  "new-zealand": NewZealandFlag,
   ireland: IrelandFlag,
   germany: GermanyFlag,
+  europe: EuropeFlag,
 } as const;

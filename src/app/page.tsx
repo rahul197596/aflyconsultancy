@@ -45,7 +45,7 @@ const faqs = [
   {
     question: "Which countries do you help students apply to?",
     answer:
-      "We specialize in the UK, USA, Canada, Australia, Ireland, and Germany. See our Countries page for course options, intakes, and work rights for each destination.",
+      "We specialize in the UK, USA, Canada, Australia, New Zealand, Ireland, Germany, and the rest of Europe. See our Countries page for course options, intakes, and work rights for each destination.",
   },
   {
     question: "Do you help with scholarships and financial aid?",
@@ -350,7 +350,7 @@ export default function Home() {
       <section data-chapter="fly" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-8">
         <ScrollScrub className="mx-auto max-w-2xl text-center">
           <ChapterTag n={4} label="The Flight" />
-          <h2 className="mt-4 text-3xl font-bold text-brand-blue">Wheels Up — Six Destinations</h2>
+          <h2 className="mt-4 text-3xl font-bold text-brand-blue">Wheels Up — Eight Destinations</h2>
           <p className="mt-4 text-slate-600">{preDeparture.description}</p>
         </ScrollScrub>
 

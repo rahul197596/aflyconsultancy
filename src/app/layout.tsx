@@ -19,7 +19,7 @@ const sourceSans = Source_Sans_3({
 
 const siteName = "Afly Consultancy Services";
 const siteDescription =
-  "Afly Consultancy Services helps students study abroad with expert guidance on university selection, visa applications, test preparation, and scholarships across the UK, USA, Canada, Australia, Ireland, and Germany.";
+  "Afly Consultancy Services helps students study abroad with expert guidance on university selection, visa applications, test preparation, and scholarships across the UK, USA, Canada, Australia, New Zealand, Ireland, Germany, and Europe.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aflyconsultancy.com"),
@@ -52,7 +52,7 @@ const organizationJsonLd = {
   logo: "https://aflyconsultancy.com/logo.png",
   description: siteDescription,
   slogan: "Aim High Fly High",
-  areaServed: ["United Kingdom", "United States", "Canada", "Australia", "Ireland", "Germany"],
+  areaServed: ["United Kingdom", "United States", "Canada", "Australia", "New Zealand", "Ireland", "Germany", "Europe"],
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+91-8125144079",
