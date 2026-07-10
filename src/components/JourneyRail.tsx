@@ -83,6 +83,11 @@ const CHAPTERS: Chapter[] = [
 
 export default function JourneyRail() {
   const [active, setActive] = useState(-1);
+
+  useEffect(() => {
+    if (active >= 0) window.dispatchEvent(new Event("plane-celebrate"));
+  }, [active]);
+
   const fillRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const fractionsRef = useRef<number[]>([]);
