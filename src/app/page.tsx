@@ -5,6 +5,7 @@ import { BookOpenIcon, BriefcaseIcon, CoinsIcon, CompassIcon, HomeIcon, ShieldCh
 import DestinationCards from "@/components/DestinationCards";
 import FaqAccordion from "@/components/FaqAccordion";
 import Reveal from "@/components/Reveal";
+import ScrollScrub from "@/components/ScrollScrub";
 import CountUp from "@/components/CountUp";
 import { FlightPathIllustration, CompassBadgeIllustration } from "@/components/icons/Illustrations";
 import ParallaxLayer from "@/components/ParallaxLayer";
@@ -176,7 +177,7 @@ export default function Home() {
 
       {/* Chapter 1 — Consult */}
       <section data-chapter="consult" className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-4 pt-20">
-        <Reveal className="mx-auto max-w-2xl text-center">
+        <ScrollScrub className="mx-auto max-w-2xl text-center">
           <ChapterTag n={1} label="Consult" />
           <h2 className="mt-4 text-3xl font-bold text-brand-blue">
             It Starts With One Conversation
@@ -192,14 +193,14 @@ export default function Home() {
           >
             Book your free consultation →
           </Link>
-        </Reveal>
+        </ScrollScrub>
       </section>
 
       <JourneyConnector />
 
       {/* Chapter 2 — Process */}
       <section data-chapter="process" className="mx-auto max-w-6xl scroll-mt-24 px-6 pb-16 pt-4">
-        <Reveal className="mx-auto max-w-2xl text-center">
+        <ScrollScrub className="mx-auto max-w-2xl text-center">
           <ChapterTag n={2} label="The Process" />
           <h2 className="mt-4 text-3xl font-bold text-brand-blue">
             We Shortlist, Apply & Prepare You
@@ -208,7 +209,7 @@ export default function Home() {
             Universities that genuinely fit, applications handled end to end,
             test coaching, and every scholarship you're eligible for.
           </p>
-        </Reveal>
+        </ScrollScrub>
 
         <div className="mt-12">
           {(() => {
@@ -302,10 +303,14 @@ export default function Home() {
 
       {/* Chapter 3 — Visa */}
       <section data-chapter="visa" className="relative scroll-mt-24 overflow-hidden bg-ink py-20 text-white">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
-        <div className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64 rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        <ParallaxLayer speed={0.1} className="pointer-events-none absolute -right-24 -top-24 h-72 w-72">
+          <div className="h-full w-full rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.06} className="pointer-events-none absolute -left-32 bottom-0 h-64 w-64">
+          <div className="h-full w-full rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        </ParallaxLayer>
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 md:grid-cols-2">
-          <Reveal>
+          <ScrollScrub>
             <ChapterTag n={3} label="The Visa" dark />
             <h2 className="mt-4 text-3xl font-bold">The Stamp That Changes Everything</h2>
             <p className="mt-4 text-slate-300">{visaService.description}</p>
@@ -323,7 +328,7 @@ export default function Home() {
             >
               Explore Visa Guidance →
             </Link>
-          </Reveal>
+          </ScrollScrub>
           <Reveal delay={150}>
             <StampCard>
               <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-10 text-center backdrop-blur">
@@ -343,11 +348,11 @@ export default function Home() {
 
       {/* Chapter 4 — Fly */}
       <section data-chapter="fly" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-8">
-        <Reveal className="mx-auto max-w-2xl text-center">
+        <ScrollScrub className="mx-auto max-w-2xl text-center">
           <ChapterTag n={4} label="The Flight" />
           <h2 className="mt-4 text-3xl font-bold text-brand-blue">Wheels Up — Six Destinations</h2>
           <p className="mt-4 text-slate-600">{preDeparture.description}</p>
-        </Reveal>
+        </ScrollScrub>
 
         <DestinationCards />
 
@@ -365,14 +370,14 @@ export default function Home() {
 
       {/* Chapter 5 — Study */}
       <section data-chapter="study" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-8">
-        <Reveal className="mx-auto max-w-2xl text-center">
+        <ScrollScrub className="mx-auto max-w-2xl text-center">
           <ChapterTag n={5} label="The Degree" />
           <h2 className="mt-4 text-3xl font-bold text-brand-blue">You Land. Classes Begin.</h2>
           <p className="mt-4 text-slate-600">
             Landing is just the beginning — we stay with you through your
             studies so you graduate on track.
           </p>
-        </Reveal>
+        </ScrollScrub>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2">
           <Reveal>
@@ -408,7 +413,7 @@ export default function Home() {
 
       {/* Chapter 6 — Work */}
       <section data-chapter="work" className="mx-auto max-w-6xl scroll-mt-24 px-6 py-8">
-        <Reveal className="mx-auto max-w-2xl text-center">
+        <ScrollScrub className="mx-auto max-w-2xl text-center">
           <ChapterTag n={6} label="The Career" />
           <h2 className="mt-4 text-3xl font-bold text-brand-blue">
             You Earn While You Learn — Then Launch a Career
@@ -417,7 +422,7 @@ export default function Home() {
             Work rights aren't just pocket money — they're the start of your
             career abroad. We help at both ends.
           </p>
-        </Reveal>
+        </ScrollScrub>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2">
           <Reveal>
@@ -465,10 +470,14 @@ export default function Home() {
 
       {/* Chapter 7 — Settle */}
       <section data-chapter="settle" className="relative scroll-mt-24 overflow-hidden bg-ink py-20 text-white">
-        <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-gold/15 blur-3xl animate-aurora-1" />
-        <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        <ParallaxLayer speed={0.09} className="pointer-events-none absolute -left-24 -top-24 h-80 w-80">
+          <div className="h-full w-full rounded-full bg-gold/15 blur-3xl animate-aurora-1" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.05} className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72">
+          <div className="h-full w-full rounded-full bg-brand-blue/30 blur-3xl animate-aurora-2" />
+        </ParallaxLayer>
         <div className="relative mx-auto max-w-6xl px-6">
-          <Reveal className="mx-auto max-w-2xl text-center">
+          <ScrollScrub className="mx-auto max-w-2xl text-center">
             <ChapterTag n={7} label="The New Home" dark />
             <h2 className="mt-4 text-3xl font-bold">You Stay. For Good.</h2>
             <p className="mt-4 text-slate-300">
@@ -476,7 +485,7 @@ export default function Home() {
               plan and connect you with trusted immigration lawyers for PR and
               long-term visa pathways.
             </p>
-          </Reveal>
+          </ScrollScrub>
 
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             {[
@@ -521,12 +530,12 @@ export default function Home() {
 
       <section className="bg-slate-50 py-24">
         <div className="mx-auto max-w-3xl px-6">
-          <div className="text-center">
+          <ScrollScrub className="text-center">
             <h2 className="text-3xl font-bold text-brand-blue">Frequently Asked Questions</h2>
             <p className="mt-4 text-slate-600">
               Answers to what most students ask before they get started.
             </p>
-          </div>
+          </ScrollScrub>
           <div className="mt-10">
             <FaqAccordion items={faqs} />
           </div>
@@ -534,8 +543,12 @@ export default function Home() {
       </section>
 
       <section className="relative overflow-hidden bg-ink py-20 text-white">
-        <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
-        <div className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-gold/15 blur-3xl animate-aurora-2" />
+        <ParallaxLayer speed={0.08} className="pointer-events-none absolute -left-24 -top-24 h-80 w-80">
+          <div className="h-full w-full rounded-full bg-brand-red/25 blur-3xl animate-aurora-1" />
+        </ParallaxLayer>
+        <ParallaxLayer speed={0.05} className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72">
+          <div className="h-full w-full rounded-full bg-gold/15 blur-3xl animate-aurora-2" />
+        </ParallaxLayer>
         <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
           <div>
             <h2 className="text-2xl font-bold">

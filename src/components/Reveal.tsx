@@ -19,10 +19,7 @@ export default function Reveal({
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+        setVisible(entry.isIntersecting);
       },
       { threshold: 0.15 }
     );
@@ -34,7 +31,9 @@ export default function Reveal({
     <div
       ref={ref}
       className={`transition-all duration-700 ease-out ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+        visible
+          ? "translate-y-0 scale-100 opacity-100 blur-0"
+          : "translate-y-6 scale-[0.98] opacity-0 blur-[2px]"
       } ${className}`}
       style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
     >
