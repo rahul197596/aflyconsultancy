@@ -16,7 +16,6 @@ export default function StampCard({ children }: { children: ReactNode }) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setStamped(true);
-          window.dispatchEvent(new Event("plane-celebrate"));
           io.disconnect();
         }
       },
@@ -29,7 +28,6 @@ export default function StampCard({ children }: { children: ReactNode }) {
   const restamp = () => {
     setStamped(true);
     setNonce((n) => n + 1);
-    window.dispatchEvent(new Event("plane-celebrate"));
   };
 
   return (
