@@ -29,10 +29,18 @@ const applyServices = ["application-support", "test-preparation", "scholarship-a
   (slug) => services.find((s) => s.slug === slug)!
 );
 
-const partnerUniversities = [
+const partnerUniversities: { name: string; logo: string; showName?: boolean }[] = [
   { name: "King's College London", logo: "/universities/Kings_college_london.png" },
+  { name: "University of Birmingham", logo: "/universities/birmingham.png", showName: true },
   { name: "University of Leicester", logo: "/universities/University_of_Leicester.png" },
+  { name: "Arizona State University", logo: "/universities/asu.png", showName: true },
+  { name: "University of Toronto", logo: "/universities/toronto.png", showName: true },
+  { name: "Coventry University", logo: "/universities/coventry.png", showName: true },
+  { name: "Northeastern University", logo: "/universities/northeastern.png", showName: true },
   { name: "University of East London", logo: "/universities/University_of_east_london.png" },
+  { name: "Monash University", logo: "/universities/monash.svg", showName: true },
+  { name: "University of Windsor", logo: "/universities/windsor.png", showName: true },
+  { name: "Deakin University", logo: "/universities/deakin.png", showName: true },
   { name: "Istituto Marangoni", logo: "/universities/istituto_marangoni.png" },
 ];
 
@@ -288,12 +296,18 @@ export default function Home() {
         >
           <div className="animate-marquee flex w-max items-center gap-16">
             {[...partnerUniversities, ...partnerUniversities].map((uni, i) => (
-              <img
-                key={`${uni.name}-${i}`}
-                src={uni.logo}
-                alt={uni.name}
-                className="h-12 w-auto flex-none object-contain grayscale transition-all hover:grayscale-0"
-              />
+              <div key={`${uni.name}-${i}`} className="flex flex-none items-center gap-3">
+                <img
+                  src={uni.logo}
+                  alt={uni.name}
+                  className="h-12 w-auto object-contain grayscale transition-all hover:grayscale-0"
+                />
+                {uni.showName && (
+                  <span className="max-w-[8.5rem] text-sm font-semibold leading-tight text-slate-500">
+                    {uni.name}
+                  </span>
+                )}
+              </div>
             ))}
           </div>
         </div>

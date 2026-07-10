@@ -78,7 +78,7 @@ html {
 }
 
 .animate-marquee {
-  animation: marquee-scroll 30s linear infinite;
+  animation: marquee-scroll 60s linear infinite;
 }
 
 .pause-on-hover:hover .animate-marquee {
