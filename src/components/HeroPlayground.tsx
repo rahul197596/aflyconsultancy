@@ -31,6 +31,11 @@ export default function HeroPlayground() {
     };
     resize();
 
+    // Classic top-view jet silhouette (24x24 viewBox, nose pointing up)
+    const JET = new Path2D(
+      "M22 16v-2l-8.5-5V3.5C13.5 2.67 12.83 2 12 2s-1.5.67-1.5 1.5V9L2 14v2l8.5-2.5V19L8 20.5V22l4-1.25L16 22v-1.5L13.5 19v-5.5L22 16z"
+    );
+
     const target = { x: w * 0.68, y: h * 0.3 };
     const plane = { x: w * 0.5, y: h * 0.4, angle: 0 };
     const trail: TrailDot[] = [];
@@ -89,22 +94,14 @@ export default function HeroPlayground() {
 
       ctx.save();
       ctx.translate(plane.x, plane.y);
-      ctx.rotate(plane.angle);
+      // JET path points up; plane.angle is measured along +x
+      ctx.rotate(plane.angle + Math.PI / 2);
+      ctx.scale(1.6, 1.6);
+      ctx.translate(-12, -12);
+      ctx.shadowColor = "rgba(255, 209, 102, 0.55)";
+      ctx.shadowBlur = 10;
       ctx.fillStyle = "#ffd166";
-      ctx.beginPath();
-      ctx.moveTo(15, 0);
-      ctx.lineTo(-11, -9);
-      ctx.lineTo(-4, 0);
-      ctx.lineTo(-11, 9);
-      ctx.closePath();
-      ctx.fill();
-      ctx.fillStyle = "rgba(15, 23, 42, 0.35)";
-      ctx.beginPath();
-      ctx.moveTo(15, 0);
-      ctx.lineTo(-11, 9);
-      ctx.lineTo(-4, 0);
-      ctx.closePath();
-      ctx.fill();
+      ctx.fill(JET);
       ctx.restore();
 
       raf = requestAnimationFrame(loop);
